@@ -1,0 +1,6 @@
+{
+  "autocomplete.disable": false,
+  "chat.enableTodoList": true,
+  "inline.enabled": false,
+  "mcp.loadedBefore": true
+}

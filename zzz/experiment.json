@@ -1,0 +1,119 @@
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "experiment",
+  "description": "",
+  "prompt": null,
+  "mcpServers": {
+    "claude-cli": {
+      "command": "python",
+      "args": [
+        "/home/nizar/HomeWspce/My-bedrock-agents-wrappers/claude_cli_wrapper.py"
+      ]
+    },
+    "notionApi": {
+          "command": "npx",
+          "args": ["-y", "@notionhq/notion-mcp-server"],
+          "env": {
+            "NOTION_TOKEN": "ntn_I62544521722KdBamTyxQpqTDQOW8CT9XW1r2IimEmN6M4"
+          }
+        },    
+    "generic-agent": {
+      "command": "python",
+      "args": [
+        "/home/nizar/HomeWspce/My-bedrock-agents-wrappers/bedrock_multi_project_wrapper.py"
+      ],
+      "env": {
+        "AGENT_ID": "4EBXLZQW3Q",
+        "AWS_REGION": "ca-central-1"
+      }
+    },
+    "awslabs.bedrock-kb-retrieval-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "awslabs.bedrock-kb-retrieval-mcp-server@latest"
+      ],
+      "env": {
+        "AWS_PROFILE": "csna-operations-sso",
+        "AWS_REGION": "ca-central-1",
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "KB_INCLUSION_TAG_KEY": "optional-tag-key-to-filter-kbs",
+        "BEDROCK_KB_RERANKING_ENABLED": "false"
+      },
+      "disabled": false,
+      "autoApprove": []
+    },
+    "orchestration.awslabs.core-mcp-server": {
+      "command": "uvx",
+      "args": [
+        "awslabs.core-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "aws-foundation": "true",
+        "solutions-architect": "true"
+      },
+      "disabled": true
+    },
+    "remote.aws-knowledge-mcp-server": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "https://knowledge-mcp.global.api.aws"
+      ],
+      "env": {},
+      "disabled": false
+    },
+    "remote.bridge.aws-mcp": {
+      "command": "uvx",
+      "args": [
+        "mcp-proxy-for-aws@latest",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--metadata",
+        "AWS_REGION=us-east-1"
+      ],
+      "alias": "remote_aws",
+      "env": {},
+      "disabled": false
+    },
+    "local.dg.awslabs.aws-diagram-mcp-server": {
+      "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
+      "args": [
+        "-m",
+        "awslabs.aws_diagram_mcp_server.server"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "autoApprove": [],
+      "disabled": false
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "toolAliases": {
+    "@remote.bridge.aws-mcp/aws___read_documentation": "aws_mcp_read_docs",
+    "@remote.bridge.aws-mcp/aws___get_regional_availability": "aws_mcp_regional_availability",
+    "@remote.bridge.aws-mcp/aws___search_documentation": "aws_mcp_search_docs",
+    "@remote.bridge.aws-mcp/aws___list_regions": "aws_mcp_regions",
+    "@remote.bridge.aws-mcp/aws___recommend": "aws_mcp_recommend"
+  },
+  "allowedTools": [
+    "fs_read"
+  ],
+  "resources": [
+    "file://AmazonQ.md",
+    "file://README.md",
+    "file://.amazonq/rules/**/*.md"
+  ],
+  "hooks": {
+  "preToolUse": [
+    {
+      "matcher": "execute_bash",
+      "command": "if echo \"$COMMAND\" | grep -qE '^git push'; then echo 'Error: git push is blocked' >&2; exit 1; fi"
+    }
+  ]
+},
+  "toolsSettings": {},
+  "useLegacyMcpJson": true
+}

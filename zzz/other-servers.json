@@ -1,0 +1,113 @@
+    "awslabs.aws-pricing-mcp-server": {
+          "command": "uvx",
+          "args": ["awslabs.aws-pricing-mcp-server@latest"],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          },
+          "autoApprove": [],
+          "disabled": false
+        },    
+    "strands-agents": {
+          "command": "uvx",
+          "args": ["strands-agents-mcp-server"],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "INFO"
+          },
+          "disabled": true,
+          "autoApprove": [
+            "search_docs",
+            "fetch_doc"
+          ]
+        },     
+    "awslabs.eks-mcp-server": {
+          "command": "uvx",
+          "args": [
+            "awslabs.eks-mcp-server@latest",
+            "--allow-write",
+            "--allow-sensitive-data-access"
+          ],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          },
+          "autoApprove": [],
+          "disabled": true
+        },    
+    "awslabs.git-repo-research-mcp-server": {
+      "command": "uvx",
+      "args": ["awslabs.git-repo-research-mcp-server@latest"],
+      "env": {
+        "AWS_PROFILE": "beneva-sandbox",
+        "AWS_REGION": "ca-central-1",
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}"
+      },
+      "disabled": true,
+      "autoApprove": []
+    },
+    "github-universal-search": {
+      "command": "uvx",
+      "args": ["mcp-server-github@latest"],
+      "env": {
+        "GITHUB_TOKEN": "${GITHUB_TOKEN}",
+        "GITHUB_SEARCH_SCOPE": "all",
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": true,
+      "autoApprove": ["search_repositories", "get_repository", "search_code", "get_file_contents"]
+    },
+    "playwright": {
+      "disabled": true,      
+      "command": "npx",
+      "args": ["-y", "@executeautomation/playwright-mcp-server"]
+    },
+    "github": {
+            "disabled": true,      
+            "command": "docker",
+            "args": [
+              "run",
+              "-i",
+              "--rm",
+              "-e",
+              "GITHUB_PERSONAL_ACCESS_TOKEN",
+              "ghcr.io/github/github-mcp-server"
+            ],
+            "env": {
+              "GITHUB_PERSONAL_ACCESS_TOKEN": "${GITHUB_TOKEN}"
+            }
+          },
+
+        "awslabs-bedrock-kb-retrieval-mcp-server": {
+          "command": "uvx",
+          "args": ["awslabs.bedrock-kb-retrieval-mcp-server@latest"],
+          "env": {
+            "AWS_PROFILE": "your-aws-profile",
+            "AWS_REGION": "us-east-1"
+          },
+          "disabled": true
+        },
+        "awslabs-cdk-mcp-server": {
+          "command": "uvx",
+          "args": ["awslabs.cdk-mcp-server@latest"],
+          "env": {
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          },
+          "disabled": true
+        },
+        "awslabs-cost-analysis-mcp-server": {
+          "command": "uvx",
+          "args": ["awslabs.cost-analysis-mcp-server@latest"],
+          "env": {
+            "AWS_PROFILE": "your-aws-profile",
+            "FASTMCP_LOG_LEVEL": "ERROR"
+          },
+          "disabled": true
+        },
+        "awslabs-nova-canvas-mcp-server": {
+          "command": "uvx",
+          "args": ["awslabs.nova-canvas-mcp-server@latest"],
+          "env": {
+            "AWS_PROFILE": "beneva-sandbox",
+            "AWS_REGION": "us-east-1"
+          },
+          "disabled": true
+        }                      

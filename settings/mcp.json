@@ -1,0 +1,15 @@
+{
+  "mcpServers": {
+    "fetch": {
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "autoApprove": [
+        "fetch"
+      ],
+      "command": "uvx",
+      "disabled": false,
+      "env": {}
+    }
+  }
+}
