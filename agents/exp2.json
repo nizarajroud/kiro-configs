@@ -4,7 +4,7 @@
   "description": "Multi-tool agent with access to Bedrock knowledge bases, AWS documentation, and diagram generation",
   "prompt": "file://../prompts/exp2-prompt.md",
   "mcpServers": {
-    "local.bedrock-project-agent": {
+    "bedrock-project-agent": {
       "description": "Queries an Amazon Bedrock agent connected to project knowledge bases. Use this for project-specific questions: RFP details, client requirements, estimated hours, timelines, budgets, and any domain-specific or organizational data ingested into the knowledge base.",
       "command": "python",
       "args": [
@@ -76,7 +76,7 @@
       "disabled": false,
       "env": {}
     },
-    "local.notion-workspace": {
+    "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
       "command": "node",
       "args": ["/home/nizar/HomeWspce/notion-mcp-server/bin/cli.mjs"],
