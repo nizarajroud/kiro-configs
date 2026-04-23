@@ -29,7 +29,7 @@
         "READ_ONLY_MODE": "true",
         "TOOLSETS": "all"
       },
-      "disabled": true
+      "disabled": false
     },
     "github": {
       "command": "python3",
@@ -39,7 +39,7 @@
         "GITHUB_READ_ONLY": "1",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": true
+      "disabled": false
     },    
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
