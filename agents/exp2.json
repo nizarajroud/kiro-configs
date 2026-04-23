@@ -8,7 +8,7 @@
       "description": "Queries an Amazon Bedrock agent connected to project knowledge bases. Use this for project-specific questions: RFP details, client requirements, estimated hours, timelines, budgets, and any domain-specific or organizational data ingested into the knowledge base.",
       "command": "python",
       "args": [
-        "/home/nizar/HomeWspce/My-bedrock-agents-wrappers/bedrock_multi_project_wrapper.py"
+        "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
       ],
       "env": {
         "AGENT_ID": "4EBXLZQW3Q",
@@ -17,6 +17,30 @@
       },
       "disabled": false
     },
+    "atlassian": {
+      "command": "python3",
+      "args": ["/home/nizar/.kiro/wrappers/atlassian_wrapper.py"],
+      "description": "Use this server for READ-ONLY access to Jira and Confluence. Use it to search and retrieve Jira issues, project status, sprints, boards, comments, and worklogs; and to search and read Confluence pages, spaces, and attachments. Do NOT use this server to create, update, or delete anything in Jira(http://jira.int.beneva.ca/) or Confluence(http://confluence.int.beneva.ca/).",
+      "env": {
+        "JIRA_URL": "https://jira.int.beneva.ca",
+        "JIRA_SSL_VERIFY": "false",
+        "CONFLUENCE_URL": "https://confluence.int.beneva.ca",
+        "CONFLUENCE_SSL_VERIFY": "false",
+        "READ_ONLY_MODE": "true",
+        "TOOLSETS": "all"
+      },
+      "disabled": true
+    },
+    "github": {
+      "command": "python3",
+      "args": ["/home/nizar/.kiro/wrappers/github_wrapper.py"],
+      "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
+      "env": {
+        "GITHUB_READ_ONLY": "1",
+        "GITHUB_TOOLSETS": "all"
+      },
+      "disabled": true
+    },    
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
       "command": "npx",
@@ -38,7 +62,7 @@
         "awslabs.bedrock-kb-retrieval-mcp-server@latest"
       ],
       "env": {
-        "AWS_PROFILE": "csna-operations-sso",
+        "AWS_PROFILE": "csna-operations-sso-828",
         "AWS_REGION": "ca-central-1",
         "FASTMCP_LOG_LEVEL": "ERROR",
         "KB_INCLUSION_TAG_KEY": "optional-tag-key-to-filter-kbs",
@@ -78,11 +102,9 @@
     },
     "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
-      "command": "node",
-      "args": ["/home/nizar/HomeWspce/notion-mcp-server/bin/cli.mjs"],
+      "command": "python3",
+      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"],
       "env": {
-        "NOTION_TOKEN": "${NOTION_TOKEN}",
-        "GITHUB_TOKEN": "${GITHUB_PAT}",
         "GITHUB_REPO": "nizarajroud/notion-images"
       },
       "disabled": false
