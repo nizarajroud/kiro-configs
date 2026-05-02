@@ -26,20 +26,29 @@
         "JIRA_SSL_VERIFY": "false",
         "CONFLUENCE_URL": "https://confluence.int.beneva.ca",
         "CONFLUENCE_SSL_VERIFY": "false",
-        "READ_ONLY_MODE": "true",
+        "READ_ONLY_MODE": "false",
         "TOOLSETS": "all"
       },
       "disabled": false
     },
-    "github": {
+    "csben-github": {
       "command": "python3",
-      "args": ["/home/nizar/.kiro/wrappers/github_wrapper.py"],
-      "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
+      "args": ["/home/nizar/.kiro/wrappers/csben_github_wrapper.py"],
+      "description": "Use this server for GitHub operations on the beneva-int organization: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
       "env": {
         "GITHUB_READ_ONLY": "1",
         "GITHUB_TOOLSETS": "all"
       },
       "disabled": false
+    },    
+    "personal-github": {
+      "command": "python3",
+      "args": ["/home/nizar/.kiro/wrappers/personal_github_wrapper.py"],
+      "description": "Use this server ONLY to upload images to the nizarajroud/notion-images repository for embedding in Notion pages. Do not use for any other GitHub operation.",
+      "env": {
+        "GITHUB_TOOLSETS": "contents"
+      },
+      "disabled": true
     },    
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",

@@ -2,5 +2,6 @@
   "autocomplete.disable": false,
   "chat.enableTodoList": true,
   "inline.enabled": false,
-  "mcp.loadedBefore": true
+  "mcp.loadedBefore": true,
+  "chat.ui": "legacy"
 }
