@@ -4,6 +4,12 @@
   "description": "Multi-tool agent with access to Bedrock knowledge bases, AWS documentation, and diagram generation",
   "prompt": "file://../prompts/exp2-prompt.md",
   "mcpServers": {
+    "pdf-reader": {
+      "command": "npx",
+      "args": ["@sylphx/pdf-reader-mcp"],
+      "disabled": false,
+      "autoApprove": []
+    },    
     "bedrock-project-agent": {
       "description": "Queries an Amazon Bedrock agent connected to project knowledge bases. Use this for project-specific questions: RFP details, client requirements, estimated hours, timelines, budgets, and any domain-specific or organizational data ingested into the knowledge base.",
       "command": "python",
@@ -19,7 +25,9 @@
     },
     "atlassian": {
       "command": "python3",
-      "args": ["/home/nizar/.kiro/wrappers/atlassian_wrapper.py"],
+      "args": [
+        "/home/nizar/.kiro/wrappers/atlassian_wrapper.py"
+      ],
       "description": "Use this server for READ-ONLY access to Jira and Confluence. Use it to search and retrieve Jira issues, project status, sprints, boards, comments, and worklogs; and to search and read Confluence pages, spaces, and attachments. Do NOT use this server to create, update, or delete anything in Jira(http://jira.int.beneva.ca/) or Confluence(http://confluence.int.beneva.ca/).",
       "env": {
         "JIRA_URL": "https://jira.int.beneva.ca",
@@ -32,15 +40,17 @@
       "disabled": false
     },
     "github": {
-      "command": "python3",
-      "args": ["/home/nizar/.kiro/wrappers/github_wrapper.py"],
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/github_wrapper.py"
+      ],
       "env": {
-        "GITHUB_READ_ONLY": "1",
+        "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
       "disabled": false
-    },    
+    },
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
       "command": "npx",
@@ -86,7 +96,10 @@
     "local.aws-diagram-generator": {
       "description": "Generates AWS architecture diagrams as PNG images using the Python diagrams package. Use this to create, render, and export visual architecture diagrams. Provides tools to list available icons, get code examples, and generate diagrams from Python code.",
       "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
-      "args": ["-m", "awslabs.aws_diagram_mcp_server.server"],
+      "args": [
+        "-m",
+        "awslabs.aws_diagram_mcp_server.server"
+      ],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
@@ -96,18 +109,49 @@
     "local.diagram-prompt-templates": {
       "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
       "command": "python3",
-      "args": ["-u", "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"],
+      "args": [
+        "-u",
+        "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
+      ],
       "disabled": false,
       "env": {}
     },
     "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"
+      ],
       "env": {
         "GITHUB_REPO": "nizarajroud/notion-images"
       },
       "disabled": false
+    },
+    "markdown2pdf": {
+      "description": "Converts Markdown content to PDF files. Supports headers, bold/italic, lists, tables, code blocks with syntax highlighting, images (local and remote), task lists, blockquotes, links, and Mermaid diagrams. Does not support LaTeX math. PDFs are saved to the configured M2P_OUTPUT_DIR. Use the create_pdf_from_markdown tool with a markdown string and an output filename.",
+      "command": "node",
+      "args": [
+        "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
+      ],
+      "env": {
+        "M2P_OUTPUT_DIR": "/home/nizar/workspace/assets/markdown2pdf-output"
+      }
+    },
+    "knowledge-rag": {
+      "description": "Local RAG knowledge base. Use this to search, retrieve, and manage documents stored locally in ~/My-KB-Documents. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries against the local knowledge base.",
+      "command": "/home/nizar/.knowledge-rag/venv/bin/python",
+      "args": ["-m", "mcp_server.server"],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "playwright": {
+       "description": "Browser automation and web screenshot capture using Playwright. Navigates to websites, interacts with page elements (click, type, scroll), takes screenshots of full pages or specific elements, and executes JavaScript to highlight or modify DOM elements before capture. Supports CSS injection for visual annotations like colored borders and overlays. Use for web page screenshots, UI validation, visual documentation, and element-specific captures with highlights.",
+      "command": "npx",
+      "args": [
+        "@playwright/mcp@latest",
+        "--headless"
+      ],
+      "env": {}
     }
   },
   "tools": [
