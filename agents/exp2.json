@@ -152,6 +152,14 @@
         "--headless"
       ],
       "env": {}
+    },
+    "n8n": {
+      "description": "n8n workflow automation server running locally. Use this to list, create, update, activate, deactivate, and execute n8n workflows. Also supports managing workflow tags and credentials. Use for automating tasks, orchestrating multi-step processes, and triggering workflow executions from the CLI.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/n8n_wrapper.py"
+      ],
+      "disabled": false
     }
   },
   "tools": [
