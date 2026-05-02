@@ -23,22 +23,6 @@
       },
       "disabled": false
     },
-    "atlassian": {
-      "command": "python3",
-      "args": [
-        "/home/nizar/.kiro/wrappers/atlassian_wrapper.py"
-      ],
-      "description": "Use this server for READ-ONLY access to Jira and Confluence. Use it to search and retrieve Jira issues, project status, sprints, boards, comments, and worklogs; and to search and read Confluence pages, spaces, and attachments. Do NOT use this server to create, update, or delete anything in Jira(http://jira.int.beneva.ca/) or Confluence(http://confluence.int.beneva.ca/).",
-      "env": {
-        "JIRA_URL": "https://jira.int.beneva.ca",
-        "JIRA_SSL_VERIFY": "false",
-        "CONFLUENCE_URL": "https://confluence.int.beneva.ca",
-        "CONFLUENCE_SSL_VERIFY": "false",
-        "READ_ONLY_MODE": "true",
-        "TOOLSETS": "all"
-      },
-      "disabled": false
-    },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
       "command": "python3",
