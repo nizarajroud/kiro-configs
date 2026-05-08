@@ -21,7 +21,7 @@
         "AGENT_ALIAS_ID": "TSTALIASID",
         "AWS_REGION": "ca-central-1"
       },
-      "disabled": false
+      "disabled": true
     },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
@@ -48,7 +48,8 @@
       "command": "python",
       "args": [
         "/home/nizar/.kiro/wrappers/claude_cli_wrapper.py"
-      ]
+      ],
+      "disabled": true
     },
     "remote.awslabs.bedrock-kb-retrieval-mcp-server": {
       "command": "uvx",
@@ -62,7 +63,7 @@
         "KB_INCLUSION_TAG_KEY": "optional-tag-key-to-filter-kbs",
         "BEDROCK_KB_RERANKING_ENABLED": "false"
       },
-      "disabled": false,
+      "disabled": true,
       "autoApprove": []
     },
     "remote.bridge.aws-mcp": {
@@ -125,7 +126,7 @@
       "description": "Local RAG knowledge base. Use this to search, retrieve, and manage documents stored locally in ~/My-KB-Documents. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries against the local knowledge base.",
       "command": "/home/nizar/.knowledge-rag/venv/bin/python",
       "args": ["-m", "mcp_server.server"],
-      "disabled": false,
+      "disabled": true,
       "autoApprove": []
     },
     "playwright": {
@@ -135,7 +136,8 @@
         "@playwright/mcp@latest",
         "--headless"
       ],
-      "env": {}
+      "env": {},
+      "disabled": true
     },
     "n8n": {
       "description": "n8n workflow automation server running locally. Use this to list, create, update, activate, deactivate, and execute n8n workflows. Also supports managing workflow tags and credentials. Use for automating tasks, orchestrating multi-step processes, and triggering workflow executions from the CLI.",
@@ -143,6 +145,26 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/n8n_wrapper.py"
       ],
+      "disabled": true
+    },
+    "gmail": {
+      "description": "Gmail and Google Calendar MCP server. Use this to search emails, read messages, create drafts, reply to emails, manage labels, and access Google Calendar events. Supports multiple Google accounts.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "notebooklm": {
+      "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
+      "command": "notebooklm-mcp",
+      "args": [],
+      "disabled": false
+    },
+    "idea": {
+      "description": "Product Owner prompt: transforme une idée (mot, phrase, paragraphe) en User Story structurée, crée une issue GitHub, met à jour le steering file et la page Notion.",
+      "command": "python3",
+      "args": ["/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"],
       "disabled": false
     }
   },
