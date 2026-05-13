@@ -40,7 +40,15 @@
         "GITHUB_TOOLSETS": "all"
       },
       "disabled": false
-    },    
+    },
+    "csben-jenkins": {
+      "description": "CSBEN Jenkins CI/CD server (READ-ONLY). Use this to list jobs/pipelines, check build status, get build logs, and view build history on the CSBEN Jenkins instance (jenkins.ssqti.ca). NO write operations allowed: do NOT trigger builds, do NOT create/delete jobs, do NOT modify configurations.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/jenkins_wrapper.py"
+      ],
+      "disabled": false
+    },
     "personal-github": {
       "command": "python3",
       "args": ["/home/nizar/.kiro/wrappers/personal_github_wrapper.py"],
