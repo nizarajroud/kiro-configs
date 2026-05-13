@@ -1,27 +1,47 @@
 #!/usr/bin/env python3
-"""MCP Wrapper: Product Owner Idea-to-Issue pipeline.
+"""MCP Wrapper: Unified idea-to-issue pipeline.
 
-Exposes a single MCP prompt 'idea' that accepts multi-line text
-and instructs the agent to create a GitHub issue, update steering, and update Notion.
+Two prompts:
+- idea: auto-detect repo from cwd (fallback: IDEAS)
+- backlog: always targets nizarajroud/IDEAS
 """
 import json
+import subprocess
+import re
 import sys
 
-PROMPT_TEMPLATE = """Agis comme un Product Owner. Transforme cette idée en User Story et exécute les actions suivantes :
+OWNER = "nizarajroud"
+FALLBACK_REPO = "IDEAS"
 
-IDÉE : {idea}
+PROMPT_TEMPLATE = """Crée une issue GitHub avec ces paramètres EXACTS. Ne pose AUCUNE question. Exécute directement.
 
-ACTIONS À EXÉCUTER :
-1. Crée une issue GitHub sur nizarajroud/MY-PERSONAL-PORTFOLIO avec :
-   - Titre clair et concis
-   - Description au format "En tant que [visiteur/recruteur], je veux [action], afin de [bénéfice]"
-   - Critères d'acceptation (3-5 items en checklist)
-   - Labels appropriés (feature, enhancement, bug, design, etc.)
-2. Mets à jour le steering file du projet si accessible (.kiro/steering.md)
-3. Mets à jour ou crée la page Notion "MY-PERSONAL-PORTFOLIO" avec la User Story dans le backlog
-4. Confirme avec le numéro de l'issue et le lien Notion
+owner: {owner}
+repo: {repo}
+title: {idea}
+labels: [{label}]
+body: (laisser vide)
 
-Contexte : Portail personnel Cloud Architect (expériences, certifications, CV, projets)."""
+Utilise l'outil create_issue avec owner="{owner}", repo="{repo}", title="{idea}", labels=["{label}"].
+Ne modifie PAS le repo. Ne demande PAS de confirmation. Exécute immédiatement."""
+
+LABELS_IDEAS = "projet, optimisation, expérimentation, évolution, portail, infra"
+LABELS_DEFAULT = "feature, enhancement, bug, design"
+
+
+def detect_repo():
+    try:
+        result = subprocess.run(
+            ["git", "remote", "get-url", "origin"],
+            capture_output=True, text=True, timeout=5
+        )
+        if result.returncode == 0:
+            url = result.stdout.strip()
+            m = re.match(r"https://github\.com/([^/]+)/([^/]+?)(?:\.git)?$", url)
+            if m:
+                return m.group(1), m.group(2)
+    except Exception:
+        pass
+    return OWNER, FALLBACK_REPO
 
 
 def handle_request(request):
@@ -31,8 +51,8 @@ def handle_request(request):
     if method == "initialize":
         return {"jsonrpc": "2.0", "id": req_id, "result": {
             "protocolVersion": "2024-11-05",
-            "capabilities": {"prompts": {"listChanged": False}},
-            "serverInfo": {"name": "idea-prompt", "version": "1.0.0"}
+            "capabilities": {"prompts": {"listChanged": False}, "tools": {"listChanged": False}},
+            "serverInfo": {"name": "idea", "version": "2.0.0"}
         }}
 
     if method == "notifications/initialized":
@@ -40,18 +60,39 @@ def handle_request(request):
 
     if method == "prompts/list":
         return {"jsonrpc": "2.0", "id": req_id, "result": {
-            "prompts": [{
-                "name": "idea",
-                "description": "Transforme une idée en User Story → GitHub Issue + Notion + Steering",
-                "arguments": [{"name": "idea", "description": "L'idée à transformer (mot, phrase, ou paragraphe)", "required": True}]
-            }]
+            "prompts": [
+                {
+                    "name": "idea",
+                    "description": "Crée une issue dans le repo courant (ou IDEAS si pas dans un repo Git)",
+                    "arguments": [{"name": "idea", "description": "L'idée à transformer", "required": True}]
+                },
+                {
+                    "name": "backlog",
+                    "description": "Crée une issue dans le backlog centralisé (nizarajroud/IDEAS), peu importe le cwd",
+                    "arguments": [{"name": "idea", "description": "L'idée à noter", "required": True}]
+                }
+            ]
         }}
 
+    if method == "tools/list":
+        return {"jsonrpc": "2.0", "id": req_id, "result": {"tools": []}}
+
     if method == "prompts/get":
+        name = request.get("params", {}).get("name", "")
         args = request.get("params", {}).get("arguments", {})
         idea = args.get("idea", "")
+
+        if name == "backlog":
+            owner, repo = OWNER, FALLBACK_REPO
+            label = "projet"
+        else:
+            owner, repo = detect_repo()
+            label = "projet" if repo == FALLBACK_REPO else "feature"
+
         return {"jsonrpc": "2.0", "id": req_id, "result": {
-            "messages": [{"role": "user", "content": {"type": "text", "text": PROMPT_TEMPLATE.format(idea=idea)}}]
+            "messages": [{"role": "user", "content": {"type": "text", "text": PROMPT_TEMPLATE.format(
+                idea=idea, owner=owner, repo=repo, label=label
+            )}}]
         }}
 
     return {"jsonrpc": "2.0", "id": req_id, "error": {"code": -32601, "message": "Method not found"}}

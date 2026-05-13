@@ -162,7 +162,7 @@
       "disabled": false
     },
     "idea": {
-      "description": "Product Owner prompt: transforme une idée (mot, phrase, paragraphe) en User Story structurée, crée une issue GitHub, met à jour le steering file et la page Notion.",
+      "description": "Product Owner prompt: @idea/idea (auto-detect repo ou fallback IDEAS) et @idea/backlog (toujours IDEAS).",
       "command": "python3",
       "args": ["/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"],
       "disabled": false
