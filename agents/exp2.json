@@ -109,6 +109,14 @@
       "disabled": false,
       "env": {}
     },
+    "awslabs.eks-mcp-server": {
+      "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
+      "command": "python3",
+      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"],
+      "env": {},
+      "autoApprove": [],
+      "disabled": false
+    },
     "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
       "command": "python3",
