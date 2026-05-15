@@ -133,6 +133,27 @@
         "GITHUB_REPO": "nizarajroud/notion-images"
       },
       "disabled": false
+    },
+    "awslabs.aws-api-mcp-server": {
+      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
+      "command": "python3",
+      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"],
+      "env": {
+        "AWS_REGION": "ca-central-1",
+        "AWS_API_MCP_PROFILE_NAME": "csna-operations-sso-828",
+        "READ_OPERATIONS_ONLY": "true",
+        "AWS_API_MCP_ALLOW_UNRESTRICTED_LOCAL_FILE_ACCESS": "no-access"
+      },
+      "autoApprove": [],
+      "disabled": false
+    },
+    "mcp-image-recognition": {
+      "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
+      "command": "python3",
+      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"],
+      "env": {},
+      "autoApprove": [],
+      "disabled": false
     }
   },
   "tools": [
