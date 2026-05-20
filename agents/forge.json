@@ -2,23 +2,7 @@
   "name": "forge",
   "description": "Installs and configures new MCP servers: creates wrappers, adds secrets, updates agent config, documents on Notion with Mermaid diagrams.",
   "prompt": "file://../prompts/forge-prompt.md",
-  "mcpServers": {
-    "notion-workspace": {
-      "description": "Notion workspace for documenting MCP installations under the Tooling page.",
-      "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"],
-      "env": {
-        "GITHUB_REPO": "nizarajroud/notion-images"
-      },
-      "disabled": false
-    },
-    "mcp-mermaid": {
-      "description": "Generates Mermaid diagrams to illustrate MCP server architecture.",
-      "command": "npx",
-      "args": ["-y", "mcp-mermaid"],
-      "disabled": false
-    }
-  },
+  "mcpServers": {},
   "tools": [
     "fs_read",
     "fs_write",
@@ -37,5 +21,5 @@
   "resources": [],
   "hooks": {},
   "toolsSettings": {},
-  "welcomeMessage": "🔨 Forge ready. Tell me which MCP server to install."
+  "welcomeMessage": "\ud83d\udd28 Forge ready. Tell me which MCP server to install."
 }

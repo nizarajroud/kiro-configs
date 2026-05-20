@@ -4,12 +4,6 @@
   "description": "Multi-tool agent with access to Bedrock knowledge bases, AWS documentation, and diagram generation",
   "prompt": "file://../prompts/exp2-prompt.md",
   "mcpServers": {
-    "pdf-reader": {
-      "command": "npx",
-      "args": ["@sylphx/pdf-reader-mcp"],
-      "disabled": false,
-      "autoApprove": []
-    },    
     "bedrock-project-agent": {
       "description": "Queries an Amazon Bedrock agent connected to project knowledge bases. Use this for project-specific questions: RFP details, client requirements, estimated hours, timelines, budgets, and any domain-specific or organizational data ingested into the knowledge base.",
       "command": "python",
@@ -24,10 +18,13 @@
       "disabled": true
     },
     "context7": {
-      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
+      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source \u2014 never relies on training data.",
       "command": "npx",
       "timeout": 200000,
-      "args": ["-y", "@upstash/context7-mcp"],
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
       "disabled": false
     },
     "github": {
@@ -108,17 +105,6 @@
       "disabled": false,
       "env": {}
     },
-    "notion-workspace": {
-      "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
-      "command": "python3",
-      "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"
-      ],
-      "env": {
-        "GITHUB_REPO": "nizarajroud/notion-images"
-      },
-      "disabled": false
-    },
     "markdown2pdf": {
       "description": "Converts Markdown content to PDF files. Supports headers, bold/italic, lists, tables, code blocks with syntax highlighting, images (local and remote), task lists, blockquotes, links, and Mermaid diagrams. Does not support LaTeX math. PDFs are saved to the configured M2P_OUTPUT_DIR. Use the create_pdf_from_markdown tool with a markdown string and an output filename.",
       "command": "node",
@@ -132,18 +118,15 @@
     "knowledge-rag": {
       "description": "Local RAG knowledge base. Use this to search, retrieve, and manage documents stored locally in ~/My-KB-Documents. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries against the local knowledge base.",
       "command": "/home/nizar/.knowledge-rag/venv/bin/python",
-      "args": ["-m", "mcp_server.server"],
+      "args": [
+        "-m",
+        "mcp_server.server"
+      ],
       "disabled": true,
       "autoApprove": []
     },
-    "alithya-knowledge-rag": {
-      "description": "Personal knowledge base (remote RAG server on PC Alithya). Use this for ALL personal/private information: personal documents, notes, private files, financial records, procedures, and any data stored in Dropbox/AAA_PRIVATE_LIFE. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries.",
-      "command": "npx",
-      "args": ["mcp-remote", "http://192.168.2.56:8080/mcp", "--allow-http"],
-      "disabled": false
-    },
     "playwright": {
-       "description": "Browser automation and web screenshot capture using Playwright. Navigates to websites, interacts with page elements (click, type, scroll), takes screenshots of full pages or specific elements, and executes JavaScript to highlight or modify DOM elements before capture. Supports CSS injection for visual annotations like colored borders and overlays. Use for web page screenshots, UI validation, visual documentation, and element-specific captures with highlights.",
+      "description": "Browser automation and web screenshot capture using Playwright. Navigates to websites, interacts with page elements (click, type, scroll), takes screenshots of full pages or specific elements, and executes JavaScript to highlight or modify DOM elements before capture. Supports CSS injection for visual annotations like colored borders and overlays. Use for web page screenshots, UI validation, visual documentation, and element-specific captures with highlights.",
       "command": "npx",
       "args": [
         "@playwright/mcp@latest",
@@ -160,24 +143,12 @@
       ],
       "disabled": true
     },
-    "gmail": {
-      "description": "Gmail and Google Calendar MCP server. Use this to search emails, read messages, create drafts, reply to emails, manage labels, and access Google Calendar events. Supports multiple Google accounts.",
-      "command": "python3",
-      "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
-      ],
-      "disabled": false
-    },
-    "notebooklm": {
-      "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
-      "command": "notebooklm-mcp",
-      "args": [],
-      "disabled": false
-    },
     "idea": {
       "description": "Product Owner prompt: @idea/idea (auto-detect repo ou fallback IDEAS) et @idea/backlog (toujours IDEAS).",
       "command": "python3",
-      "args": ["/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"],
+      "args": [
+        "/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"
+      ],
       "disabled": false
     },
     "lza": {
@@ -197,57 +168,28 @@
         "getMinimumConfiguration"
       ]
     },
-    "ticktick": {
-      "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
-      "command": "python3",
-      "args": ["/home/nizar/.kiro/wrappers/ticktick_wrapper.py"],
-      "disabled": false
-    },
-    "excel": {
-      "description": "Excel file manipulation MCP server (3.8k stars). Read, write, create, and modify Excel workbooks (.xlsx) without needing Microsoft Excel installed. Supports: reading/writing cells and ranges, formulas, formatting, charts, pivot tables, tables, sheet management, data validation, and conditional formatting. Use this for any operation on Excel files stored locally or on Dropbox (via /mnt/c/Users/nizar/Dropbox/...).",
-      "command": "uvx",
-      "args": ["excel-mcp-server", "stdio"],
-      "disabled": false
-    },
     "mural": {
       "description": "MURAL collaboration tool. Use this whenever the user mentions 'mural', 'MURAL', a mural board, or visual collaboration content. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54). Supports: listing workspaces/rooms/murals, reading all content from a mural (sticky notes, shapes, text, images), searching text inside murals, creating/updating/deleting sticky notes, and creating new murals.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"],
-      "disabled": false
-    },
-    "telegram": {
-      "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
-      "command": "npx",
-      "args": ["@overpod/mcp-telegram"],
-      "env": {
-        "TELEGRAM_API_ID": "${TELEGRAM_API_ID}",
-        "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
-        "TZ": "America/Toronto"
-      },
-      "disabled": false
-    },
-    "bookmarks": {
-      "description": "Browser bookmarks search (Chrome + Edge). Use this whenever the user asks about bookmarks, saved links, favorites, or wants to find a previously saved URL. Searches across 7260 Chrome bookmarks and 2454 Edge bookmarks by title, URL, or folder name.",
-      "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"],
-      "disabled": false
-    },
-    "mcp-mermaid": {
-      "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
-      "command": "npx",
-      "args": ["-y", "mcp-mermaid"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
+      ],
       "disabled": false
     },
     "awslabs.eks-mcp-server": {
       "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
+      ],
       "disabled": false
     },
     "awslabs.aws-api-mcp-server": {
-      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
+      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations \u2014 no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
+      ],
       "env": {
         "AWS_REGION": "ca-central-1",
         "AWS_API_MCP_PROFILE_NAME": "csna-operations-sso-828",
@@ -259,13 +201,18 @@
     "mcp-image-recognition": {
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
+      ],
       "disabled": true
     },
     "memory": {
       "description": "Persistent knowledge graph memory across sessions. Use this to store and retrieve entities, relations, and observations that should be remembered between conversations. Allows the agent to build long-term memory of user preferences, project context, decisions, and facts.",
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/exp2.json"
       },
@@ -274,13 +221,18 @@
     "sequential-thinking": {
       "description": "Dynamic step-by-step reasoning with revision and branching. Forces the agent to decompose complex problems into manageable steps, revise thinking, and explore alternative paths. Use this for complex planning, debugging, architecture decisions, and any problem requiring structured multi-step analysis.",
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
       "disabled": false
     },
     "time": {
       "description": "Time and timezone conversion. Provides current time in any timezone and converts between timezones. Use when the agent needs accurate current time or timezone calculations.",
       "command": "uvx",
-      "args": ["mcp-server-time"],
+      "args": [
+        "mcp-server-time"
+      ],
       "disabled": false
     },
     "codebase-memory": {
@@ -292,17 +244,13 @@
     "whatsapp": {
       "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
       "command": "uv",
-      "args": ["--directory", "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server", "run", "main.py"],
+      "args": [
+        "--directory",
+        "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server",
+        "run",
+        "main.py"
+      ],
       "disabled": true
-    },
-    "airtable": {
-      "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",
-      "command": "npx",
-      "args": ["-y", "airtable-mcp-server"],
-      "env": {
-        "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
-      },
-      "disabled": false
     }
   },
   "tools": [

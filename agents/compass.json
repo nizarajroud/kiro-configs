@@ -1,85 +1,17 @@
 {
   "name": "compass",
-  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
+  "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
-    "notebooklm": {
-      "description": "Google NotebookLM — primary knowledge base for personal life. RAG-powered semantic search across notebooks organized by domain.",
-      "command": "notebooklm-mcp",
-      "args": [],
-      "disabled": false
-    },
-    "notion-workspace": {
-      "description": "Notion workspace — structured personal data, pages, databases.",
-      "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"],
-      "env": {
-        "GITHUB_REPO": "nizarajroud/notion-images"
-      },
-      "disabled": false
-    },
-    "gmail": {
-      "description": "Gmail — emails, confirmations, invoices, official communications.",
-      "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"],
-      "disabled": false
-    },
-    "ticktick": {
-      "description": "TickTick — tasks, reminders, habits, deadlines.",
-      "command": "python3",
-      "args": ["/home/nizar/.kiro/wrappers/ticktick_wrapper.py"],
-      "disabled": false
-    },
-    "excel": {
-      "description": "Excel — financial tracking spreadsheet.",
-      "command": "uvx",
-      "args": ["excel-mcp-server", "stdio"],
-      "disabled": false
-    },
-    "telegram": {
-      "description": "Telegram — personal messages, conversations with spouse, notes to self.",
-      "command": "npx",
-      "args": ["@overpod/mcp-telegram"],
-      "env": {
-        "TELEGRAM_API_ID": "${TELEGRAM_API_ID}",
-        "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
-        "TZ": "America/Toronto"
-      },
-      "disabled": false
-    },
-    "bookmarks": {
-      "description": "Browser bookmarks — saved links from Chrome and Edge.",
-      "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"],
-      "disabled": false
-    },
-    "alithya-knowledge-rag": {
-      "description": "Personal documents RAG — PDFs, contracts, tax documents, identity papers from Dropbox.",
-      "command": "npx",
-      "args": ["mcp-remote", "http://192.168.2.56:8080/mcp", "--allow-http"],
-      "disabled": false
-    },
-    "pdf-reader": {
-      "description": "PDF reader — extract text, metadata, images, and tables from local or remote PDF files.",
-      "command": "npx",
-      "args": ["@sylphx/pdf-reader-mcp"],
-      "disabled": false
-    },
     "memory": {
-      "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
+      "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/compass.json"
-      },
-      "disabled": false
-    },
-    "airtable": {
-      "description": "Airtable database — visual data boards (kanban, grid, calendar) for structured personal data the agent pushes.",
-      "command": "npx",
-      "args": ["-y", "airtable-mcp-server"],
-      "env": {
-        "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
       "disabled": false
     }
@@ -118,5 +50,5 @@
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer."
+  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer."
 }
