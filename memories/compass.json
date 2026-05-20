@@ -1,1 +1,155 @@
-{}
+{
+  "entities": [
+    {
+      "name": "Nizar",
+      "entityType": "person",
+      "observations": [
+        "Owner and sole user of the Personal Knowledge Hub",
+        "Timezone: America/Toronto (Eastern Time)",
+        "Conjointe: Abir",
+        "Enfants: Léa, Adam",
+        "Uses Kiro CLI as primary interface"
+      ]
+    },
+    {
+      "name": "Personal Knowledge Hub",
+      "entityType": "project",
+      "observations": [
+        "Master data warehouse for all personal life questions",
+        "4-layer architecture: Interface → Agent → MCP → Data Sources",
+        "Query-first design: NEVER cache, ALWAYS query live",
+        "Sources self-index — no centralized duplication",
+        "Steering files define routing logic, NOT data",
+        "Adding a new source = adding a MCP connector, nothing else"
+      ]
+    },
+    {
+      "name": "NotebookLM",
+      "entityType": "source",
+      "observations": [
+        "Priority 1 source — primary knowledge base (RAG)",
+        "2 Google accounts, separated by notebook type",
+        "Covers ALL domains",
+        "Best for: factual questions, procedures, reference material",
+        "Read-only — cannot write back"
+      ]
+    },
+    {
+      "name": "Notion",
+      "entityType": "source",
+      "observations": [
+        "Priority 2 source — structured data (pages, databases)",
+        "Mixed personal + professional content — must filter to personal only",
+        "Best for: structured info, lists, databases, detailed procedures"
+      ]
+    },
+    {
+      "name": "Alithya Knowledge RAG",
+      "entityType": "source",
+      "observations": [
+        "Priority 3 source — personal documents from Dropbox/AAA_PRIVATE_LIFE",
+        "Remote server on PC Alithya (192.168.2.56:8080) — must be running",
+        "Hybrid search: semantic embeddings + BM25 + cross-encoder reranking",
+        "Best for: PDFs, avis de cotisation, factures, contrats, relevés fiscaux, documents d'identité"
+      ]
+    },
+    {
+      "name": "TickTick",
+      "entityType": "source",
+      "observations": [
+        "Priority 4 source — tasks, recurring reminders, habits",
+        "Best for: 'What do I need to do?', deadlines, reminders",
+        "IMPORTANT: Pour requêtes par date, utiliser full_sync puis filtrer manuellement (tasks_of_today ne résout pas les récurrences)"
+      ]
+    },
+    {
+      "name": "Gmail",
+      "entityType": "source",
+      "observations": [
+        "Priority 5 source — emails, attachments, confirmations",
+        "Best for: confirmations, official dates, correspondence history",
+        "Use Gmail search syntax: from:, subject:, newer_than:"
+      ]
+    },
+    {
+      "name": "Telegram",
+      "entityType": "source",
+      "observations": [
+        "Priority 6 source — messages personnels, conversations avec Abir, notes à soi-même",
+        "Timestamps returned in UTC — ALWAYS convert to America/Toronto before displaying",
+        "Best for: échanges avec conjointe, notes rapides envoyées à soi-même, conversations informelles"
+      ]
+    },
+    {
+      "name": "Browser Bookmarks",
+      "entityType": "source",
+      "observations": [
+        "Priority 7 source — 7260 Chrome + 2454 Edge bookmarks",
+        "Best for: retrouver un lien sauvegardé, même ancien",
+        "Local search, no internet needed"
+      ]
+    },
+    {
+      "name": "Excel",
+      "entityType": "source",
+      "observations": [
+        "Priority 8 source — financial tracking spreadsheet",
+        "File: /mnt/c/Users/nizar/Dropbox/AAA_PRIVATE_LIFE/Procedures-en-cours/Suivi-tresorie-perso/suivi-des-affaires.xlsx",
+        "Best for: financial amounts, budget tracking, account balances"
+      ]
+    },
+    {
+      "name": "Routing Rules",
+      "entityType": "knowledge",
+      "observations": [
+        "User-directed routing has HIGHEST priority — if user says where to look, go there first",
+        "Maximum 3 sources for non-exploration queries",
+        "For exploration type: query ALL sources in parallel",
+        "NEVER skip NotebookLM for factual/procedure questions",
+        "If primary sources return nothing: try fallback sources before saying 'not found'",
+        "factual → NotebookLM + Notion (fallback: Gmail, Telegram)",
+        "action → TickTick + Notion (fallback: NotebookLM)",
+        "document → NotebookLM + Gmail + Alithya RAG (fallback: Notion)",
+        "timeline → Gmail + Notion + TickTick (fallback: NotebookLM, Telegram)",
+        "procedure → NotebookLM + Notion",
+        "link/reference → Bookmarks + NotebookLM (fallback: Telegram, Gmail)",
+        "conversation → Telegram + Gmail (fallback: Notion)"
+      ]
+    },
+    {
+      "name": "Data Principles",
+      "entityType": "knowledge",
+      "observations": [
+        "Data is dynamic — NEVER cache, ALWAYS query fresh",
+        "No duplication — data lives in ONE authoritative location",
+        "Source citation is MANDATORY for every fact",
+        "Contradictions are valuable — present both, suggest which is newer, ask user",
+        "Privacy: reference sensitive data by key, not by value",
+        "If source unreachable: inform user, use fallbacks, NEVER fabricate",
+        "The agent learns ROUTING, not DATA — facts belong in sources, not steering files"
+      ]
+    },
+    {
+      "name": "Domains",
+      "entityType": "knowledge",
+      "observations": [
+        "Active domains: déménagement (high priority), famille (enfants/écoles/clubs/santé), finances, admin, abonnements, identité, projets_perso",
+        "Domain data in: knowledges/personal/domains/",
+        "Domain taxonomy in: knowledges/personal/config/domains.yaml"
+      ]
+    }
+  ],
+  "relations": [
+    {"from": "Nizar", "to": "Personal Knowledge Hub", "relationType": "owns"},
+    {"from": "Personal Knowledge Hub", "to": "NotebookLM", "relationType": "uses"},
+    {"from": "Personal Knowledge Hub", "to": "Notion", "relationType": "uses"},
+    {"from": "Personal Knowledge Hub", "to": "Alithya Knowledge RAG", "relationType": "uses"},
+    {"from": "Personal Knowledge Hub", "to": "TickTick", "relationType": "uses"},
+    {"from": "Personal Knowledge Hub", "to": "Gmail", "relationType": "uses"},
+    {"from": "Personal Knowledge Hub", "to": "Telegram", "relationType": "uses"},
+    {"from": "Personal Knowledge Hub", "to": "Browser Bookmarks", "relationType": "uses"},
+    {"from": "Personal Knowledge Hub", "to": "Excel", "relationType": "uses"},
+    {"from": "Personal Knowledge Hub", "to": "Routing Rules", "relationType": "follows"},
+    {"from": "Personal Knowledge Hub", "to": "Data Principles", "relationType": "follows"}
+  ]
+}
