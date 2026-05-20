@@ -241,6 +241,19 @@
       "args": [],
       "disabled": true
     },
+    "chrome-tools": {
+      "description": "Chrome DevTools Protocol integration. Connects to a running Chrome/Edge instance to capture network traffic (headers, requests, responses), execute JavaScript in tabs, query DOM elements, take screenshots, and monitor network events. Use this when the user wants to inspect HTTP headers, network requests, DOM content, or interact with a live browser session.",
+      "command": "node",
+      "args": [
+        "/home/nizar/.npm-global/lib/node_modules/@nicholmikey/chrome-tools/dist/index.js"
+      ],
+      "env": {
+        "CHROME_DEBUG_URL": "http://localhost:9222",
+        "CHROME_CONNECTION_TYPE": "ssh-tunnel",
+        "CHROME_ERROR_HELP": "Make sure Chrome/Edge is running with --remote-debugging-port=9222 on Windows and the SSH tunnel is active: ssh -N -L 9222:localhost:9222 nizar@localhost"
+      },
+      "disabled": false
+    },
     "whatsapp": {
       "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
       "command": "uv",
