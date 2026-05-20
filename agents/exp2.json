@@ -154,6 +154,12 @@
       "env": {},
       "autoApprove": [],
       "disabled": false
+    },
+    "memory": {
+      "description": "Persistent knowledge graph memory across sessions. Use this to store and retrieve entities, relations, and observations that should be remembered between conversations. Allows the agent to build long-term memory of user preferences, project context, decisions, and facts.",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "disabled": false
     }
   },
   "tools": [
