@@ -12,8 +12,8 @@ env["OPENAI_MODEL"] = "amazon.nova-pro-v1:0"
 env["VISION_PROVIDER"] = "openai"
 env["LOG_LEVEL"] = "ERROR"
 
-venv_python = "/home/nizar/HomeWspce/bedrock-access-gateway-local/mcp-image-recognition/.venv/bin/python"
+venv_python = "/home/nizar/HomeWspce/mcp-image-recognition/.venv/bin/python"
 server_module = "image_recognition_server.server"
-src_dir = "/home/nizar/HomeWspce/bedrock-access-gateway-local/mcp-image-recognition/src"
+src_dir = "/home/nizar/HomeWspce/mcp-image-recognition/src"
 
 os.execve(venv_python, [venv_python, "-m", server_module], {**env, "PYTHONPATH": src_dir})
