@@ -155,6 +155,19 @@
       "autoApprove": [],
       "disabled": false
     },
+    "context7": {
+      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
+      "command": "npx",
+      "timeout": 200000,
+      "args": ["-y", "@upstash/context7-mcp"],
+      "disabled": false
+    },
+    "mcp-mermaid": {
+      "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
+      "command": "npx",
+      "args": ["-y", "mcp-mermaid"],
+      "disabled": false
+    },
     "memory": {
       "description": "Persistent knowledge graph memory across sessions. Use this to store and retrieve entities, relations, and observations that should be remembered between conversations. Allows the agent to build long-term memory of user preferences, project context, decisions, and facts.",
       "command": "npx",
