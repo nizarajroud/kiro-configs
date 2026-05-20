@@ -260,7 +260,7 @@
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
       "command": "python3",
       "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"],
-      "disabled": false
+      "disabled": true
     },
     "memory": {
       "description": "Persistent knowledge graph memory across sessions. Use this to store and retrieve entities, relations, and observations that should be remembered between conversations. Allows the agent to build long-term memory of user preferences, project context, decisions, and facts.",
