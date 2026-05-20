@@ -4,3 +4,7 @@ zzz/
 conv[0-9]
 conv[0-9][0-9]
 sessions/
+
+# Knowledges - large binaries
+knowledges/personal/domains/demenagement/conv1
+knowledges/personal/domains/demenagement/les Diagrams/*.pdf

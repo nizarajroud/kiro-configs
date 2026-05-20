@@ -1,0 +1,51 @@
+# Domain Taxonomy — Personal Knowledge Hub
+# This file defines the domains of life covered by the hub.
+# Used by the agent for query classification.
+
+domains:
+  demenagement:
+    label: "Déménagement"
+    status: active
+    priority: high
+    keywords: [déménagement, maison, adresse, boîtes, logement, bail, propriétaire]
+    local_data: ~/workspace/demenagement/
+
+  famille:
+    label: "Famille"
+    children:
+      enfants:
+        label: "Enfants"
+        keywords: [Léa, Adam, enfants, garderie]
+      ecoles:
+        label: "Écoles"
+        keywords: [école, inscription, bulletin, professeur, rentrée]
+      clubs:
+        label: "Clubs & Activités"
+        keywords: [club, sport, activité, natation, soccer]
+      sante:
+        label: "Santé"
+        keywords: [médecin, dentiste, vaccin, rendez-vous, RAMQ]
+
+  finances:
+    label: "Finances"
+    keywords: [compte, budget, dépense, revenu, épargne, investissement, salaire]
+    local_data: ~/workspace/perosnal-dtls/finances/
+
+  admin:
+    label: "Administration"
+    keywords: [papiers, assurance, impôt, immigration, permis, citoyenneté]
+
+  abonnements:
+    label: "Abonnements"
+    keywords: [téléphone, internet, gym, cloud, Netflix, Spotify]
+    local_data: ~/workspace/perosnal-dtls/abonnements/
+
+  identite:
+    label: "Identité"
+    keywords: [passeport, NAS, carte, date de naissance, adresse]
+    local_data: ~/workspace/perosnal-dtls/identite/
+
+  projets_perso:
+    label: "Projets personnels"
+    keywords: [projet, plan, objectif]
+    notes: "Catch-all for new personal projects"
