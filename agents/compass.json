@@ -11,7 +11,7 @@
         "@modelcontextprotocol/server-memory"
       ],
       "env": {
-        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/compass.json"
+        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/compass.jsonl"
       },
       "disabled": false
     }
@@ -50,5 +50,6 @@
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer."
+  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer.",
+  "useLegacyMcpJson": true
 }
