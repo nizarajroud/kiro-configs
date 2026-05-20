@@ -19,6 +19,21 @@
 - [ ] **📞 Appeler le fournisseur internet** — Déplacer le RDV du dimanche 28 juin → **lundi 22 ou mardi 23 juin** si possible
   - Si pas possible, garder le 28 (6 jours sans internet)
 
+- [ ] **📧 Répondre à Sophie Emond (notaire)** — Confirmer présence aux 2 RDV :
+  - Mardi 2 juin à 16h00 (acte de prêt)
+  - Lundi 8 juin à 16h00 (acte de vente)
+  - Email reçu le 19 mai — répondre ASAP
+
+- [ ] **📧 Email à Caroline (enseignante Yasmine)** — Demander sortie anticipée à 13h30 les 2 et 8 juin :
+  - Yasmine accompagne ses parents au notaire
+  - Radwan reste seul (pas de problème)
+  - **Deadline : ~28 mai** (4–5 jours avant le 2 juin)
+
+- [ ] **📧 Email au Product Owner** — Déplacer le congé du 8 juin vers une autre date :
+  - Le RDV notaire est à 16h → congé inutile ce jour-là
+  - Date de remplacement à décider (période déménagement ou été)
+  - **Deadline : ~1er juin** (1 semaine avant)
+
 - [x] **📧 Informer l'employeur** — ✅ FAIT. Congés posés :
   - Autorisation de sortie pour le 1er RDV notaire (~mardi 2 juin)
   - Journée complète congé le **8 juin (lundi)** — signature acte de vente

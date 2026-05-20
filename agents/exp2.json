@@ -270,6 +270,39 @@
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/exp2.json"
       },
       "disabled": false
+    },
+    "sequential-thinking": {
+      "description": "Dynamic step-by-step reasoning with revision and branching. Forces the agent to decompose complex problems into manageable steps, revise thinking, and explore alternative paths. Use this for complex planning, debugging, architecture decisions, and any problem requiring structured multi-step analysis.",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-sequential-thinking"],
+      "disabled": false
+    },
+    "time": {
+      "description": "Time and timezone conversion. Provides current time in any timezone and converts between timezones. Use when the agent needs accurate current time or timezone calculations.",
+      "command": "uvx",
+      "args": ["mcp-server-time"],
+      "disabled": false
+    },
+    "codebase-memory": {
+      "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
+      "command": "/home/nizar/.local/bin/codebase-memory-mcp",
+      "args": [],
+      "disabled": true
+    },
+    "whatsapp": {
+      "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
+      "command": "uv",
+      "args": ["--directory", "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server", "run", "main.py"],
+      "disabled": true
+    },
+    "airtable": {
+      "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",
+      "command": "npx",
+      "args": ["-y", "airtable-mcp-server"],
+      "env": {
+        "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
+      },
+      "disabled": false
     }
   },
   "tools": [
@@ -280,7 +313,8 @@
     "@remote.bridge.aws-mcp/aws___get_regional_availability": "aws_mcp_regional_availability",
     "@remote.bridge.aws-mcp/aws___search_documentation": "aws_mcp_search_docs",
     "@remote.bridge.aws-mcp/aws___list_regions": "aws_mcp_regions",
-    "@remote.bridge.aws-mcp/aws___recommend": "aws_mcp_recommend"
+    "@remote.bridge.aws-mcp/aws___recommend": "aws_mcp_recommend",
+    "@airtable/create_table": "airtable_create_table"
   },
   "allowedTools": [
     "fs_read"

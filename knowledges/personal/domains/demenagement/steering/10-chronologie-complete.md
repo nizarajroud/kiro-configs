@@ -30,6 +30,10 @@
 
 | # | Tâche | Responsable | Détail |
 |---|-------|-------------|--------|
+| 10b | ⚠️ **Répondre à Sophie Emond** pour confirmer présence aux 2 RDV (2 juin + 8 juin) | Nizar | Email reçu le 19 mai — répondre ASAP |
+| 10c | **Préparer 2 pièces d'identité valides avec photo** (Nizar + Abir = 4 pièces au total) | Nizar + Abir | Vérifier validité avant les RDV |
+| 10d | ⚠️ **Email à Caroline (enseignante Yasmine)** — demander sortie anticipée à 13h30 les 2 et 8 juin. Yasmine accompagne ses parents au notaire. | Nizar ou Abir | **Deadline : ~28 mai** (4–5 jours avant le 2 juin) |
+| 10e | ⚠️ **Email au Product Owner** — déplacer le congé du 8 juin vers une autre date (à décider : période déménagement ou été) | Nizar | **Deadline : ~1er juin** (1 semaine avant). Le RDV notaire est à 16h → congé inutile ce jour-là |
 | 11 | Emballer progressivement les cartons (vaisselle, livres, vêtements hors saison) | Abir (journées) + Nizar (soirs) | ~4 cartons vaisselle + autres |
 | 12 | Démonter les meubles qui peuvent l'être à l'avance (lit parental, lits enfants si matelas au sol temporaire) | Nizar | Week-ends |
 | 13 | Préparer les documents pour le notaire (pièces d'identité, chèque/virement mise de fonds) | Nizar + Abir | Vérifier avec le notaire la liste exacte |
@@ -69,7 +73,7 @@
 
 | # | Tâche | Responsable | Détail |
 |---|-------|-------------|--------|
-| 27 | **Signature de l'acte de vente chez le notaire** | Nizar + Abir | Me Anabelle Denicourt-Doyon, 2230 boul. Lapinière bur. 200, Brossard. Apporter pièces d'identité |
+| 27 | **Signature de l'acte de vente chez le notaire à 16h00** | Nizar + Abir | Me **Francine** Denicourt-Doyon, 2230 boul. Lapinière bur. 200, Brossard. Apporter **2 pièces d'identité valides avec photo** chacun |
 | 27b | **Récupérer le numéro de téléphone de la vendeuse** (Marie-Josée Gravel) | Nizar | ⚠️ ABSOLUMENT — pour questions post-vente, coordonnées, clés |
 | 27c | **Échange de coordonnées avec la vendeuse** | Nizar | Donner tes coordonnées aussi |
 | 27c | **Clarifier la remise des clés** : une partie le 8 juin, l'autre avant/le 18 juin | Nizar | Confirmer avec le notaire/vendeuse |
@@ -219,7 +223,7 @@
 
 | Date | Jour | Raison |
 |------|------|--------|
-| **8 juin** | Lundi | Acte de vente chez le notaire |
+| ~~**8 juin**~~ | ~~Lundi~~ | ~~Acte de vente chez le notaire~~ → **ANNULÉ** (RDV à 16h, congé inutile). Congé à déplacer vers une autre date. |
 | **18 juin** | Jeudi | Jour du déménagement |
 | 19 juin (optionnel) | Vendredi | Lendemain du déménagement — installation |
 

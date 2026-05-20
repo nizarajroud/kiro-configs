@@ -26,6 +26,18 @@ When the user explicitly specifies a data source or a specific location within a
 
 ---
 
+## Step 0b — Domain-Specific Routing Overrides
+
+Certain domains have a FIXED routing order that overrides the general matrix:
+
+### Santé (médecin, clinique, RAMQ, GAP, rendez-vous médical, pharmacie, dentiste, hôpital)
+
+1. **Bookmarks** — dossier/catégorie santé (`search_bookmarks`)
+2. **Notion** — section santé (`APIpostsearch`)
+3. Sources habituelles (NotebookLM, Gmail)
+
+---
+
 ## Step 1 — Classify the Request
 
 Every incoming question must be classified along two axes:

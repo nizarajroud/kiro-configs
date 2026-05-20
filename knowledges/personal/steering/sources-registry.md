@@ -48,6 +48,18 @@ inclusion: always
 - **When to use**: Any question about personal documents, impôts, finances, identité, contrats, factures, relevés officiels
 - **Note**: Must be running on PC Alithya. If unreachable, inform user.
 
+### Airtable (Priority 3b — Déménagement tasks)
+
+- **Content**: Tâches actionnables du déménagement (80 tâches, 5 phases)
+- **Base**: Personal Life (`appt4WObx12eJVPvK`)
+- **Table**: Déménagement (`tblVZqY2ARz3R1CCY`)
+- **URL**: https://airtable.com/appt4WObx12eJVPvK/tblVZqY2ARz3R1CCY/viw5DIXBPaFwdQot0
+- **Tools**: `list_records()`, `create_record()`, `update_records()`
+- **Colonnes**: Tâche, Statut, Responsable, Date limite, Priorité, Catégorie, Phase, Notes
+- **Rôle**: Source de vérité UNIQUE pour le suivi des tâches du déménagement (depuis 2026-05-20)
+- **When to use**: "Qu'est-ce que je dois faire ?", statut d'une tâche, mise à jour d'un statut, filtrer par priorité/phase/catégorie
+- **Note**: Les steering files restent comme référence contextuelle (chronologie, budget, rôles, contraintes) mais ne sont PLUS la source pour le suivi des tâches.
+
 ### TickTick (Priority 4)
 
 - **Content**: Tasks, recurring reminders, habits, projects

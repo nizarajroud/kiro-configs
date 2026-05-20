@@ -59,12 +59,27 @@
       "args": ["mcp-remote", "http://192.168.2.56:8080/mcp", "--allow-http"],
       "disabled": false
     },
+    "pdf-reader": {
+      "description": "PDF reader — extract text, metadata, images, and tables from local or remote PDF files.",
+      "command": "npx",
+      "args": ["@sylphx/pdf-reader-mcp"],
+      "disabled": false
+    },
     "memory": {
       "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
       "command": "npx",
       "args": ["-y", "@modelcontextprotocol/server-memory"],
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/compass.json"
+      },
+      "disabled": false
+    },
+    "airtable": {
+      "description": "Airtable database — visual data boards (kanban, grid, calendar) for structured personal data the agent pushes.",
+      "command": "npx",
+      "args": ["-y", "airtable-mcp-server"],
+      "env": {
+        "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
       "disabled": false
     }
@@ -82,7 +97,9 @@
     "@telegram",
     "@bookmarks",
     "@alithya-knowledge-rag",
-    "@memory"
+    "@pdf-reader",
+    "@memory",
+    "@airtable"
   ],
   "allowedTools": [
     "fs_read",
@@ -92,10 +109,14 @@
     "@bookmarks"
   ],
   "resources": [
-    "file://../knowledges/personal/steering/*.md",
-    "file://../knowledges/personal/config/domains.yaml"
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/steering/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/config/domains.yaml",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/domains/**/steering/*.md"
   ],
   "hooks": {},
+  "toolAliases": {
+    "@airtable/create_table": "airtable_create_table"
+  },
   "toolsSettings": {},
   "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer."
 }

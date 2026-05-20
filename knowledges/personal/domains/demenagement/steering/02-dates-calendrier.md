@@ -13,7 +13,7 @@ Les clés sont remises le 8 juin mais on ne peut PAS y entrer avant le 18 juin 1
 | Date | Jour | Événement | Statut |
 |------|------|-----------|--------|
 | **8 mai** | Jeudi | Contacter Intact (assurance) | 🔲 À faire |
-| **~2 juin** | Mardi | 1er RDV notaire (Me Francine Denicourt) | 🔲 À confirmer |
+| **2 juin** | Mardi | **Acte de prêt à 16h00** — Me Anabelle Denicourt-Doyon (2230 boul. Lapinière, suite 200, Brossard) | ✅ Confirmé par email 19 mai |
 | **7 juin** | Dimanche | Dernier club piscine (Radwan + Yasmine) | ✅ |
 | **8 juin** | Lundi | **Acte de vente + remise clés** — propriétaire mais PAS d'accès | ✅ Confirmé |
 | **8–18 juin** | — | ⛔ **AUCUN ACCÈS à la maison** (période légale) | Contrainte légale |
@@ -73,7 +73,7 @@ Les clés sont remises le 8 juin mais on ne peut PAS y entrer avant le 18 juin 1
 | Date | Jour | Type |
 |------|------|------|
 | ~2 juin | Mardi | Autorisation de sortie (1er RDV notaire) |
-| 8 juin | Lundi | Demi-journée congé (signature acte de vente) |
+| ~~8 juin~~ | ~~Lundi~~ | ~~Demi-journée congé~~ → **ANNULÉ** (RDV à 16h, congé inutile). À déplacer. |
 | **22 juin** | **Lundi** | **Congé — JOUR J déménagement** |
 | **23 juin** | **Mardi** | **Congé — installation (dernier jour école)** |
 | 25–26 juin | Jeu–Ven | Optionnel — évaluer si nécessaire |

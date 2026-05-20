@@ -45,8 +45,9 @@
 - Adresse : 2230 boul. Lapinière, bureau 200, Brossard (QC) J4W 1M3
 
 ### RDV
-- **Mardi 2 juin** : acte de prêt (heure exacte à venir)
-- **Lundi 8 juin** : acte de vente (heure exacte à venir)
+- **Mardi 2 juin à 16h00** : acte de prêt — Me **Anabelle** Denicourt-Doyon ✅ Confirmé par email 19 mai
+- **Lundi 8 juin à 16h00** : acte de vente — Me **Francine** Denicourt-Doyon ✅ Confirmé par email 19 mai
+- ⚠️ **Répondre à Sophie Emond** pour confirmer présence (email reçu 19 mai)
 
 ### Dates limites
 - **10 juin** : instructions bancaires au notaire (au plus tard)
@@ -71,7 +72,8 @@
 ## Congés à poser
 
 - 🔲 Autorisation de sortie pour le 1er RDV notaire (~2 juin)
-- 🔲 Demi-journée congé le **8 juin (lundi)** — signature acte de vente
+- ~~🔲 Demi-journée congé le **8 juin (lundi)**~~ → **ANNULÉ** (RDV à 16h, congé inutile). Déplacer vers une autre date.
+- 🔲 ⚠️ **Email au Product Owner** : déplacer le congé du 8 juin (deadline ~1er juin)
 - 🔲 Congé le jour du déménagement (date à confirmer)
 - 🔲 Évaluer si poser congé les 25–26 juin (jeudi–vendredi) pour avoir 5 jours off avec le férié du 24
 
