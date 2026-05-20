@@ -1,0 +1,108 @@
+2026-05-14 12:56:05,876  INFO     === session refresh started for nizar.ajroud@gmail.com ===
+2026-05-14 12:56:05,877  DEBUG    ================================================================================
+2026-05-14 12:56:05,877  DEBUG    REQUEST  [signon]  POST https://api.ticktick.com/api/v2/user/signon
+2026-05-14 12:56:05,878  DEBUG      params : {"wc": "true", "remember": "true"}
+2026-05-14 12:56:05,878  DEBUG      body   : {"username": "nizar.ajroud@gmail.com", "password": "***REDACTED***"}
+2026-05-14 12:56:05,878  DEBUG      headers: {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0", "X-Device": "{\"platform\":\"web\",\"os\":\"Linux x86_64\",\"device\":\"Firefox 145.0\",\"name\":\"\",\"version\":8006,\"id\":\"6790a0b0c1d2e3f4a5b6c7d8\",\"channel\":\"website\",\"campaign\":\"\",\"websocket\":\"\"}", "Origin": "https://ticktick.com", "Referer": "https://ticktick.com/"}
+2026-05-14 12:56:06,362  DEBUG    RESPONSE [signon]  status=200
+2026-05-14 12:56:06,363  DEBUG      headers: {'date': 'Thu, 14 May 2026 16:56:08 GMT', 'content-type': 'application/json;charset=UTF-8', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'set-cookie': 'AWSALB=LKf3Y/nzaoq5Jqutans39sIO2GOYy46AQWB+w8FjnkleVOEUZEU54lq8+NhPO6SoS1sDfdYBTBmjgPR30vJG0ku8cJChqOa0lQohXikkPio+cWFeZUe8VGr7HJko; Expires=Thu, 21 May 2026 16:56:08 GMT; Path=/, AWSALBCORS=LKf3Y/nzaoq5Jqutans39sIO2GOYy46AQWB+w8FjnkleVOEUZEU54lq8+NhPO6SoS1sDfdYBTBmjgPR30vJG0ku8cJChqOa0lQohXikkPio+cWFeZUe8VGr7HJko; Expires=Thu, 21 May 2026 16:56:08 GMT; Path=/; SameSite=None; Secure, t=""; Domain=.ticktick.com; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; Secure; HttpOnly; SameSite=None, t=154BB8FE91446783F2ACE8F8F88EB0216C69A04D87A36AA3EAE78655DA0394F5656AB9714823D05D54A1CA44B8A7B0BC97E758EA7A87AC231DA1EDBCE7F6089779C82B831CC8734399D58B343B25A958CBFF616191F669FFC7DC60F96238740882BEE463B1431075BC4DD36207DCA5A8CBFF616191F669FFB949731DB2B98A0A697C8C185A85983BFAAA1F8D211FEEC4217555EBF0DE705F164E022B09B36B807353686E6CEE8A83; Domain=.ticktick.com; Expires=Sat, 13 Jun 2026 16:56:08 GMT; Path=/; Secure; HttpOnly; SameSite=None, _csrf_token=8WPaS1wPmQL7m4TQdNHb6KioY_SyNSmtMeEcz1uHirU-1778777768; Domain=.ticktick.com; Expires=Sat, 13 Jun 2026 16:56:08 GMT; Path=/; Secure', 'access-control-allow-origin': 'https://ticktick.com', 'access-control-allow-credentials': 'true', 'ticktick-via': 'ticktick', 'vary': 'accept-encoding', 'content-encoding': 'gzip'}
+2026-05-14 12:56:06,363  DEBUG      body   : {
+  "token": "***REDACTED***",
+  "userId": "116069427",
+  "userCode": "19a03dffadd942c983157aca936c4feb",
+  "username": "nizar.ajroud@gmail.com",
+  "teamPro": false,
+  "proEndDate": "1970-01-01T00:00:00.000+0000",
+  "needSubscribe": true,
+  "inboxId": "inbox116069427",
+  "teamUser": false,
+  "activeTeamUser": false,
+  "freeTrial": false,
+  "registerDate": "2020-05-25T14:21:04.000+0000",
+  "pro": false,
+  "ds": false
+}
+2026-05-14 12:56:06,363  DEBUG      keys   : ['token', 'userId', 'userCode', 'username', 'teamPro', 'proEndDate', 'needSubscribe', 'inboxId', 'teamUser', 'activeTeamUser', 'freeTrial', 'registerDate', 'pro', 'ds']
+2026-05-14 12:56:06,363  DEBUG    signon response keys: ['token', 'userId', 'userCode', 'username', 'teamPro', 'proEndDate', 'needSubscribe', 'inboxId', 'teamUser', 'activeTeamUser', 'freeTrial', 'registerDate', 'pro', 'ds'] | safe: {"token": "***", "userId": "116069427", "userCode": "19a03dffadd942c983157aca936c4feb", "username": "nizar.ajroud@gmail.com", "teamPro": false, "proEndDate": "1970-01-01T00:00:00.000+0000", "needSubscribe": true, "inboxId": "inbox116069427", "teamUser": false, "activeTeamUser": false, "freeTrial": false, "registerDate": "2020-05-25T14:21:04.000+0000", "pro": false, "ds": false}
+2026-05-14 12:56:06,363  INFO     signon: token returned directly (no 2FA)
+2026-05-14 13:01:30,724  INFO     === session refresh started for nizar.ajroud@gmail.com ===
+2026-05-14 13:01:30,725  DEBUG    ================================================================================
+2026-05-14 13:01:30,725  DEBUG    REQUEST  [signon]  POST https://api.ticktick.com/api/v2/user/signon
+2026-05-14 13:01:30,725  DEBUG      params : {"wc": "true", "remember": "true"}
+2026-05-14 13:01:30,725  DEBUG      body   : {"username": "nizar.ajroud@gmail.com", "password": "***REDACTED***"}
+2026-05-14 13:01:30,725  DEBUG      headers: {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0", "X-Device": "{\"platform\":\"web\",\"os\":\"Linux x86_64\",\"device\":\"Firefox 145.0\",\"name\":\"\",\"version\":8006,\"id\":\"6790a0b0c1d2e3f4a5b6c7d8\",\"channel\":\"website\",\"campaign\":\"\",\"websocket\":\"\"}", "Origin": "https://ticktick.com", "Referer": "https://ticktick.com/"}
+2026-05-14 13:01:31,191  DEBUG    RESPONSE [signon]  status=200
+2026-05-14 13:01:31,191  DEBUG      headers: {'date': 'Thu, 14 May 2026 17:01:33 GMT', 'content-type': 'application/json;charset=UTF-8', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'set-cookie': 'AWSALB=RG2GoG6P4lfZBbpcRh9HWQgjR5qlaPBD7cM1MaWj7oRowdvmx/wT0fhX28p6jwQod4AX2BwPnq/SahmjR3I2wqSREMyUKVFLoIRCE/0ILgPRcSLM5FuyKi5AY4IL; Expires=Thu, 21 May 2026 17:01:33 GMT; Path=/, AWSALBCORS=RG2GoG6P4lfZBbpcRh9HWQgjR5qlaPBD7cM1MaWj7oRowdvmx/wT0fhX28p6jwQod4AX2BwPnq/SahmjR3I2wqSREMyUKVFLoIRCE/0ILgPRcSLM5FuyKi5AY4IL; Expires=Thu, 21 May 2026 17:01:33 GMT; Path=/; SameSite=None; Secure, t=""; Domain=.ticktick.com; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; Secure; HttpOnly; SameSite=None, t=154BB8FE914467830BBD636D734DBFF4BB71CD86DAEBE74B402BE8F416680EA115C24247B4DE27F53FB8DB5B3422DCA597E758EA7A87AC231DA1EDBCE7F6089779C82B831CC8734399D58B343B25A9584E1E88FA7A7188ACA6161D840277AEEE82BEE463B1431075BC4DD36207DCA5A84E1E88FA7A7188AC1E16F7581CC74705697C8C185A85983BFAAA1F8D211FEEC4217555EBF0DE705F164E022B09B36B807353686E6CEE8A83; Domain=.ticktick.com; Expires=Sat, 13 Jun 2026 17:01:33 GMT; Path=/; Secure; HttpOnly; SameSite=None, _csrf_token=yGZATRDlyzHqPlvcn2rFPmlGDOBs5xAPwDGh_vAMBts-1778778093; Domain=.ticktick.com; Expires=Sat, 13 Jun 2026 17:01:33 GMT; Path=/; Secure', 'access-control-allow-origin': 'https://ticktick.com', 'access-control-allow-credentials': 'true', 'ticktick-via': 'ticktick', 'vary': 'accept-encoding', 'content-encoding': 'gzip'}
+2026-05-14 13:01:31,191  DEBUG      body   : {
+  "token": "***REDACTED***",
+  "userId": "116069427",
+  "userCode": "19a03dffadd942c983157aca936c4feb",
+  "username": "nizar.ajroud@gmail.com",
+  "teamPro": false,
+  "proEndDate": "1970-01-01T00:00:00.000+0000",
+  "needSubscribe": true,
+  "inboxId": "inbox116069427",
+  "teamUser": false,
+  "activeTeamUser": false,
+  "freeTrial": false,
+  "registerDate": "2020-05-25T14:21:04.000+0000",
+  "pro": false,
+  "ds": false
+}
+2026-05-14 13:01:31,191  DEBUG      keys   : ['token', 'userId', 'userCode', 'username', 'teamPro', 'proEndDate', 'needSubscribe', 'inboxId', 'teamUser', 'activeTeamUser', 'freeTrial', 'registerDate', 'pro', 'ds']
+2026-05-14 13:01:31,191  DEBUG    signon response keys: ['token', 'userId', 'userCode', 'username', 'teamPro', 'proEndDate', 'needSubscribe', 'inboxId', 'teamUser', 'activeTeamUser', 'freeTrial', 'registerDate', 'pro', 'ds'] | safe: {"token": "***", "userId": "116069427", "userCode": "19a03dffadd942c983157aca936c4feb", "username": "nizar.ajroud@gmail.com", "teamPro": false, "proEndDate": "1970-01-01T00:00:00.000+0000", "needSubscribe": true, "inboxId": "inbox116069427", "teamUser": false, "activeTeamUser": false, "freeTrial": false, "registerDate": "2020-05-25T14:21:04.000+0000", "pro": false, "ds": false}
+2026-05-14 13:01:31,191  INFO     signon: token returned directly (no 2FA)
+2026-05-14 13:03:58,494  INFO     === session refresh started for nizar.ajroud@gmail.com ===
+2026-05-14 13:03:58,506  DEBUG    ================================================================================
+2026-05-14 13:03:58,506  DEBUG    REQUEST  [signon]  POST https://api.ticktick.com/api/v2/user/signon
+2026-05-14 13:03:58,506  DEBUG      params : {"wc": "true", "remember": "true"}
+2026-05-14 13:03:58,506  DEBUG      body   : {"username": "nizar.ajroud@gmail.com", "password": "***REDACTED***"}
+2026-05-14 13:03:58,506  DEBUG      headers: {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0", "X-Device": "{\"platform\":\"web\",\"os\":\"Linux x86_64\",\"device\":\"Firefox 145.0\",\"name\":\"\",\"version\":8006,\"id\":\"6790a0b0c1d2e3f4a5b6c7d8\",\"channel\":\"website\",\"campaign\":\"\",\"websocket\":\"\"}", "Origin": "https://ticktick.com", "Referer": "https://ticktick.com/"}
+2026-05-14 13:03:58,987  DEBUG    RESPONSE [signon]  status=200
+2026-05-14 13:03:58,988  DEBUG      headers: {'date': 'Thu, 14 May 2026 17:04:02 GMT', 'content-type': 'application/json;charset=UTF-8', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'set-cookie': 'AWSALB=Qw2CSwPQL8siYKQXjgT24tGwfpMz96oxtjrmo7LOh/FwYzqnxq7P2fppCP+hOLnXyhDcKhB37X0OI8w6jc/LYdvZGVJFpHa6+3++T/gU9tWWCZ2yPfKmM1zQLTOW; Expires=Thu, 21 May 2026 17:04:02 GMT; Path=/, AWSALBCORS=Qw2CSwPQL8siYKQXjgT24tGwfpMz96oxtjrmo7LOh/FwYzqnxq7P2fppCP+hOLnXyhDcKhB37X0OI8w6jc/LYdvZGVJFpHa6+3++T/gU9tWWCZ2yPfKmM1zQLTOW; Expires=Thu, 21 May 2026 17:04:02 GMT; Path=/; SameSite=None; Secure, t=""; Domain=.ticktick.com; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; Secure; HttpOnly; SameSite=None, t=154BB8FE91446783AD50D83B932D47EF3C4F1D2303B26416B751EF896C1DC693DA6E3E386517279DB8FCA00BF17CDE7A97E758EA7A87AC231DA1EDBCE7F6089779C82B831CC8734399D58B343B25A9584E1E88FA7A7188AC3C3C559E99F664D482BEE463B1431075BC4DD36207DCA5A84E1E88FA7A7188ACF7C6DA6C1786B154697C8C185A85983BFAAA1F8D211FEEC4217555EBF0DE705F164E022B09B36B807353686E6CEE8A83; Domain=.ticktick.com; Expires=Sat, 13 Jun 2026 17:04:02 GMT; Path=/; Secure; HttpOnly; SameSite=None, _csrf_token=bWU24M529NpC554QV2lkvn9NZX24dG_3RoIzEoz20U-1778778242; Domain=.ticktick.com; Expires=Sat, 13 Jun 2026 17:04:02 GMT; Path=/; Secure', 'access-control-allow-origin': 'https://ticktick.com', 'access-control-allow-credentials': 'true', 'ticktick-via': 'ticktick', 'vary': 'accept-encoding', 'content-encoding': 'gzip'}
+2026-05-14 13:03:58,988  DEBUG      body   : {
+  "token": "***REDACTED***",
+  "userId": "116069427",
+  "userCode": "19a03dffadd942c983157aca936c4feb",
+  "username": "nizar.ajroud@gmail.com",
+  "teamPro": false,
+  "proEndDate": "1970-01-01T00:00:00.000+0000",
+  "needSubscribe": true,
+  "inboxId": "inbox116069427",
+  "teamUser": false,
+  "activeTeamUser": false,
+  "freeTrial": false,
+  "registerDate": "2020-05-25T14:21:04.000+0000",
+  "ds": false,
+  "pro": false
+}
+2026-05-14 13:03:58,988  DEBUG      keys   : ['token', 'userId', 'userCode', 'username', 'teamPro', 'proEndDate', 'needSubscribe', 'inboxId', 'teamUser', 'activeTeamUser', 'freeTrial', 'registerDate', 'ds', 'pro']
+2026-05-14 13:03:58,988  DEBUG    signon response keys: ['token', 'userId', 'userCode', 'username', 'teamPro', 'proEndDate', 'needSubscribe', 'inboxId', 'teamUser', 'activeTeamUser', 'freeTrial', 'registerDate', 'ds', 'pro'] | safe: {"token": "***", "userId": "116069427", "userCode": "19a03dffadd942c983157aca936c4feb", "username": "nizar.ajroud@gmail.com", "teamPro": false, "proEndDate": "1970-01-01T00:00:00.000+0000", "needSubscribe": true, "inboxId": "inbox116069427", "teamUser": false, "activeTeamUser": false, "freeTrial": false, "registerDate": "2020-05-25T14:21:04.000+0000", "ds": false, "pro": false}
+2026-05-14 13:03:58,988  INFO     signon: token returned directly (no 2FA)
+2026-05-14 13:05:02,519  INFO     === session refresh started for nizar.ajroud@gmail.com ===
+2026-05-14 13:05:02,520  DEBUG    ================================================================================
+2026-05-14 13:05:02,520  DEBUG    REQUEST  [signon]  POST https://api.ticktick.com/api/v2/user/signon
+2026-05-14 13:05:02,520  DEBUG      params : {"wc": "true", "remember": "true"}
+2026-05-14 13:05:02,520  DEBUG      body   : {"username": "nizar.ajroud@gmail.com", "password": "***REDACTED***"}
+2026-05-14 13:05:02,520  DEBUG      headers: {"Content-Type": "application/json", "User-Agent": "Mozilla/5.0 (X11; Linux x86_64; rv:145.0) Gecko/20100101 Firefox/145.0", "X-Device": "{\"platform\":\"web\",\"os\":\"Linux x86_64\",\"device\":\"Firefox 145.0\",\"name\":\"\",\"version\":8006,\"id\":\"6790a0b0c1d2e3f4a5b6c7d8\",\"channel\":\"website\",\"campaign\":\"\",\"websocket\":\"\"}", "Origin": "https://ticktick.com", "Referer": "https://ticktick.com/"}
+2026-05-14 13:05:03,002  DEBUG    RESPONSE [signon]  status=200
+2026-05-14 13:05:03,002  DEBUG      headers: {'date': 'Thu, 14 May 2026 17:05:05 GMT', 'content-type': 'application/json;charset=UTF-8', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'set-cookie': 'AWSALB=2ChUBMtm3+o+xHKsLQKuqYZpq9NMFAbiXfSCycD/xq31hbm1arGwfJwqkF+9WaFEtqo+zK3zLmKFesUH9Gwfzr+k5EiBQiNTOZrbzTlJ/DOpRtEOZYSQZW3gkziA; Expires=Thu, 21 May 2026 17:05:05 GMT; Path=/, AWSALBCORS=2ChUBMtm3+o+xHKsLQKuqYZpq9NMFAbiXfSCycD/xq31hbm1arGwfJwqkF+9WaFEtqo+zK3zLmKFesUH9Gwfzr+k5EiBQiNTOZrbzTlJ/DOpRtEOZYSQZW3gkziA; Expires=Thu, 21 May 2026 17:05:05 GMT; Path=/; SameSite=None; Secure, t=""; Domain=.ticktick.com; Expires=Thu, 01 Jan 1970 00:00:10 GMT; Path=/; Secure; HttpOnly; SameSite=None, t=154BB8FE91446783F8DE935E288A4C776AC86F2644D557A34DF0409F8531B0133F3B112742FA97DFAAEF15DC952D434997E758EA7A87AC231DA1EDBCE7F6089779C82B831CC8734399D58B343B25A9584E1E88FA7A7188AC50430C27248F877382BEE463B1431075BC4DD36207DCA5A84E1E88FA7A7188AC4E9E5D4F13AC63C9697C8C185A85983BFAAA1F8D211FEEC4217555EBF0DE705F164E022B09B36B807353686E6CEE8A83; Domain=.ticktick.com; Expires=Sat, 13 Jun 2026 17:05:05 GMT; Path=/; Secure; HttpOnly; SameSite=None, _csrf_token=7eeNjbl7Q2O7AQXkuHWVgM1KKpAQuLzjsQmjnvm5Ng-1778778305; Domain=.ticktick.com; Expires=Sat, 13 Jun 2026 17:05:05 GMT; Path=/; Secure', 'access-control-allow-origin': 'https://ticktick.com', 'access-control-allow-credentials': 'true', 'ticktick-via': 'ticktick', 'vary': 'accept-encoding', 'content-encoding': 'gzip'}
+2026-05-14 13:05:03,002  DEBUG      body   : {
+  "token": "***REDACTED***",
+  "userId": "116069427",
+  "userCode": "19a03dffadd942c983157aca936c4feb",
+  "username": "nizar.ajroud@gmail.com",
+  "teamPro": false,
+  "proEndDate": "1970-01-01T00:00:00.000+0000",
+  "needSubscribe": true,
+  "inboxId": "inbox116069427",
+  "teamUser": false,
+  "activeTeamUser": false,
+  "freeTrial": false,
+  "registerDate": "2020-05-25T14:21:04.000+0000",
+  "pro": false,
+  "ds": false
+}
+2026-05-14 13:05:03,002  DEBUG      keys   : ['token', 'userId', 'userCode', 'username', 'teamPro', 'proEndDate', 'needSubscribe', 'inboxId', 'teamUser', 'activeTeamUser', 'freeTrial', 'registerDate', 'pro', 'ds']
+2026-05-14 13:05:03,002  DEBUG    signon response keys: ['token', 'userId', 'userCode', 'username', 'teamPro', 'proEndDate', 'needSubscribe', 'inboxId', 'teamUser', 'activeTeamUser', 'freeTrial', 'registerDate', 'pro', 'ds'] | safe: {"token": "***", "userId": "116069427", "userCode": "19a03dffadd942c983157aca936c4feb", "username": "nizar.ajroud@gmail.com", "teamPro": false, "proEndDate": "1970-01-01T00:00:00.000+0000", "needSubscribe": true, "inboxId": "inbox116069427", "teamUser": false, "activeTeamUser": false, "freeTrial": false, "registerDate": "2020-05-25T14:21:04.000+0000", "pro": false, "ds": false}
+2026-05-14 13:05:03,002  INFO     signon: token returned directly (no 2FA)

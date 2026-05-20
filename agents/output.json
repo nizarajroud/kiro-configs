@@ -1,0 +1,64 @@
+{
+  "name": "output",
+  "description": "Deliverable generation — Mermaid diagrams, PDF export, PDF reading.",
+  "prompt": "file://./output.md",
+  "mcpServers": {
+    "mcp-mermaid": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-mermaid"
+      ]
+    },
+    "markdown2pdf": {
+      "command": "node",
+      "args": [
+        "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
+      ],
+      "env": {
+        "M2P_OUTPUT_DIR": "/home/nizar/workspace/assets/markdown2pdf-output"
+      }
+    },
+    "pdf-reader": {
+      "command": "npx",
+      "args": [
+        "@sylphx/pdf-reader-mcp"
+      ]
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@builtin",
+    "@mcp-mermaid",
+    "@markdown2pdf",
+    "@pdf-reader"
+  ],
+  "resources": [
+    "file://.kiro/steering/**/*.md"
+  ],
+  "hooks": {
+    "preToolUse": [
+      {
+        "matcher": "fs_write",
+        "command": "/home/nizar/.kiro/hooks/check-secrets.sh",
+        "description": "Block writes containing secrets"
+      },
+      {
+        "matcher": "execute_bash",
+        "command": "/home/nizar/.kiro/hooks/guard-destructive-commands.sh",
+        "description": "Block dangerous shell commands"
+      }
+    ],
+    "stop": [
+      {
+        "command": "/home/nizar/.kiro/hooks/flywheel-log.sh",
+        "description": "Log turn summary for flywheel analysis"
+      }
+    ]
+  },
+  "toolsSettings": {},
+  "useLegacyMcpJson": false,
+  "model": "claude-haiku-4-5"
+}

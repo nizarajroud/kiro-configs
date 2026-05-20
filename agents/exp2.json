@@ -23,6 +23,13 @@
       },
       "disabled": true
     },
+    "context7": {
+      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
+      "command": "npx",
+      "timeout": 200000,
+      "args": ["-y", "@upstash/context7-mcp"],
+      "disabled": false
+    },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
       "command": "python3",
@@ -129,6 +136,12 @@
       "disabled": true,
       "autoApprove": []
     },
+    "alithya-knowledge-rag": {
+      "description": "Personal knowledge base (remote RAG server on PC Alithya). Use this for ALL personal/private information: personal documents, notes, private files, financial records, procedures, and any data stored in Dropbox/AAA_PRIVATE_LIFE. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries.",
+      "command": "npx",
+      "args": ["mcp-remote", "http://192.168.2.56:8080/mcp", "--allow-http"],
+      "disabled": false
+    },
     "playwright": {
        "description": "Browser automation and web screenshot capture using Playwright. Navigates to websites, interacts with page elements (click, type, scroll), takes screenshots of full pages or specific elements, and executes JavaScript to highlight or modify DOM elements before capture. Supports CSS injection for visual annotations like colored borders and overlays. Use for web page screenshots, UI validation, visual documentation, and element-specific captures with highlights.",
       "command": "npx",
@@ -165,6 +178,64 @@
       "description": "Product Owner prompt: @idea/idea (auto-detect repo ou fallback IDEAS) et @idea/backlog (toujours IDEAS).",
       "command": "python3",
       "args": ["/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"],
+      "disabled": false
+    },
+    "lza": {
+      "description": "Landing Zone Accelerator on AWS MCP Server (READ-ONLY). Use this to search LZA configuration schemas, check pipeline status, retrieve LZA configurations from S3, diagnose pipeline errors, and discover LZA capabilities. NO write operations: do NOT release pipeline or upload configurations without explicit user approval.",
+      "command": "/home/nizar/.kiro/wrappers/lza_wrapper.sh",
+      "args": [],
+      "disabled": true,
+      "autoApprove": [
+        "checkAwsConnectivity",
+        "listLzaSupportedVersions",
+        "searchJsonSchema",
+        "getFullSchema",
+        "getPipelineStatus",
+        "getConfigurationFromS3",
+        "getDeployedLzaVersion",
+        "diagnosePipelineErrors",
+        "getMinimumConfiguration"
+      ]
+    },
+    "ticktick": {
+      "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
+      "command": "python3",
+      "args": ["/home/nizar/.kiro/wrappers/ticktick_wrapper.py"],
+      "disabled": false
+    },
+    "excel": {
+      "description": "Excel file manipulation MCP server (3.8k stars). Read, write, create, and modify Excel workbooks (.xlsx) without needing Microsoft Excel installed. Supports: reading/writing cells and ranges, formulas, formatting, charts, pivot tables, tables, sheet management, data validation, and conditional formatting. Use this for any operation on Excel files stored locally or on Dropbox (via /mnt/c/Users/nizar/Dropbox/...).",
+      "command": "uvx",
+      "args": ["excel-mcp-server", "stdio"],
+      "disabled": false
+    },
+    "mural": {
+      "description": "MURAL collaboration tool. Use this whenever the user mentions 'mural', 'MURAL', a mural board, or visual collaboration content. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54). Supports: listing workspaces/rooms/murals, reading all content from a mural (sticky notes, shapes, text, images), searching text inside murals, creating/updating/deleting sticky notes, and creating new murals.",
+      "command": "python3",
+      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"],
+      "disabled": false
+    },
+    "telegram": {
+      "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
+      "command": "npx",
+      "args": ["@overpod/mcp-telegram"],
+      "env": {
+        "TELEGRAM_API_ID": "${TELEGRAM_API_ID}",
+        "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
+        "TZ": "America/Toronto"
+      },
+      "disabled": false
+    },
+    "bookmarks": {
+      "description": "Browser bookmarks search (Chrome + Edge). Use this whenever the user asks about bookmarks, saved links, favorites, or wants to find a previously saved URL. Searches across 7260 Chrome bookmarks and 2454 Edge bookmarks by title, URL, or folder name.",
+      "command": "python3",
+      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"],
+      "disabled": false
+    },
+    "mcp-mermaid": {
+      "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
+      "command": "npx",
+      "args": ["-y", "mcp-mermaid"],
       "disabled": false
     }
   },

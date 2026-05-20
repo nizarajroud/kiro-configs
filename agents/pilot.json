@@ -1,0 +1,19 @@
+{
+  "name": "pilot",
+  "description": "Orchestrator agent — routes requests to specialized agents via /spawn. Never executes tasks directly.",
+  "prompt": "file://./pilot.md",
+  "mcpServers": {},
+  "tools": ["fs_read", "use_subagent", "subagent", "@builtin"],
+  "allowedTools": ["fs_read", "use_subagent", "subagent", "@builtin"],
+  "resources": [],
+  "hooks": {},
+  "toolsSettings": {
+    "subagent": {
+      "availableAgents": ["aws-cloud", "life-admin", "projects", "output"],
+      "trustedAgents": ["aws-cloud", "life-admin", "projects", "output"]
+    }
+  },
+  "useLegacyMcpJson": false,
+  "model": "claude-sonnet-4.6",
+  "welcomeMessage": "🎯 Pilot ready. Tell me what you need — I'll route to the right agent."
+}

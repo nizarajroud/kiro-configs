@@ -1,0 +1,97 @@
+{
+  "name": "life-admin",
+  "description": "Personal life management — emails, tasks, messages, documents, finances, bookmarks.",
+  "prompt": "file://./life-admin.md",
+  "mcpServers": {
+    "gmail": {
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
+      ]
+    },
+    "ticktick": {
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
+      ]
+    },
+    "telegram": {
+      "command": "npx",
+      "args": [
+        "@overpod/mcp-telegram"
+      ],
+      "env": {
+        "TELEGRAM_API_ID": "${TELEGRAM_API_ID}",
+        "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
+        "TZ": "America/Toronto"
+      }
+    },
+    "alithya-knowledge-rag": {
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "http://192.168.2.56:8080/mcp",
+        "--allow-http"
+      ]
+    },
+    "bookmarks": {
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
+      ]
+    },
+    "excel": {
+      "command": "uvx",
+      "args": [
+        "excel-mcp-server",
+        "stdio"
+      ]
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@builtin",
+    "@gmail",
+    "@ticktick",
+    "@telegram",
+    "@alithya-knowledge-rag",
+    "@bookmarks",
+    "@excel"
+  ],
+  "resources": [
+    "file://.kiro/steering/**/*.md",
+    {
+      "type": "knowledgeBase",
+      "source": "file:///home/nizar/HomeWspce/personal-knowledge-hub/domains",
+      "name": "PersonalKB",
+      "description": "Personal structured data: finances, assurances, famille, abonnements, identité",
+      "indexType": "best",
+      "autoUpdate": true
+    }
+  ],
+  "hooks": {
+    "preToolUse": [
+      {
+        "matcher": "fs_write",
+        "command": "/home/nizar/.kiro/hooks/check-secrets.sh",
+        "description": "Block writes containing secrets"
+      },
+      {
+        "matcher": "execute_bash",
+        "command": "/home/nizar/.kiro/hooks/guard-destructive-commands.sh",
+        "description": "Block dangerous shell commands"
+      }
+    ],
+    "stop": [
+      {
+        "command": "/home/nizar/.kiro/hooks/flywheel-log.sh",
+        "description": "Log turn summary for flywheel analysis"
+      }
+    ]
+  },
+  "toolsSettings": {},
+  "useLegacyMcpJson": false,
+  "model": "claude-haiku-4-5"
+}
