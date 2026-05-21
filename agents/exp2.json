@@ -18,7 +18,7 @@
       "disabled": true
     },
     "context7": {
-      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source \u2014 never relies on training data.",
+      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
       "command": "npx",
       "timeout": 200000,
       "args": [
@@ -185,7 +185,7 @@
       "disabled": false
     },
     "awslabs.aws-api-mcp-server": {
-      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations \u2014 no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
+      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
@@ -252,7 +252,7 @@
         "CHROME_CONNECTION_TYPE": "ssh-tunnel",
         "CHROME_ERROR_HELP": "Make sure Chrome/Edge is running with --remote-debugging-port=9222 on Windows and the SSH tunnel is active: ssh -N -L 9222:localhost:9222 nizar@localhost"
       },
-      "disabled": false
+      "disabled": true
     },
     "whatsapp": {
       "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
