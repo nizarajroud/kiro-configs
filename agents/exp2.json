@@ -264,6 +264,18 @@
         "main.py"
       ],
       "disabled": true
+    },
+    "firecrawl": {
+      "description": "Web scraping, crawling, and search MCP server. Use this to scrape single pages, crawl entire sites, search the web, map site URLs, extract structured data from web pages, and perform autonomous web research. Supports JSON extraction with schemas, batch scraping, and interactive page navigation. Ideal for parsing municipal sites, extracting registration info, dates, locations from complex web pages.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "firecrawl-mcp"
+      ],
+      "env": {
+        "FIRECRAWL_API_KEY": "${FIRECRAWL_API_KEY}"
+      },
+      "disabled": false
     }
   },
   "tools": [

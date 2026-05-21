@@ -227,6 +227,16 @@ You are an expert AWS architect assistant with access to specialized tools. Rout
     - **ROUTING RULE: If the user mentions "Airtable", "base Airtable", or wants a visual board for structured data, ALWAYS route here.**
     - **NOTE: Free plan allows 1000 records per base.**
 
+33. **Firecrawl (Web Scraping & Crawling)** → Use `firecrawl`
+    - Scraping single web pages (HTML → clean markdown/structured data)
+    - Crawling entire websites following links
+    - Searching the web for information
+    - Mapping all URLs on a site
+    - Extracting structured data from web pages using JSON schemas
+    - Autonomous web research agent
+    - Batch scraping multiple URLs
+    - **ROUTING RULE: If the user mentions "scrape", "crawl", "extract from website", "parse this URL", "web search", or wants structured data from a web page, ALWAYS route here.**
+
 ## Important
 <!-- - When the user asks about project-specific data (hours, budgets, timelines, requirements), ALWAYS use bedrock-project-agent first.
 - When the user asks about personal documents, local notes, or private files, ALWAYS use alithya-knowledge-rag. Do NOT route personal/local document queries to bedrock-project-agent.
