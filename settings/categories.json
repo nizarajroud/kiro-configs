@@ -1,0 +1,51 @@
+{
+  "☁️ AWS": [
+    "remote.aws-knowledge",
+    "remote.bridge.aws-mcp",
+    "remote.awslabs.bedrock-kb-retrieval-mcp-server",
+    "awslabs.eks-mcp-server",
+    "awslabs.aws-api-mcp-server",
+    "lza"
+  ],
+  "📊 Diagrammes": [
+    "local.aws-diagram-generator",
+    "local.diagram-prompt-templates",
+    "mcp-image-recognition",
+    "mcp-mermaid"
+  ],
+  "📚 Documentation & Recherche": [
+    "context7",
+    "knowledge-rag",
+    "markdown2pdf",
+    "pdf-reader",
+    "fetch",
+    "alithya-knowledge-rag",
+    "notebooklm"
+  ],
+  "🔧 Développement": [
+    "github",
+    "playwright",
+    "chrome-tools",
+    "codebase-memory"
+  ],
+  "🤖 AI & Orchestration": [
+    "bedrock-project-agent",
+    "claude-cli",
+    "sequential-thinking",
+    "idea"
+  ],
+  "🏢 Productivité": [
+    "n8n",
+    "mural",
+    "memory",
+    "time",
+    "whatsapp",
+    "telegram",
+    "ticktick",
+    "gmail",
+    "notion-workspace",
+    "excel",
+    "airtable",
+    "bookmarks"
+  ]
+}
