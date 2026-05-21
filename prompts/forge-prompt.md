@@ -33,6 +33,8 @@ os.execvp("command", ["command", "arg1", "arg2"])
 
 If the server needs no env vars or special setup, skip the wrapper and use the command directly in the JSON config.
 
+**⚠️ CRITICAL RULE: If the server needs ANY env var from `.env` (API keys, tokens, secrets), you MUST create a wrapper.** The `${VAR_NAME}` syntax in the JSON `env` block does NOT read from `.env` — it only works if the variable is already exported in the user's shell session. Since we cannot guarantee that, ALWAYS create a wrapper when secrets are involved. The only exception is if the command itself is a simple `npx` with zero env vars needed.
+
 ### Step 2 — Add secrets to `.env`
 
 Append new variables to `/home/nizar/HomeWspce/kiro-configs/.env` with a comment header:

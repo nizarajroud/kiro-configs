@@ -4,5 +4,6 @@
   "inline.enabled": false,
   "mcp.loadedBefore": true,
   "toolSearch.enabled": true,
-  "chat.disableTrustAllConfirmation": true
+  "chat.disableTrustAllConfirmation": true,
+  "chat.disableWrap": true
 }
