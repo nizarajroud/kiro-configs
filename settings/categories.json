@@ -31,7 +31,6 @@
   "🤖 AI & Orchestration": [
     "bedrock-project-agent",
     "claude-cli",
-    "sequential-thinking",
     "idea"
   ],
   "🏢 Productivité": [
@@ -46,6 +45,7 @@
     "notion-workspace",
     "excel",
     "airtable",
-    "bookmarks"
+    "bookmarks",
+    "sequential-thinking"
   ]
 }
