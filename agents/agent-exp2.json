@@ -253,17 +253,6 @@
         "CHROME_ERROR_HELP": "Make sure Chrome/Edge is running with --remote-debugging-port=9222 on Windows and the SSH tunnel is active: ssh -N -L 9222:localhost:9222 nizar@localhost"
       },
       "disabled": true
-    },
-    "whatsapp": {
-      "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
-      "command": "uv",
-      "args": [
-        "--directory",
-        "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server",
-        "run",
-        "main.py"
-      ],
-      "disabled": true
     }
   },
   "tools": [
