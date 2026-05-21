@@ -120,6 +120,17 @@
         "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
       ],
       "disabled": false
+    },
+    "whatsapp": {
+      "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server",
+        "run",
+        "main.py"
+      ],
+      "disabled": true
     }
   }
 }
