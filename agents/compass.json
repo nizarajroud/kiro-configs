@@ -11,7 +11,7 @@
         "@modelcontextprotocol/server-memory"
       ],
       "env": {
-        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/compass.jsonl"
+        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-compass.jsonl"
       },
       "disabled": false
     }
