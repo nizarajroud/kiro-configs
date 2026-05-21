@@ -3,7 +3,7 @@
   "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
-    "memory": {
+    "memory-compass": {
       "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
       "command": "npx",
       "args": [
