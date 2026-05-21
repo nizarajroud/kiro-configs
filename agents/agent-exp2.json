@@ -253,6 +253,16 @@
         "CHROME_ERROR_HELP": "Make sure Chrome/Edge is running with --remote-debugging-port=9222 on Windows and the SSH tunnel is active: ssh -N -L 9222:localhost:9222 nizar@localhost"
       },
       "disabled": true
+    },
+    "youtube-transcript": {
+      "description": "YouTube transcript extraction MCP server. Use this to get transcripts (with or without timestamps), video metadata, and available languages from any YouTube video URL. Supports pagination for long videos, multi-language with fallback, and proxy configuration. No API key required.",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/jkawamoto/mcp-youtube-transcript",
+        "mcp-youtube-transcript"
+      ],
+      "disabled": false
     }
   },
   "tools": [
