@@ -214,7 +214,7 @@
         "@modelcontextprotocol/server-memory"
       ],
       "env": {
-        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/exp2.json"
+        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-exp2.json"
       },
       "disabled": false
     },
