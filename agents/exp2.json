@@ -1,6 +1,6 @@
 {
   "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
-  "name": "agent-exp2",
+  "name": "exp2",
   "description": "Multi-tool agent with access to Bedrock knowledge bases, AWS documentation, and diagram generation",
   "prompt": "file://../prompts/exp2-prompt.md",
   "mcpServers": {

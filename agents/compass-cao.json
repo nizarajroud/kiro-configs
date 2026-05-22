@@ -1,6 +1,6 @@
 {
-  "name": "compass",
-  "description": "Personal life orchestrator — handles personal affairs, health follow-ups, family tasks, reminders. Receives delegated tasks from other agents via CAO.",
+  "name": "compass-cao",
+  "description": "Personal life orchestrator \u2014 handles personal affairs, health follow-ups, family tasks, reminders. Receives delegated tasks from other agents via CAO.",
   "tools": [
     "*"
   ],
