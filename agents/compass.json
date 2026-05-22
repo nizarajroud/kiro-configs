@@ -30,14 +30,14 @@
     "@bookmarks",
     "@alithya-knowledge-rag",
     "@pdf-reader",
-    "@memory",
+    "@memory-compass",
     "@airtable"
   ],
   "allowedTools": [
     "fs_read",
     "grep",
     "glob",
-    "@memory",
+    "@memory-compass",
     "@bookmarks"
   ],
   "resources": [
