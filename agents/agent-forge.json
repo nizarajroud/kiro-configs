@@ -1,5 +1,5 @@
 {
-  "name": "forge",
+  "name": "agent-forge",
   "description": "Installs and configures new MCP servers: creates wrappers, adds secrets, updates agent config, documents on Notion with Mermaid diagrams.",
   "prompt": "file://../prompts/forge-prompt.md",
   "mcpServers": {},

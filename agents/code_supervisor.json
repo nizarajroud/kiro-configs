@@ -1,0 +1,28 @@
+{
+  "name": "code_supervisor",
+  "description": "Coding Supervisor Agent in a multi-agent system",
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@cao-mcp-server",
+    "fs_read",
+    "fs_list"
+  ],
+  "useLegacyMcpJson": false,
+  "resources": [
+    "file:///home/nizar/.aws/cli-agent-orchestrator/agent-context/code_supervisor.md",
+    "skill:///home/nizar/.aws/cli-agent-orchestrator/skills/**/SKILL.md"
+  ],
+  "mcpServers": {
+    "cao-mcp-server": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/awslabs/cli-agent-orchestrator.git@main",
+        "cao-mcp-server"
+      ]
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
+  "name": "agent-light",
+  "description": "Minimal agent with no MCP servers for fast startup",
+  "mcpServers": {},
+  "tools": [
+    "*"
+  ],
+  "useLegacyMcpJson": false
+}

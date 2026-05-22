@@ -1,0 +1,56 @@
+{
+  "name": "compass",
+  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources and handles delegated tasks from other agents via CAO.",
+  "prompt": "file:///home/nizar/HomeWspce/kiro-configs/prompts/compass-prompt.md",
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@builtin",
+    "fs_read",
+    "fs_write",
+    "grep",
+    "glob",
+    "execute_bash",
+    "@cao-mcp-server",
+    "@notebooklm",
+    "@notion-workspace",
+    "@gmail",
+    "@ticktick",
+    "@excel",
+    "@telegram",
+    "@bookmarks",
+    "@memory",
+    "@airtable",
+    "@pdf-reader",
+    "@alithya-knowledge-rag"
+  ],
+  "useLegacyMcpJson": false,
+  "resources": [
+    "file:///home/nizar/.aws/cli-agent-orchestrator/agent-context/compass.md",
+    "skill:///home/nizar/.aws/cli-agent-orchestrator/skills/**/SKILL.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/steering/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/config/domains.yaml",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/domains/**/steering/*.md"
+  ],
+  "mcpServers": {
+    "cao-mcp-server": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/nizarajroud/cli-agent-orchestrator.git@main",
+        "cao-mcp-server"
+      ]
+    },
+    "memory-compass": {
+      "description": "Persistent memory shared with interactive Compass",
+      "command": "npx",
+      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "env": {
+        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-compass.jsonl"
+      }
+    }
+  },
+  "welcomeMessage": "🧭 Compass (CAO) ready. Shared memory active."
+}
