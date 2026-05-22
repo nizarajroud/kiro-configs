@@ -131,6 +131,18 @@
         "main.py"
       ],
       "disabled": true
+    },
+    "memory-compass": {
+      "description": "Persistent memory for Compass agent — shared across interactive and CAO sessions",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-compass.jsonl"
+      },
+      "disabled": true
     }
   }
 }
