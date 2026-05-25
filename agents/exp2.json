@@ -18,7 +18,7 @@
       "disabled": true
     },
     "context7": {
-      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source \u2014 never relies on training data.",
+      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
       "command": "npx",
       "timeout": 200000,
       "args": [
@@ -37,7 +37,7 @@
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": false
+      "disabled": true
     },
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
@@ -93,7 +93,7 @@
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "autoApprove": [],
-      "disabled": false
+      "disabled": true
     },
     "local.diagram-prompt-templates": {
       "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
@@ -102,7 +102,7 @@
         "-u",
         "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "env": {}
     },
     "markdown2pdf": {
@@ -149,7 +149,7 @@
       "args": [
         "/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"
       ],
-      "disabled": false
+      "disabled": true
     },
     "lza": {
       "description": "Landing Zone Accelerator on AWS MCP Server (READ-ONLY). Use this to search LZA configuration schemas, check pipeline status, retrieve LZA configurations from S3, diagnose pipeline errors, and discover LZA capabilities. NO write operations: do NOT release pipeline or upload configurations without explicit user approval.",
@@ -174,7 +174,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
       ],
-      "disabled": false
+      "disabled": true
     },
     "awslabs.eks-mcp-server": {
       "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
@@ -182,10 +182,10 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
       ],
-      "disabled": false
+      "disabled": true
     },
     "awslabs.aws-api-mcp-server": {
-      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations \u2014 no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
+      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
@@ -196,7 +196,7 @@
         "READ_OPERATIONS_ONLY": "true",
         "AWS_API_MCP_ALLOW_UNRESTRICTED_LOCAL_FILE_ACCESS": "no-access"
       },
-      "disabled": false
+      "disabled": true
     },
     "mcp-image-recognition": {
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
@@ -262,7 +262,7 @@
         "git+https://github.com/jkawamoto/mcp-youtube-transcript",
         "mcp-youtube-transcript"
       ],
-      "disabled": false
+      "disabled": true
     }
   },
   "tools": [
