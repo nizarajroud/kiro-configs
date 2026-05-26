@@ -23,7 +23,7 @@
       "timeout": 200000,
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3200/sse",
+        "http://192.168.2.56:3200/mcp",
         "--allow-http"
       ],
       "disabled": false,
@@ -40,7 +40,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3209/sse",
+        "http://192.168.2.56:3209/mcp",
         "--allow-http"
       ],
       "env": {
@@ -197,7 +197,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3213/sse",
+        "http://192.168.2.56:3213/mcp",
         "--allow-http"
       ],
       "disabled": true,
@@ -213,7 +213,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3212/sse",
+        "http://192.168.2.56:3212/mcp",
         "--allow-http"
       ],
       "env": {
@@ -255,7 +255,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3205/sse",
+        "http://192.168.2.56:3205/mcp",
         "--allow-http"
       ],
       "disabled": false,
@@ -299,7 +299,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3203/sse",
+        "http://192.168.2.56:3203/mcp",
         "--allow-http"
       ],
       "disabled": true,
@@ -328,7 +328,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3206/sse",
+        "http://192.168.2.56:3206/mcp",
         "--allow-http"
       ],
       "env": {
@@ -375,7 +375,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3210/sse",
+        "http://192.168.2.56:3210/mcp",
         "--allow-http"
       ],
       "disabled": true,
@@ -391,7 +391,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3202/sse",
+        "http://192.168.2.56:3202/mcp",
         "--allow-http"
       ],
       "disabled": true,
@@ -408,7 +408,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3204/sse",
+        "http://192.168.2.56:3204/mcp",
         "--allow-http"
       ],
       "disabled": true,
@@ -422,7 +422,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3211/sse",
+        "http://192.168.2.56:3211/mcp",
         "--allow-http"
       ],
       "env": {
@@ -449,7 +449,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3207/sse",
+        "http://192.168.2.56:3207/mcp",
         "--allow-http"
       ],
       "env": {
@@ -470,7 +470,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3208/sse",
+        "http://192.168.2.56:3208/mcp",
         "--allow-http"
       ],
       "disabled": false,
@@ -486,7 +486,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3201/sse",
+        "http://192.168.2.56:3201/mcp",
         "--allow-http"
       ],
       "disabled": false,
