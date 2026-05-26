@@ -47,7 +47,7 @@
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "python3",
         "args": [
@@ -69,7 +69,7 @@
       "args": [
         "/home/nizar/.kiro/wrappers/claude_cli_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "remote.awslabs.bedrock-kb-retrieval-mcp-server": {
       "command": "uvx",
@@ -83,7 +83,7 @@
         "KB_INCLUSION_TAG_KEY": "optional-tag-key-to-filter-kbs",
         "BEDROCK_KB_RERANKING_ENABLED": "false"
       },
-      "disabled": true,
+      "disabled": false,
       "autoApprove": []
     },
     "remote.bridge.aws-mcp": {
@@ -109,7 +109,7 @@
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "autoApprove": [],
-      "disabled": true
+      "disabled": false
     },
     "local.diagram-prompt-templates": {
       "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
@@ -118,7 +118,7 @@
         "-u",
         "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
       ],
-      "disabled": true,
+      "disabled": false,
       "env": {}
     },
     "markdown2pdf": {
@@ -137,7 +137,8 @@
         "args": [
           "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
         ]
-      }
+      },
+      "disabled": false
     },
     "knowledge-rag": {
       "description": "Local RAG knowledge base. Use this to search, retrieve, and manage documents stored locally in ~/My-KB-Documents. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries against the local knowledge base.",
@@ -146,7 +147,7 @@
         "-m",
         "mcp_server.server"
       ],
-      "disabled": true,
+      "disabled": false,
       "autoApprove": []
     },
     "playwright": {
@@ -158,7 +159,7 @@
         "--allow-http"
       ],
       "env": {},
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "npx",
         "args": [
@@ -175,7 +176,7 @@
         "http://192.168.2.56:3214/mcp",
         "--allow-http"
       ],
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "python3",
         "args": [
@@ -195,7 +196,7 @@
       "description": "Landing Zone Accelerator on AWS MCP Server (READ-ONLY). Use this to search LZA configuration schemas, check pipeline status, retrieve LZA configurations from S3, diagnose pipeline errors, and discover LZA capabilities. NO write operations: do NOT release pipeline or upload configurations without explicit user approval.",
       "command": "/home/nizar/.kiro/wrappers/lza_wrapper.sh",
       "args": [],
-      "disabled": true,
+      "disabled": false,
       "autoApprove": [
         "checkAwsConnectivity",
         "listLzaSupportedVersions",
@@ -232,7 +233,7 @@
         "http://192.168.2.56:3213/mcp",
         "--allow-http"
       ],
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "python3",
         "args": [
@@ -254,7 +255,7 @@
         "READ_OPERATIONS_ONLY": "true",
         "AWS_API_MCP_ALLOW_UNRESTRICTED_LOCAL_FILE_ACCESS": "no-access"
       },
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "python3",
         "args": [
@@ -268,7 +269,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "memory": {
       "description": "Persistent knowledge graph memory across sessions. Use this to store and retrieve entities, relations, and observations that should be remembered between conversations. Allows the agent to build long-term memory of user preferences, project context, decisions, and facts.",
@@ -311,7 +312,7 @@
       "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
       "command": "/home/nizar/.local/bin/codebase-memory-mcp",
       "args": [],
-      "disabled": true
+      "disabled": false
     },
     "chrome-tools": {
       "description": "Chrome DevTools Protocol integration. Connects to a running Chrome/Edge instance to capture network traffic (headers, requests, responses), execute JavaScript in tabs, query DOM elements, take screenshots, and monitor network events. Use this when the user wants to inspect HTTP headers, network requests, DOM content, or interact with a live browser session.",
@@ -326,7 +327,7 @@
         "CHROME_CONNECTION_TYPE": "ssh-tunnel",
         "CHROME_ERROR_HELP": "Make sure Chrome/Edge is running with --remote-debugging-port=9222 on Windows and the SSH tunnel is active: ssh -N -L 9222:localhost:9222 nizar@localhost"
       },
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "node",
         "args": [
@@ -342,7 +343,7 @@
         "http://192.168.2.56:3203/mcp",
         "--allow-http"
       ],
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "uvx",
         "args": [
@@ -391,7 +392,7 @@
         "http://192.168.2.56:8080/mcp",
         "--allow-http"
       ],
-      "disabled": true
+      "disabled": false
     },
     "bookmarks": {
       "description": "Browser bookmarks search (Chrome + Edge). Use this whenever the user asks about bookmarks, saved links, favorites, or wants to find a previously saved URL. Searches across 7260 Chrome bookmarks and 2454 Edge bookmarks by title, URL, or folder name.",
@@ -418,7 +419,7 @@
         "http://192.168.2.56:3210/mcp",
         "--allow-http"
       ],
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "python3",
         "args": [
@@ -434,7 +435,7 @@
         "http://192.168.2.56:3202/mcp",
         "--allow-http"
       ],
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "npx",
         "args": [
@@ -451,7 +452,7 @@
         "http://192.168.2.56:3204/mcp",
         "--allow-http"
       ],
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "notebooklm-mcp",
         "args": []
@@ -497,7 +498,7 @@
         "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
         "TZ": "America/Toronto"
       },
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "npx",
         "args": [
@@ -546,7 +547,7 @@
         "run",
         "main.py"
       ],
-      "disabled": true
+      "disabled": false
     }
   },
   "tools": [
