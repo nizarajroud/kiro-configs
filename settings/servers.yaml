@@ -123,8 +123,9 @@ servers:
     reason: Local
     port_offset: 46
   idea:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 49
   lza:
     target: envy
     reason: Local
