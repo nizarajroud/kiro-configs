@@ -22,22 +22,38 @@
       "command": "npx",
       "timeout": 200000,
       "args": [
-        "-y",
-        "@upstash/context7-mcp"
+        "mcp-remote",
+        "http://192.168.2.56:3200/sse",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@upstash/context7-mcp"
+        ]
+      }
     },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/.kiro/wrappers/github_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3209/sse",
+        "--allow-http"
       ],
       "env": {
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": true
+      "disabled": true,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/.kiro/wrappers/github_wrapper.py"
+        ]
+      }
     },
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
@@ -178,17 +194,27 @@
     },
     "awslabs.eks-mcp-server": {
       "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3213/sse",
+        "--allow-http"
       ],
-      "disabled": true
+      "disabled": true,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
+        ]
+      }
     },
     "awslabs.aws-api-mcp-server": {
       "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3212/sse",
+        "--allow-http"
       ],
       "env": {
         "AWS_REGION": "ca-central-1",
@@ -196,7 +222,13 @@
         "READ_OPERATIONS_ONLY": "true",
         "AWS_API_MCP_ALLOW_UNRESTRICTED_LOCAL_FILE_ACCESS": "no-access"
       },
-      "disabled": true
+      "disabled": true,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
+        ]
+      }
     },
     "mcp-image-recognition": {
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
@@ -222,10 +254,18 @@
       "description": "Dynamic step-by-step reasoning with revision and branching. Forces the agent to decompose complex problems into manageable steps, revise thinking, and explore alternative paths. Use this for complex planning, debugging, architecture decisions, and any problem requiring structured multi-step analysis.",
       "command": "npx",
       "args": [
-        "-y",
-        "@modelcontextprotocol/server-sequential-thinking"
+        "mcp-remote",
+        "http://192.168.2.56:3205/sse",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-sequential-thinking"
+        ]
+      }
     },
     "time": {
       "description": "Time and timezone conversion. Provides current time in any timezone and converts between timezones. Use when the agent needs accurate current time or timezone calculations.",
@@ -256,13 +296,21 @@
     },
     "youtube-transcript": {
       "description": "YouTube transcript extraction MCP server. Use this to get transcripts (with or without timestamps), video metadata, and available languages from any YouTube video URL. Supports pagination for long videos, multi-language with fallback, and proxy configuration. No API key required.",
-      "command": "uvx",
+      "command": "npx",
       "args": [
-        "--from",
-        "git+https://github.com/jkawamoto/mcp-youtube-transcript",
-        "mcp-youtube-transcript"
+        "mcp-remote",
+        "http://192.168.2.56:3203/sse",
+        "--allow-http"
       ],
-      "disabled": true
+      "disabled": true,
+      "_original": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/jkawamoto/mcp-youtube-transcript",
+          "mcp-youtube-transcript"
+        ]
+      }
     }
   },
   "tools": [
