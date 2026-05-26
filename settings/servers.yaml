@@ -62,9 +62,8 @@ servers:
     target: pcalt
     port_offset: 8
   github:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 38
   gmail:
     target: pcalt
     port_offset: 10
