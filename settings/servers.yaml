@@ -81,3 +81,6 @@ servers:
   bedrock-project-agent:
     target: pcalt
     port_offset: 17
+  markdown2pdf:
+    target: pcalt
+    port_offset: 18
