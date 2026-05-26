@@ -107,8 +107,8 @@ servers:
     target: envy
     reason: Local
   local.diagram-prompt-templates:
-    target: pcalt
-    port_offset: 25
+    target: envy
+    reason: Local
   knowledge-rag:
     target: pcalt
     port_offset: 26
