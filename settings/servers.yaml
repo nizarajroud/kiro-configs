@@ -78,3 +78,6 @@ servers:
   chrome-tools:
     target: pcalt
     port_offset: 16
+  bedrock-project-agent:
+    target: pcalt
+    port_offset: 17
