@@ -10,8 +10,9 @@ machines:
     base_port: 3200
 servers:
   memory:
-    target: envy
+    target: pcalt
     reason: Fichier JSON local
+    port_offset: 30
   time:
     target: envy
     reason: Quasi zéro ressources
