@@ -84,3 +84,6 @@ servers:
   markdown2pdf:
     target: pcalt
     port_offset: 18
+  mural:
+    target: pcalt
+    port_offset: 18
