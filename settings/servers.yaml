@@ -124,3 +124,6 @@ servers:
   codebase-memory:
     target: pcalt
     port_offset: 32
+  alithya-knowledge-rag:
+    target: pcalt
+    port_offset: 34
