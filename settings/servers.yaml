@@ -32,8 +32,8 @@ servers:
     reason: Léger, pas de dépendance externe lourde
     port_offset: 33
   context7:
-    target: pcalt
-    port_offset: 0
+    target: envy
+    reason: Local
   firecrawl:
     target: pcalt
     port_offset: 1
