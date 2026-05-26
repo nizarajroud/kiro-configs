@@ -98,8 +98,8 @@ servers:
     target: envy
     reason: Local
   remote.awslabs.bedrock-kb-retrieval-mcp-server:
-    target: pcalt
-    port_offset: 22
+    target: envy
+    reason: Local
   remote.bridge.aws-mcp:
     target: pcalt
     port_offset: 23
