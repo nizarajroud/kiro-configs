@@ -89,8 +89,8 @@ servers:
     target: envy
     reason: Local
   mural:
-    target: pcalt
-    port_offset: 18
+    target: envy
+    reason: Local
   remote.aws-knowledge:
     target: envy
     reason: Local
