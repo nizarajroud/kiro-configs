@@ -70,8 +70,9 @@ servers:
     target: envy
     reason: Local
   awslabs.eks-mcp-server:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 52
   n8n:
     target: pcalt
     reason: Local
