@@ -72,3 +72,6 @@ servers:
   n8n:
     target: pcalt
     port_offset: 14
+  playwright:
+    target: pcalt
+    port_offset: 15
