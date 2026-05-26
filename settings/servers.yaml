@@ -33,8 +33,9 @@ servers:
     reason: Local
     port_offset: 61
   context7:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 64
   firecrawl:
     target: pcalt
     port_offset: 1
