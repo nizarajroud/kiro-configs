@@ -120,3 +120,6 @@ servers:
   mcp-image-recognition:
     target: pcalt
     port_offset: 29
+  codebase-memory:
+    target: pcalt
+    port_offset: 32
