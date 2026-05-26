@@ -100,3 +100,6 @@ servers:
   remote.bridge.aws-mcp:
     target: pcalt
     port_offset: 23
+  local.aws-diagram-generator:
+    target: pcalt
+    port_offset: 24
