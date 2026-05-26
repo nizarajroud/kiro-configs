@@ -18,8 +18,9 @@ servers:
     reason: Local
     port_offset: 57
   excel:
-    target: envy
+    target: pcalt
     reason: Accès fichiers .xlsx locaux
+    port_offset: 62
   bookmarks:
     target: pcalt
     reason: Lit fichiers Chrome/Edge locaux
