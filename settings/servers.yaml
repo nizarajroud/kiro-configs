@@ -92,8 +92,9 @@ servers:
     target: envy
     reason: Local
   remote.aws-knowledge:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 39
   claude-cli:
     target: envy
     reason: Local
