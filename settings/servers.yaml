@@ -1,17 +1,16 @@
 # MCP Distributed Infrastructure — Server Registry
 # Names MUST match exactly the keys in agent JSON files (mcpServers.*)
+# Source of truth for PLACEMENT only. Configs (command, args, env) live in agent JSON.
 
 machines:
   envy:
     host: localhost
     description: "WSL sur ENVY — agent client + serveurs avec dépendances locales"
-  csben:
-    host: 192.168.2.55
-    description: "Serveurs API-only (Internet + tokens)"
-    base_port: 3100
   pcalt:
     host: 192.168.2.56
-    description: "Serveurs AWS + communication"
+    ssh_port: 2222
+    ssh_user: nizar
+    description: "PC Alithya — serveurs remote via supergateway"
     base_port: 3200
 
 servers:
@@ -35,48 +34,46 @@ servers:
     target: envy
     reason: "Léger, pas de dépendance externe lourde"
 
-  # === CSBEN (API-only, Internet) ===
+  # === PCALT (remote via supergateway) ===
   context7:
-    target: csben
+    target: pcalt
     port_offset: 0
   firecrawl:
-    target: csben
+    target: pcalt
     port_offset: 1
   mcp-mermaid:
-    target: csben
+    target: pcalt
     port_offset: 2
   youtube-transcript:
-    target: csben
+    target: pcalt
     port_offset: 3
   notebooklm:
-    target: csben
+    target: pcalt
     port_offset: 4
   sequential-thinking:
-    target: csben
+    target: pcalt
     port_offset: 5
   airtable:
-    target: csben
+    target: pcalt
     port_offset: 6
-
-  # === PCALT (AWS + Communication) ===
   telegram:
     target: pcalt
-    port_offset: 0
+    port_offset: 7
   ticktick:
     target: pcalt
-    port_offset: 1
+    port_offset: 8
   github:
     target: pcalt
-    port_offset: 2
+    port_offset: 9
   gmail:
     target: pcalt
-    port_offset: 3
+    port_offset: 10
   notion-workspace:
     target: pcalt
-    port_offset: 4
+    port_offset: 11
   awslabs.aws-api-mcp-server:
     target: pcalt
-    port_offset: 5
+    port_offset: 12
   awslabs.eks-mcp-server:
     target: pcalt
-    port_offset: 6
+    port_offset: 13
