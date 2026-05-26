@@ -80,8 +80,9 @@ servers:
     target: envy
     reason: Local
   bedrock-project-agent:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 36
   markdown2pdf:
     target: envy
     reason: Local
