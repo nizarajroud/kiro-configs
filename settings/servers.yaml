@@ -79,8 +79,8 @@ servers:
     target: pcalt
     port_offset: 16
   bedrock-project-agent:
-    target: pcalt
-    port_offset: 17
+    target: envy
+    reason: Local
   markdown2pdf:
     target: pcalt
     port_offset: 18
