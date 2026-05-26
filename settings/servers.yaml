@@ -86,8 +86,9 @@ servers:
     reason: Local
     port_offset: 36
   markdown2pdf:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 45
   mural:
     target: envy
     reason: Local
