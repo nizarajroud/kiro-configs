@@ -88,3 +88,6 @@ servers:
   mural:
     target: pcalt
     port_offset: 18
+  remote.aws-knowledge:
+    target: pcalt
+    port_offset: 20
