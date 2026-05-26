@@ -210,11 +210,19 @@
     },
     "mural": {
       "description": "MURAL collaboration tool. Use this whenever the user mentions 'mural', 'MURAL', a mural board, or visual collaboration content. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54). Supports: listing workspaces/rooms/murals, reading all content from a mural (sticky notes, shapes, text, images), searching text inside murals, creating/updating/deleting sticky notes, and creating new murals.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3218/mcp",
+        "--allow-http"
       ],
-      "disabled": true
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
+        ]
+      }
     },
     "awslabs.eks-mcp-server": {
       "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
