@@ -112,3 +112,6 @@ servers:
   idea:
     target: pcalt
     port_offset: 27
+  lza:
+    target: pcalt
+    port_offset: 28
