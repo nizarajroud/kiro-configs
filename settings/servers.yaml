@@ -109,3 +109,6 @@ servers:
   knowledge-rag:
     target: pcalt
     port_offset: 26
+  idea:
+    target: pcalt
+    port_offset: 27
