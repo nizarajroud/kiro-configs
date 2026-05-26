@@ -14,8 +14,9 @@ servers:
     reason: Fichier JSON local
     port_offset: 30
   time:
-    target: envy
+    target: pcalt
     reason: Quasi zéro ressources
+    port_offset: 31
   excel:
     target: envy
     reason: Accès fichiers .xlsx locaux
