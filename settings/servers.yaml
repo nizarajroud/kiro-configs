@@ -10,8 +10,9 @@ machines:
     base_port: 3200
 servers:
   memory:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 55
   time:
     target: envy
     reason: Local
