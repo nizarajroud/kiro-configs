@@ -21,8 +21,9 @@ servers:
     target: envy
     reason: Accès fichiers .xlsx locaux
   bookmarks:
-    target: envy
+    target: pcalt
     reason: Lit fichiers Chrome/Edge locaux
+    port_offset: 35
   pdf-reader:
     target: envy
     reason: Lit fichiers PDF locaux
