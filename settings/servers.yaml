@@ -1,16 +1,16 @@
 # MCP Distributed Infrastructure — Server Registry
-# This file defines all MCP servers and their target deployment machine.
+# Names MUST match exactly the keys in agent JSON files (mcpServers.*)
 
 machines:
   envy:
     host: localhost
     description: "WSL sur ENVY — agent client + serveurs avec dépendances locales"
   csben:
-    host: 192.168.2.55  # WSL sur machine physique CSBEN (port SSH 2222)
+    host: 192.168.2.55
     description: "Serveurs API-only (Internet + tokens)"
     base_port: 3100
   pcalt:
-    host: 192.168.2.56  # WSL sur machine physique PCALT (PC Alithya)
+    host: 192.168.2.56
     description: "Serveurs AWS + communication"
     base_port: 3200
 
@@ -19,123 +19,64 @@ servers:
   memory:
     target: envy
     reason: "Fichier JSON local"
-    command: "npx @modelcontextprotocol/server-memory"
-
   time:
     target: envy
     reason: "Quasi zéro ressources"
-    command: "npx @modelcontextprotocol/server-time"
-
   excel:
     target: envy
     reason: "Accès fichiers .xlsx locaux"
-    command: "npx @anthropic/excel-mcp"
-
   bookmarks:
     target: envy
     reason: "Lit fichiers Chrome/Edge locaux"
-    command: "npx browser-bookmarks-mcp"
-
   pdf-reader:
     target: envy
     reason: "Lit fichiers PDF locaux"
-    command: "npx @sylphx/pdf-reader-mcp"
+  fetch:
+    target: envy
+    reason: "Léger, pas de dépendance externe lourde"
 
-  # === MACHINE B (API-only, Internet) ===
+  # === CSBEN (API-only, Internet) ===
   context7:
     target: csben
-    port_offset: 0  # → 3100
-    command: "npx @upstash/context7-mcp"
-    env: {}
-
+    port_offset: 0
   firecrawl:
     target: csben
-    port_offset: 1  # → 3101
-    command: "npx firecrawl-mcp"
-    env:
-      FIRECRAWL_API_KEY: "${FIRECRAWL_API_KEY}"
-
+    port_offset: 1
   mcp-mermaid:
     target: csben
-    port_offset: 2  # → 3102
-    command: "npx mcp-mermaid"
-    env: {}
-
+    port_offset: 2
   youtube-transcript:
     target: csben
-    port_offset: 3  # → 3103
-    command: "npx @kimtaeyoon83/mcp-server-youtube-transcript"
-    env: {}
-
+    port_offset: 3
   notebooklm:
     target: csben
-    port_offset: 4  # → 3104
-    command: "npx notebooklm-mcp"
-    env:
-      NOTEBOOKLM_COOKIES: "${NOTEBOOKLM_COOKIES}"
-
+    port_offset: 4
   sequential-thinking:
     target: csben
-    port_offset: 5  # → 3105
-    command: "npx @modelcontextprotocol/server-sequential-thinking"
-    env: {}
-
+    port_offset: 5
   airtable:
     target: csben
-    port_offset: 6  # → 3106
-    command: "npx airtable-mcp-server"
-    env:
-      AIRTABLE_API_KEY: "${AIRTABLE_API_KEY}"
+    port_offset: 6
 
-  # === MACHINE C (AWS + Communication) ===
+  # === PCALT (AWS + Communication) ===
   telegram:
     target: pcalt
-    port_offset: 0  # → 3200
-    command: "npx @overpod/mcp-telegram"
-    env:
-      TELEGRAM_API_ID: "${TELEGRAM_API_ID}"
-      TELEGRAM_API_HASH: "${TELEGRAM_API_HASH}"
-
+    port_offset: 0
   ticktick:
     target: pcalt
-    port_offset: 1  # → 3201
-    command: "npx ticktick-mcp"
-    env:
-      TICKTICK_ACCESS_TOKEN: "${TICKTICK_ACCESS_TOKEN}"
-
+    port_offset: 1
   github:
     target: pcalt
-    port_offset: 2  # → 3202
-    command: "npx @modelcontextprotocol/server-github"
-    env:
-      GITHUB_PERSONAL_ACCESS_TOKEN: "${GITHUB_TOKEN}"
-
+    port_offset: 2
   gmail:
     target: pcalt
-    port_offset: 3  # → 3203
-    command: "npx mcp-gsuite"
-    env:
-      GOOGLE_CREDENTIALS: "${GOOGLE_CREDENTIALS}"
-
+    port_offset: 3
   notion-workspace:
     target: pcalt
-    port_offset: 4  # → 3204
-    command: "npx @notionhq/notion-mcp-server"
-    env:
-      NOTION_API_KEY: "${NOTION_API_KEY}"
-
-  aws-api-mcp:
+    port_offset: 4
+  awslabs.aws-api-mcp-server:
     target: pcalt
-    port_offset: 5  # → 3205
-    command: "uvx awslabs.aws-api-mcp-server"
-    env:
-      AWS_PROFILE: "default"
-      AWS_REGION: "ca-central-1"
-
-  eks-mcp:
+    port_offset: 5
+  awslabs.eks-mcp-server:
     target: pcalt
-    port_offset: 6  # → 3206
-    command: "uvx awslabs.eks-mcp-server --allow-sensitive-data-access"
-    env:
-      AWS_PROFILE: "default"
-      AWS_REGION: "ca-central-1"
+    port_offset: 6
