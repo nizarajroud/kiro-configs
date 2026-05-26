@@ -14,8 +14,9 @@ servers:
     reason: Local
     port_offset: 55
   time:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 57
   excel:
     target: envy
     reason: Accès fichiers .xlsx locaux
