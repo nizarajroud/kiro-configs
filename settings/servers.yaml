@@ -74,8 +74,8 @@ servers:
     target: pcalt
     port_offset: 13
   n8n:
-    target: pcalt
-    port_offset: 14
+    target: envy
+    reason: Local
   playwright:
     target: envy
     reason: Local
