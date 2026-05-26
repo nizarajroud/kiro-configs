@@ -131,12 +131,20 @@
     },
     "markdown2pdf": {
       "description": "Converts Markdown content to PDF files. Supports headers, bold/italic, lists, tables, code blocks with syntax highlighting, images (local and remote), task lists, blockquotes, links, and Mermaid diagrams. Does not support LaTeX math. PDFs are saved to the configured M2P_OUTPUT_DIR. Use the create_pdf_from_markdown tool with a markdown string and an output filename.",
-      "command": "node",
+      "command": "npx",
       "args": [
-        "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
+        "mcp-remote",
+        "http://192.168.2.56:3218/mcp",
+        "--allow-http"
       ],
       "env": {
         "M2P_OUTPUT_DIR": "/home/nizar/workspace/assets/markdown2pdf-output"
+      },
+      "_original": {
+        "command": "node",
+        "args": [
+          "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
+        ]
       }
     },
     "knowledge-rag": {
