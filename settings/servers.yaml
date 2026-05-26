@@ -94,3 +94,6 @@ servers:
   claude-cli:
     target: pcalt
     port_offset: 21
+  remote.awslabs.bedrock-kb-retrieval-mcp-server:
+    target: pcalt
+    port_offset: 22
