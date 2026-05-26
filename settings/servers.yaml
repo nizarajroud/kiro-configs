@@ -75,3 +75,6 @@ servers:
   playwright:
     target: pcalt
     port_offset: 15
+  chrome-tools:
+    target: pcalt
+    port_offset: 16
