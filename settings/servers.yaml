@@ -103,3 +103,6 @@ servers:
   local.aws-diagram-generator:
     target: pcalt
     port_offset: 24
+  local.diagram-prompt-templates:
+    target: pcalt
+    port_offset: 25
