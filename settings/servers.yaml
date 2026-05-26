@@ -116,8 +116,8 @@ servers:
     target: envy
     reason: Local
   lza:
-    target: pcalt
-    port_offset: 28
+    target: envy
+    reason: Local
   mcp-image-recognition:
     target: pcalt
     port_offset: 29
