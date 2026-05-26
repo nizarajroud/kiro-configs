@@ -141,8 +141,9 @@ servers:
     reason: Local
     port_offset: 54
   codebase-memory:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 58
   alithya-knowledge-rag:
     target: pcalt
     port_offset: 34
