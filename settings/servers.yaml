@@ -77,8 +77,8 @@ servers:
     target: pcalt
     port_offset: 14
   playwright:
-    target: pcalt
-    port_offset: 15
+    target: envy
+    reason: Local
   chrome-tools:
     target: pcalt
     port_offset: 16
