@@ -115,3 +115,6 @@ servers:
   lza:
     target: pcalt
     port_offset: 28
+  mcp-image-recognition:
+    target: pcalt
+    port_offset: 29
