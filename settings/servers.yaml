@@ -13,9 +13,8 @@ servers:
     target: envy
     reason: Local
   time:
-    target: pcalt
-    reason: Quasi zéro ressources
-    port_offset: 31
+    target: envy
+    reason: Local
   excel:
     target: envy
     reason: Accès fichiers .xlsx locaux
