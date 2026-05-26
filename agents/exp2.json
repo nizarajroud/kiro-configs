@@ -26,7 +26,7 @@
         "http://192.168.2.56:3200/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "npx",
         "args": [
