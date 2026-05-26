@@ -112,8 +112,9 @@ servers:
     reason: Local
     port_offset: 43
   local.diagram-prompt-templates:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 44
   knowledge-rag:
     target: envy
     reason: Local
