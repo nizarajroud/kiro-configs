@@ -76,8 +76,9 @@ servers:
     target: envy
     reason: Local
   playwright:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 47
   chrome-tools:
     target: envy
     reason: Local
