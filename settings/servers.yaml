@@ -46,8 +46,8 @@ servers:
     target: pcalt
     port_offset: 4
   sequential-thinking:
-    target: pcalt
-    port_offset: 5
+    target: envy
+    reason: Local
   airtable:
     target: pcalt
     port_offset: 6
