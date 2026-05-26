@@ -67,8 +67,9 @@ servers:
     target: pcalt
     port_offset: 11
   awslabs.aws-api-mcp-server:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 53
   awslabs.eks-mcp-server:
     target: pcalt
     reason: Local
