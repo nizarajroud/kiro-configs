@@ -1,40 +1,32 @@
-# MCP Distributed Infrastructure — Server Registry
-# Names MUST match exactly the keys in agent JSON files (mcpServers.*)
-# Source of truth for PLACEMENT only. Configs (command, args, env) live in agent JSON.
-
 machines:
   envy:
     host: localhost
-    description: "WSL sur ENVY — agent client + serveurs avec dépendances locales"
+    description: WSL sur ENVY — agent client + serveurs avec dépendances locales
   pcalt:
     host: 192.168.2.56
     ssh_port: 2222
     ssh_user: nizar
-    description: "PC Alithya — serveurs remote via supergateway"
+    description: PC Alithya — serveurs remote via supergateway
     base_port: 3200
-
 servers:
-  # === LOCAL (doivent rester sur WSL) ===
   memory:
     target: envy
-    reason: "Fichier JSON local"
+    reason: Fichier JSON local
   time:
     target: envy
-    reason: "Quasi zéro ressources"
+    reason: Quasi zéro ressources
   excel:
     target: envy
-    reason: "Accès fichiers .xlsx locaux"
+    reason: Accès fichiers .xlsx locaux
   bookmarks:
     target: envy
-    reason: "Lit fichiers Chrome/Edge locaux"
+    reason: Lit fichiers Chrome/Edge locaux
   pdf-reader:
     target: envy
-    reason: "Lit fichiers PDF locaux"
+    reason: Lit fichiers PDF locaux
   fetch:
     target: envy
-    reason: "Léger, pas de dépendance externe lourde"
-
-  # === PCALT (remote via supergateway) ===
+    reason: Léger, pas de dépendance externe lourde
   context7:
     target: pcalt
     port_offset: 0
@@ -77,3 +69,6 @@ servers:
   awslabs.eks-mcp-server:
     target: pcalt
     port_offset: 13
+  n8n:
+    target: pcalt
+    port_offset: 14
