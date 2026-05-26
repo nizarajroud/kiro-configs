@@ -106,3 +106,6 @@ servers:
   local.diagram-prompt-templates:
     target: pcalt
     port_offset: 25
+  knowledge-rag:
+    target: pcalt
+    port_offset: 26
