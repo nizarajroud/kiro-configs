@@ -39,8 +39,8 @@ servers:
     target: pcalt
     port_offset: 2
   youtube-transcript:
-    target: pcalt
-    port_offset: 3
+    target: envy
+    reason: Local
   notebooklm:
     target: pcalt
     port_offset: 4
