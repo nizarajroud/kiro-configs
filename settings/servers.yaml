@@ -97,3 +97,6 @@ servers:
   remote.awslabs.bedrock-kb-retrieval-mcp-server:
     target: pcalt
     port_offset: 22
+  remote.bridge.aws-mcp:
+    target: pcalt
+    port_offset: 23
