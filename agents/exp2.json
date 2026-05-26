@@ -149,7 +149,7 @@
       "args": [
         "/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "lza": {
       "description": "Landing Zone Accelerator on AWS MCP Server (READ-ONLY). Use this to search LZA configuration schemas, check pipeline status, retrieve LZA configurations from S3, diagnose pipeline errors, and discover LZA capabilities. NO write operations: do NOT release pipeline or upload configurations without explicit user approval.",
