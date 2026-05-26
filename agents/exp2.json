@@ -6,38 +6,62 @@
   "mcpServers": {
     "bedrock-project-agent": {
       "description": "Queries an Amazon Bedrock agent connected to project knowledge bases. Use this for project-specific questions: RFP details, client requirements, estimated hours, timelines, budgets, and any domain-specific or organizational data ingested into the knowledge base.",
-      "command": "python",
+      "command": "npx",
       "args": [
-        "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3263/mcp",
+        "--allow-http"
       ],
       "env": {
         "AGENT_ID": "4EBXLZQW3Q",
         "AGENT_ALIAS_ID": "TSTALIASID",
         "AWS_REGION": "ca-central-1"
       },
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python",
+        "args": [
+          "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
+        ]
+      }
     },
     "context7": {
       "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
       "command": "npx",
       "timeout": 200000,
       "args": [
-        "-y",
-        "@upstash/context7-mcp"
+        "mcp-remote",
+        "http://192.168.2.56:3264/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@upstash/context7-mcp"
+        ]
+      }
     },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/.kiro/wrappers/github_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3265/mcp",
+        "--allow-http"
       ],
       "env": {
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/.kiro/wrappers/github_wrapper.py"
+        ]
+      }
     },
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
