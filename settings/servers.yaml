@@ -28,8 +28,9 @@ servers:
     target: envy
     reason: Lit fichiers PDF locaux
   fetch:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 61
   context7:
     target: pcalt
     reason: Local
