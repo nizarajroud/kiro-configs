@@ -117,8 +117,9 @@ servers:
     reason: Local
     port_offset: 44
   knowledge-rag:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 46
   idea:
     target: envy
     reason: Local
