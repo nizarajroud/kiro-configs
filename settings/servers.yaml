@@ -10,119 +10,158 @@ machines:
     base_port: 3200
 servers:
   memory:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 19
   time:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 21
   excel:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 29
   bookmarks:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 28
   pdf-reader:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 34
   fetch:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 25
   context7:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 1
   firecrawl:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 37
   mcp-mermaid:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 31
   youtube-transcript:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 24
   notebooklm:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 32
   sequential-thinking:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 20
   airtable:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 26
   telegram:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 35
   ticktick:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 36
   github:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 2
   gmail:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 30
   notion-workspace:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 33
   awslabs.aws-api-mcp-server:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 17
   awslabs.eks-mcp-server:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 16
   n8n:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 12
   playwright:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 11
   chrome-tools:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 23
   bedrock-project-agent:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 0
   markdown2pdf:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 9
   mural:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 15
   remote.aws-knowledge:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 3
   claude-cli:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 4
   remote.awslabs.bedrock-kb-retrieval-mcp-server:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 5
   remote.bridge.aws-mcp:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 6
   local.aws-diagram-generator:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 7
   local.diagram-prompt-templates:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 8
   knowledge-rag:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 10
   idea:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 13
   lza:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 14
   mcp-image-recognition:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 18
   codebase-memory:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 22
   alithya-knowledge-rag:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 27
   whatsapp:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 38
