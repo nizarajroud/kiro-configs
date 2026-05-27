@@ -114,9 +114,8 @@ servers:
     target: envy
     reason: Local
   local.aws-diagram-generator:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 43
   local.diagram-prompt-templates:
     target: pcalt
     reason: Local
