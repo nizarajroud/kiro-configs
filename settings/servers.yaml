@@ -105,9 +105,8 @@ servers:
     target: envy
     reason: Local
   claude-cli:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 40
   remote.awslabs.bedrock-kb-retrieval-mcp-server:
     target: pcalt
     reason: Local
