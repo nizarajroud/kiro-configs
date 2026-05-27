@@ -111,9 +111,8 @@ servers:
     target: envy
     reason: Local
   remote.bridge.aws-mcp:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 42
   local.aws-diagram-generator:
     target: pcalt
     reason: Local
