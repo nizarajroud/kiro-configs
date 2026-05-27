@@ -10,66 +10,59 @@ machines:
     base_port: 3200
 servers:
   memory:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 55
   time:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 57
   excel:
-    target: pcalt
-    reason: Accès fichiers .xlsx locaux
-    port_offset: 62
+    target: envy
+    reason: Local
   bookmarks:
-    target: pcalt
-    reason: Lit fichiers Chrome/Edge locaux
-    port_offset: 35
+    target: envy
+    reason: Local
   pdf-reader:
     target: envy
-    reason: Lit fichiers PDF locaux
-  fetch:
-    target: pcalt
     reason: Local
-    port_offset: 61
+  fetch:
+    target: envy
+    reason: Local
   context7:
     target: envy
     reason: Local
   firecrawl:
-    target: pcalt
-    port_offset: 1
+    target: envy
+    reason: Local
   mcp-mermaid:
-    target: pcalt
-    port_offset: 2
+    target: envy
+    reason: Local
   youtube-transcript:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 60
   notebooklm:
-    target: pcalt
-    port_offset: 4
-  sequential-thinking:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 56
+  sequential-thinking:
+    target: envy
+    reason: Local
   airtable:
-    target: pcalt
-    port_offset: 6
+    target: envy
+    reason: Local
   telegram:
-    target: pcalt
-    port_offset: 7
+    target: envy
+    reason: Local
   ticktick:
-    target: pcalt
-    port_offset: 8
+    target: envy
+    reason: Local
   github:
     target: envy
     reason: Local
   gmail:
-    target: pcalt
-    port_offset: 10
+    target: envy
+    reason: Local
   notion-workspace:
-    target: pcalt
-    port_offset: 11
+    target: envy
+    reason: Local
   awslabs.aws-api-mcp-server:
     target: envy
     reason: Local
@@ -83,9 +76,8 @@ servers:
     target: envy
     reason: Local
   chrome-tools:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 59
   bedrock-project-agent:
     target: envy
     reason: Local
@@ -126,9 +118,11 @@ servers:
     target: envy
     reason: Local
   codebase-memory:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 58
   alithya-knowledge-rag:
-    target: pcalt
-    port_offset: 34
+    target: envy
+    reason: Local
+  whatsapp:
+    target: envy
+    reason: Local
