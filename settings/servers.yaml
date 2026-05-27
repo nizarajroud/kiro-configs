@@ -94,9 +94,8 @@ servers:
     target: envy
     reason: Local
   markdown2pdf:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 45
   mural:
     target: pcalt
     reason: Local
