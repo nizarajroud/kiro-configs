@@ -123,9 +123,8 @@ servers:
     target: envy
     reason: Local
   mcp-image-recognition:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 54
   codebase-memory:
     target: pcalt
     reason: Local
