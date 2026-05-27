@@ -119,9 +119,8 @@ servers:
     target: envy
     reason: Local
   knowledge-rag:
-    target: pcalt
+    target: envy
     reason: Local
-    port_offset: 46
   idea:
     target: pcalt
     reason: Local
