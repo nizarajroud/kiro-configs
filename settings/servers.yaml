@@ -28,8 +28,9 @@ servers:
     target: local
     reason: Local
   context7:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 2
   firecrawl:
     target: pcalt
     reason: Local
