@@ -26,7 +26,8 @@
         "-y",
         "@upstash/context7-mcp"
       ],
-      "disabled": true
+      "disabled": true,
+      "priority": "critical"
     },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
