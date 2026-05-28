@@ -92,7 +92,7 @@
       "args": [
         "@sylphx/pdf-reader-mcp"
       ],
-      "disabled": false,
+      "disabled": true,
       "autoApprove": []
     },
     "telegram": {
@@ -154,5 +154,5 @@
   "resources": [],
   "hooks": {},
   "toolsSettings": {},
-  "welcomeMessage": "\ud83d\udd28 Forge ready. Tell me which MCP server to install."
+  "welcomeMessage": "🔨 Forge ready. Tell me which MCP server to install."
 }
