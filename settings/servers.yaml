@@ -28,8 +28,9 @@ servers:
     target: envy
     reason: Local
   context7:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 0
   firecrawl:
     target: envy
     reason: Local
