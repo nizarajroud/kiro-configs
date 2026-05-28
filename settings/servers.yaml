@@ -122,8 +122,8 @@ servers:
     target: envy
     reason: Local
   alithya-knowledge-rag:
-    target: envy
-    reason: Local
+    target: pcalt
+    port: 8080
   whatsapp:
     target: envy
     reason: Local
