@@ -1,129 +1,129 @@
 machines:
-  envy:
-    host: localhost
-    description: WSL sur ENVY — agent client + serveurs avec dépendances locales
   pcalt:
     host: 192.168.2.56
     ssh_port: 2222
     ssh_user: nizar
     description: PC Alithya — serveurs remote via supergateway
     base_port: 3200
+  local:
+    host: localhost
+    description: WSL sur ENVY — agent client + serveurs avec dépendances locales
 servers:
   memory:
-    target: envy
+    target: local
     reason: Local
   time:
-    target: envy
+    target: local
     reason: Local
   excel:
-    target: envy
+    target: local
     reason: Local
   bookmarks:
-    target: envy
+    target: local
     reason: Local
   pdf-reader:
-    target: envy
+    target: local
     reason: Local
   fetch:
-    target: envy
+    target: local
     reason: Local
   context7:
-    target: envy
+    target: local
     reason: Local
   firecrawl:
     target: pcalt
     reason: Local
     port_offset: 0
   mcp-mermaid:
-    target: envy
+    target: local
     reason: Local
   youtube-transcript:
-    target: envy
+    target: local
     reason: Local
   notebooklm:
-    target: envy
+    target: local
     reason: Local
   sequential-thinking:
-    target: envy
+    target: local
     reason: Local
   airtable:
-    target: envy
+    target: local
     reason: Local
   telegram:
-    target: envy
+    target: local
     reason: Local
   ticktick:
-    target: envy
+    target: local
     reason: Local
   github:
-    target: envy
+    target: local
     reason: Local
   gmail:
-    target: envy
+    target: local
     reason: Local
   notion-workspace:
-    target: envy
+    target: local
     reason: Local
   awslabs.aws-api-mcp-server:
-    target: envy
+    target: local
     reason: Local
   awslabs.eks-mcp-server:
-    target: envy
+    target: local
     reason: Local
   n8n:
-    target: envy
+    target: local
     reason: Local
   playwright:
-    target: envy
+    target: local
     reason: Local
   chrome-tools:
-    target: envy
+    target: local
     reason: Local
   bedrock-project-agent:
-    target: envy
+    target: local
     reason: Local
   markdown2pdf:
-    target: envy
+    target: local
     reason: Local
   mural:
-    target: envy
+    target: local
     reason: Local
   remote.aws-knowledge:
-    target: envy
+    target: local
     reason: Local
   claude-cli:
-    target: envy
+    target: local
     reason: Local
   remote.awslabs.bedrock-kb-retrieval-mcp-server:
-    target: envy
+    target: local
     reason: Local
   remote.bridge.aws-mcp:
-    target: envy
+    target: local
     reason: Local
   local.aws-diagram-generator:
-    target: envy
+    target: local
     reason: Local
   local.diagram-prompt-templates:
-    target: envy
+    target: local
     reason: Local
   knowledge-rag:
-    target: envy
+    target: local
     reason: Local
   idea:
-    target: envy
+    target: local
     reason: Local
   lza:
-    target: envy
+    target: local
     reason: Local
   mcp-image-recognition:
-    target: envy
+    target: local
     reason: Local
   codebase-memory:
-    target: envy
+    target: local
     reason: Local
   alithya-knowledge-rag:
     target: pcalt
     port: 8080
   whatsapp:
-    target: envy
+    target: local
     reason: Local
