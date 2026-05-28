@@ -31,8 +31,9 @@ servers:
     target: envy
     reason: Local
   firecrawl:
-    target: envy
+    target: pcalt
     reason: Local
+    port_offset: 0
   mcp-mermaid:
     target: envy
     reason: Local
