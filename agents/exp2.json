@@ -48,7 +48,7 @@
         "mcp-remote",
         "https://knowledge-mcp.global.api.aws"
       ],
-      "disabled": true
+      "disabled": false
     },
     "claude-cli": {
       "command": "python",
