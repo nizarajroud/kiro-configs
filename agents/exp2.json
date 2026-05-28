@@ -347,7 +347,7 @@
       "env": {
         "GITHUB_REPO": "nizarajroud/notion-images"
       },
-      "disabled": true
+      "disabled": false
     },
     "pdf-reader": {
       "command": "npx",
