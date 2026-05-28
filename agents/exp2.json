@@ -23,19 +23,11 @@
       "command": "npx",
       "timeout": 200000,
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3200/mcp",
-        "--allow-http"
+        "-y",
+        "@upstash/context7-mcp"
       ],
       "disabled": false,
-      "priority": "critical",
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@upstash/context7-mcp"
-        ]
-      }
+      "priority": "critical"
     },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
