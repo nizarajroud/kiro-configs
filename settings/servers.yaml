@@ -44,8 +44,9 @@ servers:
     target: local
     reason: Local
   sequential-thinking:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 1
   airtable:
     target: local
     reason: Local
