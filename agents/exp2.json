@@ -82,7 +82,7 @@
       ],
       "alias": "remote_aws",
       "env": {},
-      "disabled": true
+      "disabled": false
     },
     "local.aws-diagram-generator": {
       "description": "Generates AWS architecture diagrams as PNG images using the Python diagrams package. Use this to create, render, and export visual architecture diagrams. Provides tools to list available icons, get code examples, and generate diagrams from Python code.",
