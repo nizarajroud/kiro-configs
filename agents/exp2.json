@@ -199,7 +199,7 @@
         "READ_OPERATIONS_ONLY": "true",
         "AWS_API_MCP_ALLOW_UNRESTRICTED_LOCAL_FILE_ACCESS": "no-access"
       },
-      "disabled": true
+      "disabled": false
     },
     "mcp-image-recognition": {
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
