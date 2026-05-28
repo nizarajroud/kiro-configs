@@ -268,7 +268,7 @@
         "git+https://github.com/jkawamoto/mcp-youtube-transcript",
         "mcp-youtube-transcript"
       ],
-      "disabled": false
+      "disabled": true
     },
     "fetch": {
       "args": [
