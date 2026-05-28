@@ -26,7 +26,7 @@
         "-y",
         "@upstash/context7-mcp"
       ],
-      "disabled": true,
+      "disabled": false,
       "priority": "critical"
     },
     "github": {
@@ -219,7 +219,7 @@
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-exp2.json"
       },
-      "disabled": true,
+      "disabled": false,
       "priority": "critical"
     },
     "sequential-thinking": {
@@ -229,7 +229,7 @@
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"
       ],
-      "disabled": true,
+      "disabled": false,
       "priority": "critical"
     },
     "time": {
@@ -238,7 +238,7 @@
       "args": [
         "mcp-server-time"
       ],
-      "disabled": true,
+      "disabled": false,
       "priority": "critical"
     },
     "codebase-memory": {
@@ -278,7 +278,7 @@
         "fetch"
       ],
       "command": "uvx",
-      "disabled": true,
+      "disabled": false,
       "env": {},
       "priority": "critical"
     },
@@ -310,7 +310,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
       ],
-      "disabled": true,
+      "disabled": false,
       "priority": "critical"
     },
     "excel": {
@@ -392,7 +392,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
       ],
-      "disabled": true,
+      "disabled": false,
       "priority": "critical"
     },
     "whatsapp": {
