@@ -380,20 +380,12 @@
     },
     "time": {
       "description": "Time and timezone conversion. Provides current time in any timezone and converts between timezones. Use when the agent needs accurate current time or timezone calculations.",
-      "command": "npx",
+      "command": "uvx",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3204/mcp",
-        "--allow-http"
+        "mcp-server-time"
       ],
       "disabled": false,
-      "priority": "critical",
-      "_original": {
-        "command": "uvx",
-        "args": [
-          "mcp-server-time"
-        ]
-      }
+      "priority": "critical"
     },
     "codebase-memory": {
       "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
@@ -700,7 +692,6 @@
     "@remote.bridge.aws-mcp/aws___search_documentation": "aws_mcp_search_docs",
     "@remote.bridge.aws-mcp/aws___list_regions": "aws_mcp_regions",
     "@remote.bridge.aws-mcp/aws___recommend": "aws_mcp_recommend",
-    "@remote.bridge.aws-mcp/aws___retrieve_skill": "aws_mcp_retrieve_skill",
     "@airtable/create_table": "airtable_create_table"
   },
   "allowedTools": [
