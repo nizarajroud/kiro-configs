@@ -296,15 +296,23 @@
     },
     "fetch": {
       "args": [
-        "mcp-server-fetch"
+        "mcp-remote",
+        "http://192.168.2.56:3205/mcp",
+        "--allow-http"
       ],
       "autoApprove": [
         "fetch"
       ],
-      "command": "uvx",
+      "command": "npx",
       "disabled": false,
       "env": {},
-      "priority": "critical"
+      "priority": "critical",
+      "_original": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-fetch"
+        ]
+      }
     },
     "airtable": {
       "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",
