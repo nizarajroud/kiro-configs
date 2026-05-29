@@ -17,7 +17,7 @@
         "AGENT_ALIAS_ID": "TSTALIASID",
         "AWS_REGION": "ca-central-1"
       },
-      "disabled": false,
+      "disabled": true,
       "priority": "standard",
       "_original": {
         "command": "python",
@@ -57,7 +57,7 @@
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "python3",
         "args": [
@@ -82,7 +82,7 @@
         "http://192.168.2.56:3207/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "python",
         "args": [
@@ -104,7 +104,7 @@
         "KB_INCLUSION_TAG_KEY": "optional-tag-key-to-filter-kbs",
         "BEDROCK_KB_RERANKING_ENABLED": "false"
       },
-      "disabled": false,
+      "disabled": true,
       "autoApprove": [],
       "_original": {
         "command": "uvx",
@@ -138,7 +138,7 @@
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "autoApprove": [],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
         "args": [
@@ -155,7 +155,7 @@
         "http://192.168.2.56:3218/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "env": {},
       "_original": {
         "command": "python3",
@@ -176,7 +176,7 @@
       "env": {
         "M2P_OUTPUT_DIR": "/home/nizar/workspace/assets/markdown2pdf-output"
       },
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "node",
         "args": [
@@ -192,7 +192,7 @@
         "http://192.168.2.56:3222/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "autoApprove": [],
       "_original": {
         "command": "/home/nizar/.knowledge-rag/venv/bin/python",
@@ -211,7 +211,7 @@
         "--allow-http"
       ],
       "env": {},
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "npx",
         "args": [
@@ -228,7 +228,7 @@
         "http://192.168.2.56:3225/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "python3",
         "args": [
@@ -244,7 +244,7 @@
         "http://192.168.2.56:3208/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "python3",
         "args": [
@@ -260,7 +260,7 @@
         "http://192.168.2.56:3214/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "autoApprove": [
         "checkAwsConnectivity",
         "listLzaSupportedVersions",
@@ -285,7 +285,7 @@
         "http://192.168.2.56:3226/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "python3",
         "args": [
@@ -301,7 +301,7 @@
         "http://192.168.2.56:3215/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "python3",
         "args": [
@@ -323,7 +323,7 @@
         "READ_OPERATIONS_ONLY": "true",
         "AWS_API_MCP_ALLOW_UNRESTRICTED_LOCAL_FILE_ACCESS": "no-access"
       },
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "python3",
         "args": [
@@ -339,7 +339,7 @@
         "http://192.168.2.56:3219/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "python3",
         "args": [
@@ -403,7 +403,7 @@
         "http://192.168.2.56:3211/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "/home/nizar/.local/bin/codebase-memory-mcp",
         "args": []
@@ -422,7 +422,7 @@
         "CHROME_CONNECTION_TYPE": "ssh-tunnel",
         "CHROME_ERROR_HELP": "Make sure Chrome/Edge is running with --remote-debugging-port=9222 on Windows and the SSH tunnel is active: ssh -N -L 9222:localhost:9222 nizar@localhost"
       },
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "node",
         "args": [
@@ -438,7 +438,7 @@
         "http://192.168.2.56:3233/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "uvx",
         "args": [
@@ -479,7 +479,7 @@
       "env": {
         "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "npx",
         "args": [
@@ -496,7 +496,7 @@
         "http://192.168.2.56:8080/mcp",
         "--allow-http"
       ],
-      "disabled": false
+      "disabled": true
     },
     "bookmarks": {
       "description": "Browser bookmarks search (Chrome + Edge). Use this whenever the user asks about bookmarks, saved links, favorites, or wants to find a previously saved URL. Searches across 7260 Chrome bookmarks and 2454 Edge bookmarks by title, URL, or folder name.",
@@ -515,7 +515,7 @@
         "http://192.168.2.56:3228/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "uvx",
         "args": [
@@ -532,7 +532,7 @@
         "http://192.168.2.56:3229/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "python3",
         "args": [
@@ -548,7 +548,7 @@
         "http://192.168.2.56:3220/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "npx",
         "args": [
@@ -565,7 +565,7 @@
         "http://192.168.2.56:3223/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "notebooklm-mcp",
         "args": []
@@ -598,7 +598,7 @@
         "http://192.168.2.56:3224/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "autoApprove": [],
       "_original": {
         "command": "npx",
@@ -620,7 +620,7 @@
         "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
         "TZ": "America/Toronto"
       },
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "npx",
         "args": [
@@ -636,7 +636,7 @@
         "http://192.168.2.56:3231/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "python3",
         "args": [
@@ -669,7 +669,7 @@
         "http://192.168.2.56:3232/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "uv",
         "args": [
