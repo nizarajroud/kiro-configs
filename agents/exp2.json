@@ -689,7 +689,8 @@
     "@remote.bridge.aws-mcp/aws___search_documentation": "aws_mcp_search_docs",
     "@remote.bridge.aws-mcp/aws___list_regions": "aws_mcp_regions",
     "@remote.bridge.aws-mcp/aws___recommend": "aws_mcp_recommend",
-    "@airtable/create_table": "airtable_create_table"
+    "@airtable/create_table": "airtable_create_table",
+    "@remote.bridge.aws-mcp/aws___retrieve_skill": "aws_mcp_retrieve_skill"
   },
   "allowedTools": [
     "fs_read"
