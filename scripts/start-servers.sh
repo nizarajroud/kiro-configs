@@ -59,6 +59,9 @@ if [ ! -f "$AGENT_FILE" ]; then
 fi
 
 # Load environment variables (API keys, tokens)
+# Ensure local bin (uv/uvx) is in PATH
+export PATH="$HOME/.local/bin:$PATH"
+
 KIRO_ENV="${KIRO_CONFIGS}/.env"
 if [ -f "$KIRO_ENV" ]; then
     set -a
