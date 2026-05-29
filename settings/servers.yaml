@@ -23,8 +23,9 @@ servers:
     target: local
     reason: Local
   pdf-reader:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 18
   fetch:
     target: pcalt
     reason: Local
@@ -45,8 +46,9 @@ servers:
     target: local
     reason: Local
   notebooklm:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 17
   sequential-thinking:
     target: pcalt
     reason: Local
@@ -92,8 +94,9 @@ servers:
     target: local
     reason: Local
   markdown2pdf:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 15
   mural:
     target: local
     reason: Local
@@ -118,8 +121,9 @@ servers:
     reason: Local
     port_offset: 12
   knowledge-rag:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 16
   idea:
     target: pcalt
     reason: Local
