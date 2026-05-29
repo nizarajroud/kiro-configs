@@ -86,7 +86,7 @@ for SERVER in $SERVERS; do
     LOG_FILE="${LOG_DIR}/mcp-${SERVER}.log"
 
     echo "  → ${SERVER} on :${PORT} (${STDIO_CMD})"
-    nohup ${SUPERGATEWAY_CMD} --stdio "${STDIO_CMD}" --port ${PORT} --outputTransport streamableHttp > "${LOG_FILE}" 2>&1 &
+    nohup ${SUPERGATEWAY_CMD} --stdio "${STDIO_CMD}" --port ${PORT} --outputTransport streamableHttp --stateful > "${LOG_FILE}" 2>&1 &
     sleep 1
 done
 
