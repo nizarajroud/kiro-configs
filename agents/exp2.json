@@ -6,9 +6,11 @@
   "mcpServers": {
     "bedrock-project-agent": {
       "description": "Queries an Amazon Bedrock agent connected to project knowledge bases. Use this for project-specific questions: RFP details, client requirements, estimated hours, timelines, budgets, and any domain-specific or organizational data ingested into the knowledge base.",
-      "command": "python",
+      "command": "npx",
       "args": [
-        "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3206/mcp",
+        "--allow-http"
       ],
       "env": {
         "AGENT_ID": "4EBXLZQW3Q",
@@ -16,7 +18,13 @@
         "AWS_REGION": "ca-central-1"
       },
       "disabled": false,
-      "priority": "standard"
+      "priority": "standard",
+      "_original": {
+        "command": "python",
+        "args": [
+          "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
+        ]
+      }
     },
     "context7": {
       "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
@@ -39,15 +47,23 @@
     },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/.kiro/wrappers/github_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3209/mcp",
+        "--allow-http"
       ],
       "env": {
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/.kiro/wrappers/github_wrapper.py"
+        ]
+      }
     },
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
@@ -60,16 +76,26 @@
       "priority": "critical"
     },
     "claude-cli": {
-      "command": "python",
+      "command": "npx",
       "args": [
-        "/home/nizar/.kiro/wrappers/claude_cli_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3207/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python",
+        "args": [
+          "/home/nizar/.kiro/wrappers/claude_cli_wrapper.py"
+        ]
+      }
     },
     "remote.awslabs.bedrock-kb-retrieval-mcp-server": {
-      "command": "uvx",
+      "command": "npx",
       "args": [
-        "awslabs.bedrock-kb-retrieval-mcp-server@latest"
+        "mcp-remote",
+        "http://192.168.2.56:3213/mcp",
+        "--allow-http"
       ],
       "env": {
         "AWS_PROFILE": "csna-operations-sso-828",
@@ -79,7 +105,13 @@
         "BEDROCK_KB_RERANKING_ENABLED": "false"
       },
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [],
+      "_original": {
+        "command": "uvx",
+        "args": [
+          "awslabs.bedrock-kb-retrieval-mcp-server@latest"
+        ]
+      }
     },
     "remote.bridge.aws-mcp": {
       "command": "uvx",
@@ -96,78 +128,138 @@
     },
     "local.aws-diagram-generator": {
       "description": "Generates AWS architecture diagrams as PNG images using the Python diagrams package. Use this to create, render, and export visual architecture diagrams. Provides tools to list available icons, get code examples, and generate diagrams from Python code.",
-      "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
+      "command": "npx",
       "args": [
-        "-m",
-        "awslabs.aws_diagram_mcp_server.server"
+        "mcp-remote",
+        "http://192.168.2.56:3217/mcp",
+        "--allow-http"
       ],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "autoApprove": [],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
+        "args": [
+          "-m",
+          "awslabs.aws_diagram_mcp_server.server"
+        ]
+      }
     },
     "local.diagram-prompt-templates": {
       "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "-u",
-        "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
+        "mcp-remote",
+        "http://192.168.2.56:3218/mcp",
+        "--allow-http"
       ],
       "disabled": false,
-      "env": {}
+      "env": {},
+      "_original": {
+        "command": "python3",
+        "args": [
+          "-u",
+          "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
+        ]
+      }
     },
     "markdown2pdf": {
       "description": "Converts Markdown content to PDF files. Supports headers, bold/italic, lists, tables, code blocks with syntax highlighting, images (local and remote), task lists, blockquotes, links, and Mermaid diagrams. Does not support LaTeX math. PDFs are saved to the configured M2P_OUTPUT_DIR. Use the create_pdf_from_markdown tool with a markdown string and an output filename.",
-      "command": "node",
+      "command": "npx",
       "args": [
-        "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
+        "mcp-remote",
+        "http://192.168.2.56:3221/mcp",
+        "--allow-http"
       ],
       "env": {
         "M2P_OUTPUT_DIR": "/home/nizar/workspace/assets/markdown2pdf-output"
       },
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "node",
+        "args": [
+          "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
+        ]
+      }
     },
     "knowledge-rag": {
       "description": "Local RAG knowledge base. Use this to search, retrieve, and manage documents stored locally in ~/My-KB-Documents. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries against the local knowledge base.",
-      "command": "/home/nizar/.knowledge-rag/venv/bin/python",
+      "command": "npx",
       "args": [
-        "-m",
-        "mcp_server.server"
+        "mcp-remote",
+        "http://192.168.2.56:3222/mcp",
+        "--allow-http"
       ],
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [],
+      "_original": {
+        "command": "/home/nizar/.knowledge-rag/venv/bin/python",
+        "args": [
+          "-m",
+          "mcp_server.server"
+        ]
+      }
     },
     "playwright": {
       "description": "Browser automation and web screenshot capture using Playwright. Navigates to websites, interacts with page elements (click, type, scroll), takes screenshots of full pages or specific elements, and executes JavaScript to highlight or modify DOM elements before capture. Supports CSS injection for visual annotations like colored borders and overlays. Use for web page screenshots, UI validation, visual documentation, and element-specific captures with highlights.",
       "command": "npx",
       "args": [
-        "@playwright/mcp@latest",
-        "--headless"
+        "mcp-remote",
+        "http://192.168.2.56:3210/mcp",
+        "--allow-http"
       ],
       "env": {},
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "@playwright/mcp@latest",
+          "--headless"
+        ]
+      }
     },
     "n8n": {
       "description": "n8n workflow automation server running locally. Use this to list, create, update, activate, deactivate, and execute n8n workflows. Also supports managing workflow tags and credentials. Use for automating tasks, orchestrating multi-step processes, and triggering workflow executions from the CLI.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/n8n_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3225/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/n8n_wrapper.py"
+        ]
+      }
     },
     "idea": {
       "description": "Product Owner prompt: @idea/idea (auto-detect repo ou fallback IDEAS) et @idea/backlog (toujours IDEAS).",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3208/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"
+        ]
+      }
     },
     "lza": {
       "description": "Landing Zone Accelerator on AWS MCP Server (READ-ONLY). Use this to search LZA configuration schemas, check pipeline status, retrieve LZA configurations from S3, diagnose pipeline errors, and discover LZA capabilities. NO write operations: do NOT release pipeline or upload configurations without explicit user approval.",
-      "command": "/home/nizar/.kiro/wrappers/lza_wrapper.sh",
-      "args": [],
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "http://192.168.2.56:3214/mcp",
+        "--allow-http"
+      ],
       "disabled": false,
       "autoApprove": [
         "checkAwsConnectivity",
@@ -179,29 +271,51 @@
         "getDeployedLzaVersion",
         "diagnosePipelineErrors",
         "getMinimumConfiguration"
-      ]
+      ],
+      "_original": {
+        "command": "/home/nizar/.kiro/wrappers/lza_wrapper.sh",
+        "args": []
+      }
     },
     "mural": {
       "description": "MURAL collaboration tool. Use this whenever the user mentions 'mural', 'MURAL', a mural board, or visual collaboration content. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54). Supports: listing workspaces/rooms/murals, reading all content from a mural (sticky notes, shapes, text, images), searching text inside murals, creating/updating/deleting sticky notes, and creating new murals.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3226/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
+        ]
+      }
     },
     "awslabs.eks-mcp-server": {
       "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3215/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
+        ]
+      }
     },
     "awslabs.aws-api-mcp-server": {
       "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3216/mcp",
+        "--allow-http"
       ],
       "env": {
         "AWS_REGION": "ca-central-1",
@@ -209,15 +323,29 @@
         "READ_OPERATIONS_ONLY": "true",
         "AWS_API_MCP_ALLOW_UNRESTRICTED_LOCAL_FILE_ACCESS": "no-access"
       },
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
+        ]
+      }
     },
     "mcp-image-recognition": {
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3219/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
+        ]
+      }
     },
     "memory": {
       "description": "Persistent knowledge graph memory across sessions. Use this to store and retrieve entities, relations, and observations that should be remembered between conversations. Allows the agent to build long-term memory of user preferences, project context, decisions, and facts.",
@@ -269,32 +397,56 @@
     },
     "codebase-memory": {
       "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
-      "command": "/home/nizar/.local/bin/codebase-memory-mcp",
-      "args": [],
-      "disabled": false
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "http://192.168.2.56:3211/mcp",
+        "--allow-http"
+      ],
+      "disabled": false,
+      "_original": {
+        "command": "/home/nizar/.local/bin/codebase-memory-mcp",
+        "args": []
+      }
     },
     "chrome-tools": {
       "description": "Chrome DevTools Protocol integration. Connects to a running Chrome/Edge instance to capture network traffic (headers, requests, responses), execute JavaScript in tabs, query DOM elements, take screenshots, and monitor network events. Use this when the user wants to inspect HTTP headers, network requests, DOM content, or interact with a live browser session.",
-      "command": "node",
+      "command": "npx",
       "args": [
-        "/home/nizar/.npm-global/lib/node_modules/@nicholmikey/chrome-tools/dist/index.js"
+        "mcp-remote",
+        "http://192.168.2.56:3212/mcp",
+        "--allow-http"
       ],
       "env": {
         "CHROME_DEBUG_URL": "http://localhost:9222",
         "CHROME_CONNECTION_TYPE": "ssh-tunnel",
         "CHROME_ERROR_HELP": "Make sure Chrome/Edge is running with --remote-debugging-port=9222 on Windows and the SSH tunnel is active: ssh -N -L 9222:localhost:9222 nizar@localhost"
       },
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "node",
+        "args": [
+          "/home/nizar/.npm-global/lib/node_modules/@nicholmikey/chrome-tools/dist/index.js"
+        ]
+      }
     },
     "youtube-transcript": {
       "description": "YouTube transcript extraction MCP server. Use this to get transcripts (with or without timestamps), video metadata, and available languages from any YouTube video URL. Supports pagination for long videos, multi-language with fallback, and proxy configuration. No API key required.",
-      "command": "uvx",
+      "command": "npx",
       "args": [
-        "--from",
-        "git+https://github.com/jkawamoto/mcp-youtube-transcript",
-        "mcp-youtube-transcript"
+        "mcp-remote",
+        "http://192.168.2.56:3233/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "uvx",
+        "args": [
+          "--from",
+          "git+https://github.com/jkawamoto/mcp-youtube-transcript",
+          "mcp-youtube-transcript"
+        ]
+      }
     },
     "fetch": {
       "args": [
@@ -320,13 +472,21 @@
       "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",
       "command": "npx",
       "args": [
-        "-y",
-        "airtable-mcp-server"
+        "mcp-remote",
+        "http://192.168.2.56:3227/mcp",
+        "--allow-http"
       ],
       "env": {
         "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "airtable-mcp-server"
+        ]
+      }
     },
     "alithya-knowledge-rag": {
       "description": "Personal knowledge base (remote RAG server on PC Alithya). Use this for ALL personal/private information: personal documents, notes, private files, financial records, procedures, and any data stored in Dropbox/AAA_PRIVATE_LIFE. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries.",
@@ -349,35 +509,67 @@
     },
     "excel": {
       "description": "Excel file manipulation MCP server (3.8k stars). Read, write, create, and modify Excel workbooks (.xlsx) without needing Microsoft Excel installed. Supports: reading/writing cells and ranges, formulas, formatting, charts, pivot tables, tables, sheet management, data validation, and conditional formatting. Use this for any operation on Excel files stored locally or on Dropbox (via /mnt/c/Users/nizar/Dropbox/...).",
-      "command": "uvx",
+      "command": "npx",
       "args": [
-        "excel-mcp-server",
-        "stdio"
+        "mcp-remote",
+        "http://192.168.2.56:3228/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "uvx",
+        "args": [
+          "excel-mcp-server",
+          "stdio"
+        ]
+      }
     },
     "gmail": {
       "description": "Gmail and Google Calendar MCP server. Use this to search emails, read messages, create drafts, reply to emails, manage labels, and access Google Calendar events. Supports multiple Google accounts.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3229/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
+        ]
+      }
     },
     "mcp-mermaid": {
       "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
       "command": "npx",
       "args": [
-        "-y",
-        "mcp-mermaid"
+        "mcp-remote",
+        "http://192.168.2.56:3220/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-mermaid"
+        ]
+      }
     },
     "notebooklm": {
       "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
-      "command": "notebooklm-mcp",
-      "args": [],
-      "disabled": false
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "http://192.168.2.56:3223/mcp",
+        "--allow-http"
+      ],
+      "disabled": false,
+      "_original": {
+        "command": "notebooklm-mcp",
+        "args": []
+      }
     },
     "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
@@ -402,31 +594,55 @@
     "pdf-reader": {
       "command": "npx",
       "args": [
-        "@sylphx/pdf-reader-mcp"
+        "mcp-remote",
+        "http://192.168.2.56:3224/mcp",
+        "--allow-http"
       ],
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [],
+      "_original": {
+        "command": "npx",
+        "args": [
+          "@sylphx/pdf-reader-mcp"
+        ]
+      }
     },
     "telegram": {
       "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
       "command": "npx",
       "args": [
-        "@overpod/mcp-telegram"
+        "mcp-remote",
+        "http://192.168.2.56:3230/mcp",
+        "--allow-http"
       ],
       "env": {
         "TELEGRAM_API_ID": "${TELEGRAM_API_ID}",
         "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
         "TZ": "America/Toronto"
       },
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "@overpod/mcp-telegram"
+        ]
+      }
     },
     "ticktick": {
       "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3231/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
+        ]
+      }
     },
     "firecrawl": {
       "description": "Web scraping, crawling, and search MCP server. Use this to scrape single pages, crawl entire sites, search the web, map site URLs, extract structured data from web pages, and perform autonomous web research. Supports JSON extraction with schemas, batch scraping, and interactive page navigation. Ideal for parsing municipal sites, extracting registration info, dates, locations from complex web pages.",
@@ -447,14 +663,22 @@
     },
     "whatsapp": {
       "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
-      "command": "uv",
+      "command": "npx",
       "args": [
-        "--directory",
-        "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server",
-        "run",
-        "main.py"
+        "mcp-remote",
+        "http://192.168.2.56:3232/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "uv",
+        "args": [
+          "--directory",
+          "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server",
+          "run",
+          "main.py"
+        ]
+      }
     },
     "ssh-mcp-server": {
       "description": "SSH remote server management via ~/.ssh/config host aliases. Use this to execute commands on remote hosts, upload/download files, and list configured SSH servers. Supports bastion hosts, SOCKS proxy, 2FA, and multi-connection configs.",
