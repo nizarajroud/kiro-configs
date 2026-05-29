@@ -71,11 +71,13 @@ servers:
     reason: Local
     port_offset: 3
   awslabs.aws-api-mcp-server:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 10
   awslabs.eks-mcp-server:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 9
   n8n:
     target: local
     reason: Local
