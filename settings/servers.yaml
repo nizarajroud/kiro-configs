@@ -23,9 +23,8 @@ servers:
     target: local
     reason: Local
   pdf-reader:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 18
   fetch:
     target: pcalt
     reason: Local
@@ -39,16 +38,14 @@ servers:
     reason: Local
     port_offset: 0
   mcp-mermaid:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 14
   youtube-transcript:
     target: local
     reason: Local
   notebooklm:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 17
   sequential-thinking:
     target: pcalt
     reason: Local
@@ -63,9 +60,8 @@ servers:
     target: local
     reason: Local
   github:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 6
   gmail:
     target: local
     reason: Local
@@ -74,13 +70,11 @@ servers:
     reason: Local
     port_offset: 3
   awslabs.aws-api-mcp-server:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 10
   awslabs.eks-mcp-server:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 9
   n8n:
     target: local
     reason: Local
@@ -94,9 +88,8 @@ servers:
     target: local
     reason: Local
   markdown2pdf:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 15
   mural:
     target: local
     reason: Local
@@ -113,37 +106,30 @@ servers:
     target: local
     reason: Local
   local.aws-diagram-generator:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 11
   local.diagram-prompt-templates:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 12
   knowledge-rag:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 16
   idea:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 8
   lza:
     target: local
     reason: Local
   mcp-image-recognition:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 13
   codebase-memory:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 7
   alithya-knowledge-rag:
-    target: pcalt
+    target: local
     port: 8080
     reason: Local
-    port_offset: 19
   whatsapp:
     target: local
     reason: Local
