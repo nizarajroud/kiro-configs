@@ -15,7 +15,7 @@
         "AGENT_ALIAS_ID": "TSTALIASID",
         "AWS_REGION": "ca-central-1"
       },
-      "disabled": true,
+      "disabled": false,
       "priority": "standard"
     },
     "context7": {
@@ -47,7 +47,7 @@
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": true
+      "disabled": false
     },
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
@@ -63,7 +63,7 @@
       "args": [
         "/home/nizar/.kiro/wrappers/claude_cli_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "remote.awslabs.bedrock-kb-retrieval-mcp-server": {
       "command": "uvx",
@@ -77,7 +77,7 @@
         "KB_INCLUSION_TAG_KEY": "optional-tag-key-to-filter-kbs",
         "BEDROCK_KB_RERANKING_ENABLED": "false"
       },
-      "disabled": true,
+      "disabled": false,
       "autoApprove": []
     },
     "remote.bridge.aws-mcp": {
@@ -103,7 +103,7 @@
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "autoApprove": [],
-      "disabled": true
+      "disabled": false
     },
     "local.diagram-prompt-templates": {
       "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
@@ -112,7 +112,7 @@
         "-u",
         "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
       ],
-      "disabled": true,
+      "disabled": false,
       "env": {}
     },
     "markdown2pdf": {
@@ -124,7 +124,7 @@
       "env": {
         "M2P_OUTPUT_DIR": "/home/nizar/workspace/assets/markdown2pdf-output"
       },
-      "disabled": true
+      "disabled": false
     },
     "knowledge-rag": {
       "description": "Local RAG knowledge base. Use this to search, retrieve, and manage documents stored locally in ~/My-KB-Documents. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries against the local knowledge base.",
@@ -133,7 +133,7 @@
         "-m",
         "mcp_server.server"
       ],
-      "disabled": true,
+      "disabled": false,
       "autoApprove": []
     },
     "playwright": {
@@ -144,7 +144,7 @@
         "--headless"
       ],
       "env": {},
-      "disabled": true
+      "disabled": false
     },
     "n8n": {
       "description": "n8n workflow automation server running locally. Use this to list, create, update, activate, deactivate, and execute n8n workflows. Also supports managing workflow tags and credentials. Use for automating tasks, orchestrating multi-step processes, and triggering workflow executions from the CLI.",
@@ -152,29 +152,21 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/n8n_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "idea": {
       "description": "Product Owner prompt: @idea/idea (auto-detect repo ou fallback IDEAS) et @idea/backlog (toujours IDEAS).",
-      "command": "npx",
+      "command": "python3",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3206/mcp",
-        "--allow-http"
+        "/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"
       ],
-      "disabled": false,
-      "_original": {
-        "command": "python3",
-        "args": [
-          "/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"
-        ]
-      }
+      "disabled": false
     },
     "lza": {
       "description": "Landing Zone Accelerator on AWS MCP Server (READ-ONLY). Use this to search LZA configuration schemas, check pipeline status, retrieve LZA configurations from S3, diagnose pipeline errors, and discover LZA capabilities. NO write operations: do NOT release pipeline or upload configurations without explicit user approval.",
       "command": "/home/nizar/.kiro/wrappers/lza_wrapper.sh",
       "args": [],
-      "disabled": true,
+      "disabled": false,
       "autoApprove": [
         "checkAwsConnectivity",
         "listLzaSupportedVersions",
@@ -193,7 +185,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "awslabs.eks-mcp-server": {
       "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
@@ -201,7 +193,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "awslabs.aws-api-mcp-server": {
       "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
@@ -223,7 +215,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "memory": {
       "description": "Persistent knowledge graph memory across sessions. Use this to store and retrieve entities, relations, and observations that should be remembered between conversations. Allows the agent to build long-term memory of user preferences, project context, decisions, and facts.",
@@ -277,7 +269,7 @@
       "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
       "command": "/home/nizar/.local/bin/codebase-memory-mcp",
       "args": [],
-      "disabled": true
+      "disabled": false
     },
     "chrome-tools": {
       "description": "Chrome DevTools Protocol integration. Connects to a running Chrome/Edge instance to capture network traffic (headers, requests, responses), execute JavaScript in tabs, query DOM elements, take screenshots, and monitor network events. Use this when the user wants to inspect HTTP headers, network requests, DOM content, or interact with a live browser session.",
@@ -290,7 +282,7 @@
         "CHROME_CONNECTION_TYPE": "ssh-tunnel",
         "CHROME_ERROR_HELP": "Make sure Chrome/Edge is running with --remote-debugging-port=9222 on Windows and the SSH tunnel is active: ssh -N -L 9222:localhost:9222 nizar@localhost"
       },
-      "disabled": true
+      "disabled": false
     },
     "youtube-transcript": {
       "description": "YouTube transcript extraction MCP server. Use this to get transcripts (with or without timestamps), video metadata, and available languages from any YouTube video URL. Supports pagination for long videos, multi-language with fallback, and proxy configuration. No API key required.",
@@ -300,7 +292,7 @@
         "git+https://github.com/jkawamoto/mcp-youtube-transcript",
         "mcp-youtube-transcript"
       ],
-      "disabled": true
+      "disabled": false
     },
     "fetch": {
       "args": [
@@ -332,7 +324,7 @@
       "env": {
         "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
-      "disabled": true
+      "disabled": false
     },
     "alithya-knowledge-rag": {
       "description": "Personal knowledge base (remote RAG server on PC Alithya). Use this for ALL personal/private information: personal documents, notes, private files, financial records, procedures, and any data stored in Dropbox/AAA_PRIVATE_LIFE. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries.",
@@ -342,7 +334,7 @@
         "http://192.168.2.56:8080/mcp",
         "--allow-http"
       ],
-      "disabled": true
+      "disabled": false
     },
     "bookmarks": {
       "description": "Browser bookmarks search (Chrome + Edge). Use this whenever the user asks about bookmarks, saved links, favorites, or wants to find a previously saved URL. Searches across 7260 Chrome bookmarks and 2454 Edge bookmarks by title, URL, or folder name.",
@@ -360,7 +352,7 @@
         "excel-mcp-server",
         "stdio"
       ],
-      "disabled": true
+      "disabled": false
     },
     "gmail": {
       "description": "Gmail and Google Calendar MCP server. Use this to search emails, read messages, create drafts, reply to emails, manage labels, and access Google Calendar events. Supports multiple Google accounts.",
@@ -368,7 +360,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "mcp-mermaid": {
       "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
@@ -377,13 +369,13 @@
         "-y",
         "mcp-mermaid"
       ],
-      "disabled": true
+      "disabled": false
     },
     "notebooklm": {
       "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
       "command": "notebooklm-mcp",
       "args": [],
-      "disabled": true
+      "disabled": false
     },
     "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
@@ -410,7 +402,7 @@
       "args": [
         "@sylphx/pdf-reader-mcp"
       ],
-      "disabled": true,
+      "disabled": false,
       "autoApprove": []
     },
     "telegram": {
@@ -424,7 +416,7 @@
         "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
         "TZ": "America/Toronto"
       },
-      "disabled": true
+      "disabled": false
     },
     "ticktick": {
       "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
@@ -432,7 +424,7 @@
       "args": [
         "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "firecrawl": {
       "description": "Web scraping, crawling, and search MCP server. Use this to scrape single pages, crawl entire sites, search the web, map site URLs, extract structured data from web pages, and perform autonomous web research. Supports JSON extraction with schemas, batch scraping, and interactive page navigation. Ideal for parsing municipal sites, extracting registration info, dates, locations from complex web pages.",
@@ -460,7 +452,7 @@
         "run",
         "main.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "ssh-mcp-server": {
       "description": "SSH remote server management via ~/.ssh/config host aliases. Use this to execute commands on remote hosts, upload/download files, and list configured SSH servers. Supports bastion hosts, SOCKS proxy, 2FA, and multi-connection configs.",
