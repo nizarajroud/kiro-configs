@@ -359,7 +359,7 @@
       },
       "disabled": false,
       "priority": "critical",
-      "locked": true
+      "locked": false
     },
     "sequential-thinking": {
       "description": "Dynamic step-by-step reasoning with revision and branching. Forces the agent to decompose complex problems into manageable steps, revise thinking, and explore alternative paths. Use this for complex planning, debugging, architecture decisions, and any problem requiring structured multi-step analysis.",
