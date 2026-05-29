@@ -156,11 +156,19 @@
     },
     "idea": {
       "description": "Product Owner prompt: @idea/idea (auto-detect repo ou fallback IDEAS) et @idea/backlog (toujours IDEAS).",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3206/mcp",
+        "--allow-http"
       ],
-      "disabled": true
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"
+        ]
+      }
     },
     "lza": {
       "description": "Landing Zone Accelerator on AWS MCP Server (READ-ONLY). Use this to search LZA configuration schemas, check pipeline status, retrieve LZA configurations from S3, diagnose pipeline errors, and discover LZA capabilities. NO write operations: do NOT release pipeline or upload configurations without explicit user approval.",
