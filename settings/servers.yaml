@@ -115,9 +115,8 @@ servers:
     target: local
     reason: Local
   idea:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 6
   lza:
     target: local
     reason: Local
@@ -128,8 +127,12 @@ servers:
     target: local
     reason: Local
   alithya-knowledge-rag:
-    target: pcalt
+    target: local
     port: 8080
+    reason: Local
   whatsapp:
+    target: local
+    reason: Local
+  ssh-mcp-server:
     target: local
     reason: Local
