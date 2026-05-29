@@ -82,7 +82,7 @@
         "http://192.168.2.56:3207/mcp",
         "--allow-http"
       ],
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "python",
         "args": [
