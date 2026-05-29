@@ -687,7 +687,8 @@
         "/home/nizar/HomeWspce/kiro-configs/wrappers/ssh_mcp_wrapper.py"
       ],
       "env": {},
-      "disabled": false
+      "disabled": false,
+      "priority": "critical"
     }
   },
   "tools": [
