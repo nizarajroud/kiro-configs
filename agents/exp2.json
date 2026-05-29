@@ -413,10 +413,18 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:8080/mcp",
+        "http://192.168.2.56:3219/mcp",
         "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "mcp-remote",
+          "http://192.168.2.56:8080/mcp",
+          "--allow-http"
+        ]
+      }
     },
     "bookmarks": {
       "description": "Browser bookmarks search (Chrome + Edge). Use this whenever the user asks about bookmarks, saved links, favorites, or wants to find a previously saved URL. Searches across 7260 Chrome bookmarks and 2454 Edge bookmarks by title, URL, or folder name.",
