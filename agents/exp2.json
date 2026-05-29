@@ -76,19 +76,11 @@
       "priority": "critical"
     },
     "claude-cli": {
-      "command": "npx",
+      "command": "python",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3207/mcp",
-        "--allow-http"
+        "/home/nizar/.kiro/wrappers/claude_cli_wrapper.py"
       ],
-      "disabled": true,
-      "_original": {
-        "command": "python",
-        "args": [
-          "/home/nizar/.kiro/wrappers/claude_cli_wrapper.py"
-        ]
-      }
+      "disabled": false
     },
     "remote.awslabs.bedrock-kb-retrieval-mcp-server": {
       "command": "npx",
