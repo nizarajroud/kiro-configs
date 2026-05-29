@@ -64,8 +64,9 @@ servers:
     target: local
     reason: Local
   notion-workspace:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 3
   awslabs.aws-api-mcp-server:
     target: local
     reason: Local
