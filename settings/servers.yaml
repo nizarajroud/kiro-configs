@@ -17,16 +17,14 @@ servers:
     reason: Local
     port_offset: 4
   excel:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 28
   bookmarks:
     target: local
     reason: Local
   pdf-reader:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 24
   fetch:
     target: pcalt
     reason: Local
@@ -40,128 +38,101 @@ servers:
     reason: Local
     port_offset: 0
   mcp-mermaid:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 20
   youtube-transcript:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 33
   notebooklm:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 23
   sequential-thinking:
     target: pcalt
     reason: Local
     port_offset: 1
   airtable:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 27
   telegram:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 30
   ticktick:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 31
   github:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 9
   gmail:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 29
   notion-workspace:
     target: pcalt
     reason: Local
     port_offset: 3
   awslabs.aws-api-mcp-server:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 16
   awslabs.eks-mcp-server:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 15
   n8n:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 25
   playwright:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 10
   chrome-tools:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 12
   bedrock-project-agent:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 6
   markdown2pdf:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 21
   mural:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 26
   remote.aws-knowledge:
     target: local
     reason: Local
   claude-cli:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 7
   remote.awslabs.bedrock-kb-retrieval-mcp-server:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 13
   remote.bridge.aws-mcp:
     target: local
     reason: Local
   local.aws-diagram-generator:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 17
   local.diagram-prompt-templates:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 18
   knowledge-rag:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 22
   idea:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 8
   lza:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 14
   mcp-image-recognition:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 19
   codebase-memory:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 11
   alithya-knowledge-rag:
     target: local
     port: 8080
     reason: Local
   whatsapp:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 32
   ssh-mcp-server:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 34
