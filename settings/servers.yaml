@@ -116,8 +116,9 @@ servers:
     target: local
     reason: Local
   idea:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 8
   lza:
     target: local
     reason: Local
