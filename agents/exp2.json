@@ -499,7 +499,8 @@
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
       ],
       "disabled": false,
-      "priority": "critical"
+      "priority": "critical",
+      "locked": true
     },
     "excel": {
       "description": "Excel file manipulation MCP server (3.8k stars). Read, write, create, and modify Excel workbooks (.xlsx) without needing Microsoft Excel installed. Supports: reading/writing cells and ranges, formulas, formatting, charts, pivot tables, tables, sheet management, data validation, and conditional formatting. Use this for any operation on Excel files stored locally or on Dropbox (via /mnt/c/Users/nizar/Dropbox/...).",
