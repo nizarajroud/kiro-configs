@@ -13,8 +13,9 @@ servers:
     target: local
     reason: Local
   time:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 4
   excel:
     target: local
     reason: Local
