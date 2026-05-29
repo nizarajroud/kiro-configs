@@ -250,12 +250,20 @@
     },
     "time": {
       "description": "Time and timezone conversion. Provides current time in any timezone and converts between timezones. Use when the agent needs accurate current time or timezone calculations.",
-      "command": "uvx",
+      "command": "npx",
       "args": [
-        "mcp-server-time"
+        "mcp-remote",
+        "http://192.168.2.56:3204/mcp",
+        "--allow-http"
       ],
       "disabled": false,
-      "priority": "critical"
+      "priority": "critical",
+      "_original": {
+        "command": "uvx",
+        "args": [
+          "mcp-server-time"
+        ]
+      }
     },
     "codebase-memory": {
       "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
