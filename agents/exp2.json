@@ -104,26 +104,42 @@
     },
     "local.aws-diagram-generator": {
       "description": "Generates AWS architecture diagrams as PNG images using the Python diagrams package. Use this to create, render, and export visual architecture diagrams. Provides tools to list available icons, get code examples, and generate diagrams from Python code.",
-      "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
+      "command": "npx",
       "args": [
-        "-m",
-        "awslabs.aws_diagram_mcp_server.server"
+        "mcp-remote",
+        "http://192.168.2.56:3211/mcp",
+        "--allow-http"
       ],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "autoApprove": [],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
+        "args": [
+          "-m",
+          "awslabs.aws_diagram_mcp_server.server"
+        ]
+      }
     },
     "local.diagram-prompt-templates": {
       "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "-u",
-        "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
+        "mcp-remote",
+        "http://192.168.2.56:3212/mcp",
+        "--allow-http"
       ],
       "disabled": false,
-      "env": {}
+      "env": {},
+      "_original": {
+        "command": "python3",
+        "args": [
+          "-u",
+          "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
+        ]
+      }
     },
     "markdown2pdf": {
       "description": "Converts Markdown content to PDF files. Supports headers, bold/italic, lists, tables, code blocks with syntax highlighting, images (local and remote), task lists, blockquotes, links, and Mermaid diagrams. Does not support LaTeX math. PDFs are saved to the configured M2P_OUTPUT_DIR. Use the create_pdf_from_markdown tool with a markdown string and an output filename.",
@@ -245,11 +261,19 @@
     },
     "mcp-image-recognition": {
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3213/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
+        ]
+      }
     },
     "memory": {
       "description": "Persistent knowledge graph memory across sessions. Use this to store and retrieve entities, relations, and observations that should be remembered between conversations. Allows the agent to build long-term memory of user preferences, project context, decisions, and facts.",
@@ -408,10 +432,18 @@
       "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
       "command": "npx",
       "args": [
-        "-y",
-        "mcp-mermaid"
+        "mcp-remote",
+        "http://192.168.2.56:3214/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-mermaid"
+        ]
+      }
     },
     "notebooklm": {
       "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
