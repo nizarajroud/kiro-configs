@@ -207,17 +207,27 @@
     },
     "awslabs.eks-mcp-server": {
       "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3209/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
+        ]
+      }
     },
     "awslabs.aws-api-mcp-server": {
       "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3210/mcp",
+        "--allow-http"
       ],
       "env": {
         "AWS_REGION": "ca-central-1",
@@ -225,7 +235,13 @@
         "READ_OPERATIONS_ONLY": "true",
         "AWS_API_MCP_ALLOW_UNRESTRICTED_LOCAL_FILE_ACCESS": "no-access"
       },
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
+        ]
+      }
     },
     "mcp-image-recognition": {
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
