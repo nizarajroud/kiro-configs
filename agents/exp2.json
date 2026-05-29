@@ -363,15 +363,23 @@
     },
     "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3203/mcp",
+        "--allow-http"
       ],
       "env": {
         "GITHUB_REPO": "nizarajroud/notion-images"
       },
       "disabled": false,
-      "priority": "critical"
+      "priority": "critical",
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"
+        ]
+      }
     },
     "pdf-reader": {
       "command": "npx",
