@@ -143,24 +143,40 @@
     },
     "markdown2pdf": {
       "description": "Converts Markdown content to PDF files. Supports headers, bold/italic, lists, tables, code blocks with syntax highlighting, images (local and remote), task lists, blockquotes, links, and Mermaid diagrams. Does not support LaTeX math. PDFs are saved to the configured M2P_OUTPUT_DIR. Use the create_pdf_from_markdown tool with a markdown string and an output filename.",
-      "command": "node",
+      "command": "npx",
       "args": [
-        "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
+        "mcp-remote",
+        "http://192.168.2.56:3215/mcp",
+        "--allow-http"
       ],
       "env": {
         "M2P_OUTPUT_DIR": "/home/nizar/workspace/assets/markdown2pdf-output"
       },
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "node",
+        "args": [
+          "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
+        ]
+      }
     },
     "knowledge-rag": {
       "description": "Local RAG knowledge base. Use this to search, retrieve, and manage documents stored locally in ~/My-KB-Documents. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries against the local knowledge base.",
-      "command": "/home/nizar/.knowledge-rag/venv/bin/python",
+      "command": "npx",
       "args": [
-        "-m",
-        "mcp_server.server"
+        "mcp-remote",
+        "http://192.168.2.56:3216/mcp",
+        "--allow-http"
       ],
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [],
+      "_original": {
+        "command": "/home/nizar/.knowledge-rag/venv/bin/python",
+        "args": [
+          "-m",
+          "mcp_server.server"
+        ]
+      }
     },
     "playwright": {
       "description": "Browser automation and web screenshot capture using Playwright. Navigates to websites, interacts with page elements (click, type, scroll), takes screenshots of full pages or specific elements, and executes JavaScript to highlight or modify DOM elements before capture. Supports CSS injection for visual annotations like colored borders and overlays. Use for web page screenshots, UI validation, visual documentation, and element-specific captures with highlights.",
@@ -447,9 +463,17 @@
     },
     "notebooklm": {
       "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
-      "command": "notebooklm-mcp",
-      "args": [],
-      "disabled": false
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "http://192.168.2.56:3217/mcp",
+        "--allow-http"
+      ],
+      "disabled": false,
+      "_original": {
+        "command": "notebooklm-mcp",
+        "args": []
+      }
     },
     "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
@@ -474,10 +498,18 @@
     "pdf-reader": {
       "command": "npx",
       "args": [
-        "@sylphx/pdf-reader-mcp"
+        "mcp-remote",
+        "http://192.168.2.56:3218/mcp",
+        "--allow-http"
       ],
       "disabled": false,
-      "autoApprove": []
+      "autoApprove": [],
+      "_original": {
+        "command": "npx",
+        "args": [
+          "@sylphx/pdf-reader-mcp"
+        ]
+      }
     },
     "telegram": {
       "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
