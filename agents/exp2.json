@@ -584,7 +584,8 @@
         "args": [
           "/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"
         ]
-      }
+      },
+      "locked": true
     },
     "pdf-reader": {
       "command": "npx",
