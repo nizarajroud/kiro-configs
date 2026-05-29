@@ -38,8 +38,9 @@ servers:
     reason: Local
     port_offset: 0
   mcp-mermaid:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 14
   youtube-transcript:
     target: local
     reason: Local
@@ -109,11 +110,13 @@ servers:
     target: local
     reason: Local
   local.aws-diagram-generator:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 11
   local.diagram-prompt-templates:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 12
   knowledge-rag:
     target: local
     reason: Local
@@ -125,8 +128,9 @@ servers:
     target: local
     reason: Local
   mcp-image-recognition:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 13
   codebase-memory:
     target: pcalt
     reason: Local
