@@ -385,7 +385,8 @@
         "mcp-server-time"
       ],
       "disabled": false,
-      "priority": "critical"
+      "priority": "critical",
+      "locked": true
     },
     "codebase-memory": {
       "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
