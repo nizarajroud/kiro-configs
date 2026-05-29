@@ -35,7 +35,7 @@
         "http://192.168.2.56:3202/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "priority": "standard",
       "_original": {
         "command": "npx",
@@ -438,7 +438,7 @@
         "http://192.168.2.56:3233/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "uvx",
         "args": [
