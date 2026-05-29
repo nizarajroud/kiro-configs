@@ -125,8 +125,9 @@ servers:
     target: local
     reason: Local
   codebase-memory:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 7
   alithya-knowledge-rag:
     target: local
     port: 8080
