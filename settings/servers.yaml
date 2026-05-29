@@ -114,9 +114,8 @@ servers:
     target: local
     reason: Local
   claude-cli:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 7
   remote.awslabs.bedrock-kb-retrieval-mcp-server:
     target: pcalt
     reason: Local
