@@ -438,7 +438,7 @@
         "http://192.168.2.56:3233/mcp",
         "--allow-http"
       ],
-      "disabled": true,
+      "disabled": false,
       "_original": {
         "command": "uvx",
         "args": [
