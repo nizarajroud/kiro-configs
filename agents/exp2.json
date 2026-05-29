@@ -358,7 +358,8 @@
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-exp2.json"
       },
       "disabled": false,
-      "priority": "critical"
+      "priority": "critical",
+      "locked": true
     },
     "sequential-thinking": {
       "description": "Dynamic step-by-step reasoning with revision and branching. Forces the agent to decompose complex problems into manageable steps, revise thinking, and explore alternative paths. Use this for complex planning, debugging, architecture decisions, and any problem requiring structured multi-step analysis.",
