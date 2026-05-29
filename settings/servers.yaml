@@ -60,8 +60,9 @@ servers:
     target: local
     reason: Local
   github:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 6
   gmail:
     target: local
     reason: Local
