@@ -163,8 +163,8 @@ servers:
     target: local
     reason: Local
   memory-compass:
-    target: pcalt
-    port_offset: 35
+    target: local
+    reason: Local
   cao-mcp-server:
     target: pcalt
     port_offset: 36
