@@ -19,20 +19,12 @@
     "cao-mcp-server": {
       "description": "CAO inter-agent communication — enables receiving tasks from other agents.",
       "type": "stdio",
-      "command": "npx",
+      "command": "uvx",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3236/mcp",
-        "--allow-http"
+        "--from",
+        "git+https://github.com/nizarajroud/cli-agent-orchestrator.git@main",
+        "cao-mcp-server"
       ],
-      "_original": {
-        "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/nizarajroud/cli-agent-orchestrator.git@main",
-          "cao-mcp-server"
-        ]
-      },
       "disabled": false
     },
     "fetch": {
