@@ -1,10 +1,10 @@
 {
   "name": "compass",
-  "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
+  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
     "memory-compass": {
-      "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
+      "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
       "command": "npx",
       "args": [
         "-y",
@@ -16,7 +16,7 @@
       "disabled": false
     },
     "cao-mcp-server": {
-      "description": "CAO inter-agent communication \u2014 enables receiving tasks from other agents.",
+      "description": "CAO inter-agent communication — enables receiving tasks from other agents.",
       "type": "stdio",
       "command": "uvx",
       "args": [
@@ -96,7 +96,7 @@
       "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
       "command": "notebooklm-mcp",
       "args": [],
-      "disabled": true
+      "disabled": false
     },
     "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
@@ -192,6 +192,6 @@
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer.",
+  "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer.",
   "useLegacyMcpJson": true
 }
