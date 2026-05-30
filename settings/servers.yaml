@@ -27,9 +27,8 @@ servers:
     reason: Local
     port_offset: 39
   fetch:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 37
   context7:
     target: pcalt
     reason: Local
