@@ -7,21 +7,13 @@
       "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
       "command": "npx",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3235/mcp",
-        "--allow-http"
+        "-y",
+        "@modelcontextprotocol/server-memory"
       ],
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-compass.jsonl"
       },
-      "disabled": false,
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-memory"
-        ]
-      }
+      "disabled": false
     },
     "cao-mcp-server": {
       "description": "CAO inter-agent communication — enables receiving tasks from other agents.",
