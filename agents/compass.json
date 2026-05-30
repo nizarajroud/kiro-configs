@@ -25,7 +25,8 @@
         "git+https://github.com/nizarajroud/cli-agent-orchestrator.git@main",
         "cao-mcp-server"
       ],
-      "disabled": false
+      "disabled": false,
+      "locked": true
     },
     "fetch": {
       "args": [
