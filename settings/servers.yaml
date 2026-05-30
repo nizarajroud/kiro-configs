@@ -151,9 +151,8 @@ servers:
     reason: Local
     port_offset: 11
   alithya-knowledge-rag:
-    target: local
-    port: 8080
-    reason: Local
+    target: pcalt
+    port_offset: 34
   whatsapp:
     target: pcalt
     reason: Local
