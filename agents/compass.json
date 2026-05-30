@@ -171,7 +171,8 @@
         "args": [
           "/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"
         ]
-      }
+      },
+      "priority": "critical"
     },
     "pdf-reader": {
       "command": "npx",
