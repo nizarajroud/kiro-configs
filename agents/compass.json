@@ -46,7 +46,7 @@
       "env": {
         "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
-      "disabled": true
+      "disabled": false
     },
     "alithya-knowledge-rag": {
       "description": "Personal knowledge base (remote RAG server on PC Alithya). Use this for ALL personal/private information: personal documents, notes, private files, financial records, procedures, and any data stored in Dropbox/AAA_PRIVATE_LIFE. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries.",
@@ -81,7 +81,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
       ],
-      "disabled": true
+      "disabled": false
     },
     "mcp-mermaid": {
       "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
@@ -90,7 +90,7 @@
         "-y",
         "mcp-mermaid"
       ],
-      "disabled": true
+      "disabled": false
     },
     "notebooklm": {
       "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
@@ -128,7 +128,7 @@
         "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
         "TZ": "America/Toronto"
       },
-      "disabled": true
+      "disabled": false
     },
     "ticktick": {
       "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
