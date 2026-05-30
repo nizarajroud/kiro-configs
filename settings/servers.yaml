@@ -20,9 +20,8 @@ servers:
     reason: Local
     port_offset: 28
   bookmarks:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 38
   pdf-reader:
     target: pcalt
     reason: Local
