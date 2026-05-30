@@ -164,5 +164,5 @@ servers:
     target: local
     reason: Local
   cao-mcp-server:
-    target: pcalt
-    port_offset: 36
+    target: local
+    reason: Local
