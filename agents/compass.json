@@ -27,7 +27,8 @@
         "cao-mcp-server"
       ],
       "disabled": false,
-      "locked": true
+      "locked": true,
+      "priority": "critical"
     },
     "fetch": {
       "args": [
