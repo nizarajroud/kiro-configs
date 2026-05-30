@@ -377,7 +377,7 @@
       "args": [
         "mcp-server-time"
       ],
-      "disabled": false,
+      "disabled": true,
       "priority": "critical",
       "locked": true
     },
