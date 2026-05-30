@@ -257,7 +257,8 @@
           "run",
           "main.py"
         ]
-      }
+      },
+      "locked": true
     }
   },
   "tools": [
