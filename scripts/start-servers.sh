@@ -86,7 +86,13 @@ for SERVER in $SERVERS; do
     LOG_FILE="${LOG_DIR}/mcp-${SERVER}.log"
 
     echo "  → ${SERVER} on :${PORT} (${STDIO_CMD})"
-    nohup ${SUPERGATEWAY_CMD} --stdio "${STDIO_CMD}" --port ${PORT} --outputTransport streamableHttp --stateful > "${LOG_FILE}" 2>&1 &
+
+    # Servers with native HTTP (no supergateway needed)
+    if [ "$SERVER" = "alithya-knowledge-rag" ]; then
+        nohup /home/nizar/HomeWspce/knowledge-rag/.venv/bin/python /home/nizar/HomeWspce/knowledge-rag/run_http.py > "${LOG_FILE}" 2>&1 &
+    else
+        nohup ${SUPERGATEWAY_CMD} --stdio "${STDIO_CMD}" --port ${PORT} --outputTransport streamableHttp --stateful > "${LOG_FILE}" 2>&1 &
+    fi
     sleep 1
 done
 
