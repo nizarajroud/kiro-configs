@@ -24,8 +24,9 @@ servers:
     reason: Local
     port_offset: 38
   pdf-reader:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 39
   fetch:
     target: pcalt
     reason: Local
