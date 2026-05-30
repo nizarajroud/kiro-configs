@@ -20,15 +20,17 @@ servers:
     reason: Local
     port_offset: 28
   bookmarks:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 38
   pdf-reader:
     target: pcalt
     reason: Local
     port_offset: 24
   fetch:
-    target: local
+    target: pcalt
     reason: Local
+    port_offset: 37
   context7:
     target: pcalt
     reason: Local
@@ -160,3 +162,9 @@ servers:
   ssh-mcp-server:
     target: local
     reason: Local
+  memory-compass:
+    target: pcalt
+    port_offset: 35
+  cao-mcp-server:
+    target: pcalt
+    port_offset: 36
