@@ -252,7 +252,7 @@
         "http://192.168.2.56:3232/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "uv",
         "args": [
