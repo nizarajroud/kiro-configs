@@ -653,12 +653,6 @@
       "disabled": false,
       "priority": "critical",
       "locked": true
-    },
-    "time": {
-      "locked": true
-    },
-    "sequential-thinking": {
-      "locked": true
     }
   },
   "tools": [
