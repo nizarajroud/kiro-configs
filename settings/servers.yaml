@@ -8,29 +8,7 @@ machines:
   local:
     host: localhost
     description: WSL sur ENVY — agent client + serveurs avec dépendances locales
-  envywsl:
-    host: localhost
-    description: WSL locale — serveurs partagés via supergateway (HTTP)
-    base_port: 3100
 servers:
-  memory:
-    target: local
-    reason: Local
-  time:
-    target: envywsl
-    port_offset: 4
-  excel:
-    target: envywsl
-    port_offset: 2
-  bookmarks:
-    target: envywsl
-    port_offset: 1
-  pdf-reader:
-    target: envywsl
-    port_offset: 3
-  fetch:
-    target: envywsl
-    port_offset: 7
   context7:
     target: pcalt
     reason: Local
@@ -51,9 +29,6 @@ servers:
     target: pcalt
     reason: Local
     port_offset: 23
-  sequential-thinking:
-    target: local
-    reason: Local
   airtable:
     target: pcalt
     reason: Local
@@ -74,9 +49,6 @@ servers:
     target: pcalt
     reason: Local
     port_offset: 29
-  notion-workspace:
-    target: envywsl
-    port_offset: 5
   awslabs.aws-api-mcp-server:
     target: pcalt
     reason: Local

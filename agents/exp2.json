@@ -369,20 +369,13 @@
       "command": "npx",
       "args": [
         "-y",
-        "mcp-remote",
-        "http://localhost:3100/mcp",
-        "--allow-http"
+        "@modelcontextprotocol/server-memory"
       ],
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-memory"
-        ],
-        "env": {
-          "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-exp2.json"
-        }
-      }
+      "env": {
+        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-exp2.json"
+      },
+      "disabled": false,
+      "priority": "critical"
     },
     "codebase-memory": {
       "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
@@ -480,17 +473,9 @@
       "command": "npx",
       "args": [
         "-y",
-        "mcp-remote",
-        "http://localhost:3102/mcp",
-        "--allow-http"
+        "@anthropic/excel-mcp"
       ],
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@anthropic/excel-mcp"
-        ]
-      }
+      "disabled": false
     },
     "gmail": {
       "description": "Gmail and Google Calendar MCP server. Use this to search emails, read messages, create drafts, reply to emails, manage labels, and access Google Calendar events. Supports multiple Google accounts.",
@@ -546,17 +531,9 @@
       "command": "npx",
       "args": [
         "-y",
-        "mcp-remote",
-        "http://localhost:3103/mcp",
-        "--allow-http"
+        "@sylphx/pdf-reader-mcp"
       ],
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@sylphx/pdf-reader-mcp"
-        ]
-      }
+      "disabled": false
     },
     "telegram": {
       "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
