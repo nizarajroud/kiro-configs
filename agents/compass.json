@@ -126,7 +126,7 @@
         "http://192.168.2.56:3223/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "_original": {
         "command": "notebooklm-mcp",
         "args": []
