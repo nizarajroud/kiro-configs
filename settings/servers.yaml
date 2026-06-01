@@ -17,8 +17,8 @@ servers:
     target: envywsl
     port_offset: 0
   time:
-    target: local
-    reason: Local
+    target: envywsl
+    port_offset: 4
   excel:
     target: envywsl
     port_offset: 2
@@ -29,8 +29,8 @@ servers:
     target: envywsl
     port_offset: 3
   fetch:
-    target: local
-    reason: Local
+    target: envywsl
+    port_offset: 7
   context7:
     target: pcalt
     reason: Local
@@ -52,9 +52,8 @@ servers:
     reason: Local
     port_offset: 23
   sequential-thinking:
-    target: pcalt
-    reason: Local
-    port_offset: 1
+    target: envywsl
+    port_offset: 6
   airtable:
     target: pcalt
     reason: Local
@@ -76,9 +75,8 @@ servers:
     reason: Local
     port_offset: 29
   notion-workspace:
-    target: pcalt
-    reason: Local
-    port_offset: 3
+    target: envywsl
+    port_offset: 5
   awslabs.aws-api-mcp-server:
     target: pcalt
     reason: Local

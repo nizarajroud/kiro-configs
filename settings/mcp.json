@@ -2,20 +2,29 @@
   "mcpServers": {
     "time": {
       "description": "Time and timezone conversion. Provides current time in any timezone and converts between timezones. Use when the agent needs accurate current time or timezone calculations.",
-      "command": "uvx",
+      "command": "npx",
       "args": [
-        "mcp-server-time"
+        "mcp-remote",
+        "http://localhost:3104/mcp",
+        "--allow-http"
       ],
       "disabled": true,
       "priority": "critical",
-      "locked": true
+      "locked": true,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-time"
+        ]
+      }
     },
     "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3203/mcp",
+        "http://localhost:3105/mcp",
         "--allow-http"
       ],
       "env": {
@@ -24,9 +33,10 @@
       "disabled": false,
       "priority": "critical",
       "_original": {
-        "command": "python3",
+        "command": "npx",
         "args": [
-          "/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"
+          "-y",
+          "@notionhq/notion-mcp-server"
         ]
       },
       "locked": true
@@ -36,7 +46,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3201/mcp",
+        "http://localhost:3106/mcp",
         "--allow-http"
       ],
       "disabled": false,
@@ -70,16 +80,25 @@
     },
     "fetch": {
       "args": [
-        "mcp-server-fetch"
+        "mcp-remote",
+        "http://localhost:3107/mcp",
+        "--allow-http"
       ],
       "autoApprove": [
         "fetch"
       ],
-      "command": "uvx",
+      "command": "npx",
       "disabled": false,
       "env": {},
       "priority": "critical",
-      "locked": true
+      "locked": true,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "mcp-server-fetch"
+        ]
+      }
     }
   }
 }
