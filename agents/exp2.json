@@ -620,6 +620,9 @@
       "disabled": false,
       "priority": "critical",
       "locked": true
+    },
+    "time": {
+      "locked": true
     }
   },
   "tools": [
