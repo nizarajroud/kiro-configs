@@ -48,7 +48,8 @@
           "-y",
           "airtable-mcp-server"
         ]
-      }
+      },
+      "locked": true
     },
     "alithya-knowledge-rag": {
       "description": "Personal knowledge base (remote RAG server on PC Alithya). Use this for ALL personal/private information: personal documents, notes, private files, financial records, procedures, and any data stored in Dropbox/AAA_PRIVATE_LIFE. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries.",
@@ -66,7 +67,8 @@
           "http://192.168.2.56:8080/mcp",
           "--allow-http"
         ]
-      }
+      },
+      "locked": true
     },
     "excel": {
       "description": "Excel file manipulation MCP server (3.8k stars). Read, write, create, and modify Excel workbooks (.xlsx) without needing Microsoft Excel installed. Supports: reading/writing cells and ranges, formulas, formatting, charts, pivot tables, tables, sheet management, data validation, and conditional formatting. Use this for any operation on Excel files stored locally or on Dropbox (via /mnt/c/Users/nizar/Dropbox/...).",
@@ -83,7 +85,8 @@
           "excel-mcp-server",
           "stdio"
         ]
-      }
+      },
+      "locked": true
     },
     "gmail": {
       "description": "Gmail and Google Calendar MCP server. Use this to search emails, read messages, create drafts, reply to emails, manage labels, and access Google Calendar events. Supports multiple Google accounts.",
@@ -99,7 +102,8 @@
         "args": [
           "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
         ]
-      }
+      },
+      "locked": true
     },
     "mcp-mermaid": {
       "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
@@ -116,13 +120,15 @@
           "-y",
           "mcp-mermaid"
         ]
-      }
+      },
+      "locked": true
     },
     "notebooklm": {
       "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
       "command": "notebooklm-mcp",
       "args": [],
-      "disabled": false
+      "disabled": false,
+      "locked": true
     },
     "pdf-reader": {
       "command": "npx",
@@ -160,7 +166,8 @@
         "args": [
           "@overpod/mcp-telegram"
         ]
-      }
+      },
+      "locked": true
     },
     "ticktick": {
       "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
@@ -176,7 +183,8 @@
         "args": [
           "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
         ]
-      }
+      },
+      "locked": true
     },
     "firecrawl": {
       "description": "Web scraping, crawling, and search MCP server. Use this to scrape single pages, crawl entire sites, search the web, map site URLs, extract structured data from web pages, and perform autonomous web research. Supports JSON extraction with schemas, batch scraping, and interactive page navigation. Ideal for parsing municipal sites, extracting registration info, dates, locations from complex web pages.",
@@ -192,7 +200,8 @@
         "args": [
           "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
         ]
-      }
+      },
+      "locked": true
     },
     "whatsapp": {
       "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
