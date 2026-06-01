@@ -623,6 +623,9 @@
     },
     "time": {
       "locked": true
+    },
+    "sequential-thinking": {
+      "locked": true
     }
   },
   "tools": [
