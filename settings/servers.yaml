@@ -26,9 +26,8 @@ servers:
     reason: Local
     port_offset: 33
   notebooklm:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 23
   airtable:
     target: pcalt
     reason: Local
