@@ -1,58 +1,10 @@
 {
   "mcpServers": {
     "time": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "http://localhost:3104/mcp",
-        "--allow-http"
-      ],
-      "disabled": true
-    },
-    "notion-workspace": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "http://localhost:3105/mcp",
-        "--allow-http"
-      ],
-      "env": {
-        "GITHUB_REPO": "nizarajroud/notion-images"
-      },
-      "disabled": false
+      "locked": false
     },
     "sequential-thinking": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "http://localhost:3106/mcp",
-        "--allow-http"
-      ],
-      "disabled": false
-    },
-    "bookmarks": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "http://localhost:3101/mcp",
-        "--allow-http"
-      ],
-      "disabled": false
-    },
-    "fetch": {
-      "args": [
-        "-y",
-        "mcp-remote",
-        "http://localhost:3107/mcp",
-        "--allow-http"
-      ],
-      "command": "npx",
-      "disabled": false,
-      "env": {}
+      "locked": false
     }
   }
 }
