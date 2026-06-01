@@ -14,8 +14,8 @@ machines:
     base_port: 3100
 servers:
   memory:
-    target: envywsl
-    port_offset: 0
+    target: local
+    reason: Local
   time:
     target: envywsl
     port_offset: 4
