@@ -27,7 +27,7 @@
       }
     },
     "context7": {
-      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source \u2014 never relies on training data.",
+      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
       "command": "npx",
       "timeout": 200000,
       "args": [
@@ -76,11 +76,19 @@
       "priority": "critical"
     },
     "claude-cli": {
-      "command": "python",
+      "command": "npx",
       "args": [
-        "/home/nizar/.kiro/wrappers/claude_cli_wrapper.py"
+        "mcp-remote",
+        "http://192.168.2.56:3108/mcp",
+        "--allow-http"
       ],
-      "disabled": false
+      "disabled": false,
+      "_original": {
+        "command": "python",
+        "args": [
+          "/home/nizar/.kiro/wrappers/claude_cli_wrapper.py"
+        ]
+      }
     },
     "remote.awslabs.bedrock-kb-retrieval-mcp-server": {
       "command": "npx",
@@ -302,7 +310,7 @@
       }
     },
     "awslabs.aws-api-mcp-server": {
-      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations \u2014 no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
+      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
       "command": "npx",
       "args": [
         "mcp-remote",
