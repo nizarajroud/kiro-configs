@@ -370,23 +370,14 @@
       "command": "npx",
       "args": [
         "-y",
-        "mcp-remote",
-        "http://localhost:3100/mcp",
-        "--allow-http"
+        "@modelcontextprotocol/server-memory"
       ],
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-exp2.json"
       },
       "disabled": false,
       "priority": "critical",
-      "locked": false,
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-memory"
-        ]
-      }
+      "locked": false
     },
     "codebase-memory": {
       "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
