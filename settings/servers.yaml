@@ -113,8 +113,9 @@ servers:
     target: local
     reason: Local
   claude-cli:
-    target: local
+    target: envywsl
     reason: Local
+    port_offset: 8
   remote.awslabs.bedrock-kb-retrieval-mcp-server:
     target: pcalt
     reason: Local
