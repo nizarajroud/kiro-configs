@@ -4,7 +4,8 @@
       "command": "uvx",
       "args": [
         "mcp-server-time"
-      ]
+      ],
+      "locked": true
     },
     "notion-workspace": {
       "command": "npx",
@@ -23,26 +24,30 @@
           "@notionhq/notion-mcp-server"
         ]
       },
-      "disabled": false
+      "disabled": false,
+      "locked": true
     },
     "sequential-thinking": {
       "command": "npx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"
-      ]
+      ],
+      "locked": true
     },
     "bookmarks": {
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
-      ]
+      ],
+      "locked": true
     },
     "fetch": {
       "command": "uvx",
       "args": [
         "mcp-server-fetch"
-      ]
+      ],
+      "locked": true
     }
   }
 }
