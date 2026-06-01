@@ -621,7 +621,7 @@
       "env": {},
       "disabled": false,
       "priority": "critical",
-      "locked": true
+      "locked": false
     }
   },
   "tools": [
