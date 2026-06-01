@@ -131,7 +131,7 @@
         "http://192.168.2.56:3239/mcp",
         "--allow-http"
       ],
-      "disabled": true,
+      "disabled": false,
       "autoApprove": [],
       "_original": {
         "command": "npx",
