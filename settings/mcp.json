@@ -1,10 +1,9 @@
 {
   "mcpServers": {
     "time": {
-      "command": "npx",
+      "command": "uvx",
       "args": [
-        "-y",
-        "@modelcontextprotocol/server-time"
+        "mcp-server-time"
       ]
     },
     "notion-workspace": {
@@ -25,11 +24,11 @@
       ]
     },
     "bookmarks": {
-      "command": "npx",
+      "command": "uvx",
       "args": [
-        "-y",
-        "browser-bookmarks-mcp"
-      ]
+        "mcp-server-bookmarks"
+      ],
+      "disabled": true
     },
     "fetch": {
       "command": "npx",
