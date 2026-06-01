@@ -4,4 +4,4 @@ from dotenv import load_dotenv
 
 load_dotenv("/home/nizar/.kiro/.env")
 
-os.execvp("tick-mcp", ["tick-mcp", "serve"])
+os.execvp("/home/nizar/.local/bin/tick-mcp", ["tick-mcp", "serve"])
