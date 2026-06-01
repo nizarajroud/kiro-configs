@@ -30,12 +30,10 @@
       ]
     },
     "fetch": {
-      "command": "npx",
+      "command": "uvx",
       "args": [
-        "-y",
         "mcp-server-fetch"
-      ],
-      "env": {}
+      ]
     }
   }
 }
