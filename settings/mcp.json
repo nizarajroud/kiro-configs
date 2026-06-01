@@ -1,7 +1,6 @@
 {
   "mcpServers": {
     "time": {
-      "description": "Time and timezone conversion. Provides current time in any timezone and converts between timezones. Use when the agent needs accurate current time or timezone calculations.",
       "command": "npx",
       "args": [
         "-y",
@@ -9,19 +8,9 @@
         "http://localhost:3104/mcp",
         "--allow-http"
       ],
-      "disabled": true,
-      "priority": "critical",
-      "locked": true,
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-time"
-        ]
-      }
+      "disabled": true
     },
     "notion-workspace": {
-      "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
       "command": "npx",
       "args": [
         "-y",
@@ -32,19 +21,9 @@
       "env": {
         "GITHUB_REPO": "nizarajroud/notion-images"
       },
-      "disabled": false,
-      "priority": "critical",
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@notionhq/notion-mcp-server"
-        ]
-      },
-      "locked": true
+      "disabled": false
     },
     "sequential-thinking": {
-      "description": "Dynamic step-by-step reasoning with revision and branching. Forces the agent to decompose complex problems into manageable steps, revise thinking, and explore alternative paths. Use this for complex planning, debugging, architecture decisions, and any problem requiring structured multi-step analysis.",
       "command": "npx",
       "args": [
         "-y",
@@ -52,18 +31,9 @@
         "http://localhost:3106/mcp",
         "--allow-http"
       ],
-      "disabled": false,
-      "priority": "critical",
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@modelcontextprotocol/server-sequential-thinking"
-        ]
-      }
+      "disabled": false
     },
     "bookmarks": {
-      "description": "Browser bookmarks search (Chrome + Edge). Use this whenever the user asks about bookmarks, saved links, favorites, or wants to find a previously saved URL. Searches across 7260 Chrome bookmarks and 2454 Edge bookmarks by title, URL, or folder name.",
       "command": "npx",
       "args": [
         "-y",
@@ -71,16 +41,7 @@
         "http://localhost:3101/mcp",
         "--allow-http"
       ],
-      "disabled": false,
-      "priority": "critical",
-      "locked": true,
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "browser-bookmarks-mcp"
-        ]
-      }
+      "disabled": false
     },
     "fetch": {
       "args": [
@@ -89,21 +50,9 @@
         "http://localhost:3107/mcp",
         "--allow-http"
       ],
-      "autoApprove": [
-        "fetch"
-      ],
       "command": "npx",
       "disabled": false,
-      "env": {},
-      "priority": "critical",
-      "locked": true,
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "mcp-server-fetch"
-        ]
-      }
+      "env": {}
     }
   }
 }
