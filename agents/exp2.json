@@ -366,7 +366,13 @@
       }
     },
     "memory": {
-      "url": "http://localhost:3100/mcp",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://localhost:3100/mcp",
+        "--allow-http"
+      ],
       "_original": {
         "command": "npx",
         "args": [
@@ -471,7 +477,13 @@
       }
     },
     "excel": {
-      "url": "http://localhost:3102/mcp",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://localhost:3102/mcp",
+        "--allow-http"
+      ],
       "_original": {
         "command": "npx",
         "args": [
@@ -531,7 +543,13 @@
       }
     },
     "pdf-reader": {
-      "url": "http://localhost:3103/mcp",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://localhost:3103/mcp",
+        "--allow-http"
+      ],
       "_original": {
         "command": "npx",
         "args": [
