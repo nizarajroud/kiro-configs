@@ -138,3 +138,6 @@ servers:
   cao-mcp-server:
     target: local
     reason: Local
+  notion-workspace:
+    target: pcalt
+    port_offset: 27
