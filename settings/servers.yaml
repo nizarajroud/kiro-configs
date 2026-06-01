@@ -141,3 +141,6 @@ servers:
   notion-workspace:
     target: pcalt
     port_offset: 27
+  excel:
+    target: pcalt
+    port_offset: 28
