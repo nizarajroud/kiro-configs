@@ -8,24 +8,26 @@ machines:
   local:
     host: localhost
     description: WSL sur ENVY — agent client + serveurs avec dépendances locales
+  envywsl:
+    host: localhost
+    description: WSL locale — serveurs partagés via supergateway (HTTP)
+    base_port: 3100
 servers:
   memory:
-    target: local
-    reason: Local
+    target: envywsl
+    port_offset: 0
   time:
     target: local
     reason: Local
   excel:
-    target: pcalt
-    reason: Local
-    port_offset: 28
+    target: envywsl
+    port_offset: 2
   bookmarks:
-    target: local
-    reason: Local
+    target: envywsl
+    port_offset: 1
   pdf-reader:
-    target: pcalt
-    reason: Local
-    port_offset: 39
+    target: envywsl
+    port_offset: 3
   fetch:
     target: local
     reason: Local

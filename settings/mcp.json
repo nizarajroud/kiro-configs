@@ -51,13 +51,22 @@
     },
     "bookmarks": {
       "description": "Browser bookmarks search (Chrome + Edge). Use this whenever the user asks about bookmarks, saved links, favorites, or wants to find a previously saved URL. Searches across 7260 Chrome bookmarks and 2454 Edge bookmarks by title, URL, or folder name.",
-      "command": "python3",
+      "command": "npx",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
+        "mcp-remote",
+        "http://localhost:3101/mcp",
+        "--allow-http"
       ],
       "disabled": false,
       "priority": "critical",
-      "locked": true
+      "locked": true,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "browser-bookmarks-mcp"
+        ]
+      }
     },
     "fetch": {
       "args": [

@@ -343,15 +343,23 @@
       "description": "Persistent knowledge graph memory across sessions. Use this to store and retrieve entities, relations, and observations that should be remembered between conversations. Allows the agent to build long-term memory of user preferences, project context, decisions, and facts.",
       "command": "npx",
       "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory"
+        "mcp-remote",
+        "http://localhost:3100/mcp",
+        "--allow-http"
       ],
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-exp2.json"
       },
       "disabled": false,
       "priority": "critical",
-      "locked": true
+      "locked": true,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "-y",
+          "@modelcontextprotocol/server-memory"
+        ]
+      }
     },
     "codebase-memory": {
       "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
@@ -445,15 +453,15 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3228/mcp",
+        "http://localhost:3102/mcp",
         "--allow-http"
       ],
       "disabled": true,
       "_original": {
-        "command": "uvx",
+        "command": "npx",
         "args": [
-          "excel-mcp-server",
-          "stdio"
+          "-y",
+          "@anthropic/excel-mcp"
         ]
       }
     },
@@ -508,7 +516,7 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3224/mcp",
+        "http://localhost:3103/mcp",
         "--allow-http"
       ],
       "disabled": true,
@@ -516,6 +524,7 @@
       "_original": {
         "command": "npx",
         "args": [
+          "-y",
           "@sylphx/pdf-reader-mcp"
         ]
       }

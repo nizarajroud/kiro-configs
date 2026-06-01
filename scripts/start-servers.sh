@@ -74,8 +74,14 @@ for SERVER in $SERVERS; do
     PORT_OFFSET=$(yq -r ".servers.\"${SERVER}\".port_offset" "$SERVERS_YAML")
     PORT=$((BASE_PORT + PORT_OFFSET))
 
+    # Look in agent file first, then settings/mcp.json for common servers
     CMD=$(jq -r ".mcpServers.\"${SERVER}\"._original.command // .mcpServers.\"${SERVER}\".command // empty" "$AGENT_FILE" 2>/dev/null)
     ARGS=$(jq -r ".mcpServers.\"${SERVER}\"._original.args // .mcpServers.\"${SERVER}\".args // [] | join(\" \")" "$AGENT_FILE" 2>/dev/null)
+    if [ -z "$CMD" ]; then
+        MCP_JSON="${KIRO_CONFIGS}/settings/mcp.json"
+        CMD=$(jq -r ".mcpServers.\"${SERVER}\"._original.command // .mcpServers.\"${SERVER}\".command // empty" "$MCP_JSON" 2>/dev/null)
+        ARGS=$(jq -r ".mcpServers.\"${SERVER}\"._original.args // .mcpServers.\"${SERVER}\".args // [] | join(\" \")" "$MCP_JSON" 2>/dev/null)
+    fi
 
     if [ -z "$CMD" ]; then
         echo "  ⚠️  ${SERVER}: not found in ${DEFAULT_AGENT}.json, skipping"
