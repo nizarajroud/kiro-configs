@@ -24,11 +24,10 @@
       ]
     },
     "bookmarks": {
-      "command": "uvx",
+      "command": "python3",
       "args": [
-        "mcp-server-bookmarks"
-      ],
-      "disabled": true
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
+      ]
     },
     "fetch": {
       "command": "npx",
