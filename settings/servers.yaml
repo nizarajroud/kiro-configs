@@ -139,8 +139,8 @@ servers:
     target: local
     reason: Local
   notion-workspace:
-    target: pcalt
-    port_offset: 27
+    target: local
+    reason: Local
   excel:
     target: pcalt
     port_offset: 28
