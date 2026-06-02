@@ -10,19 +10,11 @@
     "notion-workspace": {
       "command": "npx",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3227/mcp",
-        "--allow-http"
+        "-y",
+        "@notionhq/notion-mcp-server"
       ],
       "env": {
         "GITHUB_REPO": "nizarajroud/notion-images"
-      },
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "@notionhq/notion-mcp-server"
-        ]
       },
       "disabled": false,
       "locked": false
