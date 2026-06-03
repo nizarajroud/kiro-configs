@@ -1,10 +1,10 @@
 {
   "name": "compass",
-  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
+  "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
     "memory-compass": {
-      "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
+      "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
       "command": "npx",
       "args": [
         "-y",
@@ -18,7 +18,7 @@
       "priority": "critical"
     },
     "cao-mcp-server": {
-      "description": "CAO inter-agent communication — enables receiving tasks from other agents.",
+      "description": "CAO inter-agent communication \u2014 enables receiving tasks from other agents.",
       "type": "stdio",
       "command": "uvx",
       "args": [
@@ -125,19 +125,10 @@
     "pdf-reader": {
       "command": "npx",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3239/mcp",
-        "--allow-http"
+        "-y",
+        "@sylphx/pdf-reader-mcp"
       ],
-      "disabled": false,
-      "autoApprove": [],
-      "_original": {
-        "command": "npx",
-        "args": [
-          "@sylphx/pdf-reader-mcp"
-        ]
-      },
-      "locked": false
+      "disabled": false
     },
     "telegram": {
       "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
@@ -223,14 +214,25 @@
     "@alithya-knowledge-rag",
     "@pdf-reader",
     "@memory-compass",
-    "@airtable"
+    "@airtable",
+    "@firecrawl"
   ],
   "allowedTools": [
     "fs_read",
     "grep",
     "glob",
     "@memory-compass",
-    "@bookmarks"
+    "@bookmarks",
+    "@firecrawl",
+    "@notebooklm",
+    "@notion-workspace",
+    "@gmail",
+    "@ticktick",
+    "@excel",
+    "@telegram",
+    "@alithya-knowledge-rag",
+    "@pdf-reader",
+    "@airtable"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/steering/*.md",
@@ -242,6 +244,6 @@
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer.",
+  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer.",
   "useLegacyMcpJson": true
 }
