@@ -44,9 +44,8 @@ servers:
     reason: Local
     port_offset: 9
   gmail:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 29
   awslabs.aws-api-mcp-server:
     target: pcalt
     reason: Local
