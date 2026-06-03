@@ -90,19 +90,11 @@
     },
     "gmail": {
       "description": "Gmail and Google Calendar MCP server. Use this to search emails, read messages, create drafts, reply to emails, manage labels, and access Google Calendar events. Supports multiple Google accounts.",
-      "command": "npx",
+      "command": "python3",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3229/mcp",
-        "--allow-http"
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
       ],
       "disabled": false,
-      "_original": {
-        "command": "python3",
-        "args": [
-          "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
-        ]
-      },
       "locked": false
     },
     "mcp-mermaid": {
