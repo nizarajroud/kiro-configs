@@ -40,24 +40,15 @@
     },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
-      "command": "npx",
+      "command": "python3",
       "args": [
-        "-y",
-        "mcp-remote",
-        "http://192.168.2.56:3209/mcp",
-        "--allow-http"
+        "/home/nizar/.kiro/wrappers/github_wrapper.py"
       ],
       "env": {
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": true,
-      "_original": {
-        "command": "python3",
-        "args": [
-          "/home/nizar/.kiro/wrappers/github_wrapper.py"
-        ]
-      }
+      "disabled": false
     },
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
