@@ -334,18 +334,9 @@
     },
     "codebase-memory": {
       "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "http://192.168.2.56:3211/mcp",
-        "--allow-http"
-      ],
-      "disabled": true,
-      "_original": {
-        "command": "/home/nizar/.local/bin/codebase-memory-mcp",
-        "args": []
-      }
+      "command": "/home/nizar/.local/bin/codebase-memory-mcp",
+      "args": [],
+      "disabled": false
     },
     "chrome-tools": {
       "description": "Chrome DevTools Protocol integration. Connects to a running Chrome/Edge instance to capture network traffic (headers, requests, responses), execute JavaScript in tabs, query DOM elements, take screenshots, and monitor network events. Use this when the user wants to inspect HTTP headers, network requests, DOM content, or interact with a live browser session.",
