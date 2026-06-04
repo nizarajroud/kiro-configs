@@ -10,9 +10,8 @@ machines:
     description: WSL sur ENVY — agent client + serveurs avec dépendances locales
 servers:
   context7:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 2
   firecrawl:
     target: local
     reason: Local
