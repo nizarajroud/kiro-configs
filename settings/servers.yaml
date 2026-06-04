@@ -107,9 +107,8 @@ servers:
     reason: Local
     port_offset: 19
   codebase-memory:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 11
   alithya-knowledge-rag:
     target: local
     reason: Local
