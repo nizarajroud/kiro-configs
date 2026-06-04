@@ -34,9 +34,8 @@ servers:
     target: local
     reason: Local
   github:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 9
   gmail:
     target: local
     reason: Local
