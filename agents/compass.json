@@ -1,10 +1,10 @@
 {
   "name": "compass",
-  "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
+  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
     "memory-compass": {
-      "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
+      "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
       "command": "npx",
       "args": [
         "-y",
@@ -18,7 +18,7 @@
       "priority": "critical"
     },
     "cao-mcp-server": {
-      "description": "CAO inter-agent communication \u2014 enables receiving tasks from other agents.",
+      "description": "CAO inter-agent communication — enables receiving tasks from other agents.",
       "type": "stdio",
       "command": "uvx",
       "args": [
@@ -34,21 +34,13 @@
       "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",
       "command": "npx",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3227/mcp",
-        "--allow-http"
+        "-y",
+        "airtable-mcp-server"
       ],
       "env": {
         "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
       "disabled": false,
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "airtable-mcp-server"
-        ]
-      },
       "locked": false
     },
     "alithya-knowledge-rag": {
@@ -56,36 +48,20 @@
       "command": "npx",
       "args": [
         "mcp-remote",
-        "http://192.168.2.56:3234/mcp",
+        "http://192.168.2.56:8080/mcp",
         "--allow-http"
       ],
       "disabled": false,
-      "_original": {
-        "command": "npx",
-        "args": [
-          "mcp-remote",
-          "http://192.168.2.56:8080/mcp",
-          "--allow-http"
-        ]
-      },
       "locked": false
     },
     "excel": {
       "description": "Excel file manipulation MCP server (3.8k stars). Read, write, create, and modify Excel workbooks (.xlsx) without needing Microsoft Excel installed. Supports: reading/writing cells and ranges, formulas, formatting, charts, pivot tables, tables, sheet management, data validation, and conditional formatting. Use this for any operation on Excel files stored locally or on Dropbox (via /mnt/c/Users/nizar/Dropbox/...).",
-      "command": "npx",
+      "command": "uvx",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3228/mcp",
-        "--allow-http"
+        "excel-mcp-server",
+        "stdio"
       ],
       "disabled": false,
-      "_original": {
-        "command": "uvx",
-        "args": [
-          "excel-mcp-server",
-          "stdio"
-        ]
-      },
       "locked": false
     },
     "gmail": {
@@ -101,18 +77,10 @@
       "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
       "command": "npx",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3220/mcp",
-        "--allow-http"
+        "-y",
+        "mcp-mermaid"
       ],
       "disabled": false,
-      "_original": {
-        "command": "npx",
-        "args": [
-          "-y",
-          "mcp-mermaid"
-        ]
-      },
       "locked": false
     },
     "notebooklm": {
@@ -134,9 +102,7 @@
       "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
       "command": "npx",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3230/mcp",
-        "--allow-http"
+        "@overpod/mcp-telegram"
       ],
       "env": {
         "TELEGRAM_API_ID": "${TELEGRAM_API_ID}",
@@ -144,29 +110,15 @@
         "TZ": "America/Toronto"
       },
       "disabled": false,
-      "_original": {
-        "command": "npx",
-        "args": [
-          "@overpod/mcp-telegram"
-        ]
-      },
       "locked": false
     },
     "ticktick": {
       "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
-      "command": "npx",
+      "command": "python3",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3231/mcp",
-        "--allow-http"
+        "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
       ],
       "disabled": false,
-      "_original": {
-        "command": "python3",
-        "args": [
-          "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
-        ]
-      },
       "locked": false
     },
     "firecrawl": {
@@ -180,22 +132,14 @@
     },
     "whatsapp": {
       "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
-      "command": "npx",
+      "command": "uv",
       "args": [
-        "mcp-remote",
-        "http://192.168.2.56:3232/mcp",
-        "--allow-http"
+        "--directory",
+        "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server",
+        "run",
+        "main.py"
       ],
-      "disabled": true,
-      "_original": {
-        "command": "uv",
-        "args": [
-          "--directory",
-          "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server",
-          "run",
-          "main.py"
-        ]
-      },
+      "disabled": false,
       "locked": false
     }
   },
@@ -244,6 +188,6 @@
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer.",
+  "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer.",
   "useLegacyMcpJson": true
 }
