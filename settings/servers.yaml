@@ -42,9 +42,8 @@ servers:
     target: local
     reason: Local
   awslabs.aws-api-mcp-server:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 16
   awslabs.eks-mcp-server:
     target: pcalt
     reason: Local
