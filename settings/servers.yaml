@@ -17,9 +17,8 @@ servers:
     target: local
     reason: Local
   mcp-mermaid:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 20
   youtube-transcript:
     target: pcalt
     reason: Local
@@ -28,17 +27,14 @@ servers:
     target: local
     reason: Local
   airtable:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 27
   telegram:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 30
   ticktick:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 31
   github:
     target: pcalt
     reason: Local
@@ -121,12 +117,11 @@ servers:
     reason: Local
     port_offset: 11
   alithya-knowledge-rag:
-    target: pcalt
-    port_offset: 34
-  whatsapp:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 32
+  whatsapp:
+    target: local
+    reason: Local
   ssh-mcp-server:
     target: local
     reason: Local
@@ -140,5 +135,5 @@ servers:
     target: local
     reason: Local
   excel:
-    target: pcalt
-    port_offset: 28
+    target: local
+    reason: Local
