@@ -45,6 +45,13 @@ domains:
     keywords: [passeport, NAS, carte, date de naissance, adresse]
     local_data: ~/workspace/perosnal-dtls/identite/
 
+  carriere:
+    label: "Carrière"
+    status: active
+    priority: high
+    keywords: [carrière, travail, Alithya, Beneva, AWS, consultant, mandat, projet interne, manager]
+    local_data: ~/HomeWspce/kiro-configs/knowledges/personal/domains/carriere/
+
   projets_perso:
     label: "Projets personnels"
     keywords: [projet, plan, objectif]

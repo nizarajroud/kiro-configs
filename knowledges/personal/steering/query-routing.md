@@ -148,6 +148,27 @@ When sources disagree:
 → Which information is correct?
 ```
 
+## Override: Information publique/officielle → FireCrawl EN PREMIER
+
+**RÈGLE ABSOLUE** — Quand la question porte sur une information **PUBLIQUE** (non personnelle), applicable à tout le monde :
+
+1. **FireCrawl** (scraping du site officiel) — TOUJOURS en premier
+2. Bookmarks — si FireCrawl indisponible
+3. Connaissance générale — dernier recours uniquement, avec avertissement explicite
+
+**Appliquer quand :**
+- Tarifs, procédures, formulaires, horaires, conditions générales
+- Informations médicales générales (symptômes, maladies, traitements)
+- Sites officiels (gouv.qc.ca, hydroquebec.com, bnc.ca, santé publique, etc.)
+
+**NE PAS appliquer quand :**
+- L'info est personnelle (mes comptes, mes dates, mes documents)
+- L'info est déjà dans les sources personnelles (NotebookLM, Notion, etc.)
+
+**⚠️ NE JAMAIS utiliser NotebookLM, Notion, Gmail ou Bookmarks pour chercher de l'information publique générale.**
+
+---
+
 ## Anti-Patterns (NEVER DO)
 
 | ❌ Never | ✅ Instead |
