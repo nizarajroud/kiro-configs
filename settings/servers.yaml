@@ -86,9 +86,8 @@ servers:
     target: local
     reason: Local
   local.aws-diagram-generator:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 17
   local.diagram-prompt-templates:
     target: pcalt
     reason: Local
