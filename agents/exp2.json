@@ -365,7 +365,7 @@
         ]
       }
     },
-    "memory": {
+    "memory-exp2": {
       "command": "npx",
       "args": [
         "-y",
