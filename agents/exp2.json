@@ -138,22 +138,13 @@
     },
     "local.diagram-prompt-templates": {
       "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
-      "command": "npx",
+      "command": "python3",
       "args": [
-        "-y",
-        "mcp-remote",
-        "http://192.168.2.56:3218/mcp",
-        "--allow-http"
+        "-u",
+        "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
       ],
-      "disabled": true,
-      "env": {},
-      "_original": {
-        "command": "python3",
-        "args": [
-          "-u",
-          "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
-        ]
-      }
+      "disabled": false,
+      "env": {}
     },
     "markdown2pdf": {
       "description": "Converts Markdown content to PDF files. Supports headers, bold/italic, lists, tables, code blocks with syntax highlighting, images (local and remote), task lists, blockquotes, links, and Mermaid diagrams. Does not support LaTeX math. PDFs are saved to the configured M2P_OUTPUT_DIR. Use the create_pdf_from_markdown tool with a markdown string and an output filename.",
