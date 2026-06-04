@@ -130,23 +130,14 @@
     },
     "markdown2pdf": {
       "description": "Converts Markdown content to PDF files. Supports headers, bold/italic, lists, tables, code blocks with syntax highlighting, images (local and remote), task lists, blockquotes, links, and Mermaid diagrams. Does not support LaTeX math. PDFs are saved to the configured M2P_OUTPUT_DIR. Use the create_pdf_from_markdown tool with a markdown string and an output filename.",
-      "command": "npx",
+      "command": "node",
       "args": [
-        "-y",
-        "mcp-remote",
-        "http://192.168.2.56:3221/mcp",
-        "--allow-http"
+        "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
       ],
       "env": {
         "M2P_OUTPUT_DIR": "/home/nizar/workspace/assets/markdown2pdf-output"
       },
-      "disabled": true,
-      "_original": {
-        "command": "node",
-        "args": [
-          "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
-        ]
-      }
+      "disabled": false
     },
     "knowledge-rag": {
       "description": "Local RAG knowledge base. Use this to search, retrieve, and manage documents stored locally in ~/My-KB-Documents. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries against the local knowledge base.",
