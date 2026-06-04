@@ -19,9 +19,8 @@ servers:
     target: local
     reason: Local
   youtube-transcript:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 33
   notebooklm:
     target: local
     reason: Local
