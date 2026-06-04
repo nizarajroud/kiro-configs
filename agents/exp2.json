@@ -580,7 +580,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "priority": "critical"
     },
     "whatsapp": {
