@@ -89,9 +89,8 @@ servers:
     target: local
     reason: Local
   local.diagram-prompt-templates:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 18
   knowledge-rag:
     target: pcalt
     reason: Local
