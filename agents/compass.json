@@ -139,7 +139,7 @@
         "run",
         "main.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     }
   },
