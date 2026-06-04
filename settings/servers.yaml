@@ -61,9 +61,8 @@ servers:
     target: local
     reason: Local
   markdown2pdf:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 21
   mural:
     target: pcalt
     reason: Local
