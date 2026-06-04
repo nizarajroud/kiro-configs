@@ -371,22 +371,13 @@
     },
     "youtube-transcript": {
       "description": "YouTube transcript extraction MCP server. Use this to get transcripts (with or without timestamps), video metadata, and available languages from any YouTube video URL. Supports pagination for long videos, multi-language with fallback, and proxy configuration. No API key required.",
-      "command": "npx",
+      "command": "uvx",
       "args": [
-        "-y",
-        "mcp-remote",
-        "http://192.168.2.56:3233/mcp",
-        "--allow-http"
+        "--from",
+        "git+https://github.com/jkawamoto/mcp-youtube-transcript",
+        "mcp-youtube-transcript"
       ],
-      "disabled": true,
-      "_original": {
-        "command": "uvx",
-        "args": [
-          "--from",
-          "git+https://github.com/jkawamoto/mcp-youtube-transcript",
-          "mcp-youtube-transcript"
-        ]
-      }
+      "disabled": false
     },
     "airtable": {
       "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",
