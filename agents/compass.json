@@ -96,7 +96,7 @@
         "-y",
         "@sylphx/pdf-reader-mcp"
       ],
-      "disabled": false
+      "disabled": true
     },
     "telegram": {
       "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
