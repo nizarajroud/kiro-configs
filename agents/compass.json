@@ -51,7 +51,7 @@
         "http://192.168.2.56:8080/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "excel": {
