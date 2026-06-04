@@ -523,7 +523,20 @@
       "disabled": false,
       "priority": "critical",
       "locked": false
-    }
+    },
+    "cao-mcp-server": {
+      "description": "CAO inter-agent communication — enables receiving tasks from other agents.",
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/nizarajroud/cli-agent-orchestrator.git@main",
+        "cao-mcp-server"
+      ],
+      "disabled": false,
+      "locked": false,
+      "priority": "critical"
+    }    
   },
   "tools": [
     "*"
