@@ -6,26 +6,17 @@
   "mcpServers": {
     "bedrock-project-agent": {
       "description": "Queries an Amazon Bedrock agent connected to project knowledge bases. Use this for project-specific questions: RFP details, client requirements, estimated hours, timelines, budgets, and any domain-specific or organizational data ingested into the knowledge base.",
-      "command": "npx",
+      "command": "python",
       "args": [
-        "-y",
-        "mcp-remote",
-        "http://192.168.2.56:3206/mcp",
-        "--allow-http"
+        "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
       ],
       "env": {
         "AGENT_ID": "4EBXLZQW3Q",
         "AGENT_ALIAS_ID": "TSTALIASID",
         "AWS_REGION": "ca-central-1"
       },
-      "disabled": true,
-      "priority": "standard",
-      "_original": {
-        "command": "python",
-        "args": [
-          "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
-        ]
-      }
+      "disabled": false,
+      "priority": "standard"
     },
     "context7": {
       "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
