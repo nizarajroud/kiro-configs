@@ -1,7 +1,7 @@
 ---
 inclusion: always
 ---
-# Personal Knowledge Hub — Data Principles
+# Data Principles
 
 ## Principle 1: Data is Dynamic
 

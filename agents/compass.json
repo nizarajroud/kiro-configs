@@ -1,10 +1,10 @@
 {
   "name": "compass",
-  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
+  "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
     "memory-compass": {
-      "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
+      "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
       "command": "npx",
       "args": [
         "-y",
@@ -18,7 +18,7 @@
       "priority": "critical"
     },
     "cao-mcp-server": {
-      "description": "CAO inter-agent communication — enables receiving tasks from other agents.",
+      "description": "CAO inter-agent communication \u2014 enables receiving tasks from other agents.",
       "type": "stdio",
       "command": "uvx",
       "args": [
@@ -179,6 +179,7 @@
     "@airtable"
   ],
   "resources": [
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/config/domains.yaml",
     "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/domains/**/*.md"
@@ -188,6 +189,6 @@
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer.",
+  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer.",
   "useLegacyMcpJson": true
 }
