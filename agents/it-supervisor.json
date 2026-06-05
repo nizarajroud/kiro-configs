@@ -1,0 +1,81 @@
+{
+  "name": "it-supervisor",
+  "description": "Interactive supervisor agent — orchestrates across all knowledge spaces (personal, work, forge) by routing requests to the right domain, source, or specialist agent.",
+  "prompt": "file://../prompts/it-supervisor-prompt.md",
+  "mcpServers": {
+    "memory-supervisor": {
+      "description": "Persistent memory — stores routing decisions, delegation patterns, and user preferences across sessions.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-supervisor.jsonl"
+      },
+      "disabled": false,
+      "priority": "critical"
+    }
+  },
+  "tools": [
+    "execute_bash",
+    "code",
+    "fs_read",
+    "fs_write",
+    "grep",
+    "glob",
+    "@notebooklm",
+    "@notion-workspace",
+    "@gmail",
+    "@ticktick",
+    "@excel",
+    "@telegram",
+    "@bookmarks",
+    "@alithya-knowledge-rag",
+    "@pdf-reader",
+    "@markitdown",
+    "@memory-supervisor",
+    "@airtable",
+    "@firecrawl"
+  ],
+  "allowedTools": [
+    "execute_bash",
+    "code",
+    "fs_read",
+    "fs_write",
+    "grep",
+    "glob",
+    "@memory-supervisor",
+    "@bookmarks",
+    "@firecrawl",
+    "@notebooklm",
+    "@notion-workspace",
+    "@gmail",
+    "@ticktick",
+    "@excel",
+    "@telegram",
+    "@alithya-knowledge-rag",
+    "@pdf-reader",
+    "@markitdown",
+    "@airtable"
+  ],
+  "resources": [
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/steering/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/config/domains.yaml",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/steering/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/config/domains.yaml",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/steering/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/config/domains.yaml",
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/domains/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/work/domains/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/domains/**/*.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {},
+  "useLegacyMcpJson": true,
+  "welcomeMessage": "🎯 IT-Supervisor ready. I can handle anything across personal, work, and forge — ask away.",
+  "toolAliases": {
+    "@airtable/create_table": "airtable_create_table"
+  }
+}

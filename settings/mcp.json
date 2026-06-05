@@ -40,6 +40,140 @@
         "mcp-server-fetch"
       ],
       "locked": false
+    },
+    "remote.aws-knowledge": {
+      "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://knowledge-mcp.global.api.aws"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "markitdown": {
+      "description": "Convert any document to Markdown for reading. Supports Word (.docx), Excel (.xlsx/.xls), PDF, PowerPoint (.pptx), HTML, images, and more. Use convert_to_markdown with a file:// URI to extract document contents as Markdown.",
+      "command": "/home/nizar/.markitdown-mcp/bin/markitdown-mcp",
+      "args": [],
+      "disabled": false,
+      "locked": false
+    },
+    "airtable": {
+      "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "airtable-mcp-server"
+      ],
+      "env": {
+        "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
+      },
+      "disabled": false,
+      "locked": false
+    },
+    "alithya-knowledge-rag": {
+      "description": "Personal knowledge base (remote RAG server on PC Alithya). Use this for ALL personal/private information: personal documents, notes, private files, financial records, procedures, and any data stored in Dropbox/AAA_PRIVATE_LIFE. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries.",
+      "command": "npx",
+      "args": [
+        "mcp-remote",
+        "http://192.168.2.56:8080/mcp",
+        "--allow-http"
+      ],
+      "disabled": true,
+      "locked": false
+    },
+    "cao-mcp-server": {
+      "type": "stdio",
+      "command": "cao-mcp-server"
+    },
+    "excel": {
+      "description": "Excel file manipulation MCP server (3.8k stars). Read, write, create, and modify Excel workbooks (.xlsx) without needing Microsoft Excel installed. Supports: reading/writing cells and ranges, formulas, formatting, charts, pivot tables, tables, sheet management, data validation, and conditional formatting. Use this for any operation on Excel files stored locally or on Dropbox (via /mnt/c/Users/nizar/Dropbox/...).",
+      "command": "uvx",
+      "args": [
+        "excel-mcp-server",
+        "stdio"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "firecrawl": {
+      "description": "Web scraping, crawling, and search MCP server. Use this to scrape single pages, crawl entire sites, search the web, map site URLs, extract structured data from web pages, and perform autonomous web research. Supports JSON extraction with schemas, batch scraping, and interactive page navigation. Ideal for parsing municipal sites, extracting registration info, dates, locations from complex web pages.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "gmail": {
+      "description": "Gmail and Google Calendar MCP server. Use this to search emails, read messages, create drafts, reply to emails, manage labels, and access Google Calendar events. Supports multiple Google accounts.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "mcp-mermaid": {
+      "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-mermaid"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "notebooklm": {
+      "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
+      "command": "notebooklm-mcp",
+      "args": [],
+      "disabled": false,
+      "locked": false
+    },
+    "pdf-reader": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@sylphx/pdf-reader-mcp"
+      ],
+      "disabled": true
+    },
+    "telegram": {
+      "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
+      "command": "npx",
+      "args": [
+        "@overpod/mcp-telegram"
+      ],
+      "env": {
+        "TELEGRAM_API_ID": "${TELEGRAM_API_ID}",
+        "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
+        "TZ": "America/Toronto"
+      },
+      "disabled": false,
+      "locked": false
+    },
+    "ticktick": {
+      "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "whatsapp": {
+      "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server",
+        "run",
+        "main.py"
+      ],
+      "disabled": true,
+      "locked": false
     }
   }
 }

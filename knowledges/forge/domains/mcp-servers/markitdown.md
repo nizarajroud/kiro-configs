@@ -12,6 +12,7 @@ description: Convert any document (Word, Excel, PDF, PPTX, HTML, images) to Mark
 - **Venv**: `/home/nizar/.markitdown-mcp/`
 - **Package**: `markitdown-mcp==0.0.1a4` (PyPI) — depends on `markitdown[all]>=0.1.1`
 - **Source**: https://github.com/microsoft/markitdown (⭐145k)
+- **Notion**: [MCP: MarkItDown](https://app.notion.com/p/MCP-MarkItDown-376174cb5dcc81eb9505e0674a9ab6d3)
 - **Verdict**: adopted — official Microsoft tool, single `convert_to_markdown(uri)` tool, supports all common office formats
 
 ## Tool Exposed
