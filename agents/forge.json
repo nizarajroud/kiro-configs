@@ -104,6 +104,18 @@
         "main.py"
       ],
       "disabled": true
+    },
+    "memory-forge": {
+      "description": "Persistent memory for Forge \u2014 stores discovered tools, experiment verdicts, installation notes, and patterns across sessions.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-forge.jsonl"
+      },
+      "disabled": false
     }
   },
   "tools": [
