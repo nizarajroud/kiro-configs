@@ -1,0 +1,27 @@
+{
+  "name": "supervisor",
+  "description": "Master orchestrator that coordinates exp2, compass, and forge agents based on request type.",
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "@cao-mcp-server",
+    "fs_read"
+  ],
+  "useLegacyMcpJson": false,
+  "resources": [
+    "file:///home/nizar/.aws/cli-agent-orchestrator/agent-context/supervisor.md",
+    "skill:///home/nizar/.aws/cli-agent-orchestrator/skills/**/SKILL.md"
+  ],
+  "mcpServers": {
+    "cao-mcp-server": {
+      "type": "stdio",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/nizarajroud/cli-agent-orchestrator.git@main",
+        "cao-mcp-server"
+      ]
+    }
+  }
+}
