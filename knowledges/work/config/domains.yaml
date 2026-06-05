@@ -1,0 +1,26 @@
+# Work Domain Taxonomy
+
+domains:
+  lza:
+    label: "Landing Zone Accelerator"
+    keywords: [LZA, landing zone, control tower, organizations, guardrails, SCP]
+
+  eks:
+    label: "EKS / Kubernetes"
+    keywords: [EKS, kubernetes, k8s, pod, deployment, helm, cluster]
+
+  cicd:
+    label: "CI/CD"
+    keywords: [Jenkins, pipeline, GitHub Actions, CodePipeline, build, deploy]
+
+  infrastructure:
+    label: "Infrastructure"
+    keywords: [VPC, EC2, RDS, S3, IAM, networking, security groups]
+
+  architecture:
+    label: "Architecture & Design"
+    keywords: [diagram, architecture, design, Well-Architected, pattern]
+
+  documentation:
+    label: "Documentation"
+    keywords: [Confluence, Notion, ADR, decision, meeting notes]

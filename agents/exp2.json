@@ -556,7 +556,10 @@
   "resources": [
     "file://AmazonQ.md",
     "file://README.md",
-    "file://.amazonq/rules/**/*.md"
+    "file://.amazonq/rules/**/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/steering/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/config/domains.yaml",
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/work/domains/**/*.md"
   ],
   "hooks": {
     "preToolUse": [
