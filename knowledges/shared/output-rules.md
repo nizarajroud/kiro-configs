@@ -15,41 +15,44 @@ inclusion: always
 ### Format du contenu (OBLIGATOIRE — STRICT)
 
 - **Langue** : arabe dialectal tunisien, termes techniques en anglais tels quels
-- **Sens d'écriture** : RTL (droite à gauche)
-- **Structure de chaque puce** : TOUJOURS suivre ce format EXACT :
+- **Sens d'écriture** : RTL — chaque bloc de texte DOIT commencer par le caractère Unicode RTL mark (U+202B : `‫`)
+- **Style** : prose conversationnelle naturelle (comme si tu expliques à l'oral à un tunisien). Les termes anglais sont insérés naturellement dans la phrase arabe.
 
+### Technique RTL (CRITIQUE)
+
+Chaque rich_text envoyé à Notion DOIT commencer par `‫` (U+202B) pour forcer le rendu RTL correct. Sans ce caractère, le bidi casse le rendu.
+
+### ❌ INTERDIT
+
+- Structure forcée type `[terme] : [explication] → [détails]`
+- Puces avec séparation artificielle anglais/arabe
+- Texte sans le caractère RTL mark au début
+
+### ✅ OBLIGATOIRE — Prose naturelle avec RTL mark
+
+**Exemple CORRECT (tel qu'envoyé à Notion) :**
 ```
-[terme/concept anglais] : [explication courte en tunisien] → [détails techniques en anglais si pertinent]
-```
-
-### ❌ INTERDIT — Prose libre en arabe
-
-Ne JAMAIS écrire des paragraphes ou des phrases longues en arabe mélangé avec de l'anglais.
-
-**Exemple INTERDIT :**
-```
-Lift and Shift : يحبّو ياخذو ال application متاعهم Oracle EBS إلّي موجودة on-premise ويحطّوها في cloud (Oracle Cloud Infrastructure) → migration يعني بدون ما يبدّلو فيها برشا
-```
-
-### ✅ OBLIGATOIRE — Format structuré, une idée par ligne
-
-**Exemple CORRECT :**
-```
-• Lift and Shift : ياخذو ال app من on-premise للـ cloud → migration sans changements majeurs
-• Oracle EBS : application كبيرة متاع ERP → AP, AR, GL modules
-• Environnement Production : 4 CPU, 192 GB RAM → utilisation 50%
-• Environnement Test : 4 CPU, 72 GB RAM → utilisation 9%
-• DR : موجود في data center آخر (Ste-Julie) → disaster recovery
+‫انتي Machine Learning Engineer في شركة AnyCompany Financial Services، والمهمة متاعك هي بناء مساعد مالي شخصي ذكي باش يعاون العملاء يديرو الميزانيات متاعهم وياخذو قرارات مالية مدروسة.‬
 ```
 
-### Règles STRICTES
+**Puces — Exemple CORRECT :**
+```
+‫تفهم وتجاوب مع الأسئلة باللغة الطبيعية على المالية الشخصية‬
+‫تستعمل custom tools باش تحسب وتولد visualizations‬
+‫تنسق بين عدة agents متخصصين باش تحل مشاكل معقدة‬
+```
 
-- **UNE idée par puce** — jamais 2 concepts dans la même ligne
-- **Phrases COURTES** — max 10 mots en arabe par puce
-- **Le terme anglais EN PREMIER** (à droite en RTL), suivi de `:`, suivi de l'explication tunisienne
-- Ne PAS écrire de prose/paragraphes — UNIQUEMENT des puces structurées
-- Ne PAS traduire les termes techniques anglais — les garder tels quels
-- L'explication en arabe doit être simple, conversationnelle (comme à l'oral)
+**Headings — Exemple CORRECT :**
+```
+‫Task 1: بناء مساعد ميزانية شخصي‬
+```
+
+### Règles de rédaction
+
+- Écrire en **prose conversationnelle** — comme si tu expliques à quelqu'un à l'oral
+- Les termes techniques anglais s'insèrent **dans la phrase arabe** sans séparation
+- Ne PAS traduire les termes techniques — les garder en anglais tel quel
+- Chaque paragraphe, puce, heading = une unité qui commence par `‫` et finit par `‬`
 - Toujours créer la page Notion AVANT d'afficher le contenu dans le chat
 
 ---
