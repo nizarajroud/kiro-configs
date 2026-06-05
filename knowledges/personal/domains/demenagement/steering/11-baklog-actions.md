@@ -1,3 +1,7 @@
+---
+name: demenagement-backlog
+description: Backlog des actions du déménagement.
+---
 # Steering File 11 — Baklog des actions (source Notion)
 
 > Source : Page Notion baklog "Action à prendre"

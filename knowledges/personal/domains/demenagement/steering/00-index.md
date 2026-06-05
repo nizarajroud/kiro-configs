@@ -1,3 +1,7 @@
+---
+name: demenagement-index
+description: Index des steering files du déménagement — structure et liens.
+---
 # 🏠 Projet Déménagement — Index des Steering Files
 
 > Planification du déménagement : Longueuil, juin 2026

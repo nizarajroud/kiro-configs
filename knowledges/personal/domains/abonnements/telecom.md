@@ -1,3 +1,7 @@
+---
+name: abonnements-telecom
+description: Abonnements télécom (téléphone, internet, forfaits).
+---
 # Télécommunications
 
 ## Téléphone — Nizar

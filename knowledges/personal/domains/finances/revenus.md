@@ -1,3 +1,7 @@
+---
+name: finances-revenus
+description: Revenus (salaire, sources).
+---
 # Revenus
 
 ## Salaire

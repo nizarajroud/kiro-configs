@@ -1,3 +1,7 @@
+---
+name: demenagement-contexte-familial
+description: Contexte familial du déménagement (membres, besoins, contraintes).
+---
 # Steering File 01 — Contexte familial et contraintes personnelles
 
 > Ce fichier peut être enrichi à tout moment avec de nouvelles contraintes.

@@ -1,3 +1,7 @@
+---
+name: demenagement-adresses
+description: Liste des changements d'adresse à effectuer.
+---
 # Steering File 08 — Changements d'adresse et notifications
 
 > Source : [Page Notion — Cibles concernées par le changement d'adresse](https://app.notion.com/p/2745-Boul-Roland-Therrien-309174cb5dcc8060857be40d291d49b7)

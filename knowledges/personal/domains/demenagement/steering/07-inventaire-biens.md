@@ -1,3 +1,7 @@
+---
+name: demenagement-inventaire
+description: Inventaire des biens à déménager.
+---
 # Steering File 07 — Inventaire des biens à déménager
 
 > Source : [Page Notion — Étape de déménagement](https://app.notion.com/p/2745-Boul-Roland-Therrien-309174cb5dcc8060857be40d291d49b7)

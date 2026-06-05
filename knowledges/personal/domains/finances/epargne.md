@@ -1,3 +1,7 @@
+---
+name: finances-epargne
+description: Épargne (CELI, REER, comptes).
+---
 # Épargne & Cotisations mensuelles
 
 ## Cotisations mensuelles par compte

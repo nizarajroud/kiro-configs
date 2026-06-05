@@ -1,3 +1,7 @@
+---
+name: carriere-contexte
+description: Contexte de carrière actuel (poste, objectifs, évolution).
+---
 # Steering File 01 — Contexte professionnel actuel
 
 > Source : discussions avec l'agent + informations connues

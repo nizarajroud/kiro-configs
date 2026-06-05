@@ -1,3 +1,7 @@
+---
+name: demenagement-contrats
+description: Données contractuelles (bail, hypothèque, notaire).
+---
 # Steering File 09 — Données contractuelles (promesse d'achat)
 
 > Sources : PDFs dans ~/My-KB-Documents/Projet-immobilier/promesse d'achat/

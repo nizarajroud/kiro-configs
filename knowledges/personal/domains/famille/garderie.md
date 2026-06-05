@@ -1,3 +1,7 @@
+---
+name: famille-garderie
+description: Informations garderie scolaire des enfants.
+---
 # Garderie scolaire
 
 | Élément | Valeur |

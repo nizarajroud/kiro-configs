@@ -1,3 +1,7 @@
+---
+name: demenagement-maison
+description: Fiche de la nouvelle maison (adresse, caractéristiques, détails).
+---
 # Steering File 06 — Fiche de la nouvelle maison
 
 > Source de vérité : [Page Notion — 2745 Boul. Roland-Therrien](https://app.notion.com/p/2745-Boul-Roland-Therrien-309174cb5dcc8060857be40d291d49b7)

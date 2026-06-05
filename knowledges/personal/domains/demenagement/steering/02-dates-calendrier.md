@@ -1,3 +1,7 @@
+---
+name: demenagement-dates
+description: Dates clés et calendrier du déménagement.
+---
 # Steering File 02 — Contraintes de dates et calendrier
 
 > Sources : liste des contraintes + PDFs + Notion + confirmations verbales

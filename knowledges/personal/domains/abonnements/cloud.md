@@ -1,3 +1,7 @@
+---
+name: abonnements-cloud
+description: Abonnements cloud (services, coûts mensuels).
+---
 # Abonnements Cloud
 
 | Service | Montant/mois | Plan | Stockage | Notes |

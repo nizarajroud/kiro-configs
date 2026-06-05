@@ -1,3 +1,7 @@
+---
+name: demenagement-chronologie
+description: Chronologie complète du projet de déménagement.
+---
 # Steering File 10 — Chronologie complète du déménagement
 
 > Plan détaillé étape par étape, du 1er mai au 30 juin 2026.

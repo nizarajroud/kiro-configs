@@ -1,3 +1,7 @@
+---
+name: carriere-journal
+description: Journal de carrière — notes et décisions.
+---
 # Steering File 02 — Journal des actions carrière
 
 > Log chronologique des discussions, décisions et actions liées à l'évolution de carrière.

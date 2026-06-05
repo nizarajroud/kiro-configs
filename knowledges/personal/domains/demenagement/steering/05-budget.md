@@ -1,3 +1,7 @@
+---
+name: demenagement-budget
+description: Budget du déménagement (coûts, estimations, suivi).
+---
 # Steering File 05 — Contraintes budgétaires
 
 > Ce fichier peut être enrichi à tout moment avec de nouvelles contraintes.

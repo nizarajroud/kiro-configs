@@ -1,3 +1,7 @@
+---
+name: finances-investissements
+description: Investissements (placements, portefeuille).
+---
 # Investissements
 
 ## Comptes d'investissement actifs

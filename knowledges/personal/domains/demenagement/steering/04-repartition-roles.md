@@ -1,3 +1,7 @@
+---
+name: demenagement-roles
+description: Répartition des rôles Nizar/Abir pour le déménagement.
+---
 # Steering File 04 — Répartition des rôles
 
 > Ce fichier peut être enrichi à tout moment avec de nouvelles contraintes.

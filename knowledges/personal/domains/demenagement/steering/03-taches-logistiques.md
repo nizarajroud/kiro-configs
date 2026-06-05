@@ -1,3 +1,7 @@
+---
+name: demenagement-taches
+description: Tâches logistiques du déménagement (boîtes, transport, services).
+---
 # Steering File 03 — Tâches logistiques
 
 > Ce fichier peut être enrichi à tout moment avec de nouvelles contraintes.

@@ -1,3 +1,7 @@
+---
+name: assurances-auto
+description: Assurance automobile (police, couverture, coûts).
+---
 # Assurance automobile
 
 | Élément | Valeur |

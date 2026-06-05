@@ -1,3 +1,7 @@
+---
+name: demenagement-urgentes
+description: Actions urgentes du déménagement (priorité immédiate).
+---
 # 🚨 Actions à prendre DÈS QUE POSSIBLE
 
 > Ce fichier liste les actions urgentes à faire CETTE SEMAINE.

@@ -1,3 +1,7 @@
+---
+name: carriere-index
+description: Index du projet carrière chez Alithya.
+---
 # 💼 Projet Carrière — Index des Steering Files
 
 > Planification et suivi de l'évolution de carrière chez Alithya.

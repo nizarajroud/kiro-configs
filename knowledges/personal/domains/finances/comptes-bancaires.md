@@ -1,3 +1,7 @@
+---
+name: finances-comptes
+description: Comptes bancaires (institutions, numéros, types).
+---
 # Comptes bancaires
 
 ## Institutions et comptes

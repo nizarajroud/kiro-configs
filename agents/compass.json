@@ -181,7 +181,7 @@
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/config/domains.yaml",
-    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/domains/**/steering/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/domains/**/*.md"
   ],
   "hooks": {},
   "toolAliases": {

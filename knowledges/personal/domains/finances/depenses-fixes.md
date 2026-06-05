@@ -1,3 +1,7 @@
+---
+name: finances-depenses
+description: Dépenses fixes mensuelles.
+---
 # Dépenses fixes mensuelles
 
 ## Logement

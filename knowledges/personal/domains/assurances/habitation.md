@@ -1,3 +1,7 @@
+---
+name: assurances-habitation
+description: Assurance habitation (police, couverture, coûts).
+---
 # Assurance habitation
 
 | Élément | Valeur |
