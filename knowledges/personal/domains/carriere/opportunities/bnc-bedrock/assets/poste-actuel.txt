@@ -1,0 +1,41 @@
+> Client : Beneva (Assurance) 04/2026 to present
+
+# 8 AWS Cloud Architect – Serverless & Integration Platform
+
+Project : AWS Serverless Integration Platform – Équipe SALSA (Intégration Applicative AWS)
+
+As an AWS Cloud Architect within the SALSA integration team at Beneva, I design and maintain the enterprise serverless 
+platform that provides reusable infrastructure blueprints, CI/CD pipelines, and architectural guidelines enabling 
+product teams to deploy event-driven workloads on AWS following organizational standards and security best practices.
+
+Designed reusable Terraform shared modules and Backstage software templates on the internal Developer Portal, enabling 
+product teams to self-service provision standardized AWS serverless infrastructure with built-in compliance and 
+governance guardrails.
+
+Engineered GitHub Actions reusable workflows for serverless CI/CD pipelines, standardizing build, test, and deployment 
+processes across multiple product teams and environments (lab, dev, production).
+
+Authored and maintained architectural guidelines and development standards for AWS serverless services (Lambda, API 
+Gateway, Glue, EventBridge, AppSync, S3, CloudFront, SES), ensuring consistency and operational excellence across the 
+organization.
+
+Technical Environment:
+
+Cloud Services: AWS Lambda, API Gateway, S3, Glue, EventBridge, AppSync, SES, CloudFront, Kinesis, IAM, AWS SSO
+
+Infrastructure as Code: Terraform (shared modules)
+
+CI/CD: GitHub Actions (reusable workflows & composite actions), Jenkins, Nexus, HashiCorp Vault
+
+Developer Platform: Backstage (Developer Portal, Software Templates), Renovate
+
+Containers & Orchestration: Kubernetes (EKS), Testkube, FluxCD (GitOps)
+
+Observability: Dynatrace
+
+Languages: TypeScript, Python (Lambda Powertools)
+
+AWS Architect & DevOps Lead.
+3
+
+Methodologies : SAFe/Agile (PI Planning)

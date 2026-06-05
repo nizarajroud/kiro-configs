@@ -145,5 +145,6 @@
   ],
   "hooks": {},
   "toolsSettings": {},
+  "useLegacyMcpJson": true,
   "welcomeMessage": "\ud83d\udd28 Forge ready. Tell me which MCP server to install."
 }

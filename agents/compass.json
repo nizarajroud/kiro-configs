@@ -89,6 +89,12 @@
       ],
       "disabled": true
     },
+    "markitdown": {
+      "description": "Convert any document to Markdown for reading. Supports Word (.docx), Excel (.xlsx/.xls), PDF, PowerPoint (.pptx), HTML, images, and more. Use convert_to_markdown with a file:// URI to extract document contents as Markdown.",
+      "command": "/home/nizar/.markitdown-mcp/bin/markitdown-mcp",
+      "args": [],
+      "disabled": false
+    },
     "telegram": {
       "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
       "command": "npx",
@@ -148,6 +154,7 @@
     "@bookmarks",
     "@alithya-knowledge-rag",
     "@pdf-reader",
+    "@markitdown",
     "@memory-compass",
     "@airtable",
     "@firecrawl"
@@ -167,6 +174,7 @@
     "@telegram",
     "@alithya-knowledge-rag",
     "@pdf-reader",
+    "@markitdown",
     "@airtable"
   ],
   "resources": [

@@ -22,6 +22,12 @@ description: Index du projet carrière chez Alithya.
 | 01 | [Contexte actuel](./01-contexte.md) | Situation professionnelle, certifs, mandat, objectifs |
 | 02 | [Journal des actions](./02-journal.md) | Log chronologique des discussions et actions prises |
 
+## Opportunités
+
+| Dossier | Client | Technologie | Statut |
+|---------|--------|-------------|--------|
+| [BNC Bedrock](../opportunities/bnc-bedrock/) | BNC | AWS Bedrock | En évaluation |
+
 ## Décisions en attente
 
 - [ ] Réponse/feedback du manager suite à la discussion du 4 juin 2026

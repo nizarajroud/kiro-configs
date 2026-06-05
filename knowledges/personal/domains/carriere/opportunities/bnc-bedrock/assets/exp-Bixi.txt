@@ -1,0 +1,21 @@
+CDI à temps plein · 3 mois
+
+Canada · À distance
+
+AWS Solutions Architect
+
+mars 2026 - avr. 2026 · 2 mois
+
+Project: AWS Migration & Infrastructure Modernization — BIXI Montréal 
+As AWS Solutions Architect, I led the full analysis and design of the cloud migration strategy for BIXI Montréal, under a  mandate covering the migration of operational infrastructure to AWS, alongside a vendor migration (Lyft → Helium).
+
+Analyzed and documented the existing infrastructure: 20 Python scripts on Windows VMs (operational automation), the Panorama application (Vue3 + Express, Docker on-prem), and their dependencies on Lyft APIs, the MySQL Datamart, and 8 external services.
+Designed and evaluated 3 AWS migration scenarios (Big Bang, Hybrid + Shadow Mode, Conservative) with cost estimates (AWS Pricing Calculator), risk matrices, per-script effort tables, and alignment with the AWS Well-Architected Framework.
+
+Technical Environment:
+
+Cloud & AWS Services: Lambda, ECS Fargate, EventBridge Scheduler, AppConfig, Secrets Manager, CloudWatch (EMF), NAT Gateway, VPC, ECR, ALB, S3, KMS, IAM
+Infrastructure: Windows VM (Task Scheduler), Docker, GitHub Actions (CI/CD)
+Data: Snowflake, MySQL (Datamart), Parquet/S3 (HDP), REST APIs (HCP/Helium)
+Tools: AWS Pricing Calculator, Python (diagrams library), Notion API, python-pptx
+Methodologies: AWS Well-Architected Framework, Strangler Fig Pattern, Shadow Mode, GitOps, Agile
