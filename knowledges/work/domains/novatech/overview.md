@@ -52,5 +52,5 @@ description: Projet NovaTech — contexte, objectifs, architecture, stack techni
 
 | Fichier | Outil | Chemin |
 |---------|-------|--------|
-| Brief projet | pdf-reader | `knowledges/work/domains/novatech/assets/document.docx` |
-| Données | excel | `knowledges/work/domains/novatech/assets/data.xlsx` |
+| EBS Lift and Shift Questionnaire | pdf-reader | `knowledges/work/domains/novatech/assets/EBS Lift and Shift Questionnaire TemplateNovatech.docx` |
+| Current State Inventory (Oracle Workload) | excel | `knowledges/work/domains/novatech/assets/Current State Inventory_Oracle_Workload_TemplateNovatech.xlsx` |
