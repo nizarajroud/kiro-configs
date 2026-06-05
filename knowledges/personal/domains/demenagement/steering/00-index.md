@@ -86,6 +86,15 @@ description: Index des steering files du déménagement — structure et liens.
 - [Page Notion](https://app.notion.com/p/2745-Boul-Roland-Therrien-309174cb5dcc8060857be40d291d49b7)
 - PDFs : promesse-d-achat.pdf, MO dates Roland Therrien.pdf, Modifications-promesse-d-achat.pdf
 
+## Diagrammes PDF (lisibles via `pdf-reader`)
+
+| Fichier | Contenu |
+|---------|---------|
+| `knowledges/personal/domains/demenagement/les Diagrams/01-gantt-timeline-projet.pdf` | Gantt — timeline complète du projet |
+| `knowledges/personal/domains/demenagement/les Diagrams/02-flowchart-jour-j.pdf` | Flowchart — déroulement du jour J |
+| `knowledges/personal/domains/demenagement/les Diagrams/03-checklist-par-phase.pdf` | Checklist par phase |
+| `knowledges/personal/domains/demenagement/les Diagrams/04-coordination-nizar-abir.pdf` | Coordination Nizar/Abir |
+
 ---
 
 _Dernière mise à jour : 2026-05-01_
