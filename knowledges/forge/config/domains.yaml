@@ -1,0 +1,14 @@
+# Forge Domain Taxonomy
+
+domains:
+  mcp-servers:
+    label: "MCP Servers"
+    keywords: [mcp, server, install, configure, wrapper, tool]
+
+  patterns:
+    label: "Patterns & Methods"
+    keywords: [pattern, workflow, architecture, method, technique, prompt engineering]
+
+  experiments:
+    label: "Experiments"
+    keywords: [test, try, evaluate, poc, prototype, experiment]

@@ -1,6 +1,6 @@
 {
   "name": "forge",
-  "description": "Installs and configures new MCP servers: creates wrappers, adds secrets, updates agent config, documents on Notion with Mermaid diagrams.",
+  "description": "Tooling and technical discovery agent. Installs MCP servers, discovers new tools/patterns, experiments, and documents everything.",
   "prompt": "file://../prompts/forge-prompt.md",
   "mcpServers": {
     "airtable": {
@@ -121,7 +121,12 @@
     "glob",
     "@mcp-mermaid"
   ],
-  "resources": [],
+  "resources": [
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/steering/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/config/domains.yaml",
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/domains/**/*.md"
+  ],
   "hooks": {},
   "toolsSettings": {},
   "welcomeMessage": "\ud83d\udd28 Forge ready. Tell me which MCP server to install."
