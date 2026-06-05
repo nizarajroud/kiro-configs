@@ -12,24 +12,44 @@ inclusion: always
 1. **Si on est déjà dans le contexte d'une page Notion** → créer une **sous-page** de cette page, titrée "Explication en tunisien — [sujet]"
 2. **Si on n'est PAS dans un contexte de page Notion** → créer une page sous la page **"Mes notes"**, titrée "Explication en tunisien — [sujet]"
 
-### Format du contenu (OBLIGATOIRE)
+### Format du contenu (OBLIGATOIRE — STRICT)
 
 - **Langue** : arabe dialectal tunisien, termes techniques en anglais tels quels
 - **Sens d'écriture** : RTL (droite à gauche)
-- **Structure de chaque puce** (dans l'ordre de lecture RTL) :
-  ```
-  [terme anglais] : [explication en arabe tunisien] → [détails techniques en anglais]
-  ```
-- **Exemple attendu** :
-  ```
-  lab-base متاع workspace يستعمل : pr-merge
-  خاوي workspace يخلّي : branch
-  ```
+- **Structure de chaque puce** : TOUJOURS suivre ce format EXACT :
 
-### Règles supplémentaires
+```
+[terme/concept anglais] : [explication courte en tunisien] → [détails techniques en anglais si pertinent]
+```
 
+### ❌ INTERDIT — Prose libre en arabe
+
+Ne JAMAIS écrire des paragraphes ou des phrases longues en arabe mélangé avec de l'anglais.
+
+**Exemple INTERDIT :**
+```
+Lift and Shift : يحبّو ياخذو ال application متاعهم Oracle EBS إلّي موجودة on-premise ويحطّوها في cloud (Oracle Cloud Infrastructure) → migration يعني بدون ما يبدّلو فيها برشا
+```
+
+### ✅ OBLIGATOIRE — Format structuré, une idée par ligne
+
+**Exemple CORRECT :**
+```
+• Lift and Shift : ياخذو ال app من on-premise للـ cloud → migration sans changements majeurs
+• Oracle EBS : application كبيرة متاع ERP → AP, AR, GL modules
+• Environnement Production : 4 CPU, 192 GB RAM → utilisation 50%
+• Environnement Test : 4 CPU, 72 GB RAM → utilisation 9%
+• DR : موجود في data center آخر (Ste-Julie) → disaster recovery
+```
+
+### Règles STRICTES
+
+- **UNE idée par puce** — jamais 2 concepts dans la même ligne
+- **Phrases COURTES** — max 10 mots en arabe par puce
+- **Le terme anglais EN PREMIER** (à droite en RTL), suivi de `:`, suivi de l'explication tunisienne
+- Ne PAS écrire de prose/paragraphes — UNIQUEMENT des puces structurées
 - Ne PAS traduire les termes techniques anglais — les garder tels quels
-- L'explication en arabe doit être simple, conversationnelle (comme si tu expliques à quelqu'un à l'oral)
+- L'explication en arabe doit être simple, conversationnelle (comme à l'oral)
 - Toujours créer la page Notion AVANT d'afficher le contenu dans le chat
 
 ---
