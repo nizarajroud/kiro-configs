@@ -24,3 +24,7 @@ domains:
   documentation:
     label: "Documentation"
     keywords: [Confluence, Notion, ADR, decision, meeting notes]
+
+  novatech:
+    label: "NovaTech"
+    keywords: [NovaTech, novatech, Oracle EBS, lift and shift, Oracle Cloud Infrastructure, OCI]
