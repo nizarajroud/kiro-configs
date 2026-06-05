@@ -18,17 +18,8 @@
       "priority": "critical"
     },
     "cao-mcp-server": {
-      "description": "CAO inter-agent communication \u2014 enables receiving tasks from other agents.",
       "type": "stdio",
-      "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/nizarajroud/cli-agent-orchestrator.git@main",
-        "cao-mcp-server"
-      ],
-      "disabled": false,
-      "locked": false,
-      "priority": "critical"
+      "command": "cao-mcp-server"
     },
     "airtable": {
       "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",

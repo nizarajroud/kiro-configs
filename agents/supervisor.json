@@ -19,12 +19,7 @@
   "mcpServers": {
     "cao-mcp-server": {
       "type": "stdio",
-      "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/nizarajroud/cli-agent-orchestrator.git@main",
-        "cao-mcp-server"
-      ]
+      "command": "cao-mcp-server"
     }
   }
 }
