@@ -47,3 +47,10 @@ description: Projet NovaTech — contexte, objectifs, architecture, stack techni
 - Confluence: (URL espace)
 - GitHub: (URL repo)
 - Architecture diagram: (URL ou chemin)
+
+## Documents sources (lisibles via outils MCP)
+
+| Fichier | Outil | Chemin |
+|---------|-------|--------|
+| Brief projet | pdf-reader | `knowledges/work/domains/novatech/assets/document.docx` |
+| Données | excel | `knowledges/work/domains/novatech/assets/data.xlsx` |
