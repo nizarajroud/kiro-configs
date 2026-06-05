@@ -59,12 +59,28 @@ When the user explicitly specifies a source ("cherche dans NotebookLM", "regarde
 | NotebookLM | `notebook_query(notebook_id, query)` |
 | Notion | `APIpostsearch(query)` |
 | Alithya RAG | `search_knowledge(query)` |
+| Airtable | `list_records(baseId, tableId)` / `update_records(...)` |
 | TickTick | `query_tasks(text_query, tags, project_names)` |
 | Gmail | `query_gmail_emails(query)` |
 | Telegram | `telegramsearchmessages(chatId, query)` |
 | Bookmarks | `search_bookmarks(query)` |
 | Excel | `read_data_from_excel(filepath, sheet)` |
+| FireCrawl | `firecrawl_scrape(url)` |
 | Memory | `memory-compass` → `search_nodes(query)` / `create_entities(...)` |
+
+### Domain-Specific Override: Santé
+
+When query matches santé (médecin, clinique, RAMQ, pharmacie, dentiste, hôpital):
+1. Bookmarks FIRST → 2. Notion → 3. NotebookLM, Gmail
+
+### Override: Information publique → FireCrawl
+
+When query is about PUBLIC information (tarifs, procédures officielles, formulaires, horaires, sites gouvernementaux):
+1. **FireCrawl** (scrape official site) — ALWAYS first
+2. Bookmarks — fallback
+3. General knowledge — last resort with explicit warning
+
+**Do NOT use NotebookLM/Notion/Gmail for general public info.**
 
 ## RESPONSE FORMAT (MANDATORY)
 
