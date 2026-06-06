@@ -1,7 +1,8 @@
 Pour l'opportunité BNC, voici la description de poste. Peux-tu ajuster ton CV en conséquense?
  
 About the Role
-We are looking for an experienced Cloud Infrastructure Consultant to join our team delivering AI service onboarding into an enterprise AWS Landing Zone for a financial services customer. You will be responsible for enabling AI services with production-ready security, governance, and compliance controls.
+We are looking for an experienced Cloud Infrastructure Consultant to join our team delivering AI service onboarding into an enterprise AWS Landing Zone for a financial services customer.
+ You will be responsible for enabling AI services with production-ready security, governance, and compliance controls.
 
 What You'll Do
 Onboard AI services into a multi-account AWS Landing Zone with foundational and production-readiness controls
@@ -18,17 +19,17 @@ What You Bring
 3+ years of experience in AWS service onboarding or cloud platform engineering within enterprise Landing Zones
 Hands-on experience with AWS Organizations, SCPs, RCPs, IAM Identity Center, and Permission Sets
 Strong knowledge of Amazon Bedrock, including:
-Model Access and Inference Profiles (cross-region inference)
-Knowledge Bases (with OpenSearch Serverless as vector store)
-Guardrails (content filters, PII, prompt attack, organizational enforcement)
-Data Automation (as KB parser)
-Bedrock Agents
+    Model Access and Inference Profiles (cross-region inference)
+    Knowledge Bases (with OpenSearch Serverless as vector store)
+    Guardrails (content filters, PII, prompt attack, organizational enforcement)
+    Data Automation (as KB parser)
+    Bedrock Agents
 Strong knowledge of Amazon Bedrock AgentCore, including:
-Runtime (MicroVM deployment, session management)
-Gateway (MCP server connectivity)
-Memory (session state management)
-Observability (tracing, metrics, logging)
-Evaluations (agent quality assessment)
+    Runtime (MicroVM deployment, session management)
+    Gateway (MCP server connectivity)
+    Memory (session state management)
+    Observability (tracing, metrics, logging)
+    Evaluations (agent quality assessment)
 Experience building and publishing Terraform modules at scale
 Familiarity with Terraform Cloud, Sentinel policies, Snyk IaC scanning, and GitHub Actions CI/CD
 Understanding of VPC endpoints (PrivateLink), network security, and KMS encryption

@@ -39,25 +39,7 @@
     "@firecrawl"
   ],
   "allowedTools": [
-    "execute_bash",
-    "code",
-    "fs_read",
-    "fs_write",
-    "grep",
-    "glob",
-    "@memory-supervisor",
-    "@bookmarks",
-    "@firecrawl",
-    "@notebooklm",
-    "@notion-workspace",
-    "@gmail",
-    "@ticktick",
-    "@excel",
-    "@telegram",
-    "@alithya-knowledge-rag",
-    "@pdf-reader",
-    "@markitdown",
-    "@airtable"
+    "*"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",

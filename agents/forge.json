@@ -26,10 +26,7 @@
     "@mcp-mermaid"
   ],
   "allowedTools": [
-    "fs_read",
-    "grep",
-    "glob",
-    "@mcp-mermaid"
+    "*"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",

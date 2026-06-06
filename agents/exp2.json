@@ -357,7 +357,7 @@
     "@remote.bridge.aws-mcp/aws___retrieve_skill": "aws_mcp_retrieve_skill"
   },
   "allowedTools": [
-    "fs_read"
+    "*"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
@@ -377,5 +377,6 @@
     ]
   },
   "toolsSettings": {},
-  "useLegacyMcpJson": true
+  "useLegacyMcpJson": true,
+  "welcomeMessage": "⚡ Exp2 ready. Your work & technical agent — code, cloud, architecture, and beyond."
 }
