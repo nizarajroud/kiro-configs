@@ -64,9 +64,8 @@ servers:
     target: local
     reason: Local
   mural:
-    target: pcalt
+    target: local
     reason: Local
-    port_offset: 26
   remote.aws-knowledge:
     target: local
     reason: Local
