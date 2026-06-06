@@ -1,7 +1,25 @@
 {
+  "api.codewhisperer.service": {
+    "endpoint": "https://codewhisperer.us-east-1.amazonaws.com",
+    "region": "us-east-1"
+  },
+  "api.cps.service": {
+    "endpoint": "https://codewhisperer.us-east-1.amazonaws.com",
+    "region": "us-east-1"
+  },
+  "api.krs.service": {
+    "endpoint": "https://codewhisperer.us-east-1.amazonaws.com",
+    "region": "us-east-1"
+  },
+  "api.oidc.scopePrefix": "codewhisperer",
+  "api.q.service": {
+    "endpoint": "https://codewhisperer.us-east-1.amazonaws.com",
+    "region": "us-east-1"
+  },
+  "app.disableAutoupdates": true,
   "autocomplete.disable": false,
   "chat.enableTodoList": true,
+  "chat.ui": "legacy",
   "inline.enabled": false,
-  "mcp.loadedBefore": true,
-  "chat.ui": "legacy"
+  "mcp.loadedBefore": true
 }
