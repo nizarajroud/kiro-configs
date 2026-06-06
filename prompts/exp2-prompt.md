@@ -125,8 +125,11 @@ The `knowledges/work/` directory contains:
 - **Read-only mode enforced**
 
 ### 22. Image Analysis (READ-ONLY) → `mcp-image-recognition`
-- Analyzing images via Bedrock vision models
-- Requires gateway on localhost:8000
+- Analyzing images: architecture diagrams, screenshots, documents, photos
+- Extracting text (OCR) from images
+- Describing visual content of JPEG/PNG files
+- Requires Bedrock Access Gateway running locally (localhost:8766)
+- Do NOT use for generating or modifying images
 
 ### 23. Memory → `memory`
 - Persistent knowledge graph across sessions

@@ -226,23 +226,6 @@
         "args": []
       }
     },
-    "mural": {
-      "description": "MURAL collaboration tool. Use this whenever the user mentions 'mural', 'MURAL', a mural board, or visual collaboration content. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54). Supports: listing workspaces/rooms/murals, reading all content from a mural (sticky notes, shapes, text, images), searching text inside murals, creating/updating/deleting sticky notes, and creating new murals.",
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "http://192.168.2.56:3226/mcp",
-        "--allow-http"
-      ],
-      "disabled": true,
-      "_original": {
-        "command": "python3",
-        "args": [
-          "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
-        ]
-      }
-    },
     "awslabs.eks-mcp-server": {
       "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
       "command": "python3",
@@ -265,29 +248,9 @@
       },
       "disabled": false
     },
-    "mcp-image-recognition": {
-      "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-remote",
-        "http://192.168.2.56:3219/mcp",
-        "--allow-http"
-      ],
-      "disabled": true,
-      "_original": {
-        "command": "python3",
-        "args": [
-          "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
-        ]
-      }
-    },
     "memory-exp2": {
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ],
+      "command": "mcp-server-memory",
+      "args": [],
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-exp2.jsonl"
       },
@@ -331,17 +294,6 @@
         "mcp-youtube-transcript"
       ],
       "disabled": true
-    },
-    "ssh-mcp-server": {
-      "description": "SSH remote server management via ~/.ssh/config host aliases. Use this to execute commands on remote hosts, upload/download files, and list configured SSH servers. Supports bastion hosts, SOCKS proxy, 2FA, and multi-connection configs.",
-      "command": "python3",
-      "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/ssh_mcp_wrapper.py"
-      ],
-      "env": {},
-      "disabled": false,
-      "priority": "critical",
-      "locked": false
     }
   },
   "tools": [
@@ -353,7 +305,6 @@
     "@remote.bridge.aws-mcp/aws___search_documentation": "aws_mcp_search_docs",
     "@remote.bridge.aws-mcp/aws___list_regions": "aws_mcp_regions",
     "@remote.bridge.aws-mcp/aws___recommend": "aws_mcp_recommend",
-    "@airtable/create_table": "airtable_create_table",
     "@remote.bridge.aws-mcp/aws___retrieve_skill": "aws_mcp_retrieve_skill"
   },
   "allowedTools": [

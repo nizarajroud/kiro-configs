@@ -5,11 +5,8 @@
   "mcpServers": {
     "memory-supervisor": {
       "description": "Persistent memory — stores routing decisions, delegation patterns, and user preferences across sessions.",
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ],
+      "command": "mcp-server-memory",
+      "args": [],
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-supervisor.jsonl"
       },
@@ -57,7 +54,5 @@
   "toolsSettings": {},
   "useLegacyMcpJson": true,
   "welcomeMessage": "🎯 IT-Supervisor ready. I can handle anything across personal, work, and forge — ask away.",
-  "toolAliases": {
-    "@airtable/create_table": "airtable_create_table"
-  }
+  "toolAliases": {}
 }

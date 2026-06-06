@@ -5,11 +5,8 @@
   "mcpServers": {
     "memory-forge": {
       "description": "Persistent memory for Forge — stores discovered tools, experiment verdicts, installation notes, and patterns across sessions.",
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ],
+      "command": "mcp-server-memory",
+      "args": [],
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-forge.jsonl"
       },
@@ -38,7 +35,5 @@
   "toolsSettings": {},
   "useLegacyMcpJson": true,
   "welcomeMessage": "🔨 Forge ready. Tell me which MCP server to install.",
-  "toolAliases": {
-    "@airtable/create_table": "airtable_create_table"
-  }
+  "toolAliases": {}
 }
