@@ -29,18 +29,6 @@
       "disabled": false,
       "priority": "standard"
     },
-    "github": {
-      "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
-      "command": "python3",
-      "args": [
-        "/home/nizar/.kiro/wrappers/github_wrapper.py"
-      ],
-      "env": {
-        "GITHUB_READ_ONLY": "0",
-        "GITHUB_TOOLSETS": "all"
-      },
-      "disabled": false
-    },
     "claude-cli": {
       "command": "npx",
       "args": [

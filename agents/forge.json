@@ -13,15 +13,7 @@
       "disabled": false
     }
   },
-  "tools": [
-    "fs_read",
-    "fs_write",
-    "execute_bash",
-    "grep",
-    "glob",
-    "@notion-workspace",
-    "@mcp-mermaid"
-  ],
+  "tools": [],
   "allowedTools": [
     "*"
   ],
