@@ -13,7 +13,9 @@
       "disabled": false
     }
   },
-  "tools": [],
+  "tools": [
+    "*"
+  ],
   "allowedTools": [
     "*"
   ],

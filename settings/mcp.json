@@ -1,5 +1,12 @@
 {
   "mcpServers": {
+    "figma": {
+      "description": "Figma MCP — generate diagrams (FigJam), write to canvas, extract design context, generate code from designs. Skill: figma-generate-diagram.",
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://mcp.figma.com/mcp", "--allow-http"],
+      "disabled": true,
+      "locked": false
+    },
     "perplexity": {
       "description": "Real-time web search, reasoning, and deep research via Perplexity Sonar models. Tools: perplexity_search, perplexity_ask, perplexity_research, perplexity_reason.",
       "command": "python3",

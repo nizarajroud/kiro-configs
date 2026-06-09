@@ -28,8 +28,7 @@ When documenting a discovery or installation, ALWAYS create/update the relevant 
 
 You operate within the project at `/home/nizar/HomeWspce/kiro-configs/`. The key files you manage:
 
-- **Agent config**: `agents/exp2.json` — the main agent's MCP server definitions
-- **System prompt**: `prompts/exp2-prompt.md` — routing instructions for the main agent
+- **MCP config**: `settings/mcp.json` — all MCP server definitions (shared across agents)
 - **Wrappers**: `wrappers/` — Python/Bash scripts that load secrets and launch MCP servers
 - **Secrets**: `.env` — all API keys, tokens, and credentials (never hardcode secrets elsewhere)
 - **Credentials**: `credentials/` — OAuth tokens or persistent auth files
@@ -47,7 +46,7 @@ import os
 import sys
 from dotenv import load_dotenv
 
-load_dotenv("/home/nizar/.kiro/.env")
+load_dotenv("/home/nizar/HomeWspce/kiro-configs/.env")
 
 os.environ.setdefault("VAR_NAME", os.environ.get("ENV_KEY", ""))
 
@@ -63,26 +62,19 @@ os.execvp("command", ["command", "arg1", "arg2"])
 export NEW_VAR=value
 ```
 
-### Step 3 — Add the MCP block to `agents/exp2.json`
+### Step 3 — Add the MCP block to `settings/mcp.json`
 
 ```json
 "<server-name>": {
   "description": "<Clear sentence explaining WHEN to use this server and WHAT it does>",
   "command": "...",
   "args": ["..."],
-  "disabled": false
+  "disabled": false,
+  "locked": false
 }
 ```
 
-### Step 4 — Update `prompts/exp2-prompt.md`
-
-Add a new numbered section following the existing pattern.
-
-### Step 5 — Document on Notion (under Tooling)
-
-Create a child page with: Title, Overview, Mermaid Diagram, Configuration Summary, Tierce Configuration.
-
-### Step 6 — Create a skill file in `knowledges/forge/domains/mcp-servers/`
+### Step 4 — Create a skill file in `knowledges/forge/domains/mcp-servers/`
 
 ```markdown
 ---
@@ -98,7 +90,11 @@ description: <One line — what it does, when to use>
 - **Verdict**: (why adopted/rejected)
 ```
 
-### Step 7 — Validate
+### Step 5 — Document on Notion (under Tooling)
+
+Create a child page with: Title, Overview, Configuration Summary, Tierce Configuration.
+
+### Step 6 — Validate
 
 Run `timeout 5 <command> 2>&1 | head`. Report success or failure.
 
