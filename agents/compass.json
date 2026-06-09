@@ -1,10 +1,10 @@
 {
   "name": "compass",
-  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
+  "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
     "memory-compass": {
-      "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
+      "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
@@ -26,46 +26,10 @@
     }
   },
   "tools": [
-    "execute_bash",
-    "code",
-    "fs_read",
-    "fs_write",
-    "grep",
-    "glob",
-    "@notebooklm",
-    "@notion-workspace",
-    "@gmail",
-    "@ticktick",
-    "@excel",
-    "@telegram",
-    "@bookmarks",
-    "@alithya-knowledge-rag",
-    "@pdf-reader",
-    "@markitdown",
-    "@memory-compass",
-    "@airtable",
-    "@firecrawl"
+    "*"
   ],
   "allowedTools": [
-    "execute_bash",
-    "code",
-    "fs_read",
-    "fs_write",
-    "grep",
-    "glob",
-    "@memory-compass",
-    "@bookmarks",
-    "@firecrawl",
-    "@notebooklm",
-    "@notion-workspace",
-    "@gmail",
-    "@ticktick",
-    "@excel",
-    "@telegram",
-    "@alithya-knowledge-rag",
-    "@pdf-reader",
-    "@markitdown",
-    "@airtable"
+    "*"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
@@ -78,6 +42,6 @@
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer.",
+  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer.",
   "useLegacyMcpJson": true
 }

@@ -1,10 +1,10 @@
 {
   "name": "it-supervisor",
-  "description": "Interactive supervisor agent — orchestrates across all knowledge spaces (personal, work, forge) by routing requests to the right domain, source, or specialist agent.",
+  "description": "Interactive supervisor agent \u2014 orchestrates across all knowledge spaces (personal, work, forge) by routing requests to the right domain, source, or specialist agent.",
   "prompt": "file://../prompts/it-supervisor-prompt.md",
   "mcpServers": {
     "memory-supervisor": {
-      "description": "Persistent memory — stores routing decisions, delegation patterns, and user preferences across sessions.",
+      "description": "Persistent memory \u2014 stores routing decisions, delegation patterns, and user preferences across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
@@ -15,25 +15,7 @@
     }
   },
   "tools": [
-    "execute_bash",
-    "code",
-    "fs_read",
-    "fs_write",
-    "grep",
-    "glob",
-    "@notebooklm",
-    "@notion-workspace",
-    "@gmail",
-    "@ticktick",
-    "@excel",
-    "@telegram",
-    "@bookmarks",
-    "@alithya-knowledge-rag",
-    "@pdf-reader",
-    "@markitdown",
-    "@memory-supervisor",
-    "@airtable",
-    "@firecrawl"
+    "*"
   ],
   "allowedTools": [
     "*"
@@ -53,6 +35,6 @@
   "hooks": {},
   "toolsSettings": {},
   "useLegacyMcpJson": true,
-  "welcomeMessage": "🎯 IT-Supervisor ready. I can handle anything across personal, work, and forge — ask away.",
+  "welcomeMessage": "\ud83c\udfaf IT-Supervisor ready. I can handle anything across personal, work, and forge \u2014 ask away.",
   "toolAliases": {}
 }
