@@ -23,7 +23,8 @@
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/config/domains.yaml",
-    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/domains/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/domains/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
   ],
   "hooks": {},
   "toolsSettings": {},

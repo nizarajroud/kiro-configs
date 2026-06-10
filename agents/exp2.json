@@ -19,7 +19,7 @@
       "priority": "standard"
     },
     "context7": {
-      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
+      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source \u2014 never relies on training data.",
       "command": "npx",
       "timeout": 200000,
       "args": [
@@ -223,7 +223,7 @@
       "disabled": false
     },
     "awslabs.aws-api-mcp-server": {
-      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
+      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations \u2014 no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
@@ -282,6 +282,15 @@
         "mcp-youtube-transcript"
       ],
       "disabled": true
+    },
+    "terraform-mcp": {
+      "description": "HashiCorp official Terraform MCP Server. Searches Terraform Registry for providers, modules, and policies. Use when writing Terraform code to find correct module inputs/outputs, provider capabilities, and best-practice modules.",
+      "command": "/home/nizar/go/bin/terraform-mcp-server",
+      "args": [
+        "stdio",
+        "--toolsets=registry"
+      ],
+      "disabled": false
     }
   },
   "tools": [
@@ -305,7 +314,8 @@
     "file://.amazonq/rules/**/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/config/domains.yaml",
-    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/work/domains/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/work/domains/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
   ],
   "hooks": {
     "preToolUse": [
@@ -317,5 +327,5 @@
   },
   "toolsSettings": {},
   "useLegacyMcpJson": true,
-  "welcomeMessage": "⚡ Exp2 ready. Your work & technical agent — code, cloud, architecture, and beyond."
+  "welcomeMessage": "\u26a1 Exp2 ready. Your work & technical agent \u2014 code, cloud, architecture, and beyond."
 }

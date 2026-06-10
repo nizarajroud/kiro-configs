@@ -128,3 +128,72 @@ Chaque rich_text envoyé à Notion DOIT commencer par `‫` (U+202B) pour forcer
 - ❌ JAMAIS `/tmp/` ni aucun autre répertoire temporaire
 - ❌ JAMAIS de UUID ou noms non-descriptifs dans le nom de fichier
 - ✅ La copie locale dans `AI-GENERATED/` est TOUJOURS conservée, même si l'image est ensuite uploadée sur GitHub ou intégrée dans Notion
+
+
+---
+
+## Règle : Tableaux Markdown → HTML cliquable
+
+**Déclencheur** : La réponse contient un tableau Markdown de **3+ colonnes ET 3+ lignes**.
+
+**Action OBLIGATOIRE** :
+
+1. Afficher le tableau en Markdown dans le chat (contexte rapide)
+2. Générer un fichier HTML stylisé et le sauvegarder dans `AI-GENERATED/<mois-année>/<nom-descriptif>.html`
+3. Afficher le lien cliquable à la fin :
+
+```
+📊 Voir formaté : file:///C:/Users/nizar/Documents/AI-GENERATED/<mois-année>/<nom>.html
+```
+
+**Template HTML obligatoire** (CSS intégré) :
+
+```html
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>TITRE</title>
+<style>
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; padding: 2rem; background: #fafafa; }
+  h1 { color: #1a1a1a; font-size: 1.4rem; margin-bottom: 1rem; }
+  table { border-collapse: collapse; width: 100%; background: white; box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+  th { background: #2563eb; color: white; padding: 10px 14px; text-align: left; font-size: 0.85rem; }
+  td { padding: 9px 14px; border-bottom: 1px solid #e5e7eb; font-size: 0.85rem; }
+  tr:nth-child(even) { background: #f9fafb; }
+  tr:hover { background: #eff6ff; }
+</style>
+</head>
+<body>
+<h1>TITRE</h1>
+<table>CONTENU</table>
+</body>
+</html>
+```
+
+**Règles** :
+- Nom du fichier : kebab-case, descriptif (ex: `clubs-radhouane-comparatif.html`)
+- Ne PAS générer de HTML pour les petits tableaux (2 colonnes ou ≤3 lignes)
+- Le tableau Markdown reste TOUJOURS affiché dans le chat en plus du lien
+
+
+---
+
+## Règle : MCP Discovery
+
+**Déclencheur** : L'utilisateur demande de chercher/trouver/recommander un MCP server pour un sujet donné.
+
+**Procédure obligatoire** (dans cet ordre de priorité) :
+
+1. **Officiel du vendor** — Chercher dans `modelcontextprotocol/servers` (README), dans l'org GitHub du vendor (ex: `github/`, `dropbox/`, `linkedin/`), et dans la documentation officielle du produit.
+2. **Plus étoilé sur GitHub** — `github.com/search?q=<topic>+mcp+server&sort=stars`
+3. **Registres MCP reconnus** — Vérifier sur mcpservers.org, mcp.so, Awesome MCP Servers
+
+**Retourner obligatoirement** :
+- URL du repo
+- Nombre de stars
+- Date du dernier commit
+- Commande d'installation
+- Verdict : officiel / communautaire / non-maintenu
+
+**Ne jamais** recommander un serveur sans avoir vérifié les 3 niveaux.

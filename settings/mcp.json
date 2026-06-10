@@ -241,6 +241,21 @@
       "args": ["/home/nizar/HomeWspce/rtl-visual-mcp/server.py"],
       "disabled": false,
       "locked": false
+    },
+    "linkedin-mcp": {
+      "description": "Access LinkedIn data: profiles, job search, company info, messages, feed, saved posts, people search. Use when user asks about LinkedIn profiles, jobs, companies, or networking.",
+      "command": "python3",
+      "args": ["-m", "linkedin_mcp_server"],
+      "env": {"PYTHONPATH": "/home/nizar/HomeWspce/linkedin-mcp-fork"},
+      "disabled": false,
+      "locked": false
+    },
+    "bitbucket-mcp": {
+      "description": "Atlassian Bitbucket MCP. Manage repos, pull requests, pipelines, branches, and files on Bitbucket Cloud. Use when user asks about Bitbucket repositories or CI/CD pipelines.",
+      "command": "python3",
+      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/bitbucket_wrapper.py"],
+      "disabled": false,
+      "locked": false
     }
   }
 }

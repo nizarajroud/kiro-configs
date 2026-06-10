@@ -30,7 +30,8 @@
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/config/domains.yaml",
     "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/domains/**/*.md",
     "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/work/domains/**/*.md",
-    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/domains/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/domains/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
   ],
   "hooks": {},
   "toolsSettings": {},

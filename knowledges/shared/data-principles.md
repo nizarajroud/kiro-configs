@@ -116,3 +116,21 @@ domains/carriere/opportunities/bnc-bedrock/notes.md   ← memory for BNC Bedrock
 domains/demenagement/steering/11-baklog-actions.md     ← memory for déménagement
 work/domains/novatech/notes.md                         ← memory for Novatech project
 ```
+
+
+## Principle 11: Adresse de référence
+
+À compter du **23 juin 2026**, l'adresse domicile est :
+
+**2745 boulevard Roland-Therrien, Longueuil, QC J4M 1J5**
+(Arrondissement : Vieux-Longueuil)
+
+Toute recommandation impliquant une distance, un quartier, une appartenance municipale, ou un choix de service local DOIT être calculée par rapport à cette adresse. Cela inclut :
+- Clubs et activités sportives des enfants
+- Écoles, garderies, camps de jour
+- Services municipaux (arrondissement Vieux-Longueuil)
+- Commerces, cliniques, pharmacies
+- Transport (distance en voiture et transport en commun)
+- Évaluation foncière, taxes, collectes
+
+Avant le 23 juin 2026, l'adresse précédente s'applique encore pour les décisions immédiates.

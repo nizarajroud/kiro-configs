@@ -23,6 +23,13 @@
       ],
       "disabled": false,
       "locked": false
+    },
+    "mcp-canada": {
+      "description": "Canadian government data — 217 tools across 17 APIs. Bank of Canada rates, weather, immigration stats, product recalls, Quebec data, parliamentary data. Use for any question about Canadian services, government info, or public data.",
+      "command": "uvx",
+      "args": ["mcp-canada"],
+      "disabled": false,
+      "locked": false
     }
   },
   "tools": [
@@ -35,7 +42,8 @@
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/config/domains.yaml",
-    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/domains/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/domains/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
   ],
   "hooks": {},
   "toolAliases": {
