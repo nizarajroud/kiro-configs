@@ -423,53 +423,87 @@ For nodes that serve as edge hubs (e.g. FortiClient VPN connecting to 3+ targets
 - Verify: for each node ID, it appears EXACTLY ONCE in the XML
 - If routing waypoints are needed, use mxPoint inside the edge definition, NEVER create intermediate ghost nodes to bend edges
 
-#### RÈGLE 15 — Waypoints bornés dans le canvas, sans rectangles proxy
+#### RÈGLE 15 & 16 — UNIVERSAL PHANTOM & CANVAS INTEGRITY RULE
 
-For every edge waypoint (mxPoint):
-- ALL waypoint coordinates MUST be within the diagram bounding box
-- x of any waypoint: between (leftmost node x - 60) and (rightmost node x + 100)
-- y of any waypoint: between (topmost node y - 20) and (bottommost node y + 20)
-- NEVER place a waypoint outside the bounding box of all nodes combined
+Applies to ALL draw.io diagrams without exception. Replaces the previous Rules 15 and 16.
 
-For the DR/Backup vertical edge specifically:
-- DO NOT use a side-lane rectangle or proxy node to bend the edge
-- Use ONLY mxPoint waypoints inside the edge's Array definition
-- The edge must go: source → waypoint (x=sideLane, y=source_centerY) → waypoint (x=sideLane, y=target_centerY) → target
-- sideLane x = rightmost DB node x + 60px MAX (never exceed canvas width)
-- Verify: sideLane x ≤ rightmost container x + 40px
-- NEVER use edgeStyle=orthogonalEdgeStyle on long vertical edges without explicit waypoints bounding the path
+**PART A — ZERO PHANTOM NODES**
 
-#### RÈGLE 16 — Interdiction absolue des éléments fantômes et rectangles de fond
+Every mxCell with vertex="1" MUST satisfy at least ONE of:
+- Has a non-empty visible label (value != "")
+- Is a named architectural component (server, database, service, etc.)
+- Is a container/group with visible children inside it
 
-**1. BACKGROUND RECTANGLES**
-- NEVER create a rectangle or shape covering the full canvas (width=pageWidth, height=pageHeight)
-- NEVER create any node with fillColor and strokeColor=none that has no label
-- NEVER use a large invisible rectangle as a background, watermark, or canvas fill
-- If a background color is needed → set it in mxGraphModel attribute: background="#F5F5F5"
-- The ONLY valid use of a no-stroke rectangle is a text label node (must have a non-empty value)
+If a node satisfies NONE of the above → it MUST NOT exist in the XML.
 
-**2. INVISIBLE NODES (any size)**
-- NEVER create a node with ALL of these simultaneously: value="" (empty) AND strokeColor=none AND no visible children
-- NEVER create a node whose sole purpose is to anchor or bend an edge (use mxPoint waypoints instead)
-- NEVER create a node with opacity=0 or visibility=hidden
+This eliminates: background fill rectangles, invisible routing proxy nodes, ghost bounding boxes, "label" rectangles for edge concepts (those belong in edge value="").
 
-**3. CANVAS SIZE INFLATION**
-- NEVER set pageWidth or pageHeight larger than the actual diagram bounding box + 80px margin
-- NEVER place any element beyond: x > (rightmost node x + width + 80px) or y > (bottommost node y + height + 80px)
-- The mxGraphModel pageWidth/pageHeight MUST equal: max(all node x + width) + 80 × max(all node y + height) + 80
+**PART B — INTER-CONTAINER VERTICAL EDGES (DEFINITIVE SOLUTION)**
 
-**4. EDGE ROUTING — no phantom detours**
-- NEVER use entryX=1 when the target node is BELOW the source node (this forces draw.io to route the edge far right, inflating the canvas)
-- For top-to-bottom edges: exitX=0.5,exitY=1 → entryX=0.5,entryY=0 OR use side-lane with exitX=1 → entryX=1 ONLY if sideLane x < rightmost node x + 60
-- After defining every edge, verify: no routing path extends beyond canvas bounds
+NEVER use edgeStyle=orthogonalEdgeStyle on any inter-container vertical edge. EVER. It ignores waypoints and auto-routes outside bounds.
 
-**5. PRE-OUTPUT AUDIT**
-Before generating final XML, scan every mxCell and verify:
-- □ No node has value="" AND strokeColor=none AND width > 200
-- □ No node has width = pageWidth or height = pageHeight
-- □ No mxPoint waypoint has x or y outside diagram bounding box
-- □ pageWidth and pageHeight match actual content bounds + 80px
-- □ entryX=1 is NEVER used on a node that is geometrically below its source
+THE ONE AND ONLY ALLOWED PATTERN for inter-container vertical edges:
+
+```
+edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=1;html=1;strokeWidth=2;strokeColor=#666666;
+exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+```
+
+With exactly 2 waypoints (can be same point for straight drop):
+- waypoint 1: x = source.x + source.width/2, y = (source_container_bottom + target_container_top) / 2
+- waypoint 2: x = target.x + target.width/2, y = (same as waypoint 1)
+
+When source and target share the same x center → waypoints are identical → edge drops straight through the gap between containers. Zero horizontal detour, zero canvas inflation.
+
+HORIZONTAL edges and SAME-CONTAINER vertical edges:
+→ Continue using edgeStyle=orthogonalEdgeStyle as before (no issue for these).
+
+ABSOLUTE PROHIBITIONS FOR INTER-CONTAINER EDGES (replaces all previous):
+- NEVER use orthogonalEdgeStyle on inter-container vertical edges
+- NEVER use exitX=1+entryX=1 on any vertical edge
+- NEVER use exitX=0+entryX=0 on any vertical edge
+- NEVER place a waypoint x outside the source/target node x range ±60px on a vertical inter-container edge
+
+MENTAL SIMULATION (mandatory before writing edge XML):
+For each edge, mentally trace the full path draw.io will render. Verify: path stays within canvas bounds. If not → fix routing before writing XML.
+
+**PART C — CANVAS SIZE = CONTENT SIZE**
+
+The mxGraphModel page dimensions MUST match actual content:
+- pageWidth = max(all node x + width) + 80
+- pageHeight = max(all node y + height) + 80
+- dx and dy attributes MUST equal pageWidth and pageHeight respectively
+- NEVER set pageWidth/pageHeight to a fixed value without verifying it matches the actual content bounding box
+
+**PART D — MANDATORY PRE-OUTPUT AUDIT**
+
+Before outputting ANY draw.io XML, run this audit line by line:
+- □ Every vertex mxCell has a purpose (label OR named component OR container)
+- □ No vertex has width ≥ pageWidth or height ≥ pageHeight
+- □ No vertex has value="" AND strokeColor=none
+- □ Every edge has explicit exitX,exitY,entryX,entryY
+- □ Every edge routing path stays within (20, 20, pageWidth-20, pageHeight-20)
+- □ No mxPoint waypoint exceeds canvas bounds
+- □ pageWidth and pageHeight = actual content bounds + 80px
+- □ No node label contains edge-concept words used as a routing proxy (e.g. "Data Guard Lane", "Backup Path") → those words belong only in edge value="" attributes
+
+If ANY check fails → fix before output. Do not output partial XML.
+
+#### RÈGLE 17 — Interdiction des edgeLabel enfants
+
+NEVER create a child mxCell with style="edgeLabel" attached to an edge.
+
+This pattern is FORBIDDEN in agent-generated XML:
+```
+<mxCell style="edgeLabel;..." parent="edgeId" vertex="1" connectable="0">
+```
+
+Edge labels belong ONLY in the edge's own value="" attribute:
+```
+<mxCell id="e10" value="Data Guard" ... edge="1">
+```
+
+AUDIT: Scan all mxCell elements — any one with connectable="0" AND parent pointing to an edge id → DELETE it unconditionally.
 
 #### GENERATION PROCESS (MANDATORY SEQUENCE)
 
@@ -542,9 +576,9 @@ Before generating final XML, scan every mxCell and verify:
 - NEVER place a container at x < 50 if it has a left-aligned label
 - NEVER create an invisible or borderless rectangle node as a waypoint proxy
 - NEVER duplicate a node ID in the XML
-- NEVER place any mxPoint waypoint with coordinates outside the overall diagram bounding box
-- NEVER use edgeStyle=orthogonalEdgeStyle on long vertical edges without explicit waypoints bounding the path
-- NEVER create an intermediate rectangle/node to serve as a bend point for an edge
-- NEVER create a rectangle with value="" AND strokeColor=none (phantom background)
+- NEVER create a vertex mxCell that has no label AND no architectural purpose AND no children
 - NEVER set pageWidth/pageHeight larger than content bounding box + 80px
-- NEVER use entryX=1 on a target node geometrically below the source node
+- NEVER use entryX=1 on a target node geometrically below the source without verifying sideLane < pageWidth - 40
+- NEVER output draw.io XML without running the Part D pre-output audit
+- NEVER create a child mxCell with style="edgeLabel" or connectable="0" attached to an edge
+- NEVER use exitX=0.5,exitY=1 + entryX=0.5,entryY=0 for inter-container edges without explicit waypoints
