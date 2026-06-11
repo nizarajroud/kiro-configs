@@ -256,6 +256,13 @@
       "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/bitbucket_wrapper.py"],
       "disabled": false,
       "locked": false
+    },
+    "google-maps": {
+      "description": "Google Maps Grounding Lite — search places (restaurants, clinics, schools), compute routes (driving/walking), and lookup weather for any location. Use when user asks about nearby places, directions, or location-based queries.",
+      "command": "python3",
+      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/google_maps_wrapper.py"],
+      "disabled": false,
+      "locked": false
     }
   }
 }

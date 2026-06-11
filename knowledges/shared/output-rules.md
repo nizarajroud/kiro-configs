@@ -197,3 +197,60 @@ Chaque rich_text envoyé à Notion DOIT commencer par `‫` (U+202B) pour forcer
 - Verdict : officiel / communautaire / non-maintenu
 
 **Ne jamais** recommander un serveur sans avoir vérifié les 3 niveaux.
+
+
+---
+
+## ⚠️ Checklist de sortie (VÉRIFIER AVANT CHAQUE RÉPONSE)
+
+Avant d'envoyer une réponse, l'agent DOIT scanner sa propre sortie et vérifier :
+
+- [ ] **Tableau ≥3 colonnes ET ≥3 lignes ?** → Générer le fichier HTML dans `AI-GENERATED/<mois-année>/` + afficher le lien `📊 Voir formaté : file:///C:/Users/nizar/Documents/AI-GENERATED/...`
+- [ ] **Page Notion créée ?** → Afficher le lien URL direct : `📄 Page créée : [Titre](URL)`
+- [ ] **Image/diagramme généré ?** → Sauvegarder dans `AI-GENERATED/<mois-année>/` (JAMAIS /tmp/)
+- [ ] **Explication en tunisien demandée ?** → Créer la page Notion avec caractères RTL (U+202B)
+- [ ] **Visuel tunisien demandé ?** → Utiliser `rtl-visual-mcp` (JAMAIS Excalidraw/Mermaid pour du RTL arabe)
+
+**Cette checklist est NON-NÉGOCIABLE.** Si une condition est remplie et l'action correspondante n'est pas faite, la réponse est INCOMPLÈTE.
+
+
+---
+
+## Règle : Cache Factuel des Données Extraites
+
+**Déclencheur** : Toute extraction d'une donnée factuelle importante (montant, date, condition, échéance) obtenue via :
+- Parsing d'un fichier attaché (PDF, DOC, Excel) dans Gmail
+- Deep dive dans un document difficile d'accès (image-PDF, .doc binaire)
+- Calcul dérivé d'un document officiel
+- Correction explicite de l'utilisateur sur une donnée
+
+**Action OBLIGATOIRE — Après avoir répondu à l'utilisateur** :
+
+Stocker le fait extrait dans `memory-compass` (knowledge graph) avec :
+1. **Le fait** : donnée claire et concise
+2. **La source précise** : nom du fichier, email (expéditeur + date + sujet), page Notion, ou correction utilisateur
+3. **La date d'extraction** : quand l'info a été extraite/confirmée
+
+**Format de stockage (entity dans memory-compass)** :
+- **entityName** : clé descriptive (ex: `notaire-paiement-8-juin-2026`)
+- **entityType** : `fait-extrait`
+- **observations** :
+  - `Fait : [donnée]`
+  - `Source : [type] [détails] — [date du document]`
+  - `Extrait le : [date]`
+
+**Comportement lors d'une question** :
+1. Chercher dans `memory-compass` d'abord (`search_nodes`)
+2. Si trouvé → répondre immédiatement avec le fait + la source
+3. Si pas trouvé → extraire normalement, répondre, PUIS stocker
+
+**Règles strictes** :
+- ✅ Ne stocker QUE les faits clairs, vérifiés, avec source
+- ✅ Consulter le cache EN PREMIER avant de re-parser un fichier
+- ✅ Si le fait date de >6 mois, le revalider avant de le servir
+- ❌ Ne PAS stocker des données volatiles (soldes de compte, statut de tâche en cours)
+- ❌ Ne PAS dupliquer ce qui est déjà facilement accessible en texte (contenu lisible de pages Notion, emails textuels)
+- ✅ TOUJOURS stocker ce qui provient de fichiers binaires/images difficiles à re-parser
+
+**Ajout à la checklist de sortie** :
+- [ ] **Fait extrait d'un fichier difficile ?** → Stocker dans `memory-compass` avec source avant de terminer

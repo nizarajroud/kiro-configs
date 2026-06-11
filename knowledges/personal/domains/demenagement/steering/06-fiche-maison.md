@@ -64,10 +64,40 @@ description: Fiche de la nouvelle maison (adresse, caractéristiques, détails).
 - Chauffe-eau (2020) 60 gallons
 - Cabanon
 
+## Transport en commun (RTL)
+
+| Arrêt | Position | Lignes |
+|-------|----------|--------|
+| **Bagot** | Directement devant la maison | 10, 17, 76, 410, 417, 676 |
+| **Toulouse** | De l'autre côté de la rue | 10, 17, 76, 410, 417, 676 |
+
 ## Services
 
 - Égouts : municipalité
 - Approvisionnement eau : municipalité
+
+## Vie de quartier
+
+### Maison de quartier : Maison Tremplin de Longueuil
+
+| Détail | Valeur |
+|--------|--------|
+| **Adresse** | 267 rue Toulouse (dans la même rue) |
+| **Téléphone** | 450 442-4019 |
+| **Site web** | [maisontremplin.com](https://www.maisontremplin.com) |
+| **Courriel** | info@maisontremplin.com |
+| **Horaire** | Lun-jeu 8h30-16h, ven 8h30-12h |
+| **Carte membre** | 10 $/an par famille (sept. à août) |
+| **Territoire** | Vieux-Longueuil |
+
+**Services pertinents pour la famille :**
+- Zone 6-12 ans : aide aux devoirs, activités éducatives, ateliers culinaires après l'école
+- Journées pédagogiques : 12 $/jour
+- Samedis en famille : activités ludiques et culinaires
+- Semaine de relâche : activités économiques
+- Francisation (causeries pour parents)
+- Friperie et repas à faible coût
+- Cuisine collective (parents)
 
 ## Occupation
 

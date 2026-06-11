@@ -291,6 +291,12 @@
         "--toolsets=registry"
       ],
       "disabled": false
+    },
+    "gitlab": {
+      "description": "GitLab MCP (Alithya CSNA) — projects, issues, merge requests, pipelines. Use when user asks about GitLab repositories, MRs, CI/CD pipelines, or Alithya project code.",
+      "command": "npx",
+      "args": ["-y", "mcp-remote", "https://gitlab.com/api/v4/mcp"],
+      "disabled": false
     }
   },
   "tools": [

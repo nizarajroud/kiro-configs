@@ -34,11 +34,27 @@ Rules that extend the prompt's routing logic with domain-specific overrides, exa
 
 **NE PAS appliquer quand :** L'info est personnelle (mes comptes, mes dates, mes documents)
 
+## NotebookLM — Routing par notebook (OBLIGATOIRE)
+
+**RÈGLE ABSOLUE** — Toujours consulter les **2 notebooks** avant de conclure qu'une info est absente :
+
+| Notebook | ID | Contenu |
+|----------|-----|---------|
+| **2745 rolland therrian** | `ecb14fdb-e9e8-40fe-9e1e-2130ab7c370c` | Documents immobiliers (promesse d'achat, déclaration vendeur, inspection, taxes foncières, notaire) |
+| **NLM_AAA_PRIVATE_LIFE** | `1495e7d2-3d75-419d-a9a5-d0e43fe6d1e8` | Documents personnels Dropbox (investissements, impôts, relevés fiscaux, identité, contrats, assurances, ET immobilier complémentaire) |
+
+**Ordre de consultation :**
+1. **Sujet immobilier** → « 2745 » EN PREMIER, puis « NLM_AAA_PRIVATE_LIFE » si info absente/incomplète
+2. **Tout autre sujet personnel** → « NLM_AAA_PRIVATE_LIFE » directement
+3. **Ne JAMAIS conclure « non trouvé dans NotebookLM »** sans avoir vérifié les DEUX notebooks
+
+---
+
 ## Query Formulation Tips
 
 | Source | Tips |
 |--------|------|
-| NotebookLM | Use the notebook matching the domain |
+| NotebookLM | Toujours vérifier les 2 notebooks (voir règle ci-dessus) |
 | Notion | Filter results to personal pages only |
 | Gmail | Use Gmail search syntax (from:, subject:, newer_than:) |
 | TickTick | Filter by project/tag matching domain |
