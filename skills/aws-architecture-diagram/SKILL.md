@@ -261,3 +261,290 @@ After generating XML, mentally verify:
 ### Official Reference
 - Full XML/style reference: https://raw.githubusercontent.com/jgraph/drawio-mcp/main/shared/xml-reference.md
 - Style properties: https://raw.githubusercontent.com/jgraph/drawio-mcp/main/shared/style-reference.md
+
+### ANTI-OVERLAP RULES — MANDATORY (NON-NEGOTIABLE)
+
+These rules OVERRIDE any conflicting guidance above. They are the result of repeated failures and MUST be applied on every diagram generation.
+
+#### RÈGLE 0 — Dimensionnement A4 obligatoire
+
+The total diagram bounding box (all nodes + labels + margins) MUST fit within:
+- MAXIMUM: A4 Landscape = 1122px wide x 794px tall (at 96dpi)
+- MINIMUM: Half A4 Portrait = 794px wide x 561px tall (at 96dpi)
+
+Target the middle ground by default:
+- Diagram canvas: 1050px wide x 680px tall
+- Outer margin (no content): 40px on all sides
+- Usable area: 970px wide x 600px tall
+
+After placing all nodes, verify:
+  max(x + width) ≤ 1010px
+  max(y + height) ≤ 640px
+If any node exceeds these bounds → recompute the grid with smaller cell sizes or tighter gaps.
+
+#### RÈGLE 1 — Layout en grille stricte avant tout
+
+BEFORE generating any XML, define a strict grid layout:
+- Assign every node a CELL position (col, row) on a virtual grid
+- Minimum cell size: 220px wide x 160px tall
+- Minimum gap between cells: 80px horizontal, 100px vertical
+- Calculate absolute (x,y) from grid position: x = col * (cellW + gapX), y = row * (cellH + gapY)
+- NO two nodes may share overlapping bounding boxes (x, y, width, height)
+- Document the grid plan as a comment BEFORE writing XML
+
+#### RÈGLE 2 — Edge routing explicite, jamais automatique
+
+NEVER use default edge routing. For every edge:
+- Specify exitX, exitY, entryX, entryY explicitly
+- Horizontal connections: exitX=1,exitY=0.5 → entryX=0,entryY=0.5
+- Vertical connections: exitX=0.5,exitY=1 → entryX=0.5,entryY=0
+- If two edges leave the same node in the same direction, offset their exitY by at least 0.25 (e.g. 0.3 and 0.7)
+- NEVER let two edges share the same exit/entry point on a node
+
+#### RÈGLE 3 — Edge labels : toujours un offset explicite
+
+For every edge label:
+- ALWAYS set geometry relative="1" with x and y offsets
+- Place labels at x=0 (midpoint) with y offset of -20 (above the edge)
+- For vertical edges: use x=20 (to the right) and y=0
+- For long edges crossing the diagram: use y=-30 to clear all nodes
+- NEVER leave label geometry as x=0,y=0 on a non-horizontal edge
+
+#### RÈGLE 4 — Edges parallèles : séparation obligatoire
+
+When multiple edges connect to/from the same source OR target node:
+- Use waypoints (Array of mxPoint) to manually route each edge on a different path
+- Minimum lateral separation between parallel edges: 30px
+- For dashed/dotted monitoring edges going to an external node on the right: route them with different exitY values (e.g. 0.3 and 0.6) and add a waypoint to fan them out before converging
+
+#### RÈGLE 5 — Edges verticaux longs : style neutre obligatoire
+
+For any edge that spans more than 2 grid rows vertically:
+- ALWAYS explicitly set strokeColor=#666666 (or the diagram's default color)
+- NEVER rely on inherited/default red or accent colors
+- Add endArrow=block and endFill=0 for neutral appearance
+- Add the label with x=20,y=0 offset (beside, not on top)
+
+#### RÈGLE 6 — Validation checklist avant output
+
+Before outputting the final XML, run this checklist mentally:
+- □ Every node has unique non-overlapping (x, y, width, height)
+- □ Every edge has explicit exitX/Y and entryX/Y
+- □ No two edges share the same exit point on a node
+- □ Every edge label has a non-zero geometry offset
+- □ No label bounding box (estimated at 100px wide) overlaps a node bounding box
+- □ All edge colors are explicitly set (no implicit red/accent)
+- □ Dashed edges to external nodes are fanned out with different exitY
+- □ Long vertical edges have a waypoint to avoid crossing unrelated nodes
+- □ No container label overlaps its own children (startSize ≥ 30, first child at y ≥ 50 from container top)
+- □ No long vertical edge passes through any node bounding box or within 20px of any label
+
+If ANY check fails → fix before outputting.
+
+#### RÈGLE 7 — Dimensionnement A4 obligatoire (see RÈGLE 0 above — kept as RÈGLE 0 for priority)
+
+(Merged into RÈGLE 0 at the top of this section.)
+
+#### RÈGLE 8 — Titres de containers (frames/groups)
+
+For every container/swimlane/group node:
+- ALWAYS set: swimlaneLine=1, startSize=30, fillColor=none or light
+- The label (title) lives INSIDE the top bar of height startSize=30
+- Add 20px top padding inside the container so the first child node starts at y = containerY + 50 (not containerY + 30)
+- NEVER let a container's border overlap its own label
+- Container width must be at least: max(child nodes x + width) + 40px right margin
+
+#### RÈGLE 9 — Flèches longues verticales : routing obligatoire autour des nodes
+
+For any edge that travels vertically across more than one container OR crosses intermediate nodes/labels:
+- NEVER route it as a straight vertical line through the diagram center
+- Route it OUTSIDE the node columns using a 3-segment L or Z path:
+    Segment 1: exit node going RIGHT (exitX=1, exitY=0.5)
+    Segment 2: horizontal run to a clear SIDE LANE (x = rightmost node + 60px)
+    Segment 3: vertical drop down the clear lane
+    Segment 4: enter target node from RIGHT (entryX=1, entryY=0.5)
+- OR route it to the LEFT of all nodes (x = leftmost node - 60px)
+- Add explicit waypoints (mxPoint) to enforce this path
+- NEVER let a long vertical edge pass through any node bounding box or within 20px of any label
+
+#### RÈGLE 10 — Ancrage à l'origine (fix du scroll vide)
+
+The diagram MUST start at coordinates close to the canvas origin:
+- First container or top-left node: x=40, y=60 (absolute minimum margin)
+- NO node, container, or label may have x < 20 or y < 20
+- NO node may start at x > 200 or y > 200 (reserving only left space for Users/VPN nodes that sit outside the main container)
+- After generating all nodes, verify: min(x of all nodes) is between 20-200
+- If the diagram appears offset, subtract the minimum x/y from all coordinates to re-anchor the whole diagram near the origin
+
+#### RÈGLE 11 — Flèches multiples entrant dans le même node
+
+When multiple edges arrive at the same target node:
+- NEVER assign the same (entryX, entryY) to two edges on the same node
+- Distribute entry points evenly across the node face:
+    2 edges from left → entryX=0, entryY=0.3 and entryY=0.7
+    3 edges from left → entryY=0.2, 0.5, 0.8
+    2 edges from top  → entryX=0.3 and entryX=0.7, entryY=0
+- Same rule applies to exit points on source nodes
+- For nodes with 3+ outgoing edges: fan out exits evenly (e.g. exitY=0.25, 0.5, 0.75)
+  and route each edge with a waypoint before entering its target
+
+#### RÈGLE 12 — Labels des icônes : concision obligatoire
+
+Node labels follow this format:
+  Line 1: Short name only (e.g. "PROD App", "TEST DB", "Nagios")
+  Line 2 (optional): ONE key spec in parentheses if critical to understanding.
+                     Max 2 values, separated by |
+                     e.g. "(192G | 1.2TB)" or "(Oracle 19c)"
+
+Decision rule:
+- If the spec helps distinguish this node from a similar one → include it
+- If it's visible elsewhere (legend, title) → omit it
+- CPU usage % → omit (operational metric, not architectural)
+- Core count → omit unless it's the key differentiator
+- Storage size → keep only if architecturally significant
+
+#### RÈGLE 13 — Padding interne du label de container
+
+For every container/group/swimlane node:
+- The label text starts INSIDE the container, never on or beyond the border
+- Set labelPosition=left is FORBIDDEN for containers
+- Use: align=left, spacingLeft=10 within the container's top bar
+- Container x position must leave enough room so that: containerX + 10 ≥ 50px from the left canvas edge
+- The startSize (title bar height) must be ≥ 30px
+- Minimum container width = length_of_title_in_chars × 8px + 40px padding
+  (e.g. "DC St-Laurent (Prod + Test)" = 28 chars × 8 = 224 + 40 = 264px minimum)
+- NEVER let a container be narrower than its own title
+
+#### RÈGLE 14 — Aucun node fantôme / artefact de style sur les nodes de transit
+
+For nodes that serve as edge hubs (e.g. FortiClient VPN connecting to 3+ targets):
+- NEVER add a visible border style (strokeColor, fillColor) unless it is explicitly part of the diagram's visual language
+- The node must have exactly ONE mxCell definition — no duplicate IDs, no overlapping invisible rectangles
+- Verify: for each node ID, it appears EXACTLY ONCE in the XML
+- If routing waypoints are needed, use mxPoint inside the edge definition, NEVER create intermediate ghost nodes to bend edges
+
+#### RÈGLE 15 — Waypoints bornés dans le canvas, sans rectangles proxy
+
+For every edge waypoint (mxPoint):
+- ALL waypoint coordinates MUST be within the diagram bounding box
+- x of any waypoint: between (leftmost node x - 60) and (rightmost node x + 100)
+- y of any waypoint: between (topmost node y - 20) and (bottommost node y + 20)
+- NEVER place a waypoint outside the bounding box of all nodes combined
+
+For the DR/Backup vertical edge specifically:
+- DO NOT use a side-lane rectangle or proxy node to bend the edge
+- Use ONLY mxPoint waypoints inside the edge's Array definition
+- The edge must go: source → waypoint (x=sideLane, y=source_centerY) → waypoint (x=sideLane, y=target_centerY) → target
+- sideLane x = rightmost DB node x + 60px MAX (never exceed canvas width)
+- Verify: sideLane x ≤ rightmost container x + 40px
+- NEVER use edgeStyle=orthogonalEdgeStyle on long vertical edges without explicit waypoints bounding the path
+
+#### RÈGLE 16 — Interdiction absolue des éléments fantômes et rectangles de fond
+
+**1. BACKGROUND RECTANGLES**
+- NEVER create a rectangle or shape covering the full canvas (width=pageWidth, height=pageHeight)
+- NEVER create any node with fillColor and strokeColor=none that has no label
+- NEVER use a large invisible rectangle as a background, watermark, or canvas fill
+- If a background color is needed → set it in mxGraphModel attribute: background="#F5F5F5"
+- The ONLY valid use of a no-stroke rectangle is a text label node (must have a non-empty value)
+
+**2. INVISIBLE NODES (any size)**
+- NEVER create a node with ALL of these simultaneously: value="" (empty) AND strokeColor=none AND no visible children
+- NEVER create a node whose sole purpose is to anchor or bend an edge (use mxPoint waypoints instead)
+- NEVER create a node with opacity=0 or visibility=hidden
+
+**3. CANVAS SIZE INFLATION**
+- NEVER set pageWidth or pageHeight larger than the actual diagram bounding box + 80px margin
+- NEVER place any element beyond: x > (rightmost node x + width + 80px) or y > (bottommost node y + height + 80px)
+- The mxGraphModel pageWidth/pageHeight MUST equal: max(all node x + width) + 80 × max(all node y + height) + 80
+
+**4. EDGE ROUTING — no phantom detours**
+- NEVER use entryX=1 when the target node is BELOW the source node (this forces draw.io to route the edge far right, inflating the canvas)
+- For top-to-bottom edges: exitX=0.5,exitY=1 → entryX=0.5,entryY=0 OR use side-lane with exitX=1 → entryX=1 ONLY if sideLane x < rightmost node x + 60
+- After defining every edge, verify: no routing path extends beyond canvas bounds
+
+**5. PRE-OUTPUT AUDIT**
+Before generating final XML, scan every mxCell and verify:
+- □ No node has value="" AND strokeColor=none AND width > 200
+- □ No node has width = pageWidth or height = pageHeight
+- □ No mxPoint waypoint has x or y outside diagram bounding box
+- □ pageWidth and pageHeight match actual content bounds + 80px
+- □ entryX=1 is NEVER used on a node that is geometrically below its source
+
+#### GENERATION PROCESS (MANDATORY SEQUENCE)
+
+**STEP 0**: Define the canvas (MANDATORY FIRST STEP) — Before planning the grid, set the canvas constraints:
+- Total usable area: 970px wide x 600px tall
+- This represents an A4 landscape page with margins (max format)
+- It also comfortably fills the top half of an A4 portrait page (min format)
+- ALL nodes, edges, labels, and external elements MUST fit inside this area
+- Adjust grid cell size and spacing to fit — never exceed the canvas boundary
+- Typical node size within this canvas: 140px wide x 80px tall max
+- If the diagram has more than 8 nodes, reduce cell spacing to 60px and node size to 120x70px
+
+**STEP 0b**: Anchor verification — After computing all coordinates, verify:
+- Minimum x across all elements: must be 20–200px
+- Minimum y across all elements: must be 20–150px
+- If not: shift all coordinates by (-minX + 40, -minY + 60)
+- This ensures the diagram is immediately visible on canvas open, without any scrolling
+
+**STEP 1**: Plan the grid — define every node with: name | grid(col,row) | abs(x,y) | size(w,h). Output plan before writing XML. **IMPORTANT**: Reserve one column (the rightmost or leftmost) as a SIDE LANE exclusively for long vertical edges. No nodes may be placed in this lane. When multiple edges share the same source or target node, list them explicitly: "3 edges exit VPN → assign exitY=0.25, 0.5, 0.75". Do this BEFORE writing any edge XML. For each container, compute minimum width: minWidth = max(title_char_count × 8 + 40, widest_row_of_children + 80). Use whichever is larger. Document this in the grid plan.
+
+**STEP 2**: Assign edge routes — for each edge: source→target | exitX,exitY | entryX,entryY | waypoints if needed. Two edges from same node must differ by ≥0.25 in exitY.
+
+**STEP 2b**: Long vertical edges (DR replication, Data Guard) — Identify every edge that must travel vertically more than 200px. For each one:
+- Plan a SIDE LANE: a vertical corridor at least 60px to the right of all nodes (or 60px to the left)
+- Define 2+ waypoints: one at (sideLaneX, sourceY) and one at (sideLaneX, targetY)
+- This guarantees the edge never intersects any node or label
+- Label this edge with x=15, y=0 offset (beside the edge in the side lane)
+
+**STEP 3**: Assign label offsets — every edge label: geometry x=0,y=-20 for horizontal; x=20,y=0 for vertical. For each node label, apply the 2-line maximum rule: Line 1 = name, Line 2 = one critical spec only (max 2 values in parentheses). Everything else → omit.
+
+**STEP 4**: Set all styles explicitly — no edge may inherit color (always set strokeColor). No edge may use default routing (always set exit/entry points).
+
+**STEP 5**: Validate before output — check every item in the validation checklist. Fix all violations. Then output XML.
+- □ Every node has unique non-overlapping (x, y, width, height)
+- □ Every edge has explicit exitX/Y and entryX/Y
+- □ No two edges share the same exit point on a node
+- □ Every edge label has a non-zero geometry offset
+- □ No label bounding box overlaps a node bounding box
+- □ All edge colors are explicitly set
+- □ Long vertical edges routed via side lane with waypoints
+- □ Every container width ≥ its title text pixel width + 40px
+- □ Every container x ≥ 50px from canvas left edge
+- □ No node ID appears more than once in the XML
+- □ No invisible/ghost rectangle nodes exist
+- □ Hub nodes (VPN, ALB) have exactly one mxCell definition
+- □ All nodes anchored: min(x) between 20–200, min(y) between 20–150
+- □ For every edge, all mxPoint waypoints are within (minX-60, minY-20, maxX+100, maxY+20) of all nodes combined
+- □ No intermediate proxy rectangle exists for edge routing
+- □ The DR vertical edge uses ONLY inline mxPoint waypoints, no helper nodes
+- □ Canvas bounding box = max(node x+width) x max(node y+height) with no stray waypoints extending beyond it
+
+#### ABSOLUTE PROHIBITIONS
+
+- NEVER place two edges with the same exitX,exitY on the same node
+- NEVER output an edge label with geometry x=0,y=0
+- NEVER leave strokeColor unset on any edge
+- NEVER generate XML without completing Steps 0–5 first
+- NEVER place any node, label, or edge waypoint beyond x=1010 or y=640
+- NEVER generate a diagram without completing STEP 0 first
+- NEVER use a fixed node size without verifying it fits the A4 canvas budget
+- NEVER route a vertical edge through the horizontal center of the diagram if any node or label exists along that vertical path
+- NEVER place a container label with startSize < 30
+- NEVER let the first child node start at less than 50px from the container top
+- NEVER generate a node with x > 300 as the leftmost element of the diagram
+- NEVER place the first container at y > 150
+- NEVER put more than 2 lines in a node label
+- NEVER repeat information already present in the diagram title or legend
+- NEVER assign the same (entryX, entryY) to two edges arriving at the same node
+- NEVER set a container width smaller than its label text width + 40px
+- NEVER place a container at x < 50 if it has a left-aligned label
+- NEVER create an invisible or borderless rectangle node as a waypoint proxy
+- NEVER duplicate a node ID in the XML
+- NEVER place any mxPoint waypoint with coordinates outside the overall diagram bounding box
+- NEVER use edgeStyle=orthogonalEdgeStyle on long vertical edges without explicit waypoints bounding the path
+- NEVER create an intermediate rectangle/node to serve as a bend point for an edge
+- NEVER create a rectangle with value="" AND strokeColor=none (phantom background)
+- NEVER set pageWidth/pageHeight larger than content bounding box + 80px
+- NEVER use entryX=1 on a target node geometrically below the source node
