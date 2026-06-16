@@ -625,3 +625,102 @@ AUDIT: Scan all mxCell elements — any one with connectable="0" AND parent poin
 - NEVER output draw.io XML without running the Part D pre-output audit
 - NEVER create a child mxCell with style="edgeLabel" or connectable="0" attached to an edge
 - NEVER use exitX=0.5,exitY=1 + entryX=0.5,entryY=0 for inter-container edges without explicit waypoints
+
+### Edge Enumeration (Flow Numbering) — MANDATORY
+
+Every edge MUST include the `enumerate` property to display a circled sequence number on the arrow, showing the order of the data/request flow.
+
+**Required style properties on all edges:**
+```
+enumerate=1;enumerateValue=N;
+```
+
+Where `N` is the step number in the logical flow.
+
+**Numbering assignment rules (determine N):**
+
+1. Start at `1` for the first user-initiated interaction (typically User → first service)
+2. Increment sequentially following the **primary request path** (left → right in the diagram)
+3. **Auth/validation flows** get a number based on WHEN they occur in the request lifecycle — authentication typically happens before the request reaches the backend, so it gets an early number (e.g., 2 or 3)
+4. **Async/monitoring flows** (logs, metrics, audit) get higher numbers — they occur AFTER the main request is processed
+5. **Optional/dashed flows** (error paths, fallback) get the highest numbers
+6. **Config/provisioning flows** (IP sources, Terraform data sources, non-runtime edges) use `enumerate=0;` (no number displayed)
+
+**Example ordering for a typical public API architecture:**
+
+| N | Edge | Rationale |
+|---|------|-----------|
+| 1 | User → CDN/Edge | First interaction |
+| 2 | CDN → WAF | Passes through protection |
+| 3 | Auth Provider → API | Token validated before processing |
+| 4 | WAF → API | Allowed traffic reaches API |
+| 5 | API → Backend/Resolver | Request processed |
+| 6 | Backend → Database | Data fetched/stored |
+| 7 | API → CloudWatch | Audit logs emitted after response |
+| 8 | CloudWatch → Splunk/External | Logs forwarded async |
+| 0 | IP Source → WAF | Config/provisioning, not runtime |
+
+**Implementation in edge style:**
+```xml
+<mxCell id="e1" value="HTTPS" style="edgeStyle=orthogonalEdgeStyle;...enumerate=1;enumerateValue=1;" edge="1" source="users" target="cdn" parent="1">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+<mxCell id="e7" value="OIDC Token" style="edgeStyle=orthogonalEdgeStyle;...enumerate=1;enumerateValue=3;" edge="1" source="entraid" target="appsync" parent="1">
+  <mxGeometry relative="1" as="geometry" />
+</mxCell>
+```
+
+**Edges with `enumerate=0` (no circle displayed):**
+- Non-runtime configuration edges (IP sources, Terraform data flows)
+- Edges inside a "config/provisioning" group boundary
+
+**Add to STEP 2 of GENERATION PROCESS:**
+After assigning edge routes, assign enumerateValue to every edge following the logical flow order. Document the numbering plan before writing XML.
+
+**Label offset when enumerate is active (prevents overlap):**
+
+When an edge has BOTH a text label (`value="..."`) AND `enumerate=1`, the enumerate circle is placed automatically at the source end of the edge. To prevent overlap with the text label:
+- ALWAYS set the label geometry with `x=0.3` to `x=0.4` (pushes label toward 65-70% of the edge, closer to target)
+- ALWAYS set `y=-15` (keeps label above the line, away from the circle)
+
+```xml
+<mxCell id="e9" value="Subscription" style="...enumerate=1;enumerateValue=8;" edge="1" source="cloudwatch" target="splunk" parent="1">
+  <mxGeometry x="0.3" y="-15" relative="1" as="geometry">
+    <mxPoint as="offset" />
+  </mxGeometry>
+</mxCell>
+```
+
+For vertical edges (top→bottom), use `x=20` and `y=0.3`:
+```xml
+<mxGeometry x="20" y="0.3" relative="1" as="geometry">
+  <mxPoint as="offset" />
+</mxGeometry>
+```
+
+For edges WITHOUT a text label (only enumerate circle): use standard `<mxGeometry relative="1" as="geometry" />` — no offset needed.
+
+### Flow Animation on Primary Path
+
+Edges belonging to the **primary request path** (solid, non-dashed, `enumerateValue` ≥ 1) MUST include:
+```
+flowAnimation=1;
+```
+
+This makes the primary flow visually animated (moving dashes along the arrow) when the diagram is viewed in draw.io or exported as SVG/HTML.
+
+**Rules:**
+- `flowAnimation=1;` → edges with `enumerateValue` ≥ 1 AND `dashed=0` (or no dashed property)
+- `flowAnimation=0;` (or omit) → dashed edges, config/provisioning edges (enumerate=0), error paths
+
+**Rationale:** The animation highlights the critical request path at a glance, making it immediately distinguishable from secondary/config flows.
+
+**Add to Validation checklist:**
+- □ Every edge has `enumerate=1;enumerateValue=N;` or `enumerate=0;`
+- □ enumerateValue follows logical request flow order (no gaps in the primary path)
+- □ Auth edges numbered BEFORE the main processing they protect
+- □ Monitoring/async edges numbered AFTER the main flow
+- □ Config/provisioning edges use enumerate=0
+- □ Every edge with BOTH label AND enumerate has geometry x=0.3-0.4 (horizontal) or y=0.3 (vertical) to avoid circle/label overlap
+- □ Primary path edges (solid, enumerateValue ≥ 1) have `flowAnimation=1;`
+- □ Secondary/dashed/config edges do NOT have flowAnimation
