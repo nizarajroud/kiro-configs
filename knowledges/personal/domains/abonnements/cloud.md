@@ -1,10 +1,9 @@
 ---
 name: abonnements-cloud
-description: Abonnements cloud (services, coûts mensuels).
+description: Pointeur vers Excel (source live).
 ---
 # Abonnements Cloud
 
-| Service | Montant/mois | Plan | Stockage | Notes |
-|---------|-------------|------|----------|-------|
-| Apple iCloud | _À compléter_ | _À compléter_ | _À compléter_ | |
-| Google One | _À compléter_ | _À compléter_ | _À compléter_ | |
+> **Source de vérité** : Excel `suivi-des-affaires.xlsx`, onglet `Main-finance-2026` (Apple iCloud, Google One)
+>
+> Ce fichier ne contient plus de données.

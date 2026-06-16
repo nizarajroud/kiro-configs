@@ -1,9 +1,8 @@
 ---
 name: identite-enfants
-description: Informations personnelles des enfants.
+description: Pointeur vers memory-compass.
 ---
 # Enfants
 
-| Prénom | Date de naissance | Notes |
-|--------|------------------|-------|
-| _À compléter_ | | |
+> **Données migrées vers memory-compass** (clé: `identite-famille-nizar`)
+> Ce fichier ne contient plus de données.

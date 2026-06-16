@@ -13,6 +13,24 @@ Rules that extend the prompt's routing logic with domain-specific overrides, exa
 2. **Notion** — section santé (`APIpostsearch`)
 3. Sources habituelles (NotebookLM, Gmail)
 
+### Finances (revenus, dépenses, épargne, cashflow, cotisations, allocations, impôts)
+
+**RÈGLE ABSOLUE** — Pour toute question financière, consulter l'Excel EN PREMIER :
+
+- **Fichier** : `/mnt/c/Users/nizar/Dropbox/AAA_PRIVATE_LIFE/Procedures-en-cours/Suivi-tresorie-perso/suivi-des-affaires.xlsx`
+- **Onglet principal** : `Main-finance-[année en cours]` (ex: `Main-finance-2026`)
+- **Onglets complémentaires** : `Cotisation`, `tresorie`, `credits d'impot`, `Allocations-Enfants` selon le sujet
+
+**Ordre de consultation :**
+1. **Excel** (onglet Main-finance de l'année en cours) — TOUJOURS en premier
+2. Memory-compass — faits déjà extraits
+3. NotebookLM (NLM_AAA_PRIVATE_LIFE) — documents fiscaux/relevés
+4. Gmail — confirmations de montants
+
+**Ne JAMAIS** répondre à une question financière à partir des steering files statiques (`revenus.md`, `depenses-fixes.md`) sans d'abord vérifier l'Excel qui est la source vivante et à jour.
+
+---
+
 ## User-Directed Routing — Examples
 
 - "Cherche dans NotebookLM, notebook Famille" → Query that specific notebook FIRST

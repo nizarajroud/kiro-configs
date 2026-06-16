@@ -1,12 +1,8 @@
 ---
 name: identite-abir
-description: Informations personnelles d'Abir (conjointe).
+description: Pointeur vers memory-compass.
 ---
 # Abir — Informations personnelles
 
-| Élément | Valeur |
-|---------|--------|
-| Nom complet | _À compléter_ |
-| Téléphone | _À compléter_ |
-| Email | _À compléter_ |
-| Employeur | _À compléter_ |
+> **Données migrées vers memory-compass** (clé: `identite-famille-nizar`)
+> Ce fichier ne contient plus de données.

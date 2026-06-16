@@ -1,13 +1,9 @@
 ---
 name: famille-garderie
-description: Informations garderie scolaire des enfants.
+description: Pointeur vers Excel (source live).
 ---
 # Garderie scolaire
 
-| Élément | Valeur |
-|---------|--------|
-| Enfant | _À compléter_ (petite-fille) |
-| Établissement | _À compléter_ |
-| Montant mensuel | _À compléter_ |
-| Jours par semaine | _À compléter_ |
-| Crédit d'impôt applicable | _À compléter_ |
+> **Source de vérité** : Excel `suivi-des-affaires.xlsx`, onglet `Main-finance-2026` (Garde scolaire Yasmine)
+>
+> Ce fichier ne contient plus de données.

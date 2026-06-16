@@ -254,3 +254,85 @@ Stocker le fait extrait dans `memory-compass` (knowledge graph) avec :
 
 **Ajout à la checklist de sortie** :
 - [ ] **Fait extrait d'un fichier difficile ?** → Stocker dans `memory-compass` avec source avant de terminer
+
+
+---
+
+## Règle : ADR — Architecture Decision Records de vie personnelle
+
+**Déclencheur** : Toute décision significative prise pendant une conversation, sur n'importe quel sujet personnel :
+- Choix financier (institution, stratégie, investissement)
+- Choix de carrière (employeur, poste, formation)
+- Choix logistique (fournisseur, prestataire, service)
+- Choix familial (école, activité, santé)
+- Choix immobilier (travaux, assurance, hypothèque)
+
+**Action OBLIGATOIRE — Dès qu'une décision est prise** :
+
+Stocker dans `memory-compass` avec :
+- **entityType** : `decision`
+- **entityName** : clé descriptive (ex: `decision-reer-bncd-2026`)
+
+**Format des observations** :
+- `Décision : [ce qui a été décidé]`
+- `Contexte : [pourquoi cette question s'est posée]`
+- `Options considérées : [les alternatives évaluées]`
+- `Raison du choix : [pourquoi cette option et pas les autres]`
+- `Conséquences : [ce que ça implique concrètement]`
+- `Date : [quand la décision a été prise]`
+- `Statut : Active | Révisée | Annulée`
+
+**Comportement** :
+- Si une nouvelle discussion remet en cause une décision passée → chercher l'ADR existant, mettre à jour le statut (« Révisée ») et créer le nouvel ADR
+- Si l'utilisateur demande « pourquoi on a choisi X ? » → retrouver l'ADR immédiatement
+- Ne PAS stocker les micro-décisions (« on mange quoi ce soir ») — uniquement celles qui ont un impact durable (> 1 semaine)
+
+**Ajout à la checklist de sortie** :
+- [ ] **Décision prise dans la conversation ?** → Créer un ADR dans `memory-compass` avant de terminer
+
+
+---
+
+## Règle : Anti-duplication TickTick
+
+**Déclencheur** : Toute création de rappel ou tâche TickTick.
+
+**AVANT toute création** :
+
+Chercher dans `memory-compass` (query: sujet + `ticktick`) si un rappel existe déjà pour ce sujet/cette date. Si oui → ne PAS créer de doublon. Informer l'utilisateur que le rappel existe déjà.
+
+**APRÈS création** :
+
+Stocker dans `memory-compass` avec :
+- **key** : `reminder-<sujet>` (ex: `reminder-rap-remboursement-2028`)
+- **memory_type** : `project`
+- **contenu** : titre du rappel, date, ID TickTick
+
+**Ajout à la checklist de sortie** :
+- [ ] **Rappel TickTick créé ?** → Stocker dans memory-compass (titre + date + ID) pour éviter les doublons
+
+
+---
+
+## Règle : Nouvelle procédure en cours
+
+**Déclencheur** : L'utilisateur demande de créer une nouvelle « procédure en cours » ou « procédure » sur un sujet donné.
+
+**Actions OBLIGATOIRES (les deux en parallèle)** :
+
+1. **Page Notion** — Créer une sous-page sous « Procédures en cours » (ID parent : `da0e66ac-2c07-442b-95ca-870a423498e0`) avec le titre = sujet demandé.
+
+2. **Dossier Dropbox** — Créer un dossier à :
+   ```
+   /mnt/c/Users/nizar/Dropbox/AAA_PRIVATE_LIFE/Procedures-en-cours/<nom-du-sujet>/
+   ```
+   Le nom du dossier = même nom que le titre de la page Notion (kebab-case ou tel quel selon la lisibilité).
+
+**Règles strictes** :
+- ✅ TOUJOURS créer les deux (page Notion + dossier Dropbox) ensemble
+- ✅ Le titre/nom doit être identique ou très proche entre les deux
+- ❌ JAMAIS créer l'un sans l'autre
+- ❌ JAMAIS créer une procédure uniquement dans Notion ou uniquement sur Dropbox
+
+**Ajout à la checklist de sortie** :
+- [ ] **Nouvelle procédure demandée ?** → Créer page Notion sous `da0e66ac` + dossier Dropbox `Procedures-en-cours/`

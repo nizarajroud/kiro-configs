@@ -4,6 +4,15 @@
   "description": "Multi-tool agent with access to Bedrock knowledge bases, AWS documentation, and diagram generation",
   "prompt": "file://../prompts/exp2-prompt.md",
   "mcpServers": {
+    "aws-pricing": {
+      "description": "AWS Pricing MCP Server (official awslabs) — retrieve real-time AWS service pricing, generate cost reports (PDF/Markdown), analyze CDK/Terraform projects for cost estimation. Use when asked to estimate AWS infrastructure costs.",
+      "command": "uvx",
+      "args": ["awslabs.aws-pricing-mcp-server@latest"],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false
+    },
     "bedrock-project-agent": {
       "description": "Queries an Amazon Bedrock agent connected to project knowledge bases. Use this for project-specific questions: RFP details, client requirements, estimated hours, timelines, budgets, and any domain-specific or organizational data ingested into the knowledge base.",
       "command": "python",

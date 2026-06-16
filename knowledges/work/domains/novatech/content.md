@@ -1,10 +1,14 @@
+---
+title: Analyse Migration Oracle EBS vers AWS — NovaTech
+---
+
 # Contexte et portée du mandat
 
 Dans le cadre de l'évaluation des options de migration pour NovaTech, Alithya a été mandatée pour produire une estimation côté AWS permettant au client de comparer avec la proposition Oracle Cloud Infrastructure (OCI) préparée par l'équipe Oracle.
 
 Le présent document constitue une analyse de haut niveau couvrant le mapping de l'infrastructure actuelle vers des services AWS équivalents, une estimation des coûts (via AWS Pricing Calculator) et une estimation de l'effort de migration.
 
-Le périmètre porte sur la migration lift-and-shift de l'environnement Oracle E-Business Suite (EBS) 12.2.10 de NovaTech, comprenant quatre environnements : Production, Test, Développement et Standby/DR.
+Le périmètre porte sur la migration lift-and-shift de l'environnement Oracle E-Business Suite 12.2.10 de NovaTech, comprenant quatre environnements : Production, Test, Développement et Standby/DR.
 
 Cette analyse s'appuie sur les guides officiels AWS, notamment le whitepaper « Migrating Oracle E-Business Suite on AWS » et l'architecture de référence « Oracle E-Business Suite on AWS », publiés par AWS.
 
@@ -20,10 +24,16 @@ L'environnement supporte 274 utilisateurs (37 concurrents) et opère en bilingue
 
 ## Inventaire des environnements
 
-1. **Production (St-Laurent)** — Application tier : 4 CPU cores, 192 GB RAM, 450 GB stockage. Database tier : 4 CPU cores, 192 GB RAM, 1.2 TB base de données, 2.7 TB stockage total, 2000 IOPS. Utilisation CPU moyenne : 50%.
-2. **Test (St-Laurent)** — Application tier : 4 CPU cores, 72 GB RAM, 340 GB stockage. Database tier : 4 CPU cores, 72 GB RAM, 1.2 TB base de données, 2.2 TB stockage total. Utilisation CPU moyenne : 9%.
-3. **Développement (Ste-Julie)** — Application tier : 3 CPU cores, 80 GB RAM, 460 GB stockage. Database tier : 3 CPU cores, 80 GB RAM, 1.2 TB base de données, 2.7 TB stockage total. Utilisation CPU moyenne : 22%.
-4. **Standby/DR (Ste-Julie)** — Application tier : 1 CPU core, 58 GB RAM. Database tier : 1 CPU core, 58 GB RAM, 1.2 TB base de données, 2.5 TB stockage total. Rôle : disaster recovery avec failover vers standby.
+| Environnement | Localisation | Tier | CPU Cores | RAM | Stockage | DB Size | IOPS | CPU Avg |
+|---|---|---|---|---|---|---|---|---|
+| Production | St-Laurent | Application | 4 | 192 GB | 450 GB | — | — | 50% |
+| Production | St-Laurent | Database | 4 | 192 GB | 2.7 TB | 1.2 TB | 2000 | 50% |
+| Test | St-Laurent | Application | 4 | 72 GB | 340 GB | — | — | 9% |
+| Test | St-Laurent | Database | 4 | 72 GB | 2.2 TB | 1.2 TB | — | 9% |
+| Développement | Ste-Julie | Application | 3 | 80 GB | 460 GB | — | — | 22% |
+| Développement | Ste-Julie | Database | 3 | 80 GB | 2.7 TB | 1.2 TB | — | 22% |
+| Standby/DR | Ste-Julie | Application | 1 | 58 GB | — | — | — | — |
+| Standby/DR | Ste-Julie | Database | 1 | 58 GB | 2.5 TB | 1.2 TB | — | — |
 
 ## Sauvegarde et DR
 
@@ -43,6 +53,8 @@ L'environnement supporte 274 utilisateurs (37 concurrents) et opère en bilingue
 
 Conformément au whitepaper AWS « Migrating Oracle E-Business Suite on AWS », l'approche recommandée pour les environnements Oracle EBS est le lift-and-shift. Cette approche permet de migrer l'environnement tel quel vers AWS avec un minimum de modifications, tout en bénéficiant de la flexibilité, de la haute disponibilité et de l'élasticité du cloud.
 
+![Architecture cible AWS NovaTech](novatech-architecture-cible-aws.png)
+
 L'outil de migration recommandé par AWS est AWS Application Migration Service (AWS MGN), qui effectue une réplication au niveau bloc des serveurs sources vers AWS. Pour le tier base de données, AWS recommande l'utilisation des outils natifs Oracle (RMAN, Data Guard) plutôt que MGN.
 
 ## Mapping des services AWS
@@ -53,7 +65,7 @@ Le mapping suivant traduit chaque composant de l'infrastructure actuelle vers so
 
 1. **Service AWS** : Amazon EC2 (instances r6i optimisées mémoire)
 2. **Stockage applicatif** : Amazon EBS gp3 pour les volumes locaux
-3. **Système de fichiers partagé** : Amazon EFS ou Amazon FSx for NetApp ONTAP pour les fichiers applicatifs EBS partagés entre les tiers
+3. **Système de fichiers partagé** : Amazon EFS ou Amazon FSx for NetApp ONTAP pour les fichiers applicatifs E-Business Suite partagés entre les tiers
 4. **Load Balancer** : Application Load Balancer (ALB) pour la distribution du trafic et la terminaison SSL/TLS
 5. **Sécurité web** : AWS WAF pour la protection contre les exploits web courants
 
@@ -117,13 +129,13 @@ La méthodologie suit le cadre AWS Migration Acceleration Program (MAP) en trois
 2. **Phase 2 : Infrastructure AWS** — Provisionnement VPC, sous-réseaux, groupes de sécurité, connectivité VPN/Direct Connect, instances EC2
 3. **Phase 3 : Migration base de données** — Réplication via RMAN ou Data Guard vers EC2/RDS Custom. Configuration standby multi-AZ
 4. **Phase 4 : Migration application tier** — Réplication via AWS MGN des serveurs applicatifs. Configuration EFS/FSx pour le filesystem partagé. Autoconfig et PostClone
-5. **Phase 5 : Tests et validation** — Vérification complétude migration, tests performance, validation fonctionnelle EBS
+5. **Phase 5 : Tests et validation** — Vérification complétude migration, tests performance, validation fonctionnelle E-Business Suite
 6. **Phase 6 : Basculement et mise en production** — Cutover DNS via Route 53, validation opérationnelle, support post-basculement
 7. **Phase 7 : Optimisation et finalisation** — Configuration haute disponibilité, optimisation coûts, documentation, formation
 
 # Estimation des coûts
 
-L'estimation détaillée des coûts est présentée dans le PDF AWS Pricing Calculator joint au présent livrable.
+L'estimation détaillée des coûts est présentée dans le rapport d'estimation de coûts AWS joint au présent livrable.
 
 Les principaux postes de coûts identifiés sont les suivants.
 

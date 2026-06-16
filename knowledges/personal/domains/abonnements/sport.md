@@ -1,10 +1,9 @@
 ---
 name: abonnements-sport
-description: Abonnements sport (gym, clubs).
+description: Pointeur vers Excel (source live).
 ---
 # Programmes de sport
 
-| Programme | Pour qui | Montant/mois | Lieu | Notes |
-|-----------|----------|-------------|------|-------|
-| _À compléter_ | Nizar | | | |
-| _À compléter_ | Abir | | | |
+> **Source de vérité** : Excel `suivi-des-affaires.xlsx`, onglet `Main-finance-2026` (Sport Nizar, Sport Abir)
+>
+> Ce fichier ne contient plus de données.

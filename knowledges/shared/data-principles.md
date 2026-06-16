@@ -134,3 +134,36 @@ Toute recommandation impliquant une distance, un quartier, une appartenance muni
 - Évaluation foncière, taxes, collectes
 
 Avant le 23 juin 2026, l'adresse précédente s'applique encore pour les décisions immédiates.
+
+
+## Principle 10: Local Project Memory
+
+Every project folder that involves iterative work (multiple sessions) MUST contain a `notes.md` file that serves as the **local working memory** for that project.
+
+### Rules
+
+1. **Updated during the session** — not at the end. If the session crashes or context compacts, the notes are already persisted.
+2. **First file read** — when the agent works on a project folder, `notes.md` is the first thing it reads to restore context.
+3. **Contains**:
+   - Current state (what's done, what remains)
+   - Decisions taken and their rationale
+   - Technical patterns/conventions discovered (e.g., "style X uses tab at position Y")
+   - Blockers or open questions
+4. **Does NOT contain** transient data that belongs in live sources (dates, amounts, contact info → those live in NotebookLM/Notion/Gmail).
+5. **Applies universally** across all knowledge spaces (`personal`, `work`, `forge`) and all project depths.
+
+### Relationship to `memory-compass`
+
+| `notes.md` (local to project folder) | `memory-compass` (global graph) |
+|---------------------------------------|----------------------------------|
+| Project-specific details and state | Cross-project user preferences |
+| Decisions and progress tracking | Routing corrections and global patterns |
+| Read only when working on THIS project | Consulted on any query for routing hints |
+
+### Example structure
+
+```
+domains/carriere/opportunities/bnc-bedrock/notes.md   ← memory for BNC Bedrock
+domains/demenagement/steering/11-baklog-actions.md     ← memory for déménagement
+work/domains/novatech/notes.md                         ← memory for Novatech project
+```

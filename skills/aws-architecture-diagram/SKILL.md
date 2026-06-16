@@ -438,34 +438,77 @@ If a node satisfies NONE of the above → it MUST NOT exist in the XML.
 
 This eliminates: background fill rectangles, invisible routing proxy nodes, ghost bounding boxes, "label" rectangles for edge concepts (those belong in edge value="").
 
-**PART B — INTER-CONTAINER VERTICAL EDGES (DEFINITIVE SOLUTION)**
+**PART B — ROOT CAUSE RULE: LAYOUT RESERVATION FOR LONG EDGES (DEFINITIVE — replaces all previous)**
 
-NEVER use edgeStyle=orthogonalEdgeStyle on any inter-container vertical edge. EVER. It ignores waypoints and auto-routes outside bounds.
+**PRINCIPLE:** Any edge that must travel outside its source container needs a RESERVED CORRIDOR — a column or row of empty space planned at STEP 0, before placing any node. If this corridor is not reserved at layout time, no edge style or waypoint rule can fix it afterward.
 
-THE ONE AND ONLY ALLOWED PATTERN for inter-container vertical edges:
+**STEP 0 — MANDATORY (before placing ANY node):**
+Identify every long/inter-container edge. For each one, reserve a corridor:
 
+VERTICAL inter-container edge (travels top→bottom):
+- Reserve a COLUMN of width=40px to the LEFT of all containers
+- corridor_x = first_container_x - 60
+- This column must contain NO nodes, NO labels, NO legend
+
+HORIZONTAL inter-container edge (travels left→right):
+- Reserve a ROW of height=40px ABOVE all containers
+- corridor_y = first_container_y - 60
+- This row must contain NO nodes, NO labels, NO legend
+
+Place containers, nodes, and legend AFTER reserving the corridor. The legend MUST be placed to the RIGHT of all containers.
+
+**STEP 1 — EDGE USING THE CORRIDOR:**
 ```
-edgeStyle=elbowEdgeStyle;elbow=vertical;rounded=1;html=1;strokeWidth=2;strokeColor=#666666;
-exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;
+style="edgeStyle=none;html=1;strokeWidth=2;strokeColor=#666666;dashed=1;dashPattern=10 4;endArrow=block;endFill=0;"
+exitX=0, exitY=0.5 (exit LEFT side of source)
+entryX=0, entryY=0.5 (enter LEFT side of target)
 ```
+- waypoint 1: x=corridor_x, y=source.y + source.height/2
+- waypoint 2: x=corridor_x, y=target.y + target.height/2
 
-With exactly 2 waypoints (can be same point for straight drop):
-- waypoint 1: x = source.x + source.width/2, y = (source_container_bottom + target_container_top) / 2
-- waypoint 2: x = target.x + target.width/2, y = (same as waypoint 1)
+Using the LEFT corridor guarantees:
+- waypoint x is always LESS than all node x values
+- completely isolated from legend, containers, and labels
+- no horizontal or vertical inflation possible
 
-When source and target share the same x center → waypoints are identical → edge drops straight through the gap between containers. Zero horizontal detour, zero canvas inflation.
+**STEP 2 — SET CANVAS LAST:**
+After ALL nodes, labels, legend, and waypoints are placed:
+- pageWidth = max(all x + width) + 80
+- pageHeight = max(all y + height) + 80
+- dx = pageWidth, dy = pageHeight
 
-HORIZONTAL edges and SAME-CONTAINER vertical edges:
-→ Continue using edgeStyle=orthogonalEdgeStyle as before (no issue for these).
+**SHORT EDGES (< 150px, same container):**
+→ edgeStyle=orthogonalEdgeStyle remains safe for these.
 
-ABSOLUTE PROHIBITIONS FOR INTER-CONTAINER EDGES (replaces all previous):
-- NEVER use orthogonalEdgeStyle on inter-container vertical edges
-- NEVER use exitX=1+entryX=1 on any vertical edge
-- NEVER use exitX=0+entryX=0 on any vertical edge
-- NEVER place a waypoint x outside the source/target node x range ±60px on a vertical inter-container edge
+**ABSOLUTE PROHIBITIONS — PERMANENT:**
+- NEVER place a long-edge corridor on the RIGHT side if a legend or external node exists on the right
+- NEVER place any node or label inside a reserved corridor
+- NEVER set pageWidth/pageHeight before all waypoints are computed
+- NEVER use exitX=1+entryX=1 — always prefer LEFT corridor (exitX=0+entryX=0)
+- NEVER use orthogonalEdgeStyle or elbowEdgeStyle on any edge > 150px or inter-container
+- NEVER add a label to a corridor edge without an explicit mxPoint offset anchored to the corridor x coordinate
+- NEVER rely on draw.io's automatic label placement (relative="1" without offset) on any non-straight edge
 
-MENTAL SIMULATION (mandatory before writing edge XML):
-For each edge, mentally trace the full path draw.io will render. Verify: path stays within canvas bounds. If not → fix routing before writing XML.
+**EDGE LABELS ON CORRIDOR EDGES:**
+
+When a label is added to an edge routed via a side corridor (edgeStyle=none + waypoints), draw.io places the label at the geometric midpoint of the full path. For a U/L-shaped corridor edge, this midpoint falls OUTSIDE the visible canvas, inflating it.
+
+SOLUTION — ALWAYS use explicit label offset on corridor edges:
+```xml
+<mxGeometry x="0" y="0" relative="1" as="geometry">
+  <mxPoint x="[corridor_x + 5]" y="[midY]" as="offset"/>
+</mxGeometry>
+```
+Where:
+- corridor_x = the x value of your waypoints
+- midY = (waypoint1.y + waypoint2.y) / 2
+- x offset = corridor_x + 5 (just to the right of the lane)
+
+This pins the label to a specific absolute position beside the corridor, not at the geometric midpoint.
+
+After adding any label, re-verify:
+- label offset x > 20 AND label offset x < pageWidth - 80
+- label offset y > 20 AND label offset y < pageHeight - 40
 
 **PART C — CANVAS SIZE = CONTENT SIZE**
 
