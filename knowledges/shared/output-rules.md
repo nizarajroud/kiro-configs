@@ -105,28 +105,58 @@ Chaque rich_text envoyé à Notion DOIT commencer par `‫` (U+202B) pour forcer
 
 ## Règle : Emplacement des images et diagrammes générés
 
-**Déclencheur** : Toute génération d'image ou de diagramme (Excalidraw, RTL Visual, Mermaid, screenshots, exports SVG/PNG).
+**Déclencheur** : Toute génération d'image, de diagramme, ou de fichier (Excalidraw, RTL Visual, Mermaid, screenshots, exports SVG/PNG, HTML, PDF, etc.).
 
 **Emplacement OBLIGATOIRE** :
 
 ```
-/mnt/c/Users/nizar/Documents/AI-GENERATED/<mois-année>/<nom-descriptif>.<ext>
+/mnt/c/Users/nizar/Documents/AI-GENERATED/<mois-année>/<domaine>/<sujet-sémantique>/<extension>/<nom-descriptif>.<ext>
 ```
 
 - `<mois-année>` : mois en français minuscule + tiret + année (ex: `juin-2026`, `juillet-2026`)
+- `<domaine>` : `personal` ou `work` selon le contexte de l'artefact
+- `<sujet-sémantique>` : sous-dossier nommé par le thème/projet auquel l'artefact appartient (kebab-case, ex: `bnc`, `demenagement`, `bitbucket-arm64`, `finances`)
+- `<extension>` : sous-dossier nommé par l'extension du fichier (ex: `png`, `html`, `excalidraw`, `svg`, `pdf`)
 - `<nom-descriptif>` : kebab-case, descriptif du contenu (ex: `bnc-onboarding-bedrock-architecture.excalidraw`)
-- Créer le dossier du mois s'il n'existe pas encore.
+- Créer les dossiers manquants (mois, domaine, sujet, extension) s'ils n'existent pas encore.
+
+**Classification domaine** :
+
+| Domaine | Sujets |
+|---------|--------|
+| `personal` | demenagement, finances, famille, divers, tunisian-voice-ai |
+| `work` | bnc, bitbucket-arm64, novatech, salsa, sftp, livoq |
 
 **Exemples** :
 ```
-/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/bnc-onboarding-bedrock-architecture.excalidraw
-/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/bnc-onboarding-ai-landing-zone.png
-/mnt/c/Users/nizar/Documents/AI-GENERATED/juillet-2026/demenagement-gantt-timeline.svg
+/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/personal/demenagement/html/cartons-demenagement-comparatif.html
+/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/personal/demenagement/png/plan-maison-certificat-localisation.png
+/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/personal/finances/html/arbitrage-celi-nizar-toutes-options.html
+/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/personal/famille/html/clubs-radhouane-comparatif.html
+/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/work/bnc/excalidraw/bnc-onboarding-bedrock-architecture.excalidraw
+/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/work/bnc/png/bnc-onboarding-ai-landing-zone.png
+/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/work/bitbucket-arm64/drawio/bitbucket-arm64-codebuild-architecture.drawio
+/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/work/novatech/pdf/NovaTech-Estimation-Couts-AWS.pdf
+/mnt/c/Users/nizar/Documents/AI-GENERATED/juillet-2026/work/salsa/drawio/salsa-636-appsync-public-architecture.drawio
 ```
+
+**Logique de création** :
+1. Déterminer le domaine (`personal` ou `work`)
+2. Déterminer le sujet sémantique (projet/thème auquel l'artefact appartient)
+3. Déterminer l'extension du fichier à générer
+4. Vérifier si le chemin `<domaine>/<sujet>/<extension>/` existe sous `<mois-année>/`
+5. S'il existe → y placer le fichier
+6. S'il n'existe pas → créer les dossiers manquants puis y placer le fichier
+
+**Détermination du sujet sémantique** :
+- Se baser sur le contexte de la conversation (quel sujet est en cours de discussion)
+- Le sujet doit être un mot-clé court et réutilisable (ex: `bnc`, `demenagement`, `finances`, `livoq`, `novatech`, `salsa`)
+- Si un artefact est vraiment générique et n'appartient à aucun sujet → le mettre directement sous `<domaine>/` sans sous-dossier sujet (exception rare)
 
 **Règles strictes** :
 - ❌ JAMAIS `/tmp/` ni aucun autre répertoire temporaire
 - ❌ JAMAIS de UUID ou noms non-descriptifs dans le nom de fichier
+- ❌ JAMAIS de fichier directement sous `<mois-année>/` sans sous-dossier domaine
 - ✅ La copie locale dans `AI-GENERATED/` est TOUJOURS conservée, même si l'image est ensuite uploadée sur GitHub ou intégrée dans Notion
 
 

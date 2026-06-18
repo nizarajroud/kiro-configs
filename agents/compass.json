@@ -30,6 +30,16 @@
       "args": ["mcp-canada"],
       "disabled": false,
       "locked": false
+    },
+    "secondhand-mcp": {
+      "description": "Search secondhand marketplaces (Facebook Marketplace, eBay, Depop, Poshmark) for used items. Use when user asks to find articles, meubles, electronics on Facebook Marketplace or other used-goods platforms.",
+      "command": "node",
+      "args": ["/home/nizar/HomeWspce/secondhand-mcp/dist/index.js"],
+      "env": {
+        "MARKETPLACES": "facebook"
+      },
+      "disabled": false,
+      "locked": false
     }
   },
   "tools": [

@@ -38,6 +38,31 @@
       "disabled": false,
       "priority": "standard"
     },
+    "tfmcp": {
+      "description": "Terraform MCP operator — execute terraform init/plan/apply/destroy, generate dependency graphs (DOT format), analyze state/drift, manage workspaces. Chain with quickchart-mcp for visual rendering of graphs. Use when asked to operate Terraform or visualize resource dependencies.",
+      "command": "/home/nizar/.cargo/bin/tfmcp",
+      "args": ["mcp"],
+      "env": {
+        "TERRAFORM_DIR": "/home/nizar/HomeWspce/poc-bnc-terraform-modules",
+        "TFMCP_ALLOW_DANGEROUS_OPS": "false",
+        "TFMCP_ALLOW_AUTO_APPROVE": "false",
+        "TFMCP_MAX_RESOURCES": "50",
+        "TFMCP_AUDIT_ENABLED": "true"
+      },
+      "disabled": false
+    },
+    "quickchart-mcp": {
+      "description": "Visual chart and graph renderer — takes DOT (Graphviz), Chart.js configs, or QR data and produces PNG/SVG/PDF images. Use as the SECOND step after tfmcp: get DOT from terraform_graph, then render it here into a visual image.",
+      "command": "node",
+      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/quickchart-mcp-server/dist/index.js"],
+      "disabled": false
+    },
+    "graphistry-mcp": {
+      "description": "GPU-accelerated interactive graph visualization via Graphistry. Takes edge/node data and produces an interactive web visualization (zoom, pan, filter, search). Use for LARGE dependency graphs (70+ nodes) where static PNG is unreadable. Chain: tfmcp (graph data) → graphistry-mcp (interactive web view).",
+      "command": "python3",
+      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/graphistry_wrapper.py"],
+      "disabled": false
+    },
     "claude-cli": {
       "command": "npx",
       "args": [
