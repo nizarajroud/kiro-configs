@@ -1,10 +1,10 @@
 {
   "name": "compass",
-  "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
+  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
     "memory-compass": {
-      "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
+      "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
@@ -21,20 +21,24 @@
         "excel-mcp-server",
         "stdio"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "mcp-canada": {
       "description": "Canadian government data — 217 tools across 17 APIs. Bank of Canada rates, weather, immigration stats, product recalls, Quebec data, parliamentary data. Use for any question about Canadian services, government info, or public data.",
       "command": "uvx",
-      "args": ["mcp-canada"],
-      "disabled": false,
+      "args": [
+        "mcp-canada"
+      ],
+      "disabled": true,
       "locked": false
     },
     "secondhand-mcp": {
       "description": "Search secondhand marketplaces (Facebook Marketplace, eBay, Depop, Poshmark) for used items. Use when user asks to find articles, meubles, electronics on Facebook Marketplace or other used-goods platforms.",
       "command": "node",
-      "args": ["/home/nizar/HomeWspce/secondhand-mcp/dist/index.js"],
+      "args": [
+        "/home/nizar/HomeWspce/secondhand-mcp/dist/index.js"
+      ],
       "env": {
         "MARKETPLACES": "facebook"
       },
@@ -60,6 +64,6 @@
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer.",
+  "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer.",
   "useLegacyMcpJson": true
 }
