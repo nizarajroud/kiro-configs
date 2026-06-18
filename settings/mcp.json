@@ -3,7 +3,12 @@
     "figma": {
       "description": "Figma MCP — generate diagrams (FigJam), write to canvas, extract design context, generate code from designs. Skill: figma-generate-diagram.",
       "command": "npx",
-      "args": ["-y", "mcp-remote", "https://mcp.figma.com/mcp", "--allow-http"],
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.figma.com/mcp",
+        "--allow-http"
+      ],
       "disabled": true,
       "locked": false
     },
@@ -21,7 +26,8 @@
       "args": [
         "mcp-server-time"
       ],
-      "locked": false
+      "locked": false,
+      "disabled": true
     },
     "notion-workspace": {
       "description": "Notion workspace MCP (local fork with extended block types: headings, annotations, image support).",
@@ -32,7 +38,7 @@
       "env": {
         "GITHUB_REPO": "nizarajroud/notion-images"
       },
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "github": {
@@ -45,7 +51,7 @@
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "sequential-thinking": {
@@ -54,21 +60,24 @@
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"
       ],
-      "locked": false
+      "locked": false,
+      "disabled": true
     },
     "bookmarks": {
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
       ],
-      "locked": false
+      "locked": false,
+      "disabled": true
     },
     "fetch": {
       "command": "uvx",
       "args": [
         "mcp-server-fetch"
       ],
-      "locked": false
+      "locked": false,
+      "disabled": true
     },
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
@@ -78,14 +87,14 @@
         "mcp-remote",
         "https://knowledge-mcp.global.api.aws"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "markitdown": {
       "description": "Convert any document to Markdown for reading. Supports Word (.docx), Excel (.xlsx/.xls), PDF, PowerPoint (.pptx), HTML, images, and more. Use convert_to_markdown with a file:// URI to extract document contents as Markdown.",
       "command": "/home/nizar/.markitdown-mcp/bin/markitdown-mcp",
       "args": [],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "airtable": {
@@ -98,7 +107,7 @@
       "env": {
         "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "alithya-knowledge-rag": {
@@ -114,7 +123,8 @@
     },
     "cao-mcp-server": {
       "type": "stdio",
-      "command": "cao-mcp-server"
+      "command": "cao-mcp-server",
+      "disabled": true
     },
     "firecrawl": {
       "description": "Web scraping, crawling, and search MCP server. Use this to scrape single pages, crawl entire sites, search the web, map site URLs, extract structured data from web pages, and perform autonomous web research. Supports JSON extraction with schemas, batch scraping, and interactive page navigation. Ideal for parsing municipal sites, extracting registration info, dates, locations from complex web pages.",
@@ -122,7 +132,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "gmail": {
@@ -131,7 +141,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "mcp-mermaid": {
@@ -141,14 +151,14 @@
         "-y",
         "mcp-mermaid"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "notebooklm": {
       "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
       "command": "notebooklm-mcp",
       "args": [],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "pdf-reader": {
@@ -170,7 +180,7 @@
         "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
         "TZ": "America/Toronto"
       },
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "ticktick": {
@@ -179,7 +189,7 @@
       "args": [
         "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "whatsapp": {
@@ -200,7 +210,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "mcp-image-recognition": {
@@ -209,7 +219,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "ssh-mcp-server": {
@@ -218,50 +228,67 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/ssh_mcp_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "napkin-ai": {
       "description": "Generate professional infographics and visuals (mindmaps, flowcharts, timelines, comparisons) from text using Napkin AI. Use when user asks for visual diagrams, infographics, or visual representations of concepts.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/napkin_ai_wrapper.py"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/napkin_ai_wrapper.py"
+      ],
       "disabled": true,
       "locked": false
     },
     "excalidraw-mcp": {
       "description": "Generate hand-drawn style diagrams (flowcharts, mindmaps, architecture, sequence, ER, class, state, timeline, kanban, wireframes, org charts) as .excalidraw files with Sugiyama auto-layout. Use when user asks for technical diagrams or visual representations of systems and processes.",
       "command": "uvx",
-      "args": ["--from", "maaker-excalidraw-mcp", "excalidraw-mcp"],
-      "disabled": false,
+      "args": [
+        "--from",
+        "maaker-excalidraw-mcp",
+        "excalidraw-mcp"
+      ],
+      "disabled": true,
       "locked": false
     },
     "rtl-visual-mcp": {
       "description": "Generate PNG visuals with proper RTL Arabic/English bidirectional text rendering. Use when user asks for a visual Tunisian explanation or any diagram containing Arabic text mixed with English technical terms.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/rtl-visual-mcp/server.py"],
-      "disabled": false,
+      "args": [
+        "/home/nizar/HomeWspce/rtl-visual-mcp/server.py"
+      ],
+      "disabled": true,
       "locked": false
     },
     "linkedin-mcp": {
       "description": "Access LinkedIn data: profiles, job search, company info, messages, feed, saved posts, people search. Use when user asks about LinkedIn profiles, jobs, companies, or networking.",
       "command": "python3",
-      "args": ["-m", "linkedin_mcp_server"],
-      "env": {"PYTHONPATH": "/home/nizar/HomeWspce/linkedin-mcp-fork"},
-      "disabled": false,
+      "args": [
+        "-m",
+        "linkedin_mcp_server"
+      ],
+      "env": {
+        "PYTHONPATH": "/home/nizar/HomeWspce/linkedin-mcp-fork"
+      },
+      "disabled": true,
       "locked": false
     },
     "bitbucket-mcp": {
       "description": "Atlassian Bitbucket MCP. Manage repos, pull requests, pipelines, branches, and files on Bitbucket Cloud. Use when user asks about Bitbucket repositories or CI/CD pipelines.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/bitbucket_wrapper.py"],
-      "disabled": false,
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/bitbucket_wrapper.py"
+      ],
+      "disabled": true,
       "locked": false
     },
     "google-maps": {
       "description": "Google Maps Grounding Lite — search places (restaurants, clinics, schools), compute routes (driving/walking), and lookup weather for any location. Use when user asks about nearby places, directions, or location-based queries.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/google_maps_wrapper.py"],
-      "disabled": false,
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/google_maps_wrapper.py"
+      ],
+      "disabled": true,
       "locked": false
     }
   }
