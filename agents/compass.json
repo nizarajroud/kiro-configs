@@ -21,7 +21,7 @@
         "excel-mcp-server",
         "stdio"
       ],
-      "disabled": true,
+      "disabled": false,
       "locked": false
     },
     "mcp-canada": {
@@ -30,7 +30,7 @@
       "args": [
         "mcp-canada"
       ],
-      "disabled": true,
+      "disabled": false,
       "locked": false
     },
     "secondhand-mcp": {
