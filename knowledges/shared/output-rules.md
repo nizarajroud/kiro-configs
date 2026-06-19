@@ -366,3 +366,25 @@ Stocker dans `memory-compass` avec :
 
 **Ajout à la checklist de sortie** :
 - [ ] **Nouvelle procédure demandée ?** → Créer page Notion sous `da0e66ac` + dossier Dropbox `Procedures-en-cours/`
+
+
+---
+
+## Règle : Synchronisation Airtable ↔ HTML
+
+**Déclencheur** : Toute modification dans une table Airtable (ajout, modification, suppression d'un enregistrement).
+
+**Action OBLIGATOIRE** : Mettre à jour le fichier HTML correspondant qui reflète le contenu de cette table.
+
+Les deux actions sont **toujours faites ensemble** — jamais l'une sans l'autre :
+1. Modifier Airtable (source de vérité)
+2. Régénérer/mettre à jour le HTML qui affiche ces données
+
+**Fichiers HTML connus par table Airtable :**
+| Base | Table | Fichier HTML |
+|------|-------|-------------|
+| Personal Life (`appt4WObx12eJVPvK`) | Déménagement (`tblVZqY2ARz3R1CCY`) | `/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/personal/demenagement/html/demenagement-taches-lieu-date.html` |
+
+**Ajout à la checklist de sortie** :
+- [ ] **Table Airtable modifiée ?** → Mettre à jour le HTML correspondant avant de terminer
+
