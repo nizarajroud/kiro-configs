@@ -9,7 +9,7 @@
         "https://mcp.figma.com/mcp",
         "--allow-http"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "perplexity": {
@@ -18,7 +18,7 @@
       "args": [
         "/home/nizar/.kiro/wrappers/perplexity_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "time": {
@@ -27,7 +27,7 @@
         "mcp-server-time"
       ],
       "locked": false,
-      "disabled": false
+      "disabled": true
     },
     "notion-workspace": {
       "description": "Notion workspace MCP (local fork with extended block types: headings, annotations, image support).",
@@ -38,7 +38,7 @@
       "env": {
         "GITHUB_REPO": "nizarajroud/notion-images"
       },
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "github": {
@@ -51,7 +51,7 @@
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "sequential-thinking": {
@@ -61,7 +61,7 @@
         "@modelcontextprotocol/server-sequential-thinking"
       ],
       "locked": false,
-      "disabled": false
+      "disabled": true
     },
     "bookmarks": {
       "command": "python3",
@@ -69,7 +69,7 @@
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
       ],
       "locked": false,
-      "disabled": false
+      "disabled": true
     },
     "fetch": {
       "command": "uvx",
@@ -77,7 +77,7 @@
         "mcp-server-fetch"
       ],
       "locked": false,
-      "disabled": false
+      "disabled": true
     },
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
@@ -87,14 +87,14 @@
         "mcp-remote",
         "https://knowledge-mcp.global.api.aws"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "markitdown": {
       "description": "Convert any document to Markdown for reading. Supports Word (.docx), Excel (.xlsx/.xls), PDF, PowerPoint (.pptx), HTML, images, and more. Use convert_to_markdown with a file:// URI to extract document contents as Markdown.",
       "command": "/home/nizar/.markitdown-mcp/bin/markitdown-mcp",
       "args": [],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "airtable": {
@@ -107,8 +107,7 @@
       "env": {
         "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
-      "disabled": false,
-      "locked": false
+      "disabled": true
     },
     "alithya-knowledge-rag": {
       "description": "Personal knowledge base (remote RAG server on PC Alithya). Use this for ALL personal/private information: personal documents, notes, private files, financial records, procedures, and any data stored in Dropbox/AAA_PRIVATE_LIFE. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries.",
@@ -118,13 +117,12 @@
         "http://192.168.2.56:8080/mcp",
         "--allow-http"
       ],
-      "disabled": false,
-      "locked": false
+      "disabled": true
     },
     "cao-mcp-server": {
       "type": "stdio",
       "command": "cao-mcp-server",
-      "disabled": false
+      "disabled": true
     },
     "firecrawl": {
       "description": "Web scraping, crawling, and search MCP server. Use this to scrape single pages, crawl entire sites, search the web, map site URLs, extract structured data from web pages, and perform autonomous web research. Supports JSON extraction with schemas, batch scraping, and interactive page navigation. Ideal for parsing municipal sites, extracting registration info, dates, locations from complex web pages.",
@@ -132,8 +130,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
       ],
-      "disabled": false,
-      "locked": false
+      "disabled": true
     },
     "gmail": {
       "description": "Gmail and Google Calendar MCP server. Use this to search emails, read messages, create drafts, reply to emails, manage labels, and access Google Calendar events. Supports multiple Google accounts.",
@@ -141,8 +138,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
       ],
-      "disabled": false,
-      "locked": false
+      "disabled": true
     },
     "mcp-mermaid": {
       "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
@@ -151,23 +147,21 @@
         "-y",
         "mcp-mermaid"
       ],
-      "disabled": false,
-      "locked": false
+      "disabled": true
     },
     "notebooklm": {
       "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
       "command": "notebooklm-mcp",
       "args": [],
-      "disabled": false,
-      "locked": false
+      "disabled": true
     },
     "pdf-reader": {
       "command": "npx",
       "args": [
-        "-y",
         "@sylphx/pdf-reader-mcp"
       ],
-      "disabled": false
+      "disabled": true,
+      "autoApprove": []
     },
     "telegram": {
       "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
@@ -180,8 +174,7 @@
         "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
         "TZ": "America/Toronto"
       },
-      "disabled": false,
-      "locked": false
+      "disabled": true
     },
     "ticktick": {
       "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
@@ -189,8 +182,7 @@
       "args": [
         "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
       ],
-      "disabled": false,
-      "locked": false
+      "disabled": true
     },
     "whatsapp": {
       "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
@@ -201,8 +193,7 @@
         "run",
         "main.py"
       ],
-      "disabled": false,
-      "locked": false
+      "disabled": true
     },
     "mural": {
       "description": "MURAL collaboration tool. Use this whenever the user mentions 'mural', 'MURAL', a mural board, or visual collaboration content. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54). Supports: listing workspaces/rooms/murals, reading all content from a mural (sticky notes, shapes, text, images), searching text inside murals, creating/updating/deleting sticky notes, and creating new murals.",
@@ -210,7 +201,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "mcp-image-recognition": {
@@ -219,7 +210,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "ssh-mcp-server": {
@@ -228,7 +219,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/ssh_mcp_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "napkin-ai": {
@@ -237,7 +228,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/napkin_ai_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "excalidraw-mcp": {
@@ -248,7 +239,7 @@
         "maaker-excalidraw-mcp",
         "excalidraw-mcp"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "rtl-visual-mcp": {
@@ -257,7 +248,7 @@
       "args": [
         "/home/nizar/HomeWspce/rtl-visual-mcp/server.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "linkedin-mcp": {
@@ -270,7 +261,7 @@
       "env": {
         "PYTHONPATH": "/home/nizar/HomeWspce/linkedin-mcp-fork"
       },
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "bitbucket-mcp": {
@@ -279,7 +270,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bitbucket_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "google-maps": {
@@ -288,7 +279,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/google_maps_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     }
   }
