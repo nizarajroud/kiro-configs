@@ -42,8 +42,7 @@
       "env": {
         "MARKETPLACES": "facebook"
       },
-      "disabled": false,
-      "locked": false
+      "disabled": false
     }
   },
   "tools": [
