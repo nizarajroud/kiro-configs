@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "figma": {
-      "description": "Figma MCP \u2014 generate diagrams (FigJam), write to canvas, extract design context, generate code from designs. Skill: figma-generate-diagram.",
+      "description": "Figma MCP — generate diagrams (FigJam), write to canvas, extract design context, generate code from designs. Skill: figma-generate-diagram.",
       "command": "npx",
       "args": [
         "-y",
@@ -274,7 +274,7 @@
       "locked": false
     },
     "google-maps": {
-      "description": "Google Maps Grounding Lite \u2014 search places (restaurants, clinics, schools), compute routes (driving/walking), and lookup weather for any location. Use when user asks about nearby places, directions, or location-based queries.",
+      "description": "Google Maps Grounding Lite — search places (restaurants, clinics, schools), compute routes (driving/walking), and lookup weather for any location. Use when user asks about nearby places, directions, or location-based queries.",
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/google_maps_wrapper.py"

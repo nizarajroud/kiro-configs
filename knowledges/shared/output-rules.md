@@ -381,10 +381,288 @@ Les deux actions sont **toujours faites ensemble** — jamais l'une sans l'autre
 2. Régénérer/mettre à jour le HTML qui affiche ces données
 
 **Fichiers HTML connus par table Airtable :**
-| Base | Table | Fichier HTML |
-|------|-------|-------------|
-| Personal Life (`appt4WObx12eJVPvK`) | Déménagement (`tblVZqY2ARz3R1CCY`) | `/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/personal/demenagement/html/demenagement-taches-lieu-date.html` |
+| Table | ID | Fichier HTML |
+|-------|-----|-------------|
+| Déménagement | `tblVZqY2ARz3R1CCY` | `personal/demenagement/html/demenagement-taches-lieu-date.html` |
+| Cible-maj-adresse | `tblZOp9HUBWBehudU` | `personal/demenagement/html/changements-adresse-suivi.html` |
+| Achats Déménagement | `tblnb3EwV7IJE5IHn` | `personal/demenagement/html/achats-demenagement-suivi.html` |
+| Retour-inspection | `tblOa4nR5pb98NjUf` | `personal/demenagement/html/retour-inspection.html` |
+| Références-entretien | `tblO1PCM2lerXOjg3` | `personal/demenagement/html/references-entretien.html` |
+| Mes Services | `tblX4ohkILObOAXuT` | `personal/demenagement/html/mes-services.html` |
+
+Tous les chemins sont relatifs à `/mnt/c/Users/nizar/Documents/AI-GENERATED/juin-2026/`.
+
+**JAMAIS** modifier Airtable sans mettre à jour le HTML. **JAMAIS** demander confirmation — c'est automatique et silencieux.
 
 **Ajout à la checklist de sortie** :
 - [ ] **Table Airtable modifiée ?** → Mettre à jour le HTML correspondant avant de terminer
 
+
+
+---
+
+## Règle : Routage Telegram
+
+**Déclencheur** : Toute demande d'envoi de message sur Telegram.
+
+**Routage OBLIGATOIRE** :
+
+| Expression de l'utilisateur | Destination | Chat ID |
+|---|---|---|
+| « Envoie à Abir / ma conjointe / canal Abir / cnd-Abir » | **cnd-Abir** | `6821640578` |
+| « Envoie sur Telegram / mets sur Telegram / canal main / sur Telegram tout court » | **Main** (canal personnel Nizar) | `1267288999` |
+
+**Règle par défaut** : Si l'utilisateur dit simplement « mets ça sur Telegram » sans préciser de destinataire → envoyer sur **Main** (`1267288999`).
+
+**Règles strictes** :
+- ✅ « Envoie à Abir » → cnd-Abir (6821640578)
+- ✅ « Mets ça sur Telegram » → Main (1267288999)
+- ✅ « Canal main » → Main (1267288999)
+- ❌ JAMAIS envoyer sur cnd-Abir quand l'utilisateur n'a pas explicitement mentionné Abir/conjointe
+
+
+---
+
+## Règle : TickTick — Fuseau horaire pour les rappels
+
+**Déclencheur** : Toute création ou mise à jour de tâche/rappel TickTick avec une heure spécifique.
+
+**RÈGLE ABSOLUE** : L'API TickTick attend la `due_date` en **UTC**. Le fuseau de l'utilisateur est **America/Toronto (UTC-4 en été, UTC-5 en hiver)**.
+
+**Formule de conversion OBLIGATOIRE** :
+- **Été (2ème dimanche de mars → 1er dimanche de novembre)** : heure locale + 4h = UTC
+  - Exemple : 5h00 local → `09:00:00+0000`
+  - Exemple : 8h00 local → `12:00:00+0000`
+  - Exemple : 21h00 local → `01:00:00+0000` (lendemain)
+- **Hiver (1er dimanche de novembre → 2ème dimanche de mars)** : heure locale + 5h = UTC
+  - Exemple : 5h00 local → `10:00:00+0000`
+  - Exemple : 8h00 local → `13:00:00+0000`
+
+**Vérification OBLIGATOIRE avant envoi** :
+1. Identifier l'heure locale demandée par l'utilisateur
+2. Déterminer si on est en heure d'été (EDT = UTC-4) ou heure d'hiver (EST = UTC-5)
+3. Ajouter le décalage pour obtenir UTC
+4. Vérifier : `heure_UTC - 4 (été) ou -5 (hiver) = heure demandée par l'utilisateur` ?
+
+**❌ ERREUR FRÉQUENTE** : Passer l'heure locale directement dans `+0000` sans conversion. Résultat = rappel déclenché 4-5h trop tôt.
+
+**✅ CORRECT** : `due_date="2026-06-22T09:00:00+0000"` pour un rappel à 5h00 AM Montréal en été.
+
+**Ajout à la checklist de sortie** :
+- [ ] **Rappel TickTick créé avec heure ?** → Vérifier que due_date UTC = heure locale + 4h (été) ou +5h (hiver)
+
+
+---
+
+## Règle : Cache automatique des faits structurels
+
+**Déclencheur** : Toute extraction d'une donnée **structurelle fixe** (qui ne change pas dans le temps) obtenue via une source externe (NotebookLM, Gmail, PDF, scraping).
+
+**Exemples de faits structurels fixes** :
+- Dimensions des pièces d'une propriété
+- Caractéristiques permanentes de la maison (année construction, type de fondation, superficie terrain)
+- Distances entre lieux fréquentés (maison → gym, maison → école)
+- Numéros de contrats/polices/dossiers
+- Coordonnées de prestataires confirmés
+- Données d'identité (passeports, dates de naissance, NAS)
+- Adresses d'employeurs, écoles, institutions fréquentées
+
+**Critère de jugement — stocker SI** :
+1. L'information est **fixe** (ne change pas au fil du temps ou rarement)
+2. L'information a été **extraite d'une source externe** (pas déjà facilement accessible en texte)
+3. L'information est **susceptible d'être réutilisée** dans une future conversation
+
+**Action AUTOMATIQUE (sans demande de l'utilisateur)** :
+Stocker dans `memory-compass` avec :
+- **entityType** : `fait-structurel`
+- **entityName** : clé descriptive (ex: `dimensions-maison-2745-roland-therrien`)
+- **observations** : le fait + la source
+
+**NE PAS stocker** :
+- Des données volatiles (soldes, statuts de tâche en cours, météo)
+- Des données déjà dans un steering file local
+- Des données facilement re-queryables en <5 secondes (ex: nom d'une page Notion)
+
+**Ajout à la checklist de sortie** :
+- [ ] **Fait structurel extrait d'une source externe ?** → Stocker dans `memory-compass` automatiquement
+
+
+---
+
+## Règle : Format des tableaux en session Kiro (ASCII aligné)
+
+**Déclencheur** : Toute sortie contenant un tableau (2+ colonnes) dans une session Kiro CLI.
+
+**RÈGLE ABSOLUE** : Ne JAMAIS utiliser de tableaux GFM Markdown non-paddés. Toujours utiliser des tableaux ASCII avec colonnes alignées par padding d'espaces.
+
+**Format OBLIGATOIRE** :
+- Chaque cellule est paddée avec des espaces pour matcher la valeur la plus large de la colonne
+- La ligne de séparation (`---`) est alignée à la même largeur que le header
+- Les URLs sont affichées en raw (pas de `[text](url)`), tronquées avec `…` si > 50 caractères
+- Les colonnes numériques sont alignées à droite
+- Appliquer automatiquement dès qu'un tableau de 2+ colonnes est produit, sans demande explicite
+
+**❌ INTERDIT** :
+```
+| Prix | Annonce | Lieu |
+|---|---|---|
+| Gratuit | Table and art form | Longueuil |
+```
+
+**✅ OBLIGATOIRE** :
+```
+| Prix    | Annonce            | Lieu      |
+|---------|--------------------|-----------| 
+| Gratuit | Table and art form | Longueuil |
+```
+
+**Règles de padding** :
+- Largeur colonne = max(largeur header, largeur valeur la plus longue) + 1 espace de chaque côté
+- Séparateur = tirets (`-`) de la même largeur que la colonne
+- Texte : aligné à gauche
+- Nombres : alignés à droite
+
+**Règle 1 — Cellules vides** :
+Les cellules vides ne sont JAMAIS laissées vierges. Remplir avec un tiret `-` aligné à la largeur de la colonne.
+- ❌ `| Gratuit |          | Longueuil |`
+- ✅ `| Gratuit | -        | Longueuil |`
+
+**Règle 2 — Compensation largeur emoji** :
+Les emojis (✅ ❌ ⚠️ 🟩) font 2 caractères de large en monospace mais comptent pour 1 en longueur. Compenser en retirant 1 espace de padding après tout emoji dans une cellule.
+- ❌ `| ✅ Acheté  |` (trop large)
+- ✅ `| ✅ Acheté |` (1 espace en moins après emoji)
+
+**Règle 3 — Largeur colonne** :
+Calculer la largeur de colonne AVANT le rendu. = max(header, toutes les valeurs incluant cellules vides/tirets). Chaque ligne doit matcher cette largeur exactement.
+
+**Règle 4 — Séparateur = même largeur que header** :
+`| Statut   |` → `|----------|`
+
+**Règle 5 — Contexte monospace** :
+Toutes les tables sont rendues en monospace (terminal, Kiro chat). PAS de tricks proportionnels. Padding par espaces uniquement.
+
+**Règle 6 — Troncature** :
+Si une colonne Description dépasse ~45 chars, tronquer avec `…` plutôt que wrapper, pour préserver l'alignement single-line.
+
+**Règle 7 — Word-wrap intra-cellule (lignes multiples)** :
+Quand le contenu d'une cellule dépasse la largeur allouée, wrapper sur la ligne physique suivante DANS la même ligne logique. Toutes les colonnes doivent continuer sur chaque ligne wrappée avec du padding vide.
+
+Budget de colonnes (console ~120 chars) :
+```
+| Statut | Article          | Fournisseur  | Prix | Description              |
+| 8      | 30               | 18           | 6    | 45                       |
+```
+
+Exemple wrap :
+```
+| Statut    | Article                        | Fournisseur     | Prix | Description                    |
+|-----------|--------------------------------|-----------------|------|--------------------------------|
+| ✅ Acheté | Peinture                       | Bétonel du Luxe | -    | Expert du Luxe 140 10A, Blanc, |
+|           |                                |                 |      | coquille d'œuf, 925 ml         |
+|-----------|--------------------------------|-----------------|------|--------------------------------|
+| À ach.    | Patins vissables feutre        | Canadian Tire   | 8$   | Protection plancher bois —     |
+|           | (paq. 20)                      |                 |      | vissés dans pieds de chaise    |
+```
+
+Règles du wrap :
+- Les lignes wrappées répètent la structure `|` avec des cellules vides paddées
+- Un séparateur `|---|` est ajouté ENTRE chaque ligne logique (pas juste au header)
+- Jamais de troncature `…` quand le wrap est actif — afficher le contenu complet
+- Wrapper aux limites de mots (pas de coupure mid-word)
+- Le séparateur inter-lignes utilise les mêmes largeurs que le header
+
+**Règle 8 — Golden Rule : Pre-compute, then render (strict two-pass)** :
+
+JAMAIS écrire le contenu et ajuster les largeurs en même temps. Toujours suivre ce processus en deux passes :
+
+**PASS 1 — Mesure** (avant d'écrire un seul caractère) :
+1. Collecter TOUT le contenu de chaque cellule, incluant les fragments wrappés
+2. Pour chaque colonne : largeur = max(longueur header, plus long fragment de cellule)
+3. Fixer la largeur totale = somme(toutes largeurs colonnes) + pipes + padding. Si total > 120 chars, réduire la colonne la plus large d'abord, puis re-fragmenter son contenu
+4. Verrouiller toutes les largeurs. Elles NE CHANGENT PAS pendant le rendu
+
+**PASS 2 — Rendu** (avec les largeurs verrouillées) :
+- Chaque fragment de cellule est paddé avec des espaces pour remplir exactement sa largeur
+- Les cellules de continuation vides sont remplies UNIQUEMENT d'espaces (pas de `-`, pas de `|` à l'intérieur)
+- Le `|` de fermeture de chaque ligne est placé à la MÊME position caractère sur chaque ligne physique, incluant les lignes wrappées
+- Les fragments de wrap sont coupés au dernier mot AVANT d'atteindre la largeur de colonne. Jamais couper À la frontière (collision avec la bordure). Laisser au moins 1 espace de marge avant le `|` de fermeture
+
+**Vérification mentale avant output** :
+- Le `|` de fermeture de la colonne N est au même index caractère sur TOUTES les lignes de la row
+- Aucune cellule ne contient un `|` parasite qui appartient à la structure
+- Les lignes de continuation wrappées ont UNIQUEMENT des espaces dans les colonnes sans overflow
+
+**Scope** : Sessions Kiro CLI uniquement. Les tableaux générés pour Notion ou HTML ne sont pas concernés.
+
+
+---
+
+## Règle : Tableaux dans Notion
+
+**Déclencheur** : Toute demande de tableau dans une page Notion.
+
+**RÈGLE ABSOLUE** : Utiliser les blocs natifs `table` + `table_row` de l'API Notion.
+JAMAIS de texte séparé par des pipes `|` dans des paragraphes.
+
+**Format API obligatoire** :
+- Créer un bloc `type: "table"` avec `table_width` = nombre de colonnes et `has_column_header: true`
+- Chaque ligne = un bloc enfant `type: "table_row"` avec `cells` = array de rich_text arrays (un array par cellule)
+- La première table_row = le header (noms des colonnes)
+
+**Exemple API correct** :
+```json
+{
+  "type": "table",
+  "table": {
+    "table_width": 3,
+    "has_column_header": true,
+    "children": [
+      {
+        "type": "table_row",
+        "table_row": {
+          "cells": [
+            [{"type": "text", "text": {"content": "Col 1"}}],
+            [{"type": "text", "text": {"content": "Col 2"}}],
+            [{"type": "text", "text": {"content": "Col 3"}}]
+          ]
+        }
+      }
+    ]
+  }
+}
+```
+
+**❌ INTERDIT** : paragraphes avec "Col1 | Col2 | Col3" — ça rend du texte brut, pas un tableau
+**✅ OBLIGATOIRE** : table block natif Notion — rend un vrai tableau visuel avec cellules
+
+**Ajout à la checklist de sortie** :
+- [ ] **Tableau demandé dans Notion ?** → Utiliser table + table_row blocks natifs (JAMAIS de pipes dans des paragraphes)
+
+
+---
+
+## Règle : Speechs de maintenance
+
+**Déclencheur** : Toute demande de préparer un speech / discours / appel vers un professionnel pour une tâche de maintenance de la maison.
+
+**Actions OBLIGATOIRES (dans cet ordre)** :
+
+1. **Créer le speech dans Notion** — sous le toggle "🗣️ Speechs" de la page Entretien maison (`389174cb-5dcc-8165-894e-ddbd82b0364b`), ajouter un toggle enfant nommé :
+   - Format du titre : `[Nom intervenant/domaine] — [Date du jour YYYY-MM-DD]`
+   - Contenu structuré OBLIGATOIRE :
+     1. **Coordonnées** (EN PREMIER) — Chercher sur Internet (FireCrawl/web_search) les coordonnées du professionnel et les mettre sous forme de liste :
+        - Téléphone
+        - Email
+        - Adresse / site web
+        - Toute autre info utile (horaires, licence RBQ, etc.)
+     2. **Speech recommandé** — Ce que dire au téléphone/email
+     3. **Points clés à ne pas oublier** — Liste de rappels
+
+2. **Ajouter la colonne "Speech" dans Airtable** (si elle n'existe pas encore) — table Tâches de maintenance (`tblOa4nR5pb98NjUf`)
+
+3. **Lier le speech à la tâche** — copier l'URL du bloc Notion du speech et la mettre dans la colonne "Speech" de la tâche concernée dans Airtable
+
+**Périmètre** : Uniquement les tâches de maintenance de la maison 2745 Roland-Therrien (table Airtable `tblOa4nR5pb98NjUf`).
+
+**Ajout à la checklist de sortie** :
+- [ ] **Speech de maintenance demandé ?** → Créer toggle dans Notion Speechs + lier dans Airtable colonne Speech

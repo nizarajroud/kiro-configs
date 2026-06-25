@@ -1,0 +1,15 @@
+{"timestamp":"2026-06-19T16:31:35.012Z","level":"info","message":"File logging initialized at /home/nizar/.kiro/logs/20260619T163134997"}
+{"timestamp":"2026-06-19T16:31:35.012Z","level":"info","message":"Initializing persistence at /home/nizar/.kiro/sessions"}
+{"timestamp":"2026-06-19T16:31:35.015Z","level":"info","message":"[SessionPersistence] Initialized persistence at /home/nizar/.kiro/sessions"}
+{"timestamp":"2026-06-19T16:31:35.015Z","level":"info","message":"Persistence initialized"}
+{"timestamp":"2026-06-19T16:31:35.041Z","level":"info","message":"[AgentTelemetry] Initialized {\"endpoint\":\"https://prod.us-east-1.telemetry.desktop.kiro.dev\",\"serviceName\":\"kiroAgent\"}"}
+{"timestamp":"2026-06-19T16:31:35.042Z","level":"info","message":"[KiroAgent] Remote MCP client initialized"}
+{"timestamp":"2026-06-19T16:31:35.042Z","level":"info","message":"[KiroAgent] Creating remote tools discovery (executionEnvironment=local, includeHidden=false)"}
+{"timestamp":"2026-06-19T16:31:35.044Z","level":"info","message":"[KiroAgent] Cleared stale task execution statuses"}
+{"timestamp":"2026-06-19T16:31:35.044Z","level":"info","message":"[KiroAgent] Platform initialized"}
+{"timestamp":"2026-06-19T16:31:35.044Z","level":"info","message":"[KiroAgent] Resolved capabilities: {\"fsReadTextFile\":false,\"fsWriteTextFile\":false,\"kiroFsReadFile\":false,\"kiroFsWriteFile\":false,\"kiroFsStat\":false,\"kiroFsReadDirectory\":false,\"kiroFsDelete\":false,\"terminal\":false,\"secretStorage\":false,\"openExternalUrl\":false,\"knowledge\":false,\"infrastructureSafety\":false}"}
+{"timestamp":"2026-06-19T16:31:35.044Z","level":"info","message":"[KiroAgent] Wired ACP callback auth provider to active connection"}
+{"timestamp":"2026-06-19T16:31:35.044Z","level":"info","message":"[RemoteToolsDiscovery] Fetching available Remote tools"}
+{"timestamp":"2026-06-19T16:31:35.045Z","level":"info","message":"[KiroAgent] Stored clientInfo.name: kiro-cli"}
+{"timestamp":"2026-06-19T16:31:35.045Z","level":"info","message":"Handshake: returning logging config with 3 channels at /home/nizar/.kiro/logs/20260619T163134997"}
+{"timestamp":"2026-06-19T16:31:35.072Z","level":"info","message":"[SessionPersistence] Listed 0 session(s) for workspace cf2d48c5a4cd45ec"}

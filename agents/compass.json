@@ -1,10 +1,10 @@
 {
   "name": "compass",
-  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
+  "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
     "memory-compass": {
-      "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
+      "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
@@ -25,7 +25,7 @@
       "locked": false
     },
     "mcp-canada": {
-      "description": "Canadian government data — 217 tools across 17 APIs. Bank of Canada rates, weather, immigration stats, product recalls, Quebec data, parliamentary data. Use for any question about Canadian services, government info, or public data.",
+      "description": "Canadian government data \u2014 217 tools across 17 APIs. Bank of Canada rates, weather, immigration stats, product recalls, Quebec data, parliamentary data. Use for any question about Canadian services, government info, or public data.",
       "command": "uvx",
       "args": [
         "mcp-canada"
@@ -35,14 +35,23 @@
     },
     "secondhand-mcp": {
       "description": "Search secondhand marketplaces (Facebook Marketplace, eBay, Depop, Poshmark) for used items. Use when user asks to find articles, meubles, electronics on Facebook Marketplace or other used-goods platforms.",
-      "command": "node",
+      "command": "python3",
       "args": [
-        "/home/nizar/HomeWspce/secondhand-mcp/dist/index.js"
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/secondhand_wrapper.py"
       ],
       "env": {
         "MARKETPLACES": "facebook"
       },
       "disabled": false
+    },
+    "architecture-mcp": {
+      "description": "Architecture MCP \u2014 Generate floor plans (SVG), 3D concepts, lighting analysis, material palettes, cost estimates. Use when user asks about room layout, floor plan, or lighting design.",
+      "command": "npx",
+      "args": [
+        "architecture-mcp"
+      ],
+      "disabled": false,
+      "locked": false
     }
   },
   "tools": [
@@ -63,6 +72,6 @@
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer.",
+  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer.",
   "useLegacyMcpJson": true
 }
