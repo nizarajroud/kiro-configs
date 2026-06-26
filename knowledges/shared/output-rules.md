@@ -666,3 +666,57 @@ JAMAIS de texte séparé par des pipes `|` dans des paragraphes.
 
 **Ajout à la checklist de sortie** :
 - [ ] **Speech de maintenance demandé ?** → Créer toggle dans Notion Speechs + lier dans Airtable colonne Speech
+
+
+---
+
+## Règle : Accès aux sessions de chat sur WSL distantes (via SSH)
+
+**Déclencheur** : L'utilisateur demande de "regarder les sessions de chat", "lire la conversation sur CSBEN", "comprendre ce qui a été discuté sur l'autre WSL", ou toute référence à une session de clavardage sur une machine distante.
+
+**Source de vérité** : Base SQLite Kiro CLI
+
+```
+~/.local/share/kiro-cli/data.sqlite3
+```
+
+Table : `conversations_v2`
+Colonnes : `key`, `conversation_id`, `value` (JSON complet), `updated_at`
+
+**Machines connues** :
+
+| Nom SSH | Machine | Usage |
+|---------|---------|-------|
+| `csben` | WSL-CSBEN (Alithya/Beneva) | Projets client : SALSA, SFTP, Observabilité |
+
+**Procédure OBLIGATOIRE** (dans cet ordre) :
+
+1. **Lister les sessions récentes** :
+```bash
+sqlite3 ~/.local/share/kiro-cli/data.sqlite3 "SELECT conversation_id, updated_at, json_extract(value, '$.history[0].user.env_context.env_state.current_working_directory'), substr(json_extract(value, '$.history[0].user.content'), 1, 120) FROM conversations_v2 ORDER BY updated_at DESC LIMIT 10"
+```
+
+2. **Présenter les sessions** à l'utilisateur avec : dossier, sujet (premier message), date
+
+3. **Lire la session demandée** — extraire user messages + assistant responses :
+```bash
+sqlite3 ~/.local/share/kiro-cli/data.sqlite3 "SELECT value FROM conversations_v2 WHERE conversation_id='<ID>'"
+```
+Puis parser le JSON : `history[].user.content` (messages utilisateur) et `history[].assistant.content` (réponses agent)
+
+4. **Exploiter le contexte** avec les outils enrichis de cette WSL (visuel tunisien, Notion, diagrammes, etc.)
+
+**Raccourcis de langage** :
+- "regarde sur CSBEN" / "la conversation CSBEN" / "la session SALSA" → SSH vers `csben`, lire la DB
+- "la dernière session" → trier par `updated_at DESC LIMIT 1`
+- "la session SALSA-XXX" → chercher dans le `current_working_directory` qui contient "SALSA-XXX"
+
+**Règles strictes** :
+- ✅ Toujours utiliser SSH MCP (`executecommand` avec `connectionName: csben`)
+- ✅ La DB SQLite est la source de vérité (contenu complet user + agent + tool calls)
+- ✅ Après lecture, proposer les livrables possibles (explication tunisienne, visuel, diagramme, résumé)
+- ❌ JAMAIS inventer du contenu — uniquement ce qui est dans la DB
+- ❌ JAMAIS modifier la DB distante — lecture seule
+
+**Ajout à la checklist de sortie** :
+- [ ] **Session distante lue ?** → Confirmer la session ID et le sujet avant d'agir dessus

@@ -39,6 +39,12 @@ description: Notes et stratégie pour l'opportunité BNC Bedrock.
 - [ ] Adapter le résumé d'introduction si nécessaire
 - [ ] Ajouter l'expérience AgentCore si l'opportunité évolue
 
+## Logistique confirmée (2026-06-25)
+
+- **50h/semaine total** : 30h BNC + 20h Beneva
+- Arrangé avec Sylvain (manager Alithya) et les deux clients
+- Mission BNC : ~9 semaines
+
 ---
 
-_Dernière mise à jour : 2026-06-05_
+_Dernière mise à jour : 2026-06-25_
