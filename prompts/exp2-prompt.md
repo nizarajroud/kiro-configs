@@ -173,6 +173,29 @@ The `knowledges/work/` directory contains:
 - Remote commands via SSH, file upload/download
 - **ROUTING RULE: "SSH", "remote server", hostname → route here**
 
+### 34. Jira & Confluence Beneva (READ-ONLY) → `ssh-csben-atlassian`
+- Finding Jira issues, tickets, project status, sprints, boards, comments (e.g. "what is PROJ-123 about?", "show me open issues in project X")
+- Reading Confluence pages, spaces, documentation (e.g. "fetch this Confluence page", "search Confluence for X")
+- Any question about internal Jira (jira.int.beneva.ca) or Confluence (confluence.int.beneva.ca)
+- Do NOT use for creating or modifying anything — read-only
+- **Executes remotely via SSH on csben WSL (Beneva VPN)**
+
+### 35. GitHub Beneva (READ-ONLY) → `ssh-csben-github`
+- Browsing repositories, reading code files, searching across repos on the beneva-int organization
+- Reading issues and pull requests (e.g. "what is PR #42 about?", "list open issues in repo X")
+- Monitoring GitHub Actions workflows and CI/CD runs
+- Any question about GitHub repositories, branches, commits, or contributors
+- Do NOT use for creating or modifying anything — read-only
+- **Executes remotely via SSH on csben WSL (Beneva VPN)**
+
+### 36. Jenkins Beneva CI/CD (READ-ONLY) → `ssh-csben-jenkins`
+- Listing jobs and pipelines on the CSBEN Jenkins instance (jenkins.ssqti.ca)
+- Checking build status (success, failure, in progress)
+- Retrieving build logs and console output
+- Viewing build history and recent runs
+- **IMPORTANT: READ-ONLY access only. NEVER trigger builds, create/delete jobs, or modify any Jenkins configuration.**
+- **Executes remotely via SSH on csben WSL (Beneva VPN)**
+
 ## STANDARD PROCEDURES
 
 ### Diagram Generation

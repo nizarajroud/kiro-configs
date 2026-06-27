@@ -281,6 +281,20 @@
       ],
       "disabled": false,
       "locked": false
+    },
+    "elevenlabs": {
+      "description": "ElevenLabs Text-to-Speech MCP (official). Converts text to natural speech audio (MP3). Use when user asks to read a page aloud, generate audio from text, or create voice content. Supports French, English, Arabic, and 29+ languages. Voice cloning available on paid tiers.",
+      "command": "uvx",
+      "args": [
+        "elevenlabs-mcp"
+      ],
+      "env": {
+        "ELEVENLABS_API_KEY": "${ELEVENLABS_API_KEY}",
+        "ELEVENLABS_MCP_OUTPUT_MODE": "files",
+        "ELEVENLABS_MCP_BASE_PATH": "/mnt/c/Users/nizar/Documents/AI-GENERATED"
+      },
+      "disabled": false,
+      "locked": false
     }
   }
 }

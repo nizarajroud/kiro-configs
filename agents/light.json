@@ -11,17 +11,6 @@
         "stdio"
       ],
       "disabled": true
-    },
-    "secondhand-mcp": {
-      "description": "Search secondhand marketplaces (Facebook Marketplace, eBay, Depop, Poshmark) for used items.",
-      "command": "node",
-      "args": [
-        "/home/nizar/HomeWspce/secondhand-mcp/dist/index.js"
-      ],
-      "env": {
-        "MARKETPLACES": "facebook"
-      },
-      "disabled": false
     }
   },
   "tools": [

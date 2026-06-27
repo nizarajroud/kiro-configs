@@ -1,0 +1,1 @@
+/home/nizar/HomeWspce/kiro-configs/knowledges/shared/output-rules.md
