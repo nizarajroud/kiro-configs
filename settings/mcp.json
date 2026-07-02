@@ -279,7 +279,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/google_maps_wrapper.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "elevenlabs": {
@@ -309,7 +309,7 @@
         "PROJECT_ID": "",
         "FASTMCP_LOG_LEVEL": "WARNING"
       },
-      "description": "Bedrock AgentCore Memory \u2014 persistent cross-session semantic memory. Allows agents to store and retrieve conversation history across all sessions. Tools: search_conversation_history, store_conversation, list_sessions, get_direct_conversation_history, search_memories, get_memory_stats.",
+      "description": "Bedrock AgentCore Memory — persistent cross-session semantic memory. Allows agents to store and retrieve conversation history across all sessions. Tools: search_conversation_history, store_conversation, list_sessions, get_direct_conversation_history, search_memories, get_memory_stats.",
       "disabled": false
     }
   }
