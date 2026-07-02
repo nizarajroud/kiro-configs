@@ -11,6 +11,21 @@
         "stdio"
       ],
       "disabled": true
+    },
+    "agentcore-memory": {
+      "command": "/home/nizar/HomeWspce/sample-amazon-bedrock-agentcore-memory-mcp-server/venv/bin/python3",
+      "args": [
+        "/home/nizar/HomeWspce/sample-amazon-bedrock-agentcore-memory-mcp-server/bedrock_agentcore_memory_mcp_server.py"
+      ],
+      "env": {
+        "AGENTCORE_MEMORY_ID": "kiro_sessions_memory-gyjyxdCmPK",
+        "AWS_REGION": "ca-central-1",
+        "AWS_PROFILE": "csna-operations-sso-828",
+        "ACTOR_ID_TYPE": "userid",
+        "PROJECT_ID": "",
+        "FASTMCP_LOG_LEVEL": "WARNING"
+      },
+      "disabled": false
     }
   },
   "tools": [

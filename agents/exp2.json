@@ -355,7 +355,7 @@
         "-o",
         "StrictHostKeyChecking=no",
         "nizar@192.168.2.12",
-        "export PATH=/home/nizar/.local/bin:/home/nizar/.nvm/versions/node/v22.16.0/bin:$PATH && GITHUB_PERSONAL_ACCESS_TOKEN=$GITHUB_PERSONAL_ACCESS_TOKEN_CSBEN GITHUB_READ_ONLY=1 GITHUB_TOOLSETS=all npx -y @modelcontextprotocol/server-github"
+        "export PATH=/home/nizar/.local/bin:/home/nizar/.nvm/versions/node/v22.16.0/bin:$PATH && GITHUB_PERSONAL_ACCESS_TOKEN=$SSH-CSBEN-GITHUB_PERSONAL_ACCESS_TOKEN_CSBEN GITHUB_READ_ONLY=1 GITHUB_TOOLSETS=all npx -y @modelcontextprotocol/server-github"
       ],
       "env": {},
       "disabled": false
@@ -371,7 +371,7 @@
         "-o",
         "StrictHostKeyChecking=no",
         "nizar@192.168.2.12",
-        "export PATH=/home/nizar/.local/bin:$PATH && JIRA_URL=https://jira.int.beneva.ca JIRA_SSL_VERIFY=false JIRA_PERSONAL_TOKEN=$JIRA_PERSONAL_TOKEN_CSBEN CONFLUENCE_URL=https://confluence.int.beneva.ca CONFLUENCE_SSL_VERIFY=false CONFLUENCE_PERSONAL_TOKEN=$CONFLUENCE_PERSONAL_TOKEN_CSBEN READ_ONLY_MODE=false TOOLSETS=all uvx mcp-atlassian"
+        "export PATH=/home/nizar/.local/bin:$PATH && JIRA_URL=https://jira.int.beneva.ca JIRA_SSL_VERIFY=false JIRA_PERSONAL_TOKEN=$SSH-CSBEN-JIRA_PERSONAL_TOKEN_CSBEN CONFLUENCE_URL=https://confluence.int.beneva.ca CONFLUENCE_SSL_VERIFY=false CONFLUENCE_PERSONAL_TOKEN=$SSH-CSBEN-CONFLUENCE_PERSONAL_TOKEN_CSBEN READ_ONLY_MODE=false TOOLSETS=all uvx mcp-atlassian"
       ],
       "env": {},
       "disabled": false
@@ -387,7 +387,7 @@
         "-o",
         "StrictHostKeyChecking=no",
         "nizar@192.168.2.12",
-        "export PATH=/home/nizar/.local/bin:$PATH && mcp-jenkins --jenkins-url https://jenkins.ssqti.ca/ --jenkins-username 752621d7-09e8-41cb-b80f-eccb0c48c88a --jenkins-password 11dacf37925a5bfb91b596ca237a3b422f --read-only"
+        "export PATH=/home/nizar/.local/bin:$PATH && mcp-jenkins --jenkins-url https://jenkins.ssqti.ca/ --jenkins-username $SSH_CSBEN_JENKINS_USERNAME --jenkins-password $SSH_CSBEN_JENKINS_PASSWORD --read-only"
       ],
       "env": {},
       "disabled": false
@@ -422,6 +422,11 @@
       {
         "matcher": "execute_bash",
         "command": "if echo \"$COMMAND\" | grep -qE '^git push'; then echo 'Error: git push is blocked' >&2; exit 1; fi"
+      }
+    ],
+    "stop": [
+      {
+        "command": "/home/nizar/.kiro/hooks/store-conversation.sh"
       }
     ]
   },

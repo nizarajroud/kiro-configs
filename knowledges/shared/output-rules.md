@@ -236,6 +236,7 @@ Chaque rich_text envoyé à Notion DOIT commencer par `‫` (U+202B) pour forcer
 Avant d'envoyer une réponse, l'agent DOIT scanner sa propre sortie et vérifier :
 
 - [ ] **Tableau ≥3 colonnes ET ≥3 lignes ?** → Générer le fichier HTML dans `AI-GENERATED/<mois-année>/` + afficher le lien `📊 Voir formaté : file:///C:/Users/nizar/Documents/AI-GENERATED/...`
+- [ ] **TOUT tableau (≥2 colonnes) dans le CLI ?** → Vérifier OBLIGATOIREMENT que TOUTES les colonnes sont alignées (même nombre de caractères par cellule, séparateurs = même largeur que header). **SI NON ALIGNÉ → NE PAS ENVOYER.**
 - [ ] **Page Notion créée ?** → Afficher le lien URL direct : `📄 Page créée : [Titre](URL)`
 - [ ] **Image/diagramme généré ?** → Sauvegarder dans `AI-GENERATED/<mois-année>/` (JAMAIS /tmp/)
 - [ ] **Explication en tunisien demandée ?** → Créer la page Notion avec caractères RTL (U+202B)
@@ -491,6 +492,21 @@ Stocker dans `memory-compass` avec :
 
 ## Règle : Format des tableaux en session Kiro (ASCII aligné)
 
+### ⛔⛔⛔ AVERTISSEMENT CRITIQUE — VIOLATION = RÉPONSE INCOMPLÈTE ⛔⛔⛔
+
+**CETTE RÈGLE EST NON-NÉGOCIABLE. AUCUNE EXCEPTION. JAMAIS.**
+
+Avant d'écrire UN SEUL caractère `|` dans une réponse :
+1. STOP — Ai-je calculé les largeurs de TOUTES les colonnes ?
+2. STOP — Le séparateur `|---|` a-t-il la MÊME largeur que le header ?
+3. STOP — TOUTES les cellules d'une même colonne ont-elles le MÊME nombre de caractères (padding inclus) ?
+
+**Si la réponse à l'une de ces 3 questions est NON → NE PAS AFFICHER LE TABLEAU.**
+
+**Conséquence d'une violation** : La réponse entière est considérée INCOMPLÈTE et DÉFECTUEUSE, au même titre qu'une réponse sans source citation.
+
+---
+
 **Déclencheur** : Toute sortie contenant un tableau (2+ colonnes) dans une session Kiro CLI.
 
 **RÈGLE ABSOLUE** : Ne JAMAIS utiliser de tableaux GFM Markdown non-paddés. Toujours utiliser des tableaux ASCII avec colonnes alignées par padding d'espaces.
@@ -577,9 +593,11 @@ JAMAIS écrire le contenu et ajuster les largeurs en même temps. Toujours suivr
 
 **PASS 1 — Mesure** (avant d'écrire un seul caractère) :
 1. Collecter TOUT le contenu de chaque cellule, incluant les fragments wrappés
-2. Pour chaque colonne : largeur = max(longueur header, plus long fragment de cellule)
-3. Fixer la largeur totale = somme(toutes largeurs colonnes) + pipes + padding. Si total > 120 chars, réduire la colonne la plus large d'abord, puis re-fragmenter son contenu
-4. Verrouiller toutes les largeurs. Elles NE CHANGENT PAS pendant le rendu
+2. Pour chaque colonne : largeur minimale = max(longueur header, plus long fragment de cellule)
+3. Calculer la largeur totale minimale = somme(toutes largeurs colonnes) + pipes + padding
+4. **EXPANSION OBLIGATOIRE** : Si total < 120 chars → distribuer l'espace restant (120 - total) entre les colonnes proportionnellement à leur contenu. Le tableau DOIT occuper ~120 chars de large. JAMAIS un tableau étroit avec de l'espace vide à droite.
+5. Si total > 120 chars → réduire la colonne la plus large d'abord, puis re-fragmenter son contenu avec word-wrap
+6. Verrouiller toutes les largeurs. Elles NE CHANGENT PAS pendant le rendu
 
 **PASS 2 — Rendu** (avec les largeurs verrouillées) :
 - Chaque fragment de cellule est paddé avec des espaces pour remplir exactement sa largeur
@@ -720,3 +738,52 @@ Puis parser le JSON : `history[].user.content` (messages utilisateur) et `histor
 
 **Ajout à la checklist de sortie** :
 - [ ] **Session distante lue ?** → Confirmer la session ID et le sujet avant d'agir dessus
+
+
+---
+
+## Règle : Recherche produit RONA — Magasin et rangée/section
+
+**Déclencheur** : Toute demande de recherche de produit sur rona.ca (prix, disponibilité, localisation en magasin).
+
+**Magasins de référence (par ordre de priorité)** :
+
+| Priorité | Magasin                          | viewStore | Distance de la maison |
+|----------|----------------------------------|-----------|-----------------------|
+| 1        | RONA Longueuil (Roland-Therrien) | `42420`   | ~1 km                 |
+| 2        | RONA+ Saint-Bruno-de-Montarville | `41040`   | ~11 km                |
+
+**Procédure OBLIGATOIRE** :
+
+1. Chercher le produit sur rona.ca (`firecrawl_search` avec `site:rona.ca`)
+2. Scraper la page produit avec `?viewStore=42420` (Longueuil Roland-Therrien) + `waitFor=5000`
+3. Extraire : **prix**, **stock**, **Rangée X | Section Y**
+4. **Si le produit n'est PAS en stock à Longueuil** OU si la rangée/section n'est pas disponible → fallback avec `?viewStore=41040` (Saint-Bruno)
+5. Afficher les deux magasins si le fallback est utilisé
+
+**Format de sortie OBLIGATOIRE** :
+
+| Info     | Valeur                              |
+|----------|-------------------------------------|
+| Prix     | XX,XX $                             |
+| Magasin  | RONA Longueuil (Roland-Therrien)    |
+| Stock    | X en magasin                        |
+| Rangée   | XX                                  |
+| Section  | X                                   |
+| Ramassage| [info disponibilité]                |
+
+**Règles strictes** :
+- ✅ TOUJOURS afficher Rangée et Section quand disponible
+- ✅ TOUJOURS utiliser Longueuil (42420) en PREMIER
+- ✅ Si rupture de stock → chercher Saint-Bruno (41040) automatiquement
+- ✅ Si les deux ont le produit → montrer les deux avec leurs rangées respectives
+- ❌ JAMAIS utiliser un autre magasin sans demande explicite de l'utilisateur
+- ❌ JAMAIS afficher un résultat sans avoir tenté d'obtenir la rangée/section
+
+**Technique de scraping** :
+- URL : `https://www.rona.ca/fr/produit/<slug>?viewStore=<code>`
+- Outil : `firecrawl_scrape` avec `formats: ["markdown"]`, `onlyMainContent: true`, `waitFor: 5000`
+- La rangée/section apparaît dans le markdown sous forme : `Rangée XX \| Section Y`
+
+**Ajout à la checklist de sortie** :
+- [ ] **Produit RONA cherché ?** → Vérifier que Rangée + Section sont affichées (Longueuil en premier, Saint-Bruno en fallback)

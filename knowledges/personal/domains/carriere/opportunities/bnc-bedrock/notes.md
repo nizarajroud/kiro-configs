@@ -45,6 +45,47 @@ description: Notes et stratégie pour l'opportunité BNC Bedrock.
 - Arrangé avec Sylvain (manager Alithya) et les deux clients
 - Mission BNC : ~9 semaines
 
+## Équipement reçu (2026-06-29)
+
+- **Laptop** : Microsoft Surface Laptop 7 (MSF-Ep2-22195)
+- Specs : 32GB RAM, 256GB SSD, Black, Copilot+, Windows 11 Pro
+- Usage : accès au VDI BNC
+- Token RSA : ✅ configuré et fonctionnel (PIN + OTP sur iPhone)
+- Mot de passe Windows : ❌ en attente (réinitialisé, envoyé à Jérémy Leblanc)
+
+## Assignment AWS (système Certinia/PSA)
+
+- **Assignment** : [Sub-Project 6] BNC - ISOW CTP SOB Lead Outcome Based-Project
+- **Assignment Number** : A-1068291
+- **Nom complet** : [Billable] [APD] [NAMER] [Sub-Project 6] BNC - ISOW CTP SOB Lea - Nizar A
+- **Rôle** : Senior Consultant
+- **Allocation** : 100%
+- **Start Date** : 28 juin 2026
+- **End Date** : 1 août 2026
+- **Scheduled Hours** : 200h (25 jours × 8h)
+- **Scheduled Days** : 25
+- **Statut** : Scheduled
+- **Billable Hours Submitted** : 0
+- **Créé** : 27 juin 2026, 17h17
+- **Modifié** : 29 juin 2026, 08h10
+
+### Décodage des acronymes
+
+| Acronyme | Signification |
+|----------|---------------|
+| APD | Amazon Partner Delivery (Alithya livre sous cadre AWS) |
+| NAMER | North America Region |
+| ISOW | Internal Statement of Work |
+| CTP | Cloud Technology & Platform |
+| SOB Lead | Solution/Outcome-Based Lead |
+| WAR | Work Authorization Request (approuvé par Mathieu) |
+
+### Notes timesheet
+
+- Logger les heures à partir du 21 juin (rétroactif, confirmé par email Amazon)
+- Système : Certinia/PSA (portail Amazon)
+- Budget = 200h sur 25 jours (8h/jour sur le papier, réalité = 30h/sem BNC)
+
 ---
 
-_Dernière mise à jour : 2026-06-25_
+_Dernière mise à jour : 2026-06-29_
