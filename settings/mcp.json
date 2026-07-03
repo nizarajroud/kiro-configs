@@ -261,7 +261,7 @@
       "env": {
         "PYTHONPATH": "/home/nizar/HomeWspce/linkedin-mcp-fork"
       },
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "bitbucket-mcp": {
