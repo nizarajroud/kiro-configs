@@ -99,8 +99,8 @@ def main():
     cwd, value, updated_ms = row
     messages, agent, turn_count, _ = extract_all_messages(value)
 
-    if not messages or len(messages) < 2:
-        sys.exit(0)
+    if not messages or len(messages) < 8:
+        sys.exit(0)  # Skip sessions with fewer than 8 messages (noise)
 
     folder = os.path.basename(cwd) if cwd else 'unknown'
 

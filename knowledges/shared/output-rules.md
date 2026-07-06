@@ -787,3 +787,56 @@ Puis parser le JSON : `history[].user.content` (messages utilisateur) et `histor
 
 **Ajout à la checklist de sortie** :
 - [ ] **Produit RONA cherché ?** → Vérifier que Rangée + Section sont affichées (Longueuil en premier, Saint-Bruno en fallback)
+
+
+---
+
+## Règle : Restructuration de transcription speech (Buzz)
+
+**Déclencheur** : L'utilisateur fournit un fichier .txt de transcription et utilise une de ces formulations :
+- "restructure ce speech"
+- "nettoie cette transcription"
+- "organise ce meeting"
+- "rends ce fichier cohérent"
+- "transcription Buzz"
+- Ou : fournit un fichier .txt + mentionne que c'est un speech/transcription/réunion
+
+**Input** : Fichier .txt (transcription brute Buzz — bloc monolithique sans séparation de speakers)
+
+**Processus OBLIGATOIRE** :
+
+1. Lire le fichier intégralement
+2. Identifier les thèmes/sujets abordés → chaque changement de sujet = nouveau heading
+3. Deviner les intervenants si possible (noms mentionnés dans le texte, contexte)
+4. Restructurer en prose cohérente :
+   - **Éliminer** : hésitations, répétitions, mots parasites ("euh", "genre", "tsé", "là")
+   - **Conserver** : 100% de l'information factuelle, décisions, engagements, chiffres
+   - **Fusionner** : phrases incomplètes/coupées en phrases complètes et fluides
+   - **NE JAMAIS** inventer de contenu absent de l'original
+   - **NE JAMAIS** supprimer une information factuelle même si elle semble mineure
+
+**Format de sortie (dans Notion)** :
+- H1 : Titre de la réunion/discussion (déduit du contenu ou demandé à l'utilisateur)
+- H2 : Par thème/sujet majeur abordé
+- H3 : Sous-thèmes si nécessaire
+- Prose cohérente en paragraphes (pas de bullet points sauf listes explicites dans le speech)
+- **Section finale "Décisions et engagements"** (si applicables)
+- **Section finale "Points en suspens / À suivre"** (si applicables)
+
+**Livrable OBLIGATOIRE** :
+
+**Page Notion** — Créer une sous-page sous « Meetings-Reports » (ID parent : `84c17364-a96f-44a0-8a5b-235035d7deba`)
+- Titre : `[Sujet] — [Date YYYY-MM-DD]`
+- Contenu : le texte restructuré complet
+
+**Détermination du domaine/sujet** : Demander à l'utilisateur si non évident du contexte (work = réunion professionnelle | personal = RDV médical, notaire, etc.)
+
+**Langue** : Même langue que le speech original. Si mixte FR/EN → garder le mix naturel.
+
+**Affichage final** :
+```
+📄 Page créée : [Titre](URL Notion)
+```
+
+**Ajout à la checklist de sortie** :
+- [ ] **Transcription speech à restructurer ?** → Page Notion créée sous Meetings-Reports avec texte structuré complet
