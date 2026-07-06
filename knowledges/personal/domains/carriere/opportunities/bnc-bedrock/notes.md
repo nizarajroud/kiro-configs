@@ -39,7 +39,13 @@ description: Notes et stratégie pour l'opportunité BNC Bedrock.
 - [ ] Adapter le résumé d'introduction si nécessaire
 - [ ] Ajouter l'expérience AgentCore si l'opportunité évolue
 
-## Logistique confirmée (2026-06-25)
+## Contacts
+
+- **Lauriane Arcand** (lauriane.arcand@bnc.ca) — Adjointe admin BNC, gère les accès/VDI/SecurID
+- **Gabrielle Soucy** (gabsoucy@amazon.com) — Sr. Engagement Manager, AWS ProServe
+- **Ashwin Bhargava** (bharashw@amazon.com) — Delivery Consultant (Security), AWS ProServe
+- **Denise Ho** (denisehp@amazon.com) — Senior Engagement Manager, AWS ProServe
+- **Martin Villette** — Manager Alithya (backup de Sylvain pendant vacances)
 
 - **50h/semaine total** : 30h BNC + 20h Beneva
 - Arrangé avec Sylvain (manager Alithya) et les deux clients

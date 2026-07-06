@@ -28,3 +28,38 @@ L'agent DOIT utiliser le tool `cascading_search` quand :
 - ✅ TOUJOURS appeler `cascading_search` avant de conclure qu'une information est introuvable
 - ✅ Si `cascading_search` retourne des résultats, les utiliser pour répondre à l'utilisateur
 - ✅ Si `cascading_search` ne retourne rien, alors seulement dire "je n'ai pas trouvé cette information dans l'historique"
+
+## Format de réponse obligatoire
+
+Quand l'agent retourne un résultat de recherche cross-session, il DOIT :
+
+1. Faire un lookup dans `~/.kiro/sessions/topics.db` (table `session_catalog`) avec le `session_id` pour obtenir le nom de session, le thème et les sujets
+2. Répondre avec une phrase d'introduction puis un tableau ASCII aligné
+
+**Phrase d'introduction** : "On a parlé de **[sujet recherché]** dans les sessions suivantes :"
+
+**Tableau** (aligné, pleine largeur, sujets en bullets intra-cellule) :
+
+```
+| Thème          | Session           | Autres sujets                    | Accès                                          |
+|----------------|-------------------|----------------------------------|-------------------------------------------------|
+| déménagement   | nizar-via-compass | • RDV ServiceRG                  | qq d79e35e8-d97a-42cb-8f3d-c17e5be24ec2        |
+|                |                   | • silicone salle de bain         |                                                 |
+|                |                   | • robinet d'arrêt                |                                                 |
+|----------------|-------------------|----------------------------------|-------------------------------------------------|
+| entretien      | nizar-via-compass | • recherches RONA                | qq 1d2219cb-98c0-44c3-b334-f29871bb2473        |
+|                |                   | • WD-40 rangée/section           |                                                 |
+```
+
+**Règles du tableau** :
+- Chaque sujet est sur sa propre ligne physique avec bullet `•`, DANS la même cellule (pas de nouvelle ligne logique)
+- La colonne "Accès" contient `qq <session_id_complet>` — prêt à copier-coller
+- Le séparateur `|---|` entre chaque session (ligne logique)
+- Respecter les règles de tableaux ASCII des output rules (padding, alignement, largeur complète)
+
+### Lookup SQLite
+
+```sql
+SELECT theme, session_name, subjects FROM session_catalog WHERE session_id = '<id>';
+```
+Fichier : `~/.kiro/sessions/topics.db`
