@@ -41,15 +41,22 @@ Quand l'agent retourne un résultat de recherche cross-session, il DOIT :
 **Tableau** (aligné, pleine largeur, sujets en bullets intra-cellule) :
 
 ```
-| Thème          | Session           | Autres sujets                    | Accès                                          |
-|----------------|-------------------|----------------------------------|-------------------------------------------------|
-| déménagement   | nizar-via-compass | • RDV ServiceRG                  | qq d79e35e8-d97a-42cb-8f3d-c17e5be24ec2        |
-|                |                   | • silicone salle de bain         |                                                 |
-|                |                   | • robinet d'arrêt                |                                                 |
-|----------------|-------------------|----------------------------------|-------------------------------------------------|
-| entretien      | nizar-via-compass | • recherches RONA                | qq 1d2219cb-98c0-44c3-b334-f29871bb2473        |
-|                |                   | • WD-40 rangée/section           |                                                 |
+| Thème          | Session           | Last access          | Autres sujets                    | Accès                                          |
+|----------------|-------------------|----------------------|----------------------------------|-------------------------------------------------|
+| déménagement   | nizar-via-compass | Hier à 19:30         | • RDV ServiceRG                  | qq d79e35e8-d97a-42cb-8f3d-c17e5be24ec2        |
+|                |                   |                      | • silicone salle de bain         |                                                 |
+|                |                   |                      | • robinet d'arrêt                |                                                 |
+|----------------|-------------------|----------------------|----------------------------------|-------------------------------------------------|
+| entretien      | nizar-via-compass | Vendredi à 14:30     | • recherches RONA                | qq 1d2219cb-98c0-44c3-b334-f29871bb2473        |
+|                |                   |                      | • WD-40 rangée/section           |                                                 |
 ```
+
+**Format de la colonne "Last access"** :
+- Aujourd'hui → "Aujourd'hui à HH:MM"
+- Hier → "Hier à HH:MM"
+- Avant-hier → "Avant-hier à HH:MM"
+- Cette semaine → "Jour à HH:MM" (ex: "Vendredi à 14:30")
+- Plus ancien → "YYYY-MM-DD"
 
 **Règles du tableau** :
 - Chaque sujet est sur sa propre ligne physique avec bullet `•`, DANS la même cellule (pas de nouvelle ligne logique)
