@@ -10,10 +10,8 @@ os.environ.setdefault("GRAPHISTRY_USERNAME", os.environ.get("GRAPHISTRY_USERNAME
 os.environ.setdefault("GRAPHISTRY_PASSWORD", os.environ.get("GRAPHISTRY_PASSWORD", ""))
 os.environ.setdefault("LOG_LEVEL", "INFO")
 
-server_dir = "/home/nizar/HomeWspce/kiro-configs/wrappers/graphistry-mcp"
+server_dir = "/home/nizar/HomeWspce/graphistry-mcp/src"
 os.environ["PYTHONPATH"] = server_dir
-
 sys.path.insert(0, server_dir)
-os.chdir(server_dir)
 
-os.execvp("python3", ["python3", os.path.join(server_dir, "run_graphistry_mcp.py")])
+os.execvp("python3", ["python3", "-m", "graphistry_mcp_server.server"])
