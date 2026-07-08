@@ -59,7 +59,7 @@
       "description": "Visual chart and graph renderer — takes DOT (Graphviz), Chart.js configs, or QR data and produces PNG/SVG/PDF images. Use as the SECOND step after tfmcp: get DOT from terraform_graph, then render it here into a visual image.",
       "command": "node",
       "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/quickchart-mcp-server/dist/index.js"
+        "/home/nizar/HomeWspce/quickchart-mcp-server/dist/index.js"
       ],
       "disabled": false
     },
