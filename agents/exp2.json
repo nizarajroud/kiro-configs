@@ -5,7 +5,7 @@
   "prompt": "file://../prompts/exp2-prompt.md",
   "mcpServers": {
     "aws-pricing": {
-      "description": "AWS Pricing MCP Server (official awslabs) — retrieve real-time AWS service pricing, generate cost reports (PDF/Markdown), analyze CDK/Terraform projects for cost estimation. Use when asked to estimate AWS infrastructure costs.",
+      "description": "AWS Pricing MCP Server (official awslabs) \u2014 retrieve real-time AWS service pricing, generate cost reports (PDF/Markdown), analyze CDK/Terraform projects for cost estimation. Use when asked to estimate AWS infrastructure costs.",
       "command": "uvx",
       "args": [
         "awslabs.aws-pricing-mcp-server@latest"
@@ -30,7 +30,7 @@
       "priority": "standard"
     },
     "context7": {
-      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
+      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source \u2014 never relies on training data.",
       "command": "npx",
       "timeout": 200000,
       "args": [
@@ -41,7 +41,7 @@
       "priority": "standard"
     },
     "tfmcp": {
-      "description": "Terraform MCP operator — execute terraform init/plan/apply/destroy, generate dependency graphs (DOT format), analyze state/drift, manage workspaces. Chain with quickchart-mcp for visual rendering of graphs. Use when asked to operate Terraform or visualize resource dependencies.",
+      "description": "Terraform MCP operator \u2014 execute terraform init/plan/apply/destroy, generate dependency graphs (DOT format), analyze state/drift, manage workspaces. Chain with quickchart-mcp for visual rendering of graphs. Use when asked to operate Terraform or visualize resource dependencies.",
       "command": "/home/nizar/.cargo/bin/tfmcp",
       "args": [
         "mcp"
@@ -56,7 +56,7 @@
       "disabled": false
     },
     "quickchart-mcp": {
-      "description": "Visual chart and graph renderer — takes DOT (Graphviz), Chart.js configs, or QR data and produces PNG/SVG/PDF images. Use as the SECOND step after tfmcp: get DOT from terraform_graph, then render it here into a visual image.",
+      "description": "Visual chart and graph renderer \u2014 takes DOT (Graphviz), Chart.js configs, or QR data and produces PNG/SVG/PDF images. Use as the SECOND step after tfmcp: get DOT from terraform_graph, then render it here into a visual image.",
       "command": "node",
       "args": [
         "/home/nizar/HomeWspce/quickchart-mcp-server/dist/index.js"
@@ -64,7 +64,7 @@
       "disabled": false
     },
     "graphistry-mcp": {
-      "description": "GPU-accelerated interactive graph visualization via Graphistry. Takes edge/node data and produces an interactive web visualization (zoom, pan, filter, search). Use for LARGE dependency graphs (70+ nodes) where static PNG is unreadable. Chain: tfmcp (graph data) → graphistry-mcp (interactive web view).",
+      "description": "GPU-accelerated interactive graph visualization via Graphistry. Takes edge/node data and produces an interactive web visualization (zoom, pan, filter, search). Use for LARGE dependency graphs (70+ nodes) where static PNG is unreadable. Chain: tfmcp (graph data) \u2192 graphistry-mcp (interactive web view).",
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/graphistry_wrapper.py"
@@ -265,7 +265,7 @@
       "disabled": false
     },
     "awslabs.aws-api-mcp-server": {
-      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
+      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations \u2014 no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
@@ -335,7 +335,7 @@
       "disabled": false
     },
     "gitlab": {
-      "description": "GitLab MCP (Alithya CSNA) — projects, issues, merge requests, pipelines. Use when user asks about GitLab repositories, MRs, CI/CD pipelines, or Alithya project code.",
+      "description": "GitLab MCP (Alithya CSNA) \u2014 projects, issues, merge requests, pipelines. Use when user asks about GitLab repositories, MRs, CI/CD pipelines, or Alithya project code.",
       "command": "npx",
       "args": [
         "-y",
@@ -394,7 +394,9 @@
     },
     "git-mcp": {
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/gitmcp_wrapper.py"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/gitmcp_wrapper.py"
+      ],
       "disabled": false
     }
   },
@@ -421,7 +423,10 @@
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/config/domains.yaml",
     "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/work/domains/**/*.md",
-    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/steering/*.md",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/config/domains.yaml",
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/domains/**/*.md"
   ],
   "hooks": {
     "preToolUse": [
@@ -438,5 +443,5 @@
   },
   "toolsSettings": {},
   "useLegacyMcpJson": true,
-  "welcomeMessage": "⚡ Exp2 ready. Your work & technical agent — code, cloud, architecture, and beyond."
+  "welcomeMessage": "\u26a1 Exp2 ready. Your work & technical agent \u2014 code, cloud, architecture, and beyond."
 }

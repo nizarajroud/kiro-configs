@@ -14,7 +14,8 @@
     "skill:///home/nizar/.aws/cli-agent-orchestrator/skills/**/SKILL.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/config/domains.yaml",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/config/domains.yaml",
-    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/config/domains.yaml"
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/config/domains.yaml",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/config/domains.yaml"
   ],
   "mcpServers": {
     "cao-mcp-server": {

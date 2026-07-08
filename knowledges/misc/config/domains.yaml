@@ -1,0 +1,14 @@
+# Misc Domain Taxonomy
+
+domains:
+  tools:
+    label: "Tool Configuration"
+    keywords: [config, setup, configuration, tool, settings, installation]
+
+  learning:
+    label: "Learning & Research"
+    keywords: [learn, course, tutorial, training, study, research]
+
+  general:
+    label: "General"
+    keywords: [misc, divers, other, general]
