@@ -840,3 +840,79 @@ Puis parser le JSON : `history[].user.content` (messages utilisateur) et `histor
 
 **Ajout à la checklist de sortie** :
 - [ ] **Transcription speech à restructurer ?** → Page Notion créée sous Meetings-Reports avec texte structuré complet
+
+
+---
+
+## Règle : Liens AWS Console dans les diagrammes Draw.io
+
+**Déclencheur** : Toute génération de diagramme draw.io contenant des ressources AWS avec des IDs ou noms connus.
+
+**Source de vérité** : `/home/nizar/HomeWspce/aws-console-url-patterns/patterns.yaml`
+
+**Action OBLIGATOIRE (dans cet ordre)** :
+
+1. **Consulter** `patterns.yaml` pour trouver le format d'URL de chaque service AWS présent dans le diagramme
+2. **Appliquer** : chaque icône AWS avec un ID/nom connu → `UserObject` avec `link=` vers la console AWS
+3. **Enrichir** : si un pattern utilisé n'existe PAS encore dans `patterns.yaml` :
+   - Déterminer le bon format (naviguer dans la console ou demander à l'utilisateur)
+   - L'ajouter dans `patterns.yaml` avec : pattern, placeholders, example, verified, discovered
+   - Commit + push dans le repo `aws-console-url-patterns`
+
+**Format draw.io obligatoire** (UserObject wrapping mxCell) :
+```xml
+<UserObject label="Service Name&lt;br&gt;(resource-id)" link="https://..." id="node_id">
+  <mxCell style="..." vertex="1" parent="...">
+    <mxGeometry ... />
+  </mxCell>
+</UserObject>
+```
+
+**Règles strictes** :
+- ✅ TOUJOURS utiliser `UserObject` avec `link=` quand un ID/nom de resource est connu
+- ✅ TOUJOURS vérifier le format dans `patterns.yaml` avant de construire le lien
+- ✅ TOUJOURS commiter les nouveaux patterns découverts dans le repo
+- ✅ Les patterns utilisent les NOMS des resources (pas les IDs auto-générés) quand le service l'exige
+- ❌ JAMAIS deviner un format d'URL sans vérifier dans patterns.yaml
+- ❌ JAMAIS générer un drawio avec des mxCell simples quand les IDs sont disponibles
+
+**Ajout à la checklist de sortie** :
+- [ ] **Diagramme draw.io avec ressources AWS ?** → Vérifier que chaque icône a un `UserObject link=` correct (consulter patterns.yaml)
+
+
+---
+
+## Règle : Liens AWS Console dans les diagrammes Draw.io
+
+**Déclencheur** : Toute génération de diagramme draw.io contenant des ressources AWS avec des IDs ou noms connus.
+
+**Source de vérité** : `/home/nizar/HomeWspce/aws-console-url-patterns/patterns.yaml`
+
+**Action OBLIGATOIRE (dans cet ordre)** :
+
+1. **Consulter** `patterns.yaml` pour trouver le format d'URL de chaque service AWS présent dans le diagramme
+2. **Appliquer** : chaque icône AWS avec un ID/nom connu → `UserObject` avec `link=` vers la console AWS
+3. **Enrichir** : si un pattern utilisé n'existe PAS encore dans `patterns.yaml` :
+   - Déterminer le bon format (naviguer dans la console ou demander à l'utilisateur)
+   - L'ajouter dans `patterns.yaml` avec : pattern, placeholders, example, verified, discovered
+   - Commit + push dans le repo `aws-console-url-patterns`
+
+**Format draw.io obligatoire** (UserObject wrapping mxCell) :
+```xml
+<UserObject label="Service Name&lt;br&gt;(resource-id)" link="https://..." id="node_id">
+  <mxCell style="..." vertex="1" parent="...">
+    <mxGeometry ... />
+  </mxCell>
+</UserObject>
+```
+
+**Règles strictes** :
+- ✅ TOUJOURS utiliser `UserObject` avec `link=` quand un ID/nom de resource est connu
+- ✅ TOUJOURS vérifier le format dans `patterns.yaml` avant de construire le lien
+- ✅ TOUJOURS commiter les nouveaux patterns découverts dans le repo
+- ✅ Les patterns utilisent les NOMS des resources (pas les IDs auto-générés) quand le service l'exige
+- ❌ JAMAIS deviner un format d'URL sans vérifier dans patterns.yaml
+- ❌ JAMAIS générer un drawio avec des mxCell simples quand les IDs sont disponibles
+
+**Ajout à la checklist de sortie** :
+- [ ] **Diagramme draw.io avec ressources AWS ?** → Vérifier que chaque icône a un `UserObject link=` correct (consulter patterns.yaml)
