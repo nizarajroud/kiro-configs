@@ -65,10 +65,12 @@ Pour une question substantielle, l'ordre de consultation devient :
 
 **Format** : `(qq <session_id_complet>)`
 
+**⚠️ CRITIQUE — UUID COMPLET OBLIGATOIRE** : Le `session_id` DOIT être l'UUID complet de 36 caractères (format `xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx`). JAMAIS tronqué (pas de `d79e35e8` tout seul — ça ne fonctionne pas avec `qq`). Si le cascading_search retourne un ID, le copier EN ENTIER dans la citation.
+
 **Exemples** :
-- "D'après notre discussion précédente, tu avais opté pour une cotisation REER de 3 600$/mois (`qq 484d0d4f-228a-406d-8448-284fef4d1c3b`)."
-- "On avait conclu que Charlemagne était le meilleur choix pour Radouane vu ses notes (`qq 88b4aee6-da05-4631-9752-624d9530a022`)."
-- "La stratégie transport scolaire devait être gérée autour du 10 juillet (`qq a669d905-c12e-45a9-b31b-c49b6fdd3947`)."
+- ✅ CORRECT : "...cotisation REER de 3 600$/mois (`qq 484d0d4f-228a-406d-8448-284fef4d1c3b`)."
+- ✅ CORRECT : "...Charlemagne était le meilleur choix (`qq 88b4aee6-da05-4631-9752-624d9530a022`)."
+- ❌ INTERDIT : "...cotisation REER (`qq 484d0d4f`)." — TRONQUÉ = INUTILISABLE
 
 **Règle** : Le `session_id` est prêt à copier-coller — l'utilisateur tape `qq <id>` pour ouvrir la session et vérifier/challenger l'information.
 
