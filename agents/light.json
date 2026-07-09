@@ -1,17 +1,8 @@
 {
   "$schema": "https://raw.githubusercontent.com/aws/amazon-q-developer-cli/refs/heads/main/schemas/agent-v1.json",
   "name": "light",
-  "description": "Minimal agent with no MCP servers for fast startup",
+  "description": "Fast agent with memory, docs, web search, and GitHub access",
   "mcpServers": {
-    "excel": {
-      "description": "Excel file manipulation MCP server (3.8k stars). Read, write, create, and modify Excel workbooks (.xlsx) without needing Microsoft Excel installed. Supports: reading/writing cells and ranges, formulas, formatting, charts, pivot tables, tables, sheet management, data validation, and conditional formatting. Use this for any operation on Excel files stored locally or on Dropbox (via /mnt/c/Users/nizar/Dropbox/...).",
-      "command": "uvx",
-      "args": [
-        "excel-mcp-server",
-        "stdio"
-      ],
-      "disabled": true
-    },
     "agentcore-memory": {
       "command": "/home/nizar/HomeWspce/sample-amazon-bedrock-agentcore-memory-mcp-server/venv/bin/python3",
       "args": [
@@ -25,6 +16,63 @@
         "PROJECT_ID": "",
         "FASTMCP_LOG_LEVEL": "WARNING"
       },
+      "disabled": false
+    },
+    "remote.aws-knowledge": {
+      "description": "AWS official documentation, best practices, pricing, limits, and how-to guides.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://knowledge-mcp.global.api.aws"
+      ],
+      "disabled": false
+    },
+    "firecrawl": {
+      "description": "Web scraping, crawling, search, and autonomous web research.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "github": {
+      "description": "GitHub operations: read repos, browse code, search files, manage issues and PRs.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/github_wrapper.py"
+      ],
+      "env": {
+        "GITHUB_READ_ONLY": "0",
+        "GITHUB_TOOLSETS": "all"
+      },
+      "disabled": false
+    },
+    "notion-workspace": {
+      "description": "Notion workspace \u2014 create, read, update, search pages.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/notion_wrapper.py"
+      ],
+      "env": {
+        "GITHUB_REPO": "nizarajroud/notion-images"
+      },
+      "disabled": false
+    },
+    "mcp-image-recognition": {
+      "description": "Image analysis (READ-ONLY) via Bedrock vision models. Requires gateway on localhost:8766.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "bookmarks": {
+      "description": "Search Chrome and Edge bookmarks (7260+ Chrome, 2454+ Edge).",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
+      ],
       "disabled": false
     }
   },

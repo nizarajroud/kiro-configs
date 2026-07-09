@@ -916,3 +916,94 @@ Puis parser le JSON : `history[].user.content` (messages utilisateur) et `histor
 
 **Ajout à la checklist de sortie** :
 - [ ] **Diagramme draw.io avec ressources AWS ?** → Vérifier que chaque icône a un `UserObject link=` correct (consulter patterns.yaml)
+
+
+---
+
+## Règle : Speechs et préparations de communication — RÈGLE D'OR (TOLÉRANCE ZÉRO)
+
+**Déclencheur** : Toute demande de :
+- Speech, discours, texte à dire à quelqu'un
+- Préparation de réunion (physique, téléphone, Teams, Zoom)
+- Points clés à aborder, argumentaire, script d'appel
+- Formulation d'un message à transmettre oralement
+- Toute communication préparatoire avant un échange (personnel OU professionnel)
+
+**Action OBLIGATOIRE (AUCUNE EXCEPTION)** :
+
+1. **Créer une page Notion** sous « Mes Speechs » (ID parent : `398174cb-5dcc-81e7-a48b-cab097d0e176`)
+   - **Déterminer le contexte** : Personnel ou Work
+   - **Personnel** (famille, santé, admin, finances, déménagement, etc.) → créer sous toggle `🏠 PERSONNEL` (ID : `398174cb-5dcc-817e-9792-c8b40f4cab4f`)
+   - **Work** (client, manager, collègue, réunion pro, etc.) → créer sous toggle `💼 WORK` (ID : `398174cb-5dcc-8110-959d-ec74cf84dedc`)
+   - Contenu : le speech complet, structuré (points clés, formulations, notes)
+
+2. **EN PLUS** de tout autre livrable demandé :
+   - Si l'utilisateur demande aussi d'envoyer sur Telegram → faire les deux
+   - Si l'utilisateur demande aussi par email → faire les deux
+   - Si l'utilisateur demande juste dans le chat → afficher dans le chat ET créer la page Notion
+   - La page Notion est TOUJOURS créée, peu importe ce qui est demandé à côté
+
+3. **Si on est dans le contexte d'une autre page Notion** (ex: Procédure en cours, Entretien maison, etc.) :
+   - Créer le speech sous « Mes Speechs » (comme toujours)
+   - PUIS ajouter un **lien** dans la page contextuelle qui pointe vers la page speech créée
+   - Format du lien : bloc paragraphe avec `🗣️ Speech : [Titre du speech](URL de la page créée)`
+
+**Règles strictes** :
+- ✅ TOUJOURS créer sous « Mes Speechs » — peu importe le sujet (perso, travail, maintenance, médical, administratif)
+- ✅ TOUJOURS en plus de ce que l'utilisateur demande (jamais à la place)
+- ✅ Si contexte Notion existe → lien croisé vers le speech
+- ❌ JAMAIS répondre uniquement dans le chat sans créer la page Notion
+- ❌ JAMAIS créer le speech sous une autre page parent que « Mes Speechs »
+- ❌ AUCUNE EXCEPTION — cette règle est absolue
+
+**Ajout à la checklist de sortie** :
+- [ ] **Speech/préparation de communication demandé ?** → Page Notion créée sous « Mes Speechs » (`398174cb`) + lien croisé si contexte Notion existant
+
+
+
+
+---
+
+## Règle : Meeting Reports — POST-réunion (TOLÉRANCE ZÉRO)
+
+**Déclencheur** : Toute demande de restitution APRÈS un échange :
+- Compte-rendu de réunion, résumé d'appel, notes de meeting
+- Restructuration d'une transcription (Buzz, audio, etc.)
+- "Qu'est-ce qu'on a dit/décidé pendant le call?"
+- Résumé d'une rencontre (physique, téléphone, Teams, Zoom)
+- Toute restitution POST-échange (personnel OU professionnel)
+
+**Action OBLIGATOIRE (AUCUNE EXCEPTION)** :
+
+1. **Créer une page Notion** sous « Meetings-Reports » (ID parent : `84c17364-a96f-44a0-8a5b-235035d7deba`)
+   - **Déterminer le contexte** : Personnel ou Work
+   - **Personnel** (médecin, notaire, école, famille, admin, etc.) → créer sous toggle `PERSONNEL` (ID : `398174cb-5dcc-807b-82cc-e3f38eea7163`)
+   - **Work** (client, manager, collègue, réunion pro, etc.) → créer sous toggle `WORK` (ID : `398174cb-5dcc-801a-b98e-cf9b0de4b0ce`)
+   - Titre : `[Sujet/Interlocuteur] — [Date YYYY-MM-DD]`
+   - Contenu structuré :
+     - Résumé des échanges
+     - Décisions prises
+     - Actions à faire (qui fait quoi, quand)
+     - Points en suspens / à suivre
+
+2. **EN PLUS** de tout autre livrable demandé :
+   - Si l'utilisateur demande aussi d'envoyer sur Telegram → faire les deux
+   - Si l'utilisateur demande aussi par email → faire les deux
+   - Si l'utilisateur demande juste dans le chat → afficher dans le chat ET créer la page Notion
+   - La page Notion est TOUJOURS créée, peu importe ce qui est demandé à côté
+
+3. **Si on est dans le contexte d'une autre page Notion** (ex: Procédure en cours, Entretien maison, etc.) :
+   - Créer le meeting report sous « Meetings-Reports » (comme toujours)
+   - PUIS ajouter un **lien** dans la page contextuelle qui pointe vers la page créée
+   - Format du lien : bloc paragraphe avec `📋 Report : [Titre du report](URL de la page créée)`
+
+**Règles strictes** :
+- ✅ TOUJOURS créer sous « Meetings-Reports » — peu importe le sujet
+- ✅ TOUJOURS en plus de ce que l'utilisateur demande (jamais à la place)
+- ✅ Si contexte Notion existe → lien croisé vers le report
+- ❌ JAMAIS répondre uniquement dans le chat sans créer la page Notion
+- ❌ JAMAIS créer le report sous une autre page parent que « Meetings-Reports »
+- ❌ AUCUNE EXCEPTION — cette règle est absolue
+
+**Ajout à la checklist de sortie** :
+- [ ] **Compte-rendu/résumé post-réunion demandé ?** → Page Notion créée sous « Meetings-Reports » (`84c17364`) + lien croisé si contexte Notion existant
