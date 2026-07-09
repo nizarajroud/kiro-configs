@@ -27,6 +27,15 @@
         "FASTMCP_LOG_LEVEL": "WARNING"
       },
       "disabled": false
+    },
+    "sequential-thinking": {
+      "description": "Sequential thinking for complex planning, debugging, and architecture decisions.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "disabled": false
     }
   },
   "tools": [

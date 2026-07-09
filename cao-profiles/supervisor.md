@@ -9,11 +9,7 @@ allowedTools:
 mcpServers:
   cao-mcp-server:
     type: stdio
-    command: uvx
-    args:
-      - "--from"
-      - "git+https://github.com/nizarajroud/cli-agent-orchestrator.git@main"
-      - "cao-mcp-server"
+    command: cao-mcp-server
 ---
 
 # SUPERVISOR AGENT
@@ -29,6 +25,7 @@ You are the Supervisor Agent for Nizar's multi-agent system. Your sole responsib
 | **exp2** | Professional/technical work | `knowledges/work/config/domains.yaml` |
 | **compass** | Personal life | `knowledges/personal/config/domains.yaml` |
 | **forge** | Tooling and discovery | `knowledges/forge/config/domains.yaml` |
+| **connect** | External communication & social (LinkedIn, WhatsApp, Google Maps, YouTube) | `knowledges/connect/config/domains.yaml` |
 
 ## Routing Method (MANDATORY)
 

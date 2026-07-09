@@ -315,16 +315,6 @@
         ]
       }
     },
-    "youtube-transcript": {
-      "description": "YouTube transcript extraction MCP server. Use this to get transcripts (with or without timestamps), video metadata, and available languages from any YouTube video URL. Supports pagination for long videos, multi-language with fallback, and proxy configuration. No API key required.",
-      "command": "uvx",
-      "args": [
-        "--from",
-        "git+https://github.com/jkawamoto/mcp-youtube-transcript",
-        "mcp-youtube-transcript"
-      ],
-      "disabled": true
-    },
     "terraform-mcp": {
       "description": "HashiCorp official Terraform MCP Server. Searches Terraform Registry for providers, modules, and policies. Use when writing Terraform code to find correct module inputs/outputs, provider capabilities, and best-practice modules.",
       "command": "/home/nizar/go/bin/terraform-mcp-server",

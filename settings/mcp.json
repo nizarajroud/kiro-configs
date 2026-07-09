@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "figma": {
-      "description": "Figma MCP — generate diagrams (FigJam), write to canvas, extract design context, generate code from designs. Skill: figma-generate-diagram.",
+      "description": "Figma MCP \u2014 generate diagrams (FigJam), write to canvas, extract design context, generate code from designs. Skill: figma-generate-diagram.",
       "command": "npx",
       "args": [
         "-y",
@@ -184,17 +184,6 @@
       ],
       "disabled": false
     },
-    "whatsapp": {
-      "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
-      "command": "uv",
-      "args": [
-        "--directory",
-        "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server",
-        "run",
-        "main.py"
-      ],
-      "disabled": true
-    },
     "mural": {
       "description": "MURAL collaboration tool. Use this whenever the user mentions 'mural', 'MURAL', a mural board, or visual collaboration content. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54). Supports: listing workspaces/rooms/murals, reading all content from a mural (sticky notes, shapes, text, images), searching text inside murals, creating/updating/deleting sticky notes, and creating new murals.",
       "command": "python3",
@@ -251,33 +240,11 @@
       "disabled": false,
       "locked": false
     },
-    "linkedin-mcp": {
-      "description": "Access LinkedIn data: profiles, job search, company info, messages, feed, saved posts, people search. Use when user asks about LinkedIn profiles, jobs, companies, or networking.",
-      "command": "python3",
-      "args": [
-        "-m",
-        "linkedin_mcp_server"
-      ],
-      "env": {
-        "PYTHONPATH": "/home/nizar/HomeWspce/linkedin-mcp-fork"
-      },
-      "disabled": true,
-      "locked": false
-    },
     "bitbucket-mcp": {
       "description": "Atlassian Bitbucket MCP. Manage repos, pull requests, pipelines, branches, and files on Bitbucket Cloud. Use when user asks about Bitbucket repositories or CI/CD pipelines.",
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bitbucket_wrapper.py"
-      ],
-      "disabled": true,
-      "locked": false
-    },
-    "google-maps": {
-      "description": "Google Maps Grounding Lite — search places (restaurants, clinics, schools), compute routes (driving/walking), and lookup weather for any location. Use when user asks about nearby places, directions, or location-based queries.",
-      "command": "python3",
-      "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/google_maps_wrapper.py"
       ],
       "disabled": true,
       "locked": false
@@ -309,7 +276,7 @@
         "PROJECT_ID": "",
         "FASTMCP_LOG_LEVEL": "WARNING"
       },
-      "description": "Bedrock AgentCore Memory — persistent cross-session semantic memory. Allows agents to store and retrieve conversation history across all sessions. Tools: search_conversation_history, store_conversation, list_sessions, get_direct_conversation_history, search_memories, get_memory_stats.",
+      "description": "Bedrock AgentCore Memory \u2014 persistent cross-session semantic memory. Allows agents to store and retrieve conversation history across all sessions. Tools: search_conversation_history, store_conversation, list_sessions, get_direct_conversation_history, search_memories, get_memory_stats.",
       "disabled": false
     }
   }

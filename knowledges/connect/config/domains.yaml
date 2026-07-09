@@ -1,0 +1,18 @@
+# Connect Domain Taxonomy
+
+domains:
+  linkedin:
+    label: "LinkedIn"
+    keywords: [LinkedIn, profil, emploi, job, recrutement, connexion, réseau professionnel]
+
+  whatsapp:
+    label: "WhatsApp"
+    keywords: [WhatsApp, message WhatsApp, conversation WhatsApp]
+
+  maps:
+    label: "Google Maps"
+    keywords: [Google Maps, itinéraire, route, restaurant, lieu, place, directions, météo, weather]
+
+  youtube:
+    label: "YouTube"
+    keywords: [YouTube, transcript, vidéo, sous-titres, chaîne, channel]

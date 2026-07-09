@@ -4,12 +4,93 @@
   "prompt": "file://../prompts/forge-prompt.md",
   "mcpServers": {
     "memory-forge": {
-      "description": "Persistent memory for Forge — stores discovered tools, experiment verdicts, installation notes, and patterns across sessions.",
+      "description": "Persistent memory for Forge \u2014 stores discovered tools, experiment verdicts, installation notes, and patterns across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-forge.jsonl"
       },
+      "disabled": false
+    },
+    "agentcore-memory": {
+      "command": "/home/nizar/HomeWspce/sample-amazon-bedrock-agentcore-memory-mcp-server/venv/bin/python3",
+      "args": [
+        "/home/nizar/HomeWspce/sample-amazon-bedrock-agentcore-memory-mcp-server/bedrock_agentcore_memory_mcp_server.py"
+      ],
+      "env": {
+        "AGENTCORE_MEMORY_ID": "kiro_sessions_memory-gyjyxdCmPK",
+        "AWS_REGION": "ca-central-1",
+        "AWS_PROFILE": "csna-operations-sso-828",
+        "ACTOR_ID_TYPE": "userid",
+        "PROJECT_ID": "",
+        "FASTMCP_LOG_LEVEL": "WARNING"
+      },
+      "disabled": false
+    },
+    "remote.aws-knowledge": {
+      "description": "AWS official documentation, best practices, pricing, limits, and how-to guides.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://knowledge-mcp.global.api.aws"
+      ],
+      "disabled": false
+    },
+    "firecrawl": {
+      "description": "Web scraping, crawling, search, and autonomous web research.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "github": {
+      "description": "GitHub operations: read repos, browse code, search files, manage issues and PRs.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/github_wrapper.py"
+      ],
+      "env": {
+        "GITHUB_READ_ONLY": "0",
+        "GITHUB_TOOLSETS": "all"
+      },
+      "disabled": false
+    },
+    "notion-workspace": {
+      "description": "Notion workspace \u2014 create, read, update, search pages.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/notion_wrapper.py"
+      ],
+      "env": {
+        "GITHUB_REPO": "nizarajroud/notion-images"
+      },
+      "disabled": false
+    },
+    "mcp-image-recognition": {
+      "description": "Image analysis (READ-ONLY) via Bedrock vision models. Requires gateway on localhost:8766.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "bookmarks": {
+      "description": "Search Chrome and Edge bookmarks (7260+ Chrome, 2454+ Edge).",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "sequential-thinking": {
+      "description": "Sequential thinking for complex planning, debugging, and architecture decisions.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
       "disabled": false
     }
   },
@@ -28,7 +109,7 @@
   ],
   "hooks": {},
   "toolsSettings": {},
-  "useLegacyMcpJson": true,
-  "welcomeMessage": "🔨 Forge ready. Tell me which MCP server to install.",
+  "useLegacyMcpJson": false,
+  "welcomeMessage": "\ud83d\udd28 Forge ready. Tell me which MCP server to install.",
   "toolAliases": {}
 }
