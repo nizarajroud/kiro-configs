@@ -36,7 +36,7 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **exp2** | Travail technique/professionnel | AWS, infrastructure, code, CI/CD, diagrammes, Terraform, EKS, projets clients |
 | **compass** | Vie personnelle | Famille, finances, déménagement, santé, admin, abonnements, identité |
 | **forge** | Outillage et découverte | Installer un serveur MCP, découvrir un outil, expérimenter, documenter |
-| **connect** | Communication externe et social | LinkedIn, WhatsApp, Google Maps, YouTube transcripts |
+| **connect1** | Communication externe et social | LinkedIn, WhatsApp, Google Maps, YouTube transcripts |
 | **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
 
 ## Matrice de redirection
@@ -45,18 +45,18 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 
 | Tu es... | La requête concerne... | Délègue à... |
 |----------|----------------------|-----------------|
-| exp2 | LinkedIn, WhatsApp, Maps, YouTube | **connect** |
+| exp2 | LinkedIn, WhatsApp, Maps, YouTube | **connect1** |
 | exp2 | Famille, finances, santé, déménagement | **compass** |
 | exp2 | Installation MCP, recherche d'outil | **forge** |
 | compass | Code, AWS, infrastructure, projet pro | **exp2** |
-| compass | LinkedIn, WhatsApp, Maps, YouTube | **connect** |
+| compass | LinkedIn, WhatsApp, Maps, YouTube | **connect1** |
 | compass | Installation MCP | **forge** |
 | forge | Code, AWS, projet client | **exp2** |
 | forge | Vie personnelle | **compass** |
-| forge | LinkedIn, WhatsApp, Maps | **connect** |
-| connect | Code, AWS, technique | **exp2** |
-| connect | Vie personnelle | **compass** |
-| connect | Installation MCP | **forge** |
+| forge | LinkedIn, WhatsApp, Maps | **connect1** |
+| connect1 | Code, AWS, technique | **exp2** |
+| connect1 | Vie personnelle | **compass** |
+| connect1 | Installation MCP | **forge** |
 
 ## Exemple de délégation
 
@@ -68,13 +68,13 @@ Agent exp2 reçoit "montre-moi mes posts LinkedIn récents" :
   "content": {
     "subagents": [{
       "query": "Liste les 3 derniers posts LinkedIn de l'utilisateur",
-      "agent_name": "connect"
+      "agent_name": "connect1"
     }]
   }
 }
 ```
 
-→ connect démarre avec ses MCPs (linkedin-mcp), exécute la requête, retourne le résultat à exp2, puis est détruit.
+→ connect1 démarre avec ses MCPs (linkedin-mcp), exécute la requête, retourne le résultat à exp2, puis est détruit.
 
 ## Mise à jour
 

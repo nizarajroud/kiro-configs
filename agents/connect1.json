@@ -1,7 +1,7 @@
 {
-  "name": "connect",
+  "name": "connect1",
   "description": "External communication and social agent \u2014 LinkedIn, WhatsApp, Google Maps, YouTube. Use for social networking, messaging, geolocation, and video content extraction.",
-  "prompt": "file://../prompts/connect-prompt.md",
+  "prompt": "file://../prompts/connect1-prompt.md",
   "mcpServers": {
     "google-maps": {
       "description": "Google Maps Grounding Lite \u2014 search places (restaurants, clinics, schools), compute routes (driving/walking), and lookup weather for any location. Use when user asks about nearby places, directions, or location-based queries.",
@@ -46,7 +46,7 @@
       ],
       "disabled": false
     },
-    "memory-connect": {
+    "memory-connect1": {
       "description": "Persistent memory for Connect agent \u2014 stores contacts, preferences, frequent routes, chat IDs.",
       "command": "npx",
       "args": [
@@ -54,7 +54,7 @@
         "@modelcontextprotocol/server-memory"
       ],
       "env": {
-        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-connect.jsonl"
+        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-connect1.jsonl"
       },
       "disabled": false
     }
@@ -70,7 +70,7 @@
     "@linkedin-mcp",
     "@whatsapp",
     "@youtube-transcript",
-    "@memory-connect"
+    "@memory-connect1"
   ],
   "useLegacyMcpJson": false,
   "resources": [
