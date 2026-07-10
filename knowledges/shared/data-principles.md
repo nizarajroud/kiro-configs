@@ -185,3 +185,18 @@ work/domains/novatech/notes.md                         ← memory for Novatech p
 **NE PAS appliquer pour** : les opérations de lecture seule (read_data_from_excel, list_sheets).
 
 **JAMAIS** : écrire dans un fichier Excel sans avoir obtenu la confirmation de fermeture.
+
+
+---
+
+## Règle : Numéro de session actuelle
+
+**Déclencheur** : L'utilisateur demande le numéro de session, l'ID de session, "quelle session", "session actuelle", "c'est quelle conversation".
+
+**Action OBLIGATOIRE** : Exécuter cette commande et retourner le résultat :
+
+```bash
+sqlite3 ~/.local/share/kiro-cli/data.sqlite3 "SELECT conversation_id FROM conversations_v2 ORDER BY updated_at DESC LIMIT 1"
+```
+
+**JAMAIS** : dire "je n'ai pas accès" ou demander à l'utilisateur de le faire lui-même.
