@@ -1,0 +1,22 @@
+# Dev1 Domain Taxonomy
+
+domains:
+  gitlab:
+    label: "GitLab"
+    keywords: [GitLab, merge request, pipeline, Alithya, CSNA, beneva-int, CI/CD]
+
+  github-docs:
+    label: "GitHub Repo Docs"
+    keywords: [repo GitHub, README, documentation repo, git-mcp]
+
+  sdk-docs:
+    label: "Live SDK Documentation"
+    keywords: [context7, API signature, import path, library docs, SDK, framework]
+
+  terraform:
+    label: "Terraform"
+    keywords: [Terraform, terraform plan, terraform apply, provider, module, registry, HCL, state, drift]
+
+  graphs:
+    label: "Dependency Graphs"
+    keywords: [dependency graph, graphe, Graphistry, visualisation interactif, nodes, edges]

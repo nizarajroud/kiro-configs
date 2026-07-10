@@ -38,6 +38,7 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **forge** | Outillage et découverte | Installer un serveur MCP, découvrir un outil, expérimenter, documenter |
 | **connect1** | Communication externe et social | LinkedIn, WhatsApp, Google Maps, YouTube transcripts, SSH remote |
 | **connect2** | Communication directe et marketplace | Telegram, Gmail, Perplexity (web search), Secondhand marketplaces |
+| **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
 | **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart |
 | **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | **data1** | Données et recherche | Airtable, NotebookLM, MarkItDown, PDF reader, TickTick |
@@ -52,6 +53,7 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | exp2 | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
 | exp2 | Telegram, Gmail, Marketplace, recherche web | **connect2** |
 | exp2 | Famille, finances, santé, déménagement | **compass** |
+| **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
 | **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart |
 | **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | exp2 | Airtable, NotebookLM, documents, tâches | **data1** |
@@ -59,6 +61,7 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | compass | Code, AWS, infrastructure, projet pro | **exp2** |
 | compass | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
 | compass | Telegram, Gmail, Marketplace, recherche web | **connect2** |
+| **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
 | **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart |
 | **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | compass | Airtable, NotebookLM, documents, tâches | **data1** |
@@ -92,6 +95,12 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | diagram1 | Telegram, Gmail, Marketplace | **connect2** |
 | diagram1 | Airtable, NotebookLM, documents, tâches | **data1** |
 | diagram1 | Installation MCP | **forge** |
+| dev1 | AWS, pricing, EKS | **aws1** |
+| dev1 | Vie personnelle | **compass** |
+| dev1 | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
+| dev1 | Telegram, Gmail, Marketplace | **connect2** |
+| dev1 | Airtable, NotebookLM, documents, tâches | **data1** |
+| dev1 | Installation MCP | **forge** |
 
 ## Exemple de délégation
 
