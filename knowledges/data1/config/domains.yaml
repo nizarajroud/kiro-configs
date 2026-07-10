@@ -1,0 +1,18 @@
+# Data1 Domain Taxonomy
+
+domains:
+  airtable:
+    label: "Airtable"
+    keywords: [Airtable, base, table, record, données structurées, kanban]
+
+  notebooklm:
+    label: "NotebookLM"
+    keywords: [NotebookLM, notebook, cherche dans mes notes, knowledge base, RAG]
+
+  documents:
+    label: "Document Conversion"
+    keywords: [convertir, document, Word, Excel, PPTX, PDF, markdown, MarkItDown]
+
+  tasks:
+    label: "Task Management"
+    keywords: [tâche, rappel, TickTick, to-do, deadline, habit, reminder]

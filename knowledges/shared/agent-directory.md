@@ -38,6 +38,7 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **forge** | Outillage et découverte | Installer un serveur MCP, découvrir un outil, expérimenter, documenter |
 | **connect1** | Communication externe et social | LinkedIn, WhatsApp, Google Maps, YouTube transcripts, SSH remote |
 | **connect2** | Communication directe et marketplace | Telegram, Gmail, Perplexity (web search), Secondhand marketplaces |
+| **data1** | Données et recherche | Airtable, NotebookLM, MarkItDown, PDF reader, TickTick |
 | **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
 
 ## Matrice de redirection
@@ -49,10 +50,12 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | exp2 | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
 | exp2 | Telegram, Gmail, Marketplace, recherche web | **connect2** |
 | exp2 | Famille, finances, santé, déménagement | **compass** |
+| exp2 | Airtable, NotebookLM, documents, tâches | **data1** |
 | exp2 | Installation MCP, recherche d'outil | **forge** |
 | compass | Code, AWS, infrastructure, projet pro | **exp2** |
 | compass | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
 | compass | Telegram, Gmail, Marketplace, recherche web | **connect2** |
+| compass | Airtable, NotebookLM, documents, tâches | **data1** |
 | compass | Installation MCP | **forge** |
 | forge | Code, AWS, projet client | **exp2** |
 | forge | Vie personnelle | **compass** |
@@ -66,6 +69,11 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | connect2 | Vie personnelle | **compass** |
 | connect2 | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
 | connect2 | Installation MCP | **forge** |
+| data1 | Code, AWS, technique | **exp2** |
+| data1 | Vie personnelle | **compass** |
+| data1 | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
+| data1 | Telegram, Gmail, Marketplace | **connect2** |
+| data1 | Installation MCP | **forge** |
 
 ## Exemple de délégation
 

@@ -1,0 +1,67 @@
+{
+  "name": "data1",
+  "description": "Data and research agent \u2014 Airtable, NotebookLM, MarkItDown, PDF reader, TickTick. Use for structured data, document conversion, knowledge base queries, and task management.",
+  "prompt": "file://../prompts/data1-prompt.md",
+  "mcpServers": {
+    "airtable": {
+      "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "airtable-mcp-server"
+      ],
+      "env": {
+        "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
+      },
+      "disabled": false
+    },
+    "notebooklm": {
+      "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
+      "command": "notebooklm-mcp",
+      "args": [],
+      "disabled": false
+    },
+    "markitdown": {
+      "description": "Convert any document to Markdown for reading. Supports Word (.docx), Excel (.xlsx/.xls), PDF, PowerPoint (.pptx), HTML, images, and more. Use convert_to_markdown with a file:// URI to extract document contents as Markdown.",
+      "command": "/home/nizar/.markitdown-mcp/bin/markitdown-mcp",
+      "args": [],
+      "disabled": false,
+      "locked": false
+    },
+    "pdf-reader": {
+      "command": "npx",
+      "args": [
+        "@sylphx/pdf-reader-mcp"
+      ],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "ticktick": {
+      "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
+      ],
+      "disabled": false
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "grep",
+    "glob",
+    "@airtable",
+    "@notebooklm",
+    "@markitdown",
+    "@pdf-reader",
+    "@ticktick"
+  ],
+  "useLegacyMcpJson": false,
+  "resources": [
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {}
+}
