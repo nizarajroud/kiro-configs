@@ -36,6 +36,24 @@
         "@modelcontextprotocol/server-sequential-thinking"
       ],
       "disabled": false
+    },
+    "time": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-time"
+      ],
+      "locked": false,
+      "disabled": false,
+      "description": "Current time and timezone conversions."
+    },
+    "fetch": {
+      "command": "uvx",
+      "args": [
+        "mcp-server-fetch"
+      ],
+      "locked": false,
+      "disabled": false,
+      "description": "Fetch URL content as markdown."
     }
   },
   "tools": [

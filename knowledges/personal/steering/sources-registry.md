@@ -23,16 +23,7 @@ Detailed capabilities and operational notes for each source. Complements the rou
 - **Filtering rule**: Exclude pages under professional/work spaces
 - **When to use**: Structured info, lists, databases, detailed procedures
 
-## Alithya Knowledge RAG (Priority 3)
-
-- **Content**: Personal documents from Dropbox/AAA_PRIVATE_LIFE — PDFs, avis de cotisation, factures, contrats, relevés fiscaux, documents d'identité
-- **Server**: Remote MCP on PC Alithya (192.168.2.56:8080)
-- **Indexation**: Hybrid search (semantic embeddings + BM25) with cross-encoder reranking
-- **Tools**: `search_knowledge(query)`, `list_documents()`, `get_document(filepath)`
-- **When to use**: Personal documents, impôts, finances, identité, contrats, factures
-- **Note**: Must be running on PC Alithya. If unreachable, inform user.
-
-## Airtable (Priority 3b — Déménagement)
+## Airtable (Priority 3 — Déménagement)
 
 - **Content**: Tâches actionnables du déménagement (80 tâches, 5 phases)
 - **Base**: Personal Life (`appt4WObx12eJVPvK`)
