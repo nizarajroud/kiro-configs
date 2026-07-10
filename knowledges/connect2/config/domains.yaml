@@ -16,3 +16,7 @@ domains:
   marketplace:
     label: "Secondhand Marketplace"
     keywords: [Marketplace, Facebook Marketplace, eBay, occasion, annonce, secondhand, acheter]
+
+  apify:
+    label: "Web Data Extraction (Apify)"
+    keywords: [scraping, extraction, Apify, Actor, Google Maps scraper, Amazon, e-commerce, data extraction, crawl]

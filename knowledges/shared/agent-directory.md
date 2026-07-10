@@ -39,13 +39,14 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **compass** | Vie personnelle | Famille, finances, déménagement, santé, admin, abonnements, identité |
 | **forge** | Outillage et découverte | Installer un serveur MCP, découvrir un outil, expérimenter, documenter |
 | **connect1** | Communication externe et social | LinkedIn, WhatsApp, Google Maps, Video transcription (TikTok, YouTube, Instagram, etc.), SSH remote |
-| **connect2** | Communication directe et marketplace | Telegram, Gmail, Perplexity (web search), Secondhand marketplaces |
+| **connect2** | Communication directe et marketplace | Telegram, Gmail, Perplexity (web search), Secondhand marketplaces, Apify (web data extraction) |
 | **connect3** | Social intelligence | Twitter/X, Instagram, Reddit, TikTok (recherche + monitoring) |
 | **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
 | **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart |
 | **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | **data1** | Données et recherche | Airtable, NotebookLM, MarkItDown, PDF reader, TickTick |
 | **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
+| **sandbox** | Test isolé de serveurs MCP | Banc d'essai — 1 MCP temporaire à la fois, toujours vide par défaut |
 
 ## Matrice de redirection
 

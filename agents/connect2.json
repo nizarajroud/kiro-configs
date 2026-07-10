@@ -43,6 +43,19 @@
         "MARKETPLACES": "facebook"
       },
       "disabled": false
+    },
+    "apify-mcp": {
+      "description": "Apify platform — extract data from social media, search engines, maps, e-commerce sites using 1000+ ready-made Actors. Use for web scraping, data extraction, and automation at scale.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.apify.com/mcp"
+      ],
+      "env": {
+        "APIFY_TOKEN": "${APIFY_TOKEN}"
+      },
+      "disabled": false
     }
   },
   "tools": [
@@ -55,7 +68,8 @@
     "@telegram",
     "@gmail",
     "@perplexity",
-    "@secondhand-mcp"
+    "@secondhand-mcp",
+    "@apify-mcp"
   ],
   "useLegacyMcpJson": false,
   "resources": [

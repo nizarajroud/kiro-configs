@@ -102,15 +102,9 @@ description: Search Twitter, Instagram, Reddit & TikTok from AI agents. 1.5B+ po
 
 À vérifier — free tier limité, plans payants pour full results + exports.
 
-## Placement Recommendation
+## Placement
 
-**Problème** : connect1 est à 5/5 MCPs actifs. Ce serveur (42 tools, social intelligence) nécessite un agent dédié.
-
-**Recommandation** : Créer **connect3** — agent "Social Intelligence" avec :
-- xpoz-mcp (Twitter, Instagram, Reddit, TikTok search)
-- Scope : veille sociale, lead generation, brand monitoring, recherche de tendances
-
-**Action requise** : IT-Supervisor doit créer l'agent connect3 selon la procédure `agent-expertise-procedure.md`.
+✅ **Placé sur connect3** (créé par IT-Supervisor le 2026-07-10). Agent dédié social intelligence.
 
 ## Notes
 
