@@ -167,3 +167,21 @@ domains/carriere/opportunities/bnc-bedrock/notes.md   ← memory for BNC Bedrock
 domains/demenagement/steering/11-baklog-actions.md     ← memory for déménagement
 work/domains/novatech/notes.md                         ← memory for Novatech project
 ```
+
+
+---
+
+## Règle : Écriture Excel — Confirmation de fermeture obligatoire
+
+**Déclencheur** : Toute opération d'ÉCRITURE sur un fichier Excel (write_data_to_excel, create_workbook, format_cells, create_chart, create_pivot_table, ou toute modification de contenu .xlsx).
+
+**Action OBLIGATOIRE** : Avant d'exécuter l'écriture, l'agent DOIT :
+
+1. Informer l'utilisateur : "Je dois modifier le fichier Excel. S'il est ouvert dans ton navigateur ou Dropbox, ferme-le d'abord pour éviter un conflit."
+2. Demander confirmation : "Est-ce que le fichier est fermé ?"
+3. Attendre une réponse positive (oui, yes, ok, c'est fait, fermé, etc.)
+4. SEULEMENT ALORS procéder à l'écriture
+
+**NE PAS appliquer pour** : les opérations de lecture seule (read_data_from_excel, list_sheets).
+
+**JAMAIS** : écrire dans un fichier Excel sans avoir obtenu la confirmation de fermeture.
