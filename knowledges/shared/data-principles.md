@@ -200,3 +200,26 @@ sqlite3 ~/.local/share/kiro-cli/data.sqlite3 "SELECT conversation_id FROM conver
 ```
 
 **JAMAIS** : dire "je n'ai pas accès" ou demander à l'utilisateur de le faire lui-même.
+
+
+---
+
+## Règle : Recherche de session par sujet
+
+**Déclencheur** : L'utilisateur demande "dans quelle session on a parlé de X", "tu te rappelles quand on a discuté de X", "retrouve la session où on a parlé de X", ou toute question visant à retrouver une conversation passée.
+
+**Action OBLIGATOIRE (dans cet ordre)** :
+
+1. **Cascading Search** (prioritaire) — utiliser l'outil `cascading_search` :
+```
+cascading_search(query="<sujet>", current_folder="<dossier courant>", current_agent="<nom agent actuel>")
+```
+
+2. **Si rien trouvé → fallback SQLite** :
+```bash
+sqlite3 ~/.local/share/kiro-cli/data.sqlite3 "SELECT conversation_id, updated_at, substr(json_extract(value, '$.history[0].user.content'), 1, 120) FROM conversations_v2 WHERE value LIKE '%<sujet>%' ORDER BY updated_at DESC LIMIT 5"
+```
+
+3. **Retourner** : session ID + extrait du contenu + date pour chaque résultat trouvé.
+
+**JAMAIS** : répondre "je ne me rappelle pas" ou "je n'ai pas cette information" sans avoir exécuté les deux étapes ci-dessus.
