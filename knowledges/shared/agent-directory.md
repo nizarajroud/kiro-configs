@@ -38,6 +38,7 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **forge** | Outillage et découverte | Installer un serveur MCP, découvrir un outil, expérimenter, documenter |
 | **connect1** | Communication externe et social | LinkedIn, WhatsApp, Google Maps, YouTube transcripts, SSH remote |
 | **connect2** | Communication directe et marketplace | Telegram, Gmail, Perplexity (web search), Secondhand marketplaces |
+| **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | **data1** | Données et recherche | Airtable, NotebookLM, MarkItDown, PDF reader, TickTick |
 | **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
 
@@ -50,11 +51,13 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | exp2 | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
 | exp2 | Telegram, Gmail, Marketplace, recherche web | **connect2** |
 | exp2 | Famille, finances, santé, déménagement | **compass** |
+| **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | exp2 | Airtable, NotebookLM, documents, tâches | **data1** |
 | exp2 | Installation MCP, recherche d'outil | **forge** |
 | compass | Code, AWS, infrastructure, projet pro | **exp2** |
 | compass | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
 | compass | Telegram, Gmail, Marketplace, recherche web | **connect2** |
+| **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | compass | Airtable, NotebookLM, documents, tâches | **data1** |
 | compass | Installation MCP | **forge** |
 | forge | Code, AWS, projet client | **exp2** |
@@ -74,6 +77,12 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | data1 | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
 | data1 | Telegram, Gmail, Marketplace | **connect2** |
 | data1 | Installation MCP | **forge** |
+| aws1 | Code, développement, IaC | **dev1** |
+| aws1 | Vie personnelle | **compass** |
+| aws1 | LinkedIn, WhatsApp, Maps, YouTube, SSH | **connect1** |
+| aws1 | Telegram, Gmail, Marketplace | **connect2** |
+| aws1 | Airtable, NotebookLM, documents, tâches | **data1** |
+| aws1 | Installation MCP | **forge** |
 
 ## Exemple de délégation
 

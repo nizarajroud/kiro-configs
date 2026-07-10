@@ -1,0 +1,18 @@
+# AWS1 Domain Taxonomy
+
+domains:
+  pricing:
+    label: "AWS Pricing"
+    keywords: [pricing, coût, cost, estimation, tarif, prix AWS]
+
+  eks:
+    label: "EKS / Kubernetes"
+    keywords: [EKS, cluster, pod, deployment, kubernetes, k8s, kubectl, helm, service, configmap]
+
+  aws-api:
+    label: "AWS API Inspection"
+    keywords: [EC2, S3, Lambda, RDS, VPC, IAM, CloudWatch, CloudTrail, describe, list, inspect]
+
+  infrastructure:
+    label: "Infrastructure Cloud"
+    keywords: [infrastructure, resource AWS, account, region, ca-central-1]
