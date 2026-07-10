@@ -43,18 +43,6 @@
         "MARKETPLACES": "facebook"
       },
       "disabled": false
-    },
-    "memory-connect2": {
-      "description": "Persistent memory for Connect2 agent \u2014 stores contacts, chat IDs, email preferences.",
-      "command": "npx",
-      "args": [
-        "-y",
-        "@modelcontextprotocol/server-memory"
-      ],
-      "env": {
-        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-connect2.jsonl"
-      },
-      "disabled": false
     }
   },
   "tools": [
@@ -67,8 +55,7 @@
     "@telegram",
     "@gmail",
     "@perplexity",
-    "@secondhand-mcp",
-    "@memory-connect2"
+    "@secondhand-mcp"
   ],
   "useLegacyMcpJson": false,
   "resources": [
