@@ -1,0 +1,18 @@
+# Connect2 Domain Taxonomy
+
+domains:
+  telegram:
+    label: "Telegram"
+    keywords: [Telegram, message Telegram, conversation Telegram, Abir, conjointe]
+
+  gmail:
+    label: "Gmail & Calendar"
+    keywords: [email, Gmail, mail, calendrier, calendar, rendez-vous, RDV]
+
+  perplexity:
+    label: "Web Research"
+    keywords: [recherche web, cherche sur internet, actualité, current, perplexity]
+
+  marketplace:
+    label: "Secondhand Marketplace"
+    keywords: [Marketplace, Facebook Marketplace, eBay, occasion, annonce, secondhand, acheter]

@@ -37,6 +37,7 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **compass** | Vie personnelle | Famille, finances, déménagement, santé, admin, abonnements, identité |
 | **forge** | Outillage et découverte | Installer un serveur MCP, découvrir un outil, expérimenter, documenter |
 | **connect1** | Communication externe et social | LinkedIn, WhatsApp, Google Maps, YouTube transcripts |
+| **connect2** | Communication directe et marketplace | Telegram, Gmail, Perplexity (web search), Secondhand marketplaces |
 | **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
 
 ## Matrice de redirection
@@ -46,17 +47,25 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | Tu es... | La requête concerne... | Délègue à... |
 |----------|----------------------|-----------------|
 | exp2 | LinkedIn, WhatsApp, Maps, YouTube | **connect1** |
+| exp2 | Telegram, Gmail, Marketplace, recherche web | **connect2** |
 | exp2 | Famille, finances, santé, déménagement | **compass** |
 | exp2 | Installation MCP, recherche d'outil | **forge** |
 | compass | Code, AWS, infrastructure, projet pro | **exp2** |
 | compass | LinkedIn, WhatsApp, Maps, YouTube | **connect1** |
+| compass | Telegram, Gmail, Marketplace, recherche web | **connect2** |
 | compass | Installation MCP | **forge** |
 | forge | Code, AWS, projet client | **exp2** |
 | forge | Vie personnelle | **compass** |
 | forge | LinkedIn, WhatsApp, Maps | **connect1** |
+| forge | Telegram, Gmail, Marketplace | **connect2** |
 | connect1 | Code, AWS, technique | **exp2** |
 | connect1 | Vie personnelle | **compass** |
+| connect1 | Telegram, Gmail, Marketplace | **connect2** |
 | connect1 | Installation MCP | **forge** |
+| connect2 | Code, AWS, technique | **exp2** |
+| connect2 | Vie personnelle | **compass** |
+| connect2 | LinkedIn, WhatsApp, Maps, YouTube | **connect1** |
+| connect2 | Installation MCP | **forge** |
 
 ## Exemple de délégation
 
