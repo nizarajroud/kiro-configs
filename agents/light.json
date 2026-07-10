@@ -101,6 +101,18 @@
       "locked": false,
       "disabled": false,
       "description": "Fetch URL content as markdown."
+    },
+    "memory-light": {
+      "description": "Persistent memory for Light agent \u2014 stores quick notes, preferences, and context across sessions.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-light.jsonl"
+      },
+      "disabled": false
     }
   },
   "tools": [
