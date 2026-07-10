@@ -1,0 +1,90 @@
+{
+  "name": "diagram1",
+  "description": "Visualization and diagram agent \u2014 AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart. Use for any diagram, chart, or visual generation.",
+  "prompt": "file://../prompts/diagram1-prompt.md",
+  "mcpServers": {
+    "local.aws-diagram-generator": {
+      "description": "Generates AWS architecture diagrams as PNG images using the Python diagrams package. Use this to create, render, and export visual architecture diagrams. Provides tools to list available icons, get code examples, and generate diagrams from Python code.",
+      "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
+      "args": [
+        "-m",
+        "awslabs.aws_diagram_mcp_server.server"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "autoApprove": [],
+      "disabled": false
+    },
+    "local.diagram-prompt-templates": {
+      "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
+      "command": "python3",
+      "args": [
+        "-u",
+        "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
+      ],
+      "disabled": false,
+      "env": {}
+    },
+    "mcp-mermaid": {
+      "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-mermaid"
+      ],
+      "disabled": false
+    },
+    "excalidraw-mcp": {
+      "description": "Generate hand-drawn style diagrams (flowcharts, mindmaps, architecture, sequence, ER, class, state, timeline, kanban, wireframes, org charts) as .excalidraw files with Sugiyama auto-layout. Use when user asks for technical diagrams or visual representations of systems and processes.",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "maaker-excalidraw-mcp",
+        "excalidraw-mcp"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "rtl-visual-mcp": {
+      "description": "Generate PNG visuals with proper RTL Arabic/English bidirectional text rendering. Use when user asks for a visual Tunisian explanation or any diagram containing Arabic text mixed with English technical terms.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/rtl-visual-mcp/server.py"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "quickchart-mcp": {
+      "description": "Visual chart and graph renderer \u2014 takes DOT (Graphviz), Chart.js configs, or QR data and produces PNG/SVG/PDF images. Use as the SECOND step after tfmcp: get DOT from terraform_graph, then render it here into a visual image.",
+      "command": "node",
+      "args": [
+        "/home/nizar/HomeWspce/quickchart-mcp-server/dist/index.js"
+      ],
+      "disabled": false
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "grep",
+    "glob",
+    "execute_bash",
+    "@local.aws-diagram-generator",
+    "@local.diagram-prompt-templates",
+    "@mcp-mermaid",
+    "@excalidraw-mcp",
+    "@rtl-visual-mcp",
+    "@quickchart-mcp"
+  ],
+  "useLegacyMcpJson": false,
+  "resources": [
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {}
+}

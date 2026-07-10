@@ -1,0 +1,22 @@
+# Diagram1 Domain Taxonomy
+
+domains:
+  aws-diagram:
+    label: "AWS Architecture Diagrams"
+    keywords: [diagramme AWS, architecture diagram, draw.io, drawio, infrastructure diagram]
+
+  mermaid:
+    label: "Mermaid Diagrams"
+    keywords: [Mermaid, flowchart, sequence diagram, Gantt, ER diagram, state diagram, class diagram]
+
+  excalidraw:
+    label: "Excalidraw"
+    keywords: [Excalidraw, hand-drawn, mindmap, wireframe, sketch, kanban]
+
+  rtl-visual:
+    label: "RTL Visual"
+    keywords: [visuel tunisien, RTL, arabe, visual tunisian, bidi, mindmap arabe]
+
+  charts:
+    label: "Charts & Graphs"
+    keywords: [chart, graphique, DOT, Graphviz, pie chart, bar chart, QR code, barcode]

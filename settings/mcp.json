@@ -104,15 +104,6 @@
       ],
       "disabled": false
     },
-    "mcp-mermaid": {
-      "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
-      "command": "npx",
-      "args": [
-        "-y",
-        "mcp-mermaid"
-      ],
-      "disabled": false
-    },
     "mural": {
       "description": "MURAL collaboration tool. Use this whenever the user mentions 'mural', 'MURAL', a mural board, or visual collaboration content. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54). Supports: listing workspaces/rooms/murals, reading all content from a mural (sticky notes, shapes, text, images), searching text inside murals, creating/updating/deleting sticky notes, and creating new murals.",
       "command": "python3",
@@ -138,26 +129,6 @@
         "/home/nizar/HomeWspce/kiro-configs/wrappers/napkin_ai_wrapper.py"
       ],
       "disabled": true,
-      "locked": false
-    },
-    "excalidraw-mcp": {
-      "description": "Generate hand-drawn style diagrams (flowcharts, mindmaps, architecture, sequence, ER, class, state, timeline, kanban, wireframes, org charts) as .excalidraw files with Sugiyama auto-layout. Use when user asks for technical diagrams or visual representations of systems and processes.",
-      "command": "uvx",
-      "args": [
-        "--from",
-        "maaker-excalidraw-mcp",
-        "excalidraw-mcp"
-      ],
-      "disabled": false,
-      "locked": false
-    },
-    "rtl-visual-mcp": {
-      "description": "Generate PNG visuals with proper RTL Arabic/English bidirectional text rendering. Use when user asks for a visual Tunisian explanation or any diagram containing Arabic text mixed with English technical terms.",
-      "command": "python3",
-      "args": [
-        "/home/nizar/HomeWspce/rtl-visual-mcp/server.py"
-      ],
-      "disabled": false,
       "locked": false
     },
     "bitbucket-mcp": {

@@ -44,14 +44,6 @@
       },
       "disabled": false
     },
-    "quickchart-mcp": {
-      "description": "Visual chart and graph renderer \u2014 takes DOT (Graphviz), Chart.js configs, or QR data and produces PNG/SVG/PDF images. Use as the SECOND step after tfmcp: get DOT from terraform_graph, then render it here into a visual image.",
-      "command": "node",
-      "args": [
-        "/home/nizar/HomeWspce/quickchart-mcp-server/dist/index.js"
-      ],
-      "disabled": false
-    },
     "graphistry-mcp": {
       "description": "GPU-accelerated interactive graph visualization via Graphistry. Takes edge/node data and produces an interactive web visualization (zoom, pan, filter, search). Use for LARGE dependency graphs (70+ nodes) where static PNG is unreadable. Chain: tfmcp (graph data) \u2192 graphistry-mcp (interactive web view).",
       "command": "python3",
@@ -99,29 +91,6 @@
           "awslabs.bedrock-kb-retrieval-mcp-server@latest"
         ]
       }
-    },
-    "local.aws-diagram-generator": {
-      "description": "Generates AWS architecture diagrams as PNG images using the Python diagrams package. Use this to create, render, and export visual architecture diagrams. Provides tools to list available icons, get code examples, and generate diagrams from Python code.",
-      "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
-      "args": [
-        "-m",
-        "awslabs.aws_diagram_mcp_server.server"
-      ],
-      "env": {
-        "FASTMCP_LOG_LEVEL": "ERROR"
-      },
-      "autoApprove": [],
-      "disabled": false
-    },
-    "local.diagram-prompt-templates": {
-      "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
-      "command": "python3",
-      "args": [
-        "-u",
-        "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
-      ],
-      "disabled": false,
-      "env": {}
     },
     "markdown2pdf": {
       "description": "Converts Markdown content to PDF files. Supports headers, bold/italic, lists, tables, code blocks with syntax highlighting, images (local and remote), task lists, blockquotes, links, and Mermaid diagrams. Does not support LaTeX math. PDFs are saved to the configured M2P_OUTPUT_DIR. Use the create_pdf_from_markdown tool with a markdown string and an output filename.",

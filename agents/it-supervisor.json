@@ -79,7 +79,8 @@
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/connect2/config/domains.yaml",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/data1/config/domains.yaml",
-    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/aws1/config/domains.yaml"
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/aws1/config/domains.yaml",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/diagram1/config/domains.yaml"
   ],
   "hooks": {},
   "toolsSettings": {},
