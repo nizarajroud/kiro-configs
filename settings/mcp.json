@@ -172,15 +172,6 @@
       "disabled": false,
       "locked": false
     },
-    "ssh-mcp-server": {
-      "description": "SSH remote server management via ~/.ssh/config host aliases. Use this to execute commands on remote hosts, upload/download files, and list configured SSH servers. Supports bastion hosts, SOCKS proxy, 2FA, and multi-connection configs.",
-      "command": "python3",
-      "args": [
-        "/home/nizar/HomeWspce/kiro-configs/wrappers/ssh_mcp_wrapper.py"
-      ],
-      "disabled": false,
-      "locked": false
-    },
     "napkin-ai": {
       "description": "Generate professional infographics and visuals (mindmaps, flowcharts, timelines, comparisons) from text using Napkin AI. Use when user asks for visual diagrams, infographics, or visual representations of concepts.",
       "command": "python3",

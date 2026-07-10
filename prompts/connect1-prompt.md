@@ -20,6 +20,7 @@ Handle requests involving:
 2. **Messaging** — WhatsApp conversations, search, send messages
 3. **Geolocation** — Places, routes, directions, weather
 4. **Video content** — YouTube transcripts, metadata, languages
+5. **SSH Remote** — Execute commands on remote machines, upload/download files
 
 ## TOOL ROUTING
 
@@ -47,6 +48,12 @@ Handle requests involving:
 - Getting video metadata (title, duration, channel)
 - Listing available transcript languages
 - **ROUTING RULE: "YouTube", "transcript", "vidéo", "sous-titres" → route here**
+
+### 5. SSH Remote → `ssh-mcp-server`
+- Executing commands on remote hosts via SSH (~/.ssh/config aliases)
+- Uploading or downloading files to/from remote servers
+- Listing configured SSH servers
+- **ROUTING RULE: "SSH", "remote server", hostname from ~/.ssh/config, "connexion distante" → route here**
 
 ## RESTRICTIONS
 

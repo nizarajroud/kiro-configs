@@ -16,3 +16,7 @@ domains:
   youtube:
     label: "YouTube"
     keywords: [YouTube, transcript, vidéo, sous-titres, chaîne, channel]
+
+  ssh:
+    label: "SSH Remote"
+    keywords: [SSH, remote server, serveur distant, connexion distante, machine distante, hostname]

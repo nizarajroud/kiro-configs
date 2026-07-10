@@ -57,6 +57,15 @@
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-connect1.jsonl"
       },
       "disabled": false
+    },
+    "ssh-mcp-server": {
+      "description": "SSH remote server management via ~/.ssh/config host aliases. Use this to execute commands on remote hosts, upload/download files, and list configured SSH servers. Supports bastion hosts, SOCKS proxy, 2FA, and multi-connection configs.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/ssh_mcp_wrapper.py"
+      ],
+      "disabled": false,
+      "locked": false
     }
   },
   "tools": [
@@ -70,7 +79,8 @@
     "@linkedin-mcp",
     "@whatsapp",
     "@youtube-transcript",
-    "@memory-connect1"
+    "@memory-connect1",
+    "@ssh-mcp-server"
   ],
   "useLegacyMcpJson": false,
   "resources": [
