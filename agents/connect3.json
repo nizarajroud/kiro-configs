@@ -1,0 +1,31 @@
+{
+  "name": "connect3",
+  "description": "Social intelligence agent \u2014 search Twitter, Instagram, Reddit, TikTok via xpoz-mcp. 1.5B+ posts indexed, natural language queries, tracking/monitoring.",
+  "prompt": "file://../prompts/connect3-prompt.md",
+  "mcpServers": {
+    "xpoz-mcp": {
+      "description": "Search Twitter, Instagram, Reddit & TikTok \u2014 1.5B+ posts indexed. Social intelligence, lead gen, brand monitoring.",
+      "type": "streamable-http",
+      "url": "https://mcp.xpoz.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer ${XPOZ_API_TOKEN}"
+      },
+      "disabled": false
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "grep",
+    "glob",
+    "@xpoz-mcp"
+  ],
+  "useLegacyMcpJson": false,
+  "resources": [
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {}
+}

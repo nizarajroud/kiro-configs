@@ -1,0 +1,22 @@
+# Connect3 Domain Taxonomy
+
+domains:
+  twitter:
+    label: "Twitter / X"
+    keywords: [Twitter, tweet, X, hashtag, retweet, thread]
+
+  instagram:
+    label: "Instagram"
+    keywords: [Instagram, insta, post Instagram, reel, story]
+
+  reddit:
+    label: "Reddit"
+    keywords: [Reddit, subreddit, r/, post Reddit, comment Reddit]
+
+  tiktok:
+    label: "TikTok"
+    keywords: [TikTok, vidéo TikTok, creator, trend]
+
+  social-monitoring:
+    label: "Social Monitoring"
+    keywords: [surveille, monitor, track, veille, brand monitoring, tendance]

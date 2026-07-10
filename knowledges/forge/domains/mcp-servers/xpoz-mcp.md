@@ -6,7 +6,7 @@ description: Search Twitter, Instagram, Reddit & TikTok from AI agents. 1.5B+ po
 
 - **Status**: installed (trial token, 5 days)
 - **JSON key**: `xpoz-mcp`
-- **Agent**: **pending placement** — recommend connect3 (new agent, social intelligence)
+- **Agent**: **connect3**
 - **Type**: Remote (Streamable HTTP — no local process)
 - **URL**: `https://mcp.xpoz.ai/mcp`
 - **Auth**: OAuth 2.1 (Google sign-in) ou trial token (Bearer header)
