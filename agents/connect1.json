@@ -37,13 +37,22 @@
       "disabled": false
     },
     "youtube-transcript": {
-      "description": "YouTube transcript extraction MCP server. Use this to get transcripts (with or without timestamps), video metadata, and available languages from any YouTube video URL. Supports pagination for long videos, multi-language with fallback, and proxy configuration. No API key required.",
+      "description": "DEPRECATED — replaced by video-transcriber-mcp (multi-platform + Whisper). YouTube transcript extraction only.",
       "command": "uvx",
       "args": [
         "--from",
         "git+https://github.com/jkawamoto/mcp-youtube-transcript",
         "mcp-youtube-transcript"
       ],
+      "disabled": true
+    },
+    "video-transcriber-mcp": {
+      "description": "Transcribe videos from 1000+ platforms (TikTok, YouTube, Instagram, Twitter/X, Twitch, Vimeo, etc.) using local Whisper. Input = URL, Output = full transcript. Replaces youtube-transcript.",
+      "command": "video-transcriber-mcp",
+      "args": [],
+      "env": {
+        "RUST_LOG": "info"
+      },
       "disabled": false
     },
     "ssh-mcp-server": {
@@ -67,6 +76,7 @@
     "@linkedin-mcp",
     "@whatsapp",
     "@youtube-transcript",
+    "@video-transcriber-mcp",
     "@ssh-mcp-server"
   ],
   "useLegacyMcpJson": false,

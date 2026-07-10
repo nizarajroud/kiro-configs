@@ -14,8 +14,8 @@ domains:
     keywords: [Google Maps, itinéraire, route, restaurant, lieu, place, directions, météo, weather]
 
   youtube:
-    label: "YouTube"
-    keywords: [YouTube, transcript, vidéo, sous-titres, chaîne, channel]
+    label: "Video Transcription"
+    keywords: [YouTube, TikTok, Instagram, Twitter, Twitch, Vimeo, transcript, vidéo, sous-titres, transcription, audio, video URL, chaîne, channel]
 
   ssh:
     label: "SSH Remote"
