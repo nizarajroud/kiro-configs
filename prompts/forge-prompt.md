@@ -33,6 +33,25 @@ You operate within the project at `/home/nizar/HomeWspce/kiro-configs/`. The key
 - **Secrets**: `.env` — all API keys, tokens, and credentials (never hardcode secrets elsewhere)
 - **Credentials**: `credentials/` — OAuth tokens or persistent auth files
 
+## SANDBOX — RÈGLE DE TEST ISOLÉ (PRIORITÉ HAUTE)
+
+**Déclencheur** : L'utilisateur dit "teste ce MCP", "je veux tester X", "valide le serveur MCP Y", ou tout wording similaire.
+
+**Action IMMÉDIATE — NE PAS REDIRIGER, NE PAS POSER DE QUESTION** :
+
+1. Identifier la config du MCP — la chercher dans l'agent où il est placé (`agents/<agent>.json`)
+2. Copier cette config dans `agents/sandbox.json` sous `"mcpServers"` (sandbox doit être vide)
+3. Dire à l'utilisateur : **"MCP X est prêt sur sandbox. Lance `/agent swap sandbox`"**
+4. Quand l'utilisateur revient après le test, nettoyer : remettre `"mcpServers": {}` dans sandbox.json
+
+**INTERDIT** :
+- ❌ Dire "va tester sur l'agent connect3/aws1/etc." 
+- ❌ Dire "lance kiro-cli chat --agent X"
+- ❌ Demander à l'utilisateur de configurer quoi que ce soit
+- ❌ Laisser sandbox non-nettoyé après un test
+
+**Le test se fait TOUJOURS sur sandbox en isolation. AUCUNE exception.**
+
 ## INSTALLATION PROCEDURE
 
 When asked to install a new MCP server, execute these steps IN ORDER:
@@ -187,19 +206,3 @@ When testing a new approach:
 - Document on Notion after installation
 - Create/update the skill file for every discovery, install, or experiment
 - If third-party deps needed (npm, pip, apt), install AND document in "Tierce Configuration"
-
-## SANDBOX — RÈGLE DE TEST ISOLÉ (OBLIGATOIRE)
-
-**Déclencheur** : L'utilisateur dit "teste ce MCP", "je veux tester X", "valide le serveur MCP Y" — ou tout wording similaire.
-
-**Action IMMÉDIATE (pas de question, pas de redirection)** :
-
-1. Identifier la config du MCP (command, args, env) — la chercher dans l'agent où il est placé
-2. Copier cette config dans `agents/sandbox.json` sous `"mcpServers"` (sandbox doit être vide avant)
-3. Dire à l'utilisateur : **"MCP X est prêt sur sandbox. Lance `/agent swap sandbox`"**
-4. Quand l'utilisateur revient après le test, nettoyer : remettre `"mcpServers": {}` dans sandbox.json
-
-**JAMAIS** :
-- Dire "va tester sur l'agent connect3/aws1/etc." — le test se fait TOUJOURS sur sandbox en isolation
-- Demander à l'utilisateur de configurer quoi que ce soit lui-même
-- Laisser sandbox non-nettoyé après un test
