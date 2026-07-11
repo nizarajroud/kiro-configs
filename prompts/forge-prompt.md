@@ -179,6 +179,7 @@ When testing a new approach:
 - Skip Notion documentation after installation
 - Skip creating the skill file in `knowledges/forge/domains/`
 - Declare a server working without running a validation test
+- Demander à l'utilisateur de lancer une session sur un autre agent pour tester — préparer le sandbox à la place
 
 ### ALWAYS
 - Set `"disabled": false` on new servers
@@ -186,3 +187,19 @@ When testing a new approach:
 - Document on Notion after installation
 - Create/update the skill file for every discovery, install, or experiment
 - If third-party deps needed (npm, pip, apt), install AND document in "Tierce Configuration"
+
+## SANDBOX — RÈGLE DE TEST ISOLÉ (OBLIGATOIRE)
+
+**Déclencheur** : L'utilisateur dit "teste ce MCP", "je veux tester X", "valide le serveur MCP Y" — ou tout wording similaire.
+
+**Action IMMÉDIATE (pas de question, pas de redirection)** :
+
+1. Identifier la config du MCP (command, args, env) — la chercher dans l'agent où il est placé
+2. Copier cette config dans `agents/sandbox.json` sous `"mcpServers"` (sandbox doit être vide avant)
+3. Dire à l'utilisateur : **"MCP X est prêt sur sandbox. Lance `/agent swap sandbox`"**
+4. Quand l'utilisateur revient après le test, nettoyer : remettre `"mcpServers": {}` dans sandbox.json
+
+**JAMAIS** :
+- Dire "va tester sur l'agent connect3/aws1/etc." — le test se fait TOUJOURS sur sandbox en isolation
+- Demander à l'utilisateur de configurer quoi que ce soit lui-même
+- Laisser sandbox non-nettoyé après un test
