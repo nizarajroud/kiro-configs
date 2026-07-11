@@ -41,25 +41,29 @@ You operate within the project at `/home/nizar/HomeWspce/kiro-configs/`. The key
 
 1. Lire le fichier `agents/<agent>.json` qui contient le MCP (utiliser `fs_read`)
 2. Extraire le bloc JSON du MCP (command, args, env, description)
-3. Écrire dans `agents/sandbox.json` un JSON complet avec ce MCP activé :
+3. Écrire dans `agents/sandbox.json` un JSON complet avec ce MCP activé **à côté de agentcore-memory** (qui reste toujours) :
    ```json
    {
      "name": "sandbox",
      "description": "Isolated MCP testing agent",
      "prompt": "file://../prompts/sandbox-prompt.md",
      "mcpServers": {
+       "agentcore-memory": { ... config existante, NE PAS TOUCHER ... },
        "<nom-du-mcp>": { <config copiée> }
      },
      "tools": ["*"],
-     "allowedTools": ["fs_read", "fs_write", "execute_bash", "grep", "glob", "@<nom-du-mcp>"],
+     "allowedTools": ["fs_read", "fs_write", "execute_bash", "grep", "glob", "@agentcore-memory", "@<nom-du-mcp>"],
      "useLegacyMcpJson": false,
      "resources": ["file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md"],
      "hooks": {},
      "toolsSettings": {}
    }
    ```
-4. Utiliser `fs_write` (commande `create`) pour écrire ce contenu dans `/home/nizar/HomeWspce/kiro-configs/agents/sandbox.json`
-5. Dire à l'utilisateur : **"MCP X est prêt sur sandbox. Lance `/agent swap sandbox`"**
+4. Utiliser `fs_read` pour lire l'actuel `agents/sandbox.json`, GARDER le bloc `agentcore-memory`, AJOUTER le nouveau MCP à côté
+5. Utiliser `fs_write` (commande `create`) pour écrire le résultat
+6. Dire à l'utilisateur : **"MCP X est prêt sur sandbox. Lance `/agent swap sandbox`"**
+
+**Nettoyage après test** : retirer UNIQUEMENT le MCP testé, garder `agentcore-memory`.
 
 **CE N'EST PAS TOI QUI TESTES LE MCP — tu PRÉPARES le sandbox pour que l'utilisateur puisse le tester.**
 

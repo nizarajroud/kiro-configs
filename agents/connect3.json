@@ -4,11 +4,11 @@
   "prompt": "file://../prompts/connect3-prompt.md",
   "mcpServers": {
     "xpoz-mcp": {
-      "description": "Search Twitter, Instagram, Reddit & TikTok \u2014 1.5B+ posts indexed. Social intelligence, lead gen, brand monitoring.",
+      "description": "Search Twitter, Instagram, Reddit & TikTok — 1.5B+ posts indexed. Social intelligence, lead gen, brand monitoring.",
       "type": "streamable-http",
       "url": "https://mcp.xpoz.ai/mcp",
       "headers": {
-        "Authorization": "Bearer ${XPOZ_API_TOKEN}"
+        "Authorization": "Bearer K3GLwnXKFHMmyHI4IY36XVDGlKuBcfUjmA2PqCdRcHFdvvEdxe72WlMewXX4xCCdgNHWZck"
       },
       "disabled": false
     }

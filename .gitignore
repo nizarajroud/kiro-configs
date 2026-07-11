@@ -8,3 +8,6 @@ sessions/
 # Knowledges - large binaries
 knowledges/personal/domains/demenagement/conv1
 knowledges/personal/domains/demenagement/les Diagrams/*.pdf
+
+# Sandbox agent — contains hardcoded tokens for testing
+agents/sandbox.json
