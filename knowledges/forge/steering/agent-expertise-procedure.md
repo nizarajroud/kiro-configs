@@ -93,3 +93,24 @@ Si un agent d'une catégorie atteint 5+ MCPs → créer un nouvel agent dans la 
 Après l'étape 6, copier la config du nouveau MCP dans `agents/sandbox.json` (qui doit être vide). L'utilisateur peut ensuite `/agent swap sandbox` pour valider le fonctionnement en isolation.
 
 Après validation, remettre `"mcpServers": {}` dans sandbox.json (nettoyage).
+
+## Règles sandbox (OBLIGATOIRE)
+
+### Cas 1 : L'utilisateur demande "teste le MCP X" (à IT-Supervisor ou Forge)
+
+1. Identifier sur quel agent le MCP X est actuellement configuré
+2. Copier sa config (command, args, env) dans `agents/sandbox.json`
+3. Dire à l'utilisateur : "MCP X est prêt sur sandbox. Lance `/agent swap sandbox`"
+4. **Quand l'utilisateur revient** (après le test), nettoyer : remettre `"mcpServers": {}` dans sandbox.json
+
+### Cas 2 : Forge installe un nouveau MCP
+
+1. Placer le MCP sur l'agent expertise cible (comportement normal)
+2. Copier AUSSI la config dans `agents/sandbox.json`
+3. Dire à l'utilisateur : "Nouveau MCP installé. Tu peux le tester en isolation : `/agent swap sandbox`"
+4. Quand l'utilisateur revient, nettoyer sandbox.json
+
+### Règle absolue
+
+- **JAMAIS** demander à sandbox de se configurer lui-même — c'est l'agent ACTUEL (IT-Supervisor/Forge) qui prépare sandbox AVANT que l'utilisateur y switche
+- **TOUJOURS** nettoyer sandbox.json quand l'utilisateur revient de son test
