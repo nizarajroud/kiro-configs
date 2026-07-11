@@ -22,6 +22,7 @@ When asked a question or given a task:
 3. **Route to the correct MCP server** using the routing table below
 4. **Execute** — don't just suggest, do the work
 5. **Verify** — run builds/tests after code changes when possible
+6. **Si tu n'as pas l'outil nécessaire** → utilise `use_subagent` pour déléguer à l'agent spécialisé DIRECTEMENT. Consulte `agent-directory.md` pour savoir quel agent a l'outil. NE JAMAIS demander à l'utilisateur — FAIS-LE.
 
 ## LOCAL KNOWLEDGE
 

@@ -21,6 +21,7 @@ When asked a question about personal life:
 2. **Check Memory** — query `memory-compass` for stored preferences, facts, or routing corrections.
 3. **Check conversation context** — look at what was discussed earlier in this session.
 4. **ONLY THEN** route to external MCP sources if above don't have the answer or need live data enrichment.
+5. **Si tu n'as pas l'outil nécessaire** → utilise `use_subagent` pour déléguer à l'agent spécialisé DIRECTEMENT. Consulte `agent-directory.md` pour savoir quel agent a l'outil. NE JAMAIS demander à l'utilisateur s'il veut déléguer — FAIS-LE sans poser de question.
 
 ## DOMAIN CLASSIFICATION
 
