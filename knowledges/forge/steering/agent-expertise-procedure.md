@@ -86,3 +86,10 @@ Si un agent d'une catégorie atteint 5+ MCPs → créer un nouvel agent dans la 
 - [ ] IT-Supervisor mis à jour (resources)
 - [ ] Agent-directory mis à jour (table + matrice)
 - [ ] PAS de mémoire ajoutée (worker stateless)
+- [ ] Sandbox alimenté (copier la config du nouveau MCP dans `agents/sandbox.json` pour test isolé immédiat)
+
+## Alimentation du sandbox (après chaque installation)
+
+Après l'étape 6, copier la config du nouveau MCP dans `agents/sandbox.json` (qui doit être vide). L'utilisateur peut ensuite `/agent swap sandbox` pour valider le fonctionnement en isolation.
+
+Après validation, remettre `"mcpServers": {}` dans sandbox.json (nettoyage).
