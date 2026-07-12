@@ -223,3 +223,63 @@ sqlite3 ~/.local/share/kiro-cli/data.sqlite3 "SELECT conversation_id, updated_at
 3. **Retourner** : session ID + extrait du contenu + date pour chaque résultat trouvé.
 
 **JAMAIS** : répondre "je ne me rappelle pas" ou "je n'ai pas cette information" sans avoir exécuté les deux étapes ci-dessus.
+
+
+---
+
+## Règle d'or : Communication inter-agents via le filesystem
+
+**Source** : [aws-samples/sample-kiro-cli-multiagent-development](https://github.com/aws-samples/sample-kiro-cli-multiagent-development) — l'architect écrit les specs dans des fichiers, les subagents lisent et écrivent leurs résultats dans des fichiers. Le filesystem est le canal officiel.
+
+**Principe** : Quand un agent délègue via `use_subagent`, les résultats complets transitent par un FICHIER — jamais uniquement par le résumé du subagent.
+
+### Flux obligatoire (3 étapes)
+
+**Étape 1 — L'agent principal construit la query avec un chemin de fichier unique** :
+
+Format du nom de fichier : `/tmp/subagent-<agent-cible>-<YYYYMMDD-HHMMSS>.md`
+
+```json
+{
+  "command": "InvokeSubagents",
+  "content": {
+    "subagents": [{
+      "query": "<description de la tâche>. IMPORTANT: Écris le résultat COMPLET (tous les détails, liens, tableaux, données brutes) dans /tmp/subagent-<agent>-<timestamp>.md PUIS résume les points clés dans ta réponse.",
+      "agent_name": "<agent-cible>"
+    }]
+  }
+}
+```
+
+**Étape 2 — L'agent principal lit le fichier après le retour du subagent** :
+
+```
+fs_read /tmp/subagent-<agent>-<timestamp>.md
+```
+
+**Étape 3 — L'agent principal présente le contenu COMPLET à l'utilisateur puis supprime le fichier** :
+
+```bash
+rm /tmp/subagent-<agent>-<timestamp>.md
+```
+
+### Règles strictes
+
+- **JAMAIS** présenter uniquement le résumé du subagent à l'utilisateur
+- **JAMAIS** utiliser un nom de fichier fixe (risque d'écrasement) — toujours inclure un timestamp
+- **TOUJOURS** lire le fichier après le retour du subagent pour récupérer les données complètes
+- **TOUJOURS** supprimer le fichier après lecture (nettoyage)
+- **TOUJOURS** informer l'utilisateur si le fichier est vide ou absent (le subagent a peut-être échoué)
+
+### Exemple concret
+
+Compass veut chercher sur Marketplace via connect2 :
+
+```json
+{
+  "query": "Cherche sur Facebook Marketplace (rayon 50 km de Longueuil) les annonces des 10 derniers jours pour 'tapis marocain'. Affiche prix, titre, lieu, lien direct. IMPORTANT: Écris le résultat COMPLET dans /tmp/subagent-connect2-20260712-071900.md PUIS résume les points clés.",
+  "agent_name": "connect2"
+}
+```
+
+Compass lit ensuite `/tmp/subagent-connect2-20260712-071900.md` et affiche les résultats complets (avec les liens).

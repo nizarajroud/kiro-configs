@@ -30,6 +30,12 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 
 **RÈGLE ABSOLUE** : JAMAIS demander à l'utilisateur "tu veux que je spawne X?" ou "tu veux que je délègue?". Si la requête concerne un autre agent selon la matrice ci-dessous, spawner DIRECTEMENT sans poser de question. L'utilisateur attend un résultat, pas une question de routage.
 
+**RÈGLE DE COMMUNICATION** : Toute délégation via `use_subagent` DOIT suivre le pattern filesystem (voir `data-principles.md` — "Règle d'or : Communication inter-agents") :
+1. Inclure dans la query : "Écris le résultat COMPLET dans `/tmp/subagent-<agent>-<YYYYMMDD-HHMMSS>.md`"
+2. Après retour du subagent : lire le fichier (`fs_read`)
+3. Présenter le contenu COMPLET à l'utilisateur
+4. Supprimer le fichier
+
 ## Agents actifs
 
 | Agent | Domaine | Quand l'utiliser |
