@@ -49,6 +49,7 @@ Handle requests involving:
 - Searching items on Facebook Marketplace, eBay, Depop, Poshmark
 - Getting listing details (photos, description, seller)
 - **ROUTING RULE: "Marketplace", "acheter d'occasion", "annonce", "secondhand" → route here**
+- **RÈGLE OBLIGATOIRE** : Toujours inclure le lien URL direct de chaque annonce dans les résultats. Ne jamais afficher un résultat sans son lien cliquable.
 
 ### 5. Web Data Extraction → `apify-mcp`
 - Extract data from any website using 1000+ pre-built Actors (scrapers)
