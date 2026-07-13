@@ -283,3 +283,15 @@ Compass veut chercher sur Marketplace via connect2 :
 ```
 
 Compass lit ensuite `/tmp/subagent-connect2-20260712-071900.md` et affiche les résultats complets (avec les liens).
+
+
+---
+
+## Règle d'or : Mise à jour obligatoire du diagramme d'architecture
+
+**Déclencheur** : Toute modification de la structure des agents — création, suppression, renommage d'un agent, ajout/retrait d'un serveur MCP sur un agent.
+
+**Action OBLIGATOIRE** : Mettre à jour `docs/architecture-globale-agents.drawio` pour refléter le changement.
+
+**JAMAIS** : créer/modifier un agent sans mettre à jour le diagramme draw.io.
+**TOUJOURS** : le diagramme doit être le miroir exact de l'état réel des agents et de leurs MCPs.
