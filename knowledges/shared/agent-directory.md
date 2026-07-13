@@ -52,6 +52,7 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | **data1** | Données et recherche | Airtable, NotebookLM, MarkItDown, PDF reader, TickTick |
 | **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
+| **customer1** | Client CSBEN/Beneva (GitHub, Jira, Jenkins) | Demande EXPLICITE uniquement — pas de spawn automatique |
 | **sandbox** | Test isolé de serveurs MCP | Banc d'essai — 1 MCP temporaire à la fois, toujours vide par défaut |
 
 ## Matrice de redirection

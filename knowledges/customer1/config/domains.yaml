@@ -1,0 +1,14 @@
+# Customer1 Domain Taxonomy (CSBEN / Beneva)
+
+domains:
+  csben-github:
+    label: "GitHub Beneva"
+    keywords: [beneva-int, GitHub Beneva, repo CSBEN, PR Beneva, Actions Beneva]
+
+  csben-jira:
+    label: "Jira/Confluence Beneva"
+    keywords: [Jira, Confluence, ticket, sprint, board, CSBEN issue, jira.int.beneva.ca, confluence.int.beneva.ca]
+
+  csben-jenkins:
+    label: "Jenkins Beneva"
+    keywords: [Jenkins, pipeline, build, CI/CD CSBEN, jenkins.ssqti.ca]

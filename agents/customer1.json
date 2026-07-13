@@ -1,0 +1,74 @@
+{
+  "name": "customer1",
+  "description": "Client-dedicated agent (CSBEN/Beneva) \u2014 GitHub beneva-int, Jira/Confluence, Jenkins. Activated ONLY on explicit user request. All MCPs initially disabled.",
+  "prompt": "file://../prompts/customer1-prompt.md",
+  "mcpServers": {
+    "ssh-csben-github": {
+      "description": "GitHub operations on beneva-int organization via SSH to csben WSL (.12). Executes the MCP GitHub server remotely on the Beneva laptop which has VPN access to corporate GitHub.",
+      "command": "ssh",
+      "args": [
+        "-p",
+        "2222",
+        "-i",
+        "/home/nizar/.ssh/id_rsa_wsl",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "nizar@192.168.2.12",
+        "export PATH=/home/nizar/.local/bin:/home/nizar/.nvm/versions/node/v22.16.0/bin:$PATH && GITHUB_PERSONAL_ACCESS_TOKEN=$SSH-CSBEN-GITHUB_PERSONAL_ACCESS_TOKEN_CSBEN GITHUB_READ_ONLY=1 GITHUB_TOOLSETS=all npx -y @modelcontextprotocol/server-github"
+      ],
+      "env": {},
+      "disabled": true
+    },
+    "ssh-csben-atlassian": {
+      "description": "READ-ONLY access to Jira and Confluence (Beneva) via SSH to csben WSL. Use to search/retrieve Jira issues, sprints, boards, worklogs; and Confluence pages, spaces. Jira: jira.int.beneva.ca | Confluence: confluence.int.beneva.ca",
+      "command": "ssh",
+      "args": [
+        "-p",
+        "2222",
+        "-i",
+        "/home/nizar/.ssh/id_rsa_wsl",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "nizar@192.168.2.12",
+        "export PATH=/home/nizar/.local/bin:$PATH && JIRA_URL=https://jira.int.beneva.ca JIRA_SSL_VERIFY=false JIRA_PERSONAL_TOKEN=$SSH-CSBEN-JIRA_PERSONAL_TOKEN_CSBEN CONFLUENCE_URL=https://confluence.int.beneva.ca CONFLUENCE_SSL_VERIFY=false CONFLUENCE_PERSONAL_TOKEN=$SSH-CSBEN-CONFLUENCE_PERSONAL_TOKEN_CSBEN READ_ONLY_MODE=false TOOLSETS=all uvx mcp-atlassian"
+      ],
+      "env": {},
+      "disabled": true
+    },
+    "ssh-csben-jenkins": {
+      "description": "CSBEN Jenkins CI/CD server (READ-ONLY) via SSH to csben WSL. Use to list jobs/pipelines, check build status, get build logs, view build history on jenkins.ssqti.ca. NO write operations.",
+      "command": "ssh",
+      "args": [
+        "-p",
+        "2222",
+        "-i",
+        "/home/nizar/.ssh/id_rsa_wsl",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "nizar@192.168.2.12",
+        "export PATH=/home/nizar/.local/bin:$PATH && mcp-jenkins --jenkins-url https://jenkins.ssqti.ca/ --jenkins-username $SSH_CSBEN_JENKINS_USERNAME --jenkins-password $SSH_CSBEN_JENKINS_PASSWORD --read-only"
+      ],
+      "env": {},
+      "disabled": true
+    }
+  },
+  "tools": [
+    "*"
+  ],
+  "allowedTools": [
+    "fs_read",
+    "fs_write",
+    "execute_bash",
+    "grep",
+    "glob",
+    "@ssh-csben-github",
+    "@ssh-csben-atlassian",
+    "@ssh-csben-jenkins"
+  ],
+  "useLegacyMcpJson": false,
+  "resources": [
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {}
+}
