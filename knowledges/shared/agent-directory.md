@@ -48,6 +48,12 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **connect1** | Communication externe et social | LinkedIn, WhatsApp, Google Maps, Video transcription (TikTok, YouTube, Instagram, etc.), SSH remote |
 | **connect2** | Communication directe et marketplace | Telegram, Gmail, Perplexity (web search), Secondhand marketplaces, Apify (web data extraction) |
 | **connect3** | Social intelligence | Twitter/X, Instagram, Reddit, TikTok (recherche + monitoring) |
+
+## MCPs cross-cutting (disponibles sur tous les agents domaine)
+
+| MCP                    | Description                                         | Agents                                          |
+|------------------------|-----------------------------------------------------|-------------------------------------------------|
+| `mcp-everything-search` | Recherche rapide de fichiers (plocate, /mnt/c/ + /home/) | it-supervisor, compass, exp2, forge, light |
 | **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
 | **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart |
 | **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |

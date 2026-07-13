@@ -49,7 +49,7 @@
       "disabled": false
     },
     "notion-workspace": {
-      "description": "Notion workspace \u2014 create, read, update, search pages.",
+      "description": "Notion workspace — create, read, update, search pages.",
       "command": "python3",
       "args": [
         "/home/nizar/.kiro/wrappers/notion_wrapper.py"
@@ -103,7 +103,7 @@
       "description": "Fetch URL content as markdown."
     },
     "memory-light": {
-      "description": "Persistent memory for Light agent \u2014 stores quick notes, preferences, and context across sessions.",
+      "description": "Persistent memory for Light agent — stores quick notes, preferences, and context across sessions.",
       "command": "npx",
       "args": [
         "-y",
@@ -112,6 +112,14 @@
       "env": {
         "MEMORY_FILE_PATH": "/home/nizar/HomeWspce/kiro-configs/memories/memory-light.jsonl"
       },
+      "disabled": false
+    },
+    "mcp-everything-search": {
+      "description": "Fast file search across all disks (Windows via /mnt/c/ + Linux). Uses plocate. Query by filename, extension, pattern.",
+      "command": "uvx",
+      "args": [
+        "mcp-server-everything-search"
+      ],
       "disabled": false
     }
   },

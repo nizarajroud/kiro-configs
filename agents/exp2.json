@@ -12,6 +12,14 @@
       },
       "disabled": false,
       "priority": "critical"
+    },
+    "mcp-everything-search": {
+      "description": "Fast file search across all disks (Windows via /mnt/c/ + Linux). Uses plocate. Query by filename, extension, pattern.",
+      "command": "uvx",
+      "args": [
+        "mcp-server-everything-search"
+      ],
+      "disabled": false
     }
   },
   "tools": [
@@ -27,7 +35,8 @@
     "@git-mcp/search_code": "gitmcp_search_code"
   },
   "allowedTools": [
-    "*"
+    "*",
+    "@mcp-everything-search"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
@@ -57,5 +66,5 @@
   },
   "toolsSettings": {},
   "useLegacyMcpJson": true,
-  "welcomeMessage": "\u26a1 Exp2 ready. Your work & technical agent \u2014 code, cloud, architecture, and beyond."
+  "welcomeMessage": "⚡ Exp2 ready. Your work & technical agent — code, cloud, architecture, and beyond."
 }

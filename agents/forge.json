@@ -4,7 +4,7 @@
   "prompt": "file://../prompts/forge-prompt.md",
   "mcpServers": {
     "memory-forge": {
-      "description": "Persistent memory for Forge \u2014 stores discovered tools, experiment verdicts, installation notes, and patterns across sessions.",
+      "description": "Persistent memory for Forge — stores discovered tools, experiment verdicts, installation notes, and patterns across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
@@ -58,7 +58,7 @@
       "disabled": false
     },
     "notion-workspace": {
-      "description": "Notion workspace \u2014 create, read, update, search pages.",
+      "description": "Notion workspace — create, read, update, search pages.",
       "command": "python3",
       "args": [
         "/home/nizar/.kiro/wrappers/notion_wrapper.py"
@@ -110,13 +110,22 @@
       "locked": false,
       "disabled": false,
       "description": "Fetch URL content as markdown."
+    },
+    "mcp-everything-search": {
+      "description": "Fast file search across all disks (Windows via /mnt/c/ + Linux). Uses plocate. Query by filename, extension, pattern.",
+      "command": "uvx",
+      "args": [
+        "mcp-server-everything-search"
+      ],
+      "disabled": false
     }
   },
   "tools": [
     "*"
   ],
   "allowedTools": [
-    "*"
+    "*",
+    "@mcp-everything-search"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
@@ -133,6 +142,6 @@
   "hooks": {},
   "toolsSettings": {},
   "useLegacyMcpJson": false,
-  "welcomeMessage": "\ud83d\udd28 Forge ready. Tell me which MCP server to install.",
+  "welcomeMessage": "🔨 Forge ready. Tell me which MCP server to install.",
   "toolAliases": {}
 }

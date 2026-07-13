@@ -1007,3 +1007,19 @@ Puis parser le JSON : `history[].user.content` (messages utilisateur) et `histor
 
 **Ajout à la checklist de sortie** :
 - [ ] **Compte-rendu/résumé post-réunion demandé ?** → Page Notion créée sous « Meetings-Reports » (`84c17364`) + lien croisé si contexte Notion existant
+
+
+---
+
+## ⚠️ Checklist de sortie (VÉRIFIER AVANT CHAQUE RÉPONSE)
+
+Avant d'envoyer une réponse, l'agent DOIT scanner sa propre sortie et vérifier :
+
+- [ ] **Speech/préparation de communication créé ?** → OBLIGATOIREMENT sous « Mes Speechs » (ID : `398174cb-5dcc-81e7-a48b-cab097d0e176`), toggle 🏠 PERSONNEL (`398174cb-5dcc-817e-9792-c8b40f4cab4f`) ou 💼 WORK (`398174cb-5dcc-8110-959d-ec74cf84dedc`). JAMAIS ailleurs. Si contexte existant → ajouter un lien croisé.
+- [ ] **Page Notion créée ?** → Afficher le lien URL direct : `📄 Page créée : [Titre](URL)`
+- [ ] **Explication en tunisien demandée ?** → Créer la page Notion avec caractères RTL (U+202B)
+- [ ] **Tableau ≥3 colonnes ET ≥3 lignes ?** → Générer le fichier HTML dans `AI-GENERATED/<mois-année>/`
+- [ ] **Image/diagramme généré ?** → Sauvegarder dans `AI-GENERATED/<mois-année>/` (JAMAIS /tmp/)
+- [ ] **Visuel tunisien demandé ?** → Utiliser `rtl-visual-mcp` (JAMAIS Excalidraw/Mermaid pour du RTL arabe)
+
+**Cette checklist est NON-NÉGOCIABLE.** Si une condition est remplie et l'action correspondante n'est pas faite, la réponse est INCOMPLÈTE.

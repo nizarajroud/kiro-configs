@@ -1,10 +1,10 @@
 {
   "name": "it-supervisor",
-  "description": "Interactive supervisor agent \u2014 orchestrates across all knowledge spaces (personal, work, forge) by routing requests to the right domain, source, or specialist agent.",
+  "description": "Interactive supervisor agent — orchestrates across all knowledge spaces (personal, work, forge) by routing requests to the right domain, source, or specialist agent.",
   "prompt": "file://../prompts/it-supervisor-prompt.md",
   "mcpServers": {
     "memory-supervisor": {
-      "description": "Persistent memory \u2014 stores routing decisions, delegation patterns, and user preferences across sessions.",
+      "description": "Persistent memory — stores routing decisions, delegation patterns, and user preferences across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
@@ -92,7 +92,7 @@
       "disabled": false
     },
     "notion-workspace": {
-      "description": "Notion workspace \u2014 create, read, update, search pages.",
+      "description": "Notion workspace — create, read, update, search pages.",
       "command": "python3",
       "args": [
         "/home/nizar/.kiro/wrappers/notion_wrapper.py"
@@ -111,13 +111,22 @@
         "https://knowledge-mcp.global.api.aws"
       ],
       "disabled": false
+    },
+    "mcp-everything-search": {
+      "description": "Fast file search across all disks (Windows via /mnt/c/ + Linux). Uses plocate. Query by filename, extension, pattern.",
+      "command": "uvx",
+      "args": [
+        "mcp-server-everything-search"
+      ],
+      "disabled": false
     }
   },
   "tools": [
     "*"
   ],
   "allowedTools": [
-    "*"
+    "*",
+    "@mcp-everything-search"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
@@ -147,6 +156,6 @@
   "hooks": {},
   "toolsSettings": {},
   "useLegacyMcpJson": false,
-  "welcomeMessage": "\ud83c\udfaf IT-Supervisor ready. I can handle anything across personal, work, and forge \u2014 ask away.",
+  "welcomeMessage": "🎯 IT-Supervisor ready. I can handle anything across personal, work, and forge — ask away.",
   "toolAliases": {}
 }
