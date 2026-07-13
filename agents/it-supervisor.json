@@ -140,7 +140,8 @@
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/diagram1/config/domains.yaml",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/dev1/config/domains.yaml",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/connect3/config/domains.yaml",
-    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/customer1/config/domains.yaml"
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/customer1/config/domains.yaml",
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/dev2/config/domains.yaml"
   ],
   "hooks": {},
   "toolsSettings": {},

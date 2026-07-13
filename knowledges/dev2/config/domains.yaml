@@ -1,0 +1,30 @@
+# Dev2 Domain Taxonomy (inactive tools)
+
+domains:
+  local-rag:
+    label: "Local RAG"
+    keywords: [knowledge-rag, documents locaux, RAG local, My-KB-Documents]
+
+  browser:
+    label: "Browser Automation"
+    keywords: [playwright, screenshot, browser, navigation web, UI test]
+
+  workflow:
+    label: "Workflow Automation"
+    keywords: [n8n, workflow, automation, trigger, orchestration]
+
+  lza:
+    label: "Landing Zone Accelerator"
+    keywords: [LZA, landing zone, control tower, pipeline LZA, config LZA]
+
+  code-intelligence:
+    label: "Code Intelligence"
+    keywords: [codebase-memory, code graph, call chain, code structure, dead code]
+
+  chrome-devtools:
+    label: "Chrome DevTools"
+    keywords: [chrome-tools, DevTools, network traffic, HTTP headers, DOM]
+
+  product-owner:
+    label: "Product Owner"
+    keywords: [idea, user story, backlog, feature request]
