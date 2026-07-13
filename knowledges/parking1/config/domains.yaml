@@ -1,0 +1,14 @@
+# Parking1 Domain Taxonomy
+
+domains:
+  bedrock-kb:
+    label: "Bedrock Knowledge Bases"
+    keywords: [Bedrock, knowledge base, RFP, projet KB, RAG Bedrock]
+
+  claude:
+    label: "Claude Code"
+    keywords: [Claude, Claude Code, claude-cli]
+
+  project-data:
+    label: "Project Data"
+    keywords: [projet, budget projet, timeline projet, requirements, client docs]

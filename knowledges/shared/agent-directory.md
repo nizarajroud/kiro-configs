@@ -54,6 +54,7 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
 | **dev2** | Dev tools (inactifs) | RAG local, Playwright, n8n, LZA, codebase-memory, Chrome DevTools — MCPs désactivés |
 | **customer1** | Client CSBEN/Beneva (GitHub, Jira, Jenkins) | Demande EXPLICITE uniquement — pas de spawn automatique |
+| **parking1** | MCPs garés (Bedrock, Claude CLI) | Activables quand PC Alithya + VPN disponibles |
 | **sandbox** | Test isolé de serveurs MCP | Banc d'essai — 1 MCP temporaire à la fois, toujours vide par défaut |
 
 ## Matrice de redirection
