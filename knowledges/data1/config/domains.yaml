@@ -16,3 +16,7 @@ domains:
   tasks:
     label: "Task Management"
     keywords: [tâche, rappel, TickTick, to-do, deadline, habit, reminder]
+
+  pdf-export:
+    label: "PDF Generation"
+    keywords: [PDF, exporte, rapport, génère PDF, livrable, document PDF]

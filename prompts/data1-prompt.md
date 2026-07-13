@@ -48,6 +48,12 @@ Handle requests involving:
 - **ROUTING RULE: "tâche", "rappel", "TickTick", "to-do", "deadline" → route here**
 - **IMPORTANT: Pour requêtes par date, utiliser `full_sync` puis filtrer manuellement**
 
+### 6. PDF Generation → `markdown2pdf`
+- Converting Markdown content to PDF files
+- Generating reports, deliverables, documentation as PDF
+- Supports headers, tables, code blocks, images, Mermaid diagrams
+- **ROUTING RULE: "génère un PDF", "exporte en PDF", "rapport PDF", "livrable PDF" → route here**
+
 ## RESTRICTIONS
 
 ### NEVER
