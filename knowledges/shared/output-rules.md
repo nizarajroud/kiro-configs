@@ -1015,7 +1015,10 @@ Puis parser le JSON : `history[].user.content` (messages utilisateur) et `histor
 
 Avant d'envoyer une réponse, l'agent DOIT scanner sa propre sortie et vérifier :
 
-- [ ] **Speech/préparation de communication créé ?** → OBLIGATOIREMENT créer une **PAGE** (pas un toggle, pas un bloc) sous « Mes Speechs » (ID : `398174cb-5dcc-81e7-a48b-cab097d0e176`), toggle 🏠 PERSONNEL (`398174cb-5dcc-817e-9792-c8b40f4cab4f`) ou 💼 WORK (`398174cb-5dcc-8110-959d-ec74cf84dedc`). JAMAIS un toggle. JAMAIS ailleurs. Si contexte existant → ajouter un lien croisé.
+- [ ] **Speech/préparation de communication créé ?** → OBLIGATOIREMENT créer une **PAGE** (pas un toggle, pas un bloc) sous « Mes Speechs » (ID : `398174cb-5dcc-81e7-a48b-cab097d0e176`), **DANS** le toggle correspondant :
+  - Sujet personnel (santé, famille, admin, finances) → parent = toggle 🏠 PERSONNEL (`398174cb-5dcc-817e-9792-c8b40f4cab4f`)
+  - Sujet professionnel (client, manager, collègue) → parent = toggle 💼 WORK (`398174cb-5dcc-8110-959d-ec74cf84dedc`)
+  - **Le parent de la page DOIT être l'ID du toggle, PAS l'ID de "Mes Speechs"**. JAMAIS un toggle. JAMAIS ailleurs. Si contexte existant → ajouter un lien croisé.
 - [ ] **Page Notion créée ?** → Afficher le lien URL direct : `📄 Page créée : [Titre](URL)`
 - [ ] **Explication en tunisien demandée ?** → Créer la page Notion avec caractères RTL (U+202B)
 - [ ] **Tableau ≥3 colonnes ET ≥3 lignes ?** → Générer le fichier HTML dans `AI-GENERATED/<mois-année>/`
