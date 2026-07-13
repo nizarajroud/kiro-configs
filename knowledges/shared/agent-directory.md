@@ -6,9 +6,10 @@ inclusion: always
 ## Règle
 
 Quand un agent reçoit une requête qui ne fait PAS partie de son domaine, il DOIT :
-1. **Déléguer via `use_subagent`** à l'agent spécialisé (spawn temporaire → résultat retourné)
-2. Si `use_subagent` n'est pas disponible, informer l'utilisateur et indiquer : `/agent swap <nom>`
-3. Ne PAS tenter de faire le travail lui-même s'il n'a pas les outils
+1. **Vérifier d'abord ses propres outils** — si le MCP nécessaire est configuré sur lui-même, l'utiliser DIRECTEMENT (tool call = millisecondes). Ne JAMAIS déléguer un outil que tu possèdes déjà.
+2. **Déléguer via `use_subagent`** à l'agent spécialisé UNIQUEMENT si tu n'as PAS l'outil nécessaire (spawn temporaire → résultat retourné)
+3. Si `use_subagent` n'est pas disponible, informer l'utilisateur et indiquer : `/agent swap <nom>`
+4. Ne PAS tenter de faire le travail lui-même s'il n'a pas les outils
 
 ## Mécanisme de délégation (OBLIGATOIRE)
 
