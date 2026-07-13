@@ -13,7 +13,7 @@
         <mxCell id="it-supervisor" value="&lt;b&gt;IT-Supervisor&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size:10px&quot;&gt;memory-supervisor&lt;br&gt;agentcore-memory&lt;br&gt;sequential-thinking&lt;br&gt;time&lt;br&gt;fetch&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;verticalAlign=top;align=center;spacingTop=5;" vertex="1" parent="1">
           <mxGeometry x="40" y="120" width="180" height="160" as="geometry" />
         </mxCell>
-        <mxCell id="compass" value="&lt;b&gt;Compass&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size:10px&quot;&gt;memory-compass&lt;br&gt;excel&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;align=center;spacingTop=5;" vertex="1" parent="1">
+        <mxCell id="compass" value="&lt;b&gt;Compass&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size:10px&quot;&gt;memory-compass&lt;br&gt;excel&lt;br&gt;gmail&lt;br&gt;telegram&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;verticalAlign=top;align=center;spacingTop=5;" vertex="1" parent="1">
           <mxGeometry x="240" y="120" width="180" height="160" as="geometry" />
         </mxCell>
         <mxCell id="exp2" value="&lt;b&gt;Exp2&lt;/b&gt;&lt;hr&gt;&lt;font style=&quot;font-size:10px&quot;&gt;memory-exp2&lt;/font&gt;" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;verticalAlign=top;align=center;spacingTop=5;" vertex="1" parent="1">

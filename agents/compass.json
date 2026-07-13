@@ -41,6 +41,27 @@
       ],
       "disabled": true,
       "locked": false
+    },
+    "gmail": {
+      "description": "Gmail and Google Calendar MCP server. Use this to search emails, read messages, create drafts, reply to emails, manage labels, and access Google Calendar events. Supports multiple Google accounts.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/gmail_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "telegram": {
+      "description": "Telegram messaging MCP server (userbot via MTProto). Use this for ANY question about Telegram messages, conversations, or contacts. Supports: searching messages in specific chats or globally, sending/editing/deleting messages, reading chat history, managing contacts, reactions, and media. Use for searching conversations with spouse, personal notes channel, or sending messages.",
+      "command": "npx",
+      "args": [
+        "@overpod/mcp-telegram"
+      ],
+      "env": {
+        "TELEGRAM_API_ID": "${TELEGRAM_API_ID}",
+        "TELEGRAM_API_HASH": "${TELEGRAM_API_HASH}",
+        "TZ": "America/Toronto"
+      },
+      "disabled": false
     }
   },
   "tools": [

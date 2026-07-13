@@ -50,11 +50,8 @@
       "args": [
         "-y",
         "mcp-remote",
-        "https://mcp.apify.com/mcp"
+        "https://mcp.apify.com?token=${APIFY_TOKEN}"
       ],
-      "env": {
-        "APIFY_TOKEN": "${APIFY_TOKEN}"
-      },
       "disabled": false
     }
   },
