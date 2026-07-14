@@ -12,6 +12,8 @@ inclusion: always
 1. **Si on est déjà dans le contexte d'une page Notion** → créer une **sous-page** de cette page, titrée "Explication en tunisien — [sujet]"
 2. **Si on n'est PAS dans un contexte de page Notion** → créer une page sous la page **"Mes notes"**, titrée "Explication en tunisien — [sujet]"
 
+**ATTENTION — "contexte d'une page Notion"** signifie UNIQUEMENT : l'utilisateur a explicitement dit "crée ça sous telle page" ou on est en train de travailler SUR une page Notion spécifique (lecture/édition en cours). Le fait d'avoir discuté d'un sujet ou d'avoir créé un speech juste avant NE constitue PAS un contexte de page Notion. En cas de doute → "Mes notes".
+
 ### Format du contenu (OBLIGATOIRE — STRICT)
 
 - **Langue** : arabe dialectal tunisien, termes techniques en anglais tels quels
