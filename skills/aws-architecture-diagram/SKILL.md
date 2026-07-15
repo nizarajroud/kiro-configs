@@ -207,13 +207,13 @@ After generating the .drawio file, also generate a markdown guide:
 - Same filename with `.md` extension (e.g., `serverless-api.drawio` + `serverless-api.md`)
 - Contents: diagram title, flow description (numbered steps matching edge labels), service list with purpose, key design decisions
 
-### Two-Step Edit Approach
-After generating the initial .drawio file:
+### Two-Step Edit Approach (OPTIONAL — only if user requests PNG)
+After generating the initial .drawio file, IF the user asks for a PNG export:
 1. **Export to PNG** using the draw.io CLI (see Output section)
 2. **Review the PNG** visually — check for empty/broken icons, overlapping edges, misaligned labels
 3. **Fix issues** in the .drawio XML and re-export
 
-This catches rendering problems (wrong stencil names, broken styles) that are invisible in raw XML.
+Do NOT export to PNG automatically. The .drawio file is the primary deliverable.
 
 ### Icon Name Gotchas — CRITICAL
 draw.io stencil names do NOT always match current AWS service names. Services that were renamed keep their legacy stencil names:
