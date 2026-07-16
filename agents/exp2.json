@@ -19,7 +19,9 @@
     },
     "atlassian": {
       "command": "python3",
-      "args": ["/home/nizar/.kiro/wrappers/atlassian_wrapper.py"],
+      "args": [
+        "/home/nizar/.kiro/wrappers/atlassian_wrapper.py"
+      ],
       "description": "Use this server for READ-ONLY access to Jira and Confluence. Use it to search and retrieve Jira issues, project status, sprints, boards, comments, and worklogs; and to search and read Confluence pages, spaces, and attachments. Do NOT use this server to create, update, or delete anything in Jira(http://jira.int.beneva.ca/) or Confluence(http://confluence.int.beneva.ca/).",
       "env": {
         "JIRA_URL": "https://jira.int.beneva.ca",
@@ -33,7 +35,9 @@
     },
     "csben-github": {
       "command": "python3",
-      "args": ["/home/nizar/.kiro/wrappers/csben_github_wrapper.py"],
+      "args": [
+        "/home/nizar/.kiro/wrappers/csben_github_wrapper.py"
+      ],
       "description": "Use this server for GitHub operations on the beneva-int organization: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
       "env": {
         "GITHUB_READ_ONLY": "1",
@@ -51,13 +55,15 @@
     },
     "personal-github": {
       "command": "python3",
-      "args": ["/home/nizar/.kiro/wrappers/personal_github_wrapper.py"],
+      "args": [
+        "/home/nizar/.kiro/wrappers/personal_github_wrapper.py"
+      ],
       "description": "Use this server ONLY to upload images to the nizarajroud/notion-images repository for embedding in Notion pages. Do not use for any other GitHub operation.",
       "env": {
         "GITHUB_TOOLSETS": "contents"
       },
       "disabled": true
-    },    
+    },
     "remote.aws-knowledge": {
       "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
       "command": "npx",
@@ -103,7 +109,10 @@
     "local.aws-diagram-generator": {
       "description": "Generates AWS architecture diagrams as PNG images using the Python diagrams package. Use this to create, render, and export visual architecture diagrams. Provides tools to list available icons, get code examples, and generate diagrams from Python code.",
       "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
-      "args": ["-m", "awslabs.aws_diagram_mcp_server.server"],
+      "args": [
+        "-m",
+        "awslabs.aws_diagram_mcp_server.server"
+      ],
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
@@ -113,14 +122,19 @@
     "local.diagram-prompt-templates": {
       "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
       "command": "python3",
-      "args": ["-u", "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"],
+      "args": [
+        "-u",
+        "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
+      ],
       "disabled": false,
       "env": {}
     },
     "awslabs.eks-mcp-server": {
       "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
+      ],
       "env": {},
       "autoApprove": [],
       "disabled": false
@@ -128,16 +142,20 @@
     "notion-workspace": {
       "description": "Notion workspace manager for creating, reading, updating, and organizing pages, databases, and content blocks. Use this to publish documentation, meeting notes, or deliverables to Notion. Also supports uploading local images (diagrams, screenshots) to Notion pages via GitHub hosting.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/notion_wrapper.py"
+      ],
       "env": {
         "GITHUB_REPO": "nizarajroud/notion-images"
       },
       "disabled": false
     },
     "awslabs.aws-api-mcp-server": {
-      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations — no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
+      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations \u2014 no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
+      ],
       "env": {
         "AWS_REGION": "ca-central-1",
         "AWS_API_MCP_PROFILE_NAME": "csna-operations-sso-828",
@@ -150,22 +168,30 @@
     "mcp-image-recognition": {
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8000. Do NOT use for modifying or generating images.",
       "command": "python3",
-      "args": ["/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"],
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
+      ],
       "env": {},
       "autoApprove": [],
       "disabled": false
     },
     "context7": {
-      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source — never relies on training data.",
+      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source \u2014 never relies on training data.",
       "command": "npx",
       "timeout": 200000,
-      "args": ["-y", "@upstash/context7-mcp"],
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
       "disabled": false
     },
     "mcp-mermaid": {
       "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
       "command": "npx",
-      "args": ["-y", "mcp-mermaid"],
+      "args": [
+        "-y",
+        "mcp-mermaid"
+      ],
       "disabled": false
     },
     "chrome-tools": {
@@ -184,7 +210,10 @@
     "memory": {
       "description": "Persistent knowledge graph memory across sessions. Use this to store and retrieve entities, relations, and observations that should be remembered between conversations. Allows the agent to build long-term memory of user preferences, project context, decisions, and facts.",
       "command": "npx",
-      "args": ["-y", "@modelcontextprotocol/server-memory"],
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
       "disabled": false
     }
   },
@@ -204,7 +233,8 @@
   "resources": [
     "file://AmazonQ.md",
     "file://README.md",
-    "file://.amazonq/rules/**/*.md"
+    "file://.amazonq/rules/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
   ],
   "hooks": {
     "preToolUse": [
