@@ -1,10 +1,10 @@
 {
   "name": "compass",
-  "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
+  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
     "memory-compass": {
-      "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
+      "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
@@ -25,7 +25,7 @@
       "locked": false
     },
     "mcp-canada": {
-      "description": "Canadian government data \u2014 217 tools across 17 APIs. Bank of Canada rates, weather, immigration stats, product recalls, Quebec data, parliamentary data. Use for any question about Canadian services, government info, or public data.",
+      "description": "Canadian government data — 217 tools across 17 APIs. Bank of Canada rates, weather, immigration stats, product recalls, Quebec data, parliamentary data. Use for any question about Canadian services, government info, or public data.",
       "command": "uvx",
       "args": [
         "mcp-canada"
@@ -34,7 +34,7 @@
       "locked": false
     },
     "architecture-mcp": {
-      "description": "Architecture MCP \u2014 Generate floor plans (SVG), 3D concepts, lighting analysis, material palettes, cost estimates. Use when user asks about room layout, floor plan, or lighting design.",
+      "description": "Architecture MCP — Generate floor plans (SVG), 3D concepts, lighting analysis, material palettes, cost estimates. Use when user asks about room layout, floor plan, or lighting design.",
       "command": "npx",
       "args": [
         "architecture-mcp"
@@ -72,7 +72,7 @@
       "disabled": false
     },
     "mcp-tts": {
-      "description": "Text-to-Speech \u2014 reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
+      "description": "Text-to-Speech — reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
       "command": "/home/nizar/go/bin/mcp-tts",
       "args": [],
       "env": {
@@ -97,13 +97,16 @@
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/config/domains.yaml",
     "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/personal/domains/**/*.md",
-    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/*/SKILL.md"
   ],
   "hooks": {},
   "toolAliases": {
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer.",
+  "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer.",
   "useLegacyMcpJson": true
 }

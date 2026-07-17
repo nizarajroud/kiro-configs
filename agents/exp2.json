@@ -22,7 +22,7 @@
       "disabled": false
     },
     "mcp-tts": {
-      "description": "Text-to-Speech \u2014 reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
+      "description": "Text-to-Speech — reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
       "command": "/home/nizar/go/bin/mcp-tts",
       "args": [],
       "env": {
@@ -62,7 +62,10 @@
     "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/config/domains.yaml",
-    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/domains/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/domains/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/*/SKILL.md"
   ],
   "hooks": {
     "preToolUse": [
@@ -79,5 +82,5 @@
   },
   "toolsSettings": {},
   "useLegacyMcpJson": true,
-  "welcomeMessage": "\u26a1 Exp2 ready. Your work & technical agent \u2014 code, cloud, architecture, and beyond."
+  "welcomeMessage": "⚡ Exp2 ready. Your work & technical agent — code, cloud, architecture, and beyond."
 }

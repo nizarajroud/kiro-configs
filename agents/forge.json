@@ -4,7 +4,7 @@
   "prompt": "file://../prompts/forge-prompt.md",
   "mcpServers": {
     "memory-forge": {
-      "description": "Persistent memory for Forge \u2014 stores discovered tools, experiment verdicts, installation notes, and patterns across sessions.",
+      "description": "Persistent memory for Forge — stores discovered tools, experiment verdicts, installation notes, and patterns across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
@@ -58,7 +58,7 @@
       "disabled": false
     },
     "notion-workspace": {
-      "description": "Notion workspace \u2014 create, read, update, search pages.",
+      "description": "Notion workspace — create, read, update, search pages.",
       "command": "python3",
       "args": [
         "/home/nizar/.kiro/wrappers/notion_wrapper.py"
@@ -120,7 +120,7 @@
       "disabled": false
     },
     "mcp-tts": {
-      "description": "Text-to-Speech \u2014 reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
+      "description": "Text-to-Speech — reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
       "command": "/home/nizar/go/bin/mcp-tts",
       "args": [],
       "env": {
@@ -150,11 +150,14 @@
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/config/domains.yaml",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/config/domains.yaml",
     "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/domains/**/*.md",
-    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/*/SKILL.md"
   ],
   "hooks": {},
   "toolsSettings": {},
   "useLegacyMcpJson": false,
-  "welcomeMessage": "\ud83d\udd28 Forge ready. Tell me which MCP server to install.",
+  "welcomeMessage": "🔨 Forge ready. Tell me which MCP server to install.",
   "toolAliases": {}
 }

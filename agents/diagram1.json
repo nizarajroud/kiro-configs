@@ -1,6 +1,6 @@
 {
   "name": "diagram1",
-  "description": "Visualization and diagram agent \u2014 AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart. Use for any diagram, chart, or visual generation.",
+  "description": "Visualization and diagram agent — AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart. Use for any diagram, chart, or visual generation.",
   "prompt": "file://../prompts/diagram1-prompt.md",
   "mcpServers": {
     "local.aws-diagram-generator": {
@@ -56,7 +56,7 @@
       "locked": false
     },
     "quickchart-mcp": {
-      "description": "Visual chart and graph renderer \u2014 takes DOT (Graphviz), Chart.js configs, or QR data and produces PNG/SVG/PDF images. Use as the SECOND step after tfmcp: get DOT from terraform_graph, then render it here into a visual image.",
+      "description": "Visual chart and graph renderer — takes DOT (Graphviz), Chart.js configs, or QR data and produces PNG/SVG/PDF images. Use as the SECOND step after tfmcp: get DOT from terraform_graph, then render it here into a visual image.",
       "command": "node",
       "args": [
         "/home/nizar/HomeWspce/quickchart-mcp-server/dist/index.js"
@@ -83,7 +83,10 @@
   "useLegacyMcpJson": false,
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
-    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/*/SKILL.md"
   ],
   "hooks": {},
   "toolsSettings": {}
