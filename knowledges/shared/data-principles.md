@@ -295,3 +295,24 @@ Compass lit ensuite `/tmp/subagent-connect2-20260712-071900.md` et affiche les r
 
 **JAMAIS** : créer/modifier un agent sans mettre à jour le diagramme draw.io.
 **TOUJOURS** : le diagramme doit être le miroir exact de l'état réel des agents et de leurs MCPs.
+
+
+---
+
+## Règle : Zéro secret en dur dans les fichiers JSON
+
+**Déclencheur** : Toute création ou modification d'un fichier `agents/*.json` ou `settings/mcp.json`.
+
+**RÈGLE ABSOLUE** : JAMAIS de secrets (API keys, tokens, mots de passe, clés privées) en valeur directe dans les fichiers JSON. Toute valeur sensible DOIT être :
+1. Stockée dans `.env` (gitignored)
+2. Référencée via `${NOM_VARIABLE}` dans le champ `env` du MCP server
+
+**Vérification AVANT tout commit** : scanner les fichiers agents pour toute valeur `env` qui ne commence PAS par `${` et qui fait plus de 20 caractères → c'est probablement un secret, le remplacer.
+
+**❌ INTERDIT** : `"GOOGLE_AI_API_KEY": "AQ.Ab8RN6KJcjx..."`
+**✅ OBLIGATOIRE** : `"GOOGLE_AI_API_KEY": "${GOOGLE_AI_API_KEY}"`
+
+**Exceptions** (pas des secrets) :
+- Chemins de fichiers (`MEMORY_FILE_PATH`, `PIPER_MODEL`)
+- IDs de ressources non-sensibles (`AGENTCORE_MEMORY_ID`)
+- Valeurs booléennes ou numériques (`READ_OPERATIONS_ONLY=true`)
