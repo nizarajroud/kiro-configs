@@ -58,7 +58,9 @@
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/config/domains.yaml",
     "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/work/domains/**/*.md",
-    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/*/SKILL.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/steering/*.md",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/config/domains.yaml",
     "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/domains/**/*.md"

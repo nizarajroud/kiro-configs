@@ -83,7 +83,9 @@
   "useLegacyMcpJson": false,
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
-    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/*/SKILL.md"
   ],
   "hooks": {},
   "toolsSettings": {}

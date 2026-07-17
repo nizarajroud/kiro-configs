@@ -149,7 +149,9 @@
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/work/config/domains.yaml",
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/misc/config/domains.yaml",
     "skill:///home/nizar/HomeWspce/kiro-configs/knowledges/forge/domains/**/*.md",
-    "skill:///home/nizar/HomeWspce/kiro-configs/skills/**/*.md"
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/SKILL.md",
+    "skill:///home/nizar/HomeWspce/kiro-configs/skills/*/*/*/SKILL.md"
   ],
   "hooks": {},
   "toolsSettings": {},
