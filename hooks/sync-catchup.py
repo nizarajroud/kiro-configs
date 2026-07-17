@@ -1,5 +1,12 @@
 #!/usr/bin/env python3
-"""Sync catchup — finds and syncs all sessions not yet sent to AgentCore Memory and KB."""
+"""Sync catchup — optimized version.
+
+Key optimizations:
+1. Skip if last run was < 1 hour ago (flag file)
+2. Use only updated_at from SQLite (no JSON parsing) for delta detection
+3. Only parse JSON for sessions that actually need syncing
+4. Sequential subprocess calls (not parallel) to avoid resource saturation
+"""
 
 import json
 import os
@@ -11,10 +18,31 @@ import time
 DB_PATH = os.path.expanduser("~/.local/share/kiro-cli/data.sqlite3")
 MEMORY_STATE_PATH = os.path.expanduser("~/.kiro/sessions/memory-sync-state.json")
 KB_STATE_PATH = os.path.expanduser("~/.kiro/sessions/kb-sync-state.json")
+IMPORT_STATE_PATH = os.path.expanduser("~/.kiro/sessions/memory-import-state.json")
+LAST_RUN_PATH = os.path.expanduser("~/.kiro/sessions/.catchup-last-run")
 MIN_MESSAGES = 8
+MAX_PER_RUN = 5
+COOLDOWN_SECONDS = 3600  # 1 hour
 
 SYNC_MEMORY_SCRIPT = os.path.expanduser("~/.kiro/hooks/sync-session-to-memory.py")
 SYNC_KB_SCRIPT = "/home/nizar/workspace/PROC/xxxxuseful-scripts/kiro-kb-sync.py"
+CATALOG_SCRIPT = "/home/nizar/workspace/PROC/xxxxuseful-scripts/session-catalog.py"
+
+
+def should_skip():
+    """Skip if last run was less than COOLDOWN_SECONDS ago."""
+    if os.path.exists(LAST_RUN_PATH):
+        last_run = os.path.getmtime(LAST_RUN_PATH)
+        if time.time() - last_run < COOLDOWN_SECONDS:
+            return True
+    return False
+
+
+def touch_last_run():
+    """Mark current run time."""
+    os.makedirs(os.path.dirname(LAST_RUN_PATH), exist_ok=True)
+    with open(LAST_RUN_PATH, 'w') as f:
+        f.write(str(int(time.time())))
 
 
 def load_state(path):
@@ -26,92 +54,120 @@ def load_state(path):
     return {}
 
 
-def get_unsyncted_sessions():
-    """Find sessions that need syncing (modified since last sync, >= 8 messages)."""
-    memory_state = load_state(MEMORY_STATE_PATH)
+def get_unsynced_sessions():
+    """Find sessions needing sync using ONLY updated_at (no JSON parsing).
+    
+    Strategy: compare updated_at in SQLite vs state files.
+    Only sessions where updated_at differs from state need attention.
+    """
     kb_state = load_state(KB_STATE_PATH)
+    import_state = load_state(IMPORT_STATE_PATH)
 
     db = sqlite3.connect(DB_PATH)
-    rows = db.execute('SELECT key, conversation_id, value, updated_at FROM conversations_v2 ORDER BY updated_at DESC').fetchall()
+    # Only fetch sid + updated_at (lightweight query, no value column)
+    rows = db.execute(
+        'SELECT conversation_id, updated_at FROM conversations_v2 ORDER BY updated_at DESC'
+    ).fetchall()
     db.close()
 
-    # Deduplicate by conversation_id
+    # Deduplicate
     seen = set()
     unique = []
-    for row in rows:
-        if row[1] not in seen:
-            seen.add(row[1])
-            unique.append(row)
+    for sid, updated_ms in rows:
+        if sid not in seen:
+            seen.add(sid)
+            unique.append((sid, updated_ms))
 
-    needs_memory_sync = []
     needs_kb_sync = []
+    needs_memory_sync = []
 
-    for cwd, sid, value, updated_ms in unique:
-        # Check message count
-        try:
-            d = json.loads(value)
-            history = d.get('history', [])
-            msg_count = len(history) * 2  # Each turn has user + assistant
-        except:
-            continue
-
-        if msg_count < MIN_MESSAGES:
-            continue
-
-        # Check if memory sync needed
-        mem_info = memory_state.get(sid, {})
-        mem_sent = mem_info.get('messages_sent', 0)
-        if mem_sent < msg_count:
-            needs_memory_sync.append(sid)
-
-        # Check if KB sync needed
+    for sid, updated_ms in unique:
+        # KB: check if updated_ms matches
         kb_info = kb_state.get(sid, {})
         if kb_info.get('updated_ms') != updated_ms:
             needs_kb_sync.append(sid)
 
+        # Memory: check if updated_ms matches
+        mem_info = import_state.get(sid, {})
+        if mem_info.get('updated_ms') != updated_ms:
+            needs_memory_sync.append(sid)
+
     return needs_memory_sync, needs_kb_sync
 
 
+def validate_session(sid):
+    """Check if session has enough messages (only for sessions that need sync)."""
+    db = sqlite3.connect(DB_PATH)
+    row = db.execute(
+        'SELECT value FROM conversations_v2 WHERE conversation_id=? LIMIT 1', (sid,)
+    ).fetchone()
+    db.close()
+    if not row:
+        return False
+    try:
+        d = json.loads(row[0])
+        return len(d.get('history', [])) >= MIN_MESSAGES // 2
+    except:
+        return False
+
+
 def main():
-    needs_memory, needs_kb = get_unsyncted_sessions()
+    # Cooldown check
+    if should_skip():
+        sys.exit(0)
+
+    touch_last_run()
+
+    needs_memory, needs_kb = get_unsynced_sessions()
 
     if not needs_memory and not needs_kb:
-        sys.exit(0)  # Nothing to do
+        # Still run catalog update (lightweight)
+        subprocess.Popen(
+            [sys.executable, CATALOG_SCRIPT, "update"],
+            stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+        )
+        sys.exit(0)
 
-    # Sync to AgentCore Memory (limit to 10 per catchup to avoid long runs)
-    for sid in needs_memory[:10]:
+    # Sync KB (limit per run, validate msg count before syncing)
+    synced_kb = 0
+    for sid in needs_kb:
+        if synced_kb >= MAX_PER_RUN:
+            break
+        if not validate_session(sid):
+            continue
         try:
-            subprocess.Popen(
-                [sys.executable, SYNC_MEMORY_SCRIPT, sid],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL
-            )
-            time.sleep(0.5)
-        except:
-            pass
-
-    # Sync to KB (limit to 10 per catchup)
-    for sid in needs_kb[:10]:
-        try:
-            subprocess.Popen(
+            subprocess.run(
                 [sys.executable, SYNC_KB_SCRIPT, "one", sid],
-                stdout=subprocess.DEVNULL,
-                stderr=subprocess.DEVNULL
+                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                timeout=30
             )
-            time.sleep(0.5)
+            synced_kb += 1
         except:
             pass
+
+    # Sync Memory (limit per run)
+    synced_mem = 0
+    for sid in needs_memory:
+        if synced_mem >= MAX_PER_RUN:
+            break
+        if not validate_session(sid):
+            continue
+        try:
+            subprocess.run(
+                [sys.executable, SYNC_MEMORY_SCRIPT, sid],
+                stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL,
+                timeout=30
+            )
+            synced_mem += 1
+        except:
+            pass
+
+    # Update catalog
+    subprocess.Popen(
+        [sys.executable, CATALOG_SCRIPT, "update"],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL
+    )
 
 
 if __name__ == "__main__":
     main()
-
-    # Also update the session catalog
-    try:
-        subprocess.Popen(
-            [sys.executable, "/home/nizar/workspace/PROC/xxxxuseful-scripts/session-catalog.py", "update"],
-            stdout=subprocess.DEVNULL,
-            stderr=subprocess.DEVNULL
-        )
-    except:
-        pass
