@@ -71,12 +71,13 @@
       "disabled": false
     },
     "remote.aws-knowledge": {
-      "description": "Remote AWS official documentation and knowledge server. Use this for AWS service documentation, best practices, Well-Architected Framework guidance, pricing, limits, quotas, and how-to questions about any AWS service.",
-      "command": "npx",
+      "description": "AWS Agent Toolkit MCP Server (official). Full AWS API coverage (300+ services), sandboxed script execution, real-time documentation search, skills discovery. Pin version for stability.",
+      "command": "uvx",
       "args": [
-        "-y",
-        "mcp-remote",
-        "https://knowledge-mcp.global.api.aws"
+        "mcp-proxy-for-aws@1.6.3",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--metadata",
+        "AWS_REGION=ca-central-1"
       ],
       "disabled": false,
       "locked": false
