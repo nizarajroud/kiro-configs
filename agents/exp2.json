@@ -20,6 +20,17 @@
         "mcp-server-everything-search"
       ],
       "disabled": false
+    },
+    "mcp-tts": {
+      "description": "Text-to-Speech \u2014 reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
+      "command": "/home/nizar/go/bin/mcp-tts",
+      "args": [],
+      "env": {
+        "GOOGLE_AI_API_KEY": "${GOOGLE_AI_API_KEY}",
+        "MCP_TTS_SUPPRESS_SPEAKING_OUTPUT": "true",
+        "PIPER_MODEL": "/home/nizar/.local/share/piper-voices/en_US-lessac-medium.onnx"
+      },
+      "disabled": false
     }
   },
   "tools": [
@@ -36,7 +47,8 @@
   },
   "allowedTools": [
     "*",
-    "@mcp-everything-search"
+    "@mcp-everything-search",
+    "@mcp-tts"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
@@ -66,5 +78,5 @@
   },
   "toolsSettings": {},
   "useLegacyMcpJson": true,
-  "welcomeMessage": "⚡ Exp2 ready. Your work & technical agent — code, cloud, architecture, and beyond."
+  "welcomeMessage": "\u26a1 Exp2 ready. Your work & technical agent \u2014 code, cloud, architecture, and beyond."
 }

@@ -54,6 +54,7 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | MCP                    | Description                                         | Agents                                          |
 |------------------------|-----------------------------------------------------|-------------------------------------------------|
 | `mcp-everything-search` | Recherche rapide de fichiers (plocate, /mnt/c/ + /home/) | it-supervisor, compass, exp2, forge, light |
+| `mcp-tts`              | Text-to-Speech (Google Gemini TTS, lecture audio)   | it-supervisor, compass, exp2, forge, light      |
 | **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
 | **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart |
 | **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
