@@ -100,7 +100,9 @@
         "mcp-proxy-for-aws@latest",
         "https://aws-mcp.us-east-1.api.aws/mcp",
         "--metadata",
-        "AWS_REGION=us-east-1"
+        "AWS_REGION=us-east-1",
+        "--profile",
+        "csna-operations-sso-828"
       ],
       "alias": "remote_aws",
       "env": {},
