@@ -28,7 +28,22 @@ Chaque rich_text envoyé à Notion DOIT commencer par `‫` (U+202B) pour forcer
 
 - Structure forcée type `[terme] : [explication] → [détails]`
 - Puces avec séparation artificielle anglais/arabe
+- Pattern "terme EN — tiret — traduction AR" (même à l'intérieur d'une puce RTL)
+- Traduire item par item comme un glossaire au lieu de raconter la décision
 - Texte sans le caractère RTL mark au début
+
+### Cas des listes techniques (checklist, changelog, décisions)
+Quand la source est une liste de choix/décisions (ex: "on a pas ajouté X",
+"on a fait Y au lieu de Z"), chaque puce doit être UNE PHRASE COMPLÈTE
+en tunisien où les termes anglais s'intègrent grammaticalement —
+pas juste collés après un tiret.
+
+❌ Mauvais :
+ولا FailedInvocations ولا bus_monitoring ما يحطش — Monitoring alerting
+
+✅ Bon :
+في جزء ال Monitoring، ما ضفناش ولا alerting على FailedInvocations
+ولا على ApproximateAgeOfOldestMessage متاع ال bus_monitoring.
 
 ### ✅ OBLIGATOIRE — Prose naturelle avec RTL mark
 
@@ -52,6 +67,8 @@ Chaque rich_text envoyé à Notion DOIT commencer par `‫` (U+202B) pour forcer
 ### Règles de rédaction
 
 - Écrire en **prose conversationnelle** — comme si tu expliques à quelqu'un à l'oral
+- Chaque puce = une phrase avec sujet + verbe en tunisien, où le terme
+  anglais s'insère au milieu (pas au début suivi d'un tiret)
 - Les termes techniques anglais s'insèrent **dans la phrase arabe** sans séparation
 - Ne PAS traduire les termes techniques — les garder en anglais tel quel
 - Chaque paragraphe, puce, heading = une unité qui commence par `‫` et finit par `‬`
