@@ -1,0 +1,18 @@
+# Media1 Domain Taxonomy
+
+domains:
+  tts-recording:
+    label: "TTS Recording"
+    keywords: [enregistrer, record, audio, MP3, WAV, fichier audio, générer audio, TTS file, save speech, sauvegarder voix, créer audio]
+
+  audio-processing:
+    label: "Audio Processing"
+    keywords: [convertir audio, format audio, couper audio, mixer, normaliser]
+
+  video-processing:
+    label: "Video Processing"
+    keywords: [transcription vidéo, sous-titres, extraire audio]
+
+  image-generation:
+    label: "Image Generation"
+    keywords: [générer image, créer visuel, AI image]

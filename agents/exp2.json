@@ -21,15 +21,13 @@
       ],
       "disabled": false
     },
-    "mcp-tts": {
-      "description": "Text-to-Speech — reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
+    "tts-live": {
+      "description": "Text-to-Speech LIVE — reads text aloud immediately via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
       "command": "/home/nizar/go/bin/mcp-tts",
       "args": [],
       "env": {
         "GOOGLE_AI_API_KEY": "${GOOGLE_AI_API_KEY}",
-        "MCP_TTS_SUPPRESS_SPEAKING_OUTPUT": "true",
-        "PIPER_MODEL": "/home/nizar/.local/share/piper-voices/en_US-lessac-medium.onnx",
-        "MCP_TTS_DEFAULT_PROVIDER": "piper_tts"
+        "MCP_TTS_SUPPRESS_SPEAKING_OUTPUT": "true"
       },
       "disabled": false
     }
@@ -49,7 +47,8 @@
   "allowedTools": [
     "*",
     "@mcp-everything-search",
-    "@mcp-tts"
+    "@tts-live",
+    "@tts-record"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",

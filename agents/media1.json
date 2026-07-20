@@ -1,0 +1,25 @@
+{
+  "name": "media1",
+  "description": "Media generation & processing — record TTS to file, audio/video processing. Spawned via use_subagent when a domain agent needs to save audio/video to disk.",
+  "prompt": "file://../prompts/media1-prompt.md",
+  "mcpServers": {
+    "tts-record": {
+      "description": "Text-to-Speech recording — saves speech to MP3/WAV file (no playback). Use for all audio file generation requests.",
+      "command": "/home/nizar/go/bin/mcp-tts",
+      "args": ["--output-dir", "/mnt/c/Users/nizar/Documents/AI-GENERATED/audio", "--no-play"],
+      "env": {
+        "GOOGLE_AI_API_KEY": "${GOOGLE_AI_API_KEY}",
+        "MCP_TTS_SUPPRESS_SPEAKING_OUTPUT": "true"
+      },
+      "disabled": false
+    }
+  },
+  "tools": ["*"],
+  "allowedTools": ["fs_read", "fs_write", "execute_bash", "glob", "grep", "@tts-record"],
+  "useLegacyMcpJson": false,
+  "resources": [
+    "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md"
+  ],
+  "hooks": {},
+  "toolsSettings": {}
+}

@@ -48,6 +48,7 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **connect1** | Communication externe et social | LinkedIn, WhatsApp, Google Maps, Video transcription (TikTok, YouTube, Instagram, etc.), SSH remote |
 | **connect2** | Communication directe et marketplace | Telegram, Gmail, Perplexity (web search), Secondhand marketplaces, Apify (web data extraction) |
 | **connect3** | Social intelligence | Twitter/X, Instagram, Reddit, TikTok (recherche + monitoring) |
+| **media1** | Génération/traitement media | TTS recording (audio to file), future: video processing, image generation |
 
 ## MCPs cross-cutting (disponibles sur tous les agents domaine)
 
@@ -122,6 +123,9 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | dev1 | Telegram, Gmail, Marketplace | **connect2** |
 | dev1 | Airtable, NotebookLM, documents, tâches | **data1** |
 | dev1 | Installation MCP | **forge** |
+| exp2 | Enregistrer audio, TTS to file, générer MP3 | **media1** |
+| compass | Enregistrer audio, TTS to file, générer MP3 | **media1** |
+| forge | Enregistrer audio, TTS to file, générer MP3 | **media1** |
 
 ## Exemple de délégation
 
