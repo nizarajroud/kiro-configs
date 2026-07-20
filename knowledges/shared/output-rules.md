@@ -107,6 +107,24 @@ pas juste collés après un tiret.
 
 ---
 
+## Règle : Voix TTS pour contenu tunisien / arabe
+
+**Déclencheur** : Toute demande de lecture audio ou d'enregistrement vocal contenant du texte en arabe tunisien, en arabe standard, ou en mix arabe+anglais technique.
+
+**RÈGLE ABSOLUE** : Utiliser la voix **Orus** via **Google TTS** (`google_tts` avec `voice: "Orus"`).
+
+Cette voix est la plus proche du dialecte tunisien parmi toutes les voix disponibles. Aucune autre voix ne doit être utilisée pour du contenu arabe/tunisien.
+
+**Applique indépendamment du serveur MCP** — que l'outil s'appelle `google_tts`, `tts`, `live_tts`, `record_tts`, ou tout autre nom : la voix Orus + le provider Google est obligatoire dès que le texte contient de l'arabe.
+
+**❌ JAMAIS** : ElevenLabs, OpenAI TTS, Piper, ou toute autre voix Google pour du contenu arabe/tunisien
+**✅ TOUJOURS** : `google_tts(text="...", voice="Orus")`
+
+**Pour le contenu en français** : libre choix de voix/provider (pas de contrainte).
+
+
+---
+
 ## Règle : Visual Tunisian Explanation
 
 **Déclencheur** : L'utilisateur demande un "visual tunisian explanation", "visuel en tunisien", ou toute demande de diagramme contenant du texte arabe/tunisien mixte avec de l'anglais technique.
