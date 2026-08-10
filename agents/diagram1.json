@@ -23,7 +23,7 @@
         "-u",
         "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "env": {}
     },
     "mcp-mermaid": {
@@ -62,6 +62,15 @@
         "/home/nizar/HomeWspce/quickchart-mcp-server/dist/index.js"
       ],
       "disabled": false
+    },
+    "d2-mcp": {
+      "description": "D2 diagram language — compile, validate, and render diagrams (SVG, PNG, ASCII). Sketch mode for hand-drawn look.",
+      "command": "/home/nizar/go/bin/d2-mcp",
+      "args": [
+        "--image-type",
+        "svg"
+      ],
+      "disabled": false
     }
   },
   "tools": [
@@ -78,7 +87,8 @@
     "@mcp-mermaid",
     "@excalidraw-mcp",
     "@rtl-visual-mcp",
-    "@quickchart-mcp"
+    "@quickchart-mcp",
+    "@d2-mcp"
   ],
   "useLegacyMcpJson": false,
   "resources": [

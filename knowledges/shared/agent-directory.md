@@ -57,7 +57,7 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | `mcp-everything-search` | Recherche rapide de fichiers (plocate, /mnt/c/ + /home/) | it-supervisor, compass, exp2, forge, light |
 | `mcp-tts`              | Text-to-Speech (Google Gemini TTS, lecture audio)   | it-supervisor, compass, exp2, forge, light      |
 | **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
-| **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart |
+| **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart, D2 |
 | **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | **data1** | Données et recherche | Airtable, NotebookLM, MarkItDown, PDF reader, TickTick |
 | **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
@@ -76,7 +76,7 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | exp2 | Telegram, Gmail, Marketplace, recherche web | **connect2** |
 | exp2 | Famille, finances, santé, déménagement | **compass** |
 | **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
-| **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart |
+| **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart, D2 |
 | **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | exp2 | Airtable, NotebookLM, documents, tâches | **data1** |
 | exp2 | Installation MCP, recherche d'outil | **forge** |
@@ -84,7 +84,7 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | compass | LinkedIn, WhatsApp, Maps, Video transcription, SSH | **connect1** |
 | compass | Telegram, Gmail, Marketplace, recherche web | **connect2** |
 | **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
-| **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart |
+| **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart, D2 |
 | **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
 | compass | Airtable, NotebookLM, documents, tâches | **data1** |
 | compass | Installation MCP | **forge** |
