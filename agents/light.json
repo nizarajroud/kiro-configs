@@ -49,7 +49,7 @@
       "disabled": false
     },
     "notion-workspace": {
-      "description": "Notion workspace — create, read, update, search pages.",
+      "description": "Notion workspace \u2014 create, read, update, search pages.",
       "command": "python3",
       "args": [
         "/home/nizar/.kiro/wrappers/notion_wrapper.py"
@@ -103,7 +103,7 @@
       "description": "Fetch URL content as markdown."
     },
     "memory-light": {
-      "description": "Persistent memory for Light agent — stores quick notes, preferences, and context across sessions.",
+      "description": "Persistent memory for Light agent \u2014 stores quick notes, preferences, and context across sessions.",
       "command": "npx",
       "args": [
         "-y",
@@ -123,14 +123,16 @@
       "disabled": false
     },
     "mcp-tts": {
-      "description": "Text-to-Speech — reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
+      "description": "Text-to-Speech \u2014 reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
       "command": "/home/nizar/go/bin/mcp-tts",
       "args": [],
       "env": {
         "GOOGLE_AI_API_KEY": "${GOOGLE_AI_API_KEY}",
-        "MCP_TTS_SUPPRESS_SPEAKING_OUTPUT": "true",
-        "PIPER_MODEL": "/home/nizar/.local/share/piper-voices/en_US-lessac-medium.onnx",
-        "MCP_TTS_DEFAULT_PROVIDER": "piper_tts"
+        "MCP_TTS_SUPPRESS_SPEAKING_OUTPUT": "${MCP_TTS_SUPPRESS_SPEAKING_OUTPUT}",
+        "PIPER_MODEL": "${PIPER_MODEL}",
+        "MCP_TTS_DEFAULT_PROVIDER": "${MCP_TTS_DEFAULT_PROVIDER}",
+        "MCP_TTS_OUTPUT_DIR": "${MCP_TTS_OUTPUT_DIR}",
+        "MCP_TTS_NO_PLAY": "${MCP_TTS_NO_PLAY}"
       },
       "disabled": false
     }
