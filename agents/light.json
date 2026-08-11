@@ -135,16 +135,6 @@
         "MCP_TTS_NO_PLAY": "${MCP_TTS_NO_PLAY}"
       },
       "disabled": false
-    },
-    "d2-mcp": {
-      "description": "D2 diagram language \u2014 compile, validate, and render diagrams (SVG, PNG, ASCII). Sketch mode for hand-drawn look.",
-      "command": "/home/nizar/go/bin/d2-mcp",
-      "args": [
-        "--image-type",
-        "svg"
-      ],
-      "disabled": false,
-      "_temporary": true
     }
   },
   "tools": [

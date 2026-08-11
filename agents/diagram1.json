@@ -64,11 +64,12 @@
       "disabled": false
     },
     "d2-mcp": {
-      "description": "D2 diagram language — compile, validate, and render diagrams (SVG, PNG, ASCII). Sketch mode for hand-drawn look.",
+      "description": "D2 diagram language — compile, validate, and render diagrams (SVG, PNG, ASCII). Sketch mode, themes. Always saves output files.",
       "command": "/home/nizar/go/bin/d2-mcp",
       "args": [
         "--image-type",
-        "svg"
+        "svg",
+        "--write-files"
       ],
       "disabled": false
     }
