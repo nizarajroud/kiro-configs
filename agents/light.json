@@ -4,9 +4,9 @@
   "description": "Fast agent with memory, docs, web search, and GitHub access",
   "mcpServers": {
     "agentcore-memory": {
-      "command": "/home/nizar/HomeWspce/sample-amazon-bedrock-agentcore-memory-mcp-server/venv/bin/python3",
+      "command": "/home/nizar/HomeWspce/kiro-cross-session-memory/venv/bin/python3",
       "args": [
-        "/home/nizar/HomeWspce/sample-amazon-bedrock-agentcore-memory-mcp-server/bedrock_agentcore_memory_mcp_server.py"
+        "/home/nizar/HomeWspce/kiro-cross-session-memory/bedrock_agentcore_memory_mcp_server.py"
       ],
       "env": {
         "AGENTCORE_MEMORY_ID": "kiro_sessions_memory-gyjyxdCmPK",

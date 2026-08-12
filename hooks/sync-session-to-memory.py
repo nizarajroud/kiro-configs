@@ -7,7 +7,7 @@ import sqlite3
 import sys
 import time
 
-sys.path.insert(0, '/home/nizar/HomeWspce/sample-amazon-bedrock-agentcore-memory-mcp-server/venv/lib/python3.13/site-packages')
+sys.path.insert(0, '/home/nizar/HomeWspce/kiro-cross-session-memory/venv/lib/python3.13/site-packages')
 
 from bedrock_agentcore.memory.session import MemorySessionManager
 from bedrock_agentcore.memory.constants import ConversationalMessage, MessageRole

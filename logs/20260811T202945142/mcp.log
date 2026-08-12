@@ -31,3 +31,6 @@
 {"timestamp":"2026-08-11T21:04:31.369Z","level":"info","message":"Connected","serverName":"fetch"}
 {"timestamp":"2026-08-11T22:14:47.494Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"secondhand-mcp"}
 {"timestamp":"2026-08-11T22:14:47.499Z","level":"info","message":"Connected","serverName":"secondhand-mcp"}
+{"timestamp":"2026-08-12T14:01:27.395Z","level":"info","message":"Connection closed successfully","serverName":"agentcore-memory"}
+{"timestamp":"2026-08-12T14:01:28.668Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"agentcore-memory"}
+{"timestamp":"2026-08-12T14:01:28.700Z","level":"info","message":"Connected","serverName":"agentcore-memory"}

@@ -1305,3 +1305,9 @@
 {"timestamp":"2026-08-12T13:51:02.125Z","level":"info","message":"[ACPModelConfigProvider] Loaded 19 models"}
 {"timestamp":"2026-08-12T13:56:32.929Z","level":"info","message":"network.listAvailableModels.ok {\"system\":\"network\",\"durationMs\":227}"}
 {"timestamp":"2026-08-12T13:56:32.929Z","level":"info","message":"[ACPModelConfigProvider] Loaded 19 models"}
+{"timestamp":"2026-08-12T14:01:25.568Z","level":"info","message":"[ProfileLoader] profile.loaded {\"agentId\":\"light\"}"}
+{"timestamp":"2026-08-12T14:01:25.612Z","level":"info","message":"[ProfileLoader] profile.loaded {\"agentId\":\"sandbox\"}"}
+{"timestamp":"2026-08-12T14:01:25.613Z","level":"info","message":"fs.loadAgentProfiles.ok {\"system\":\"fs\",\"scope\":\"user\",\"durationMs\":185}"}
+{"timestamp":"2026-08-12T14:01:25.615Z","level":"info","message":"fs.loadAgentProfiles.ok {\"system\":\"fs\",\"scope\":\"workspace\",\"durationMs\":1}"}
+{"timestamp":"2026-08-12T14:01:25.617Z","level":"info","message":"[KiroAgent] Registered user profile: light"}
+{"timestamp":"2026-08-12T14:01:25.617Z","level":"info","message":"[KiroAgent] Registered user profile: sandbox"}
