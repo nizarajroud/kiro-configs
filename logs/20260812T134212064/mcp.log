@@ -1,0 +1,20 @@
+{"timestamp":"2026-08-12T13:42:13.103Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"notion-workspace"}
+{"timestamp":"2026-08-12T13:42:13.114Z","level":"info","message":"Connected","serverName":"notion-workspace"}
+{"timestamp":"2026-08-12T13:42:13.444Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"time"}
+{"timestamp":"2026-08-12T13:42:13.446Z","level":"info","message":"Connected","serverName":"time"}
+{"timestamp":"2026-08-12T13:42:13.817Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"bookmarks"}
+{"timestamp":"2026-08-12T13:42:13.846Z","level":"info","message":"Connected","serverName":"bookmarks"}
+{"timestamp":"2026-08-12T13:42:14.363Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"fetch"}
+{"timestamp":"2026-08-12T13:42:14.372Z","level":"info","message":"Connected","serverName":"fetch"}
+{"timestamp":"2026-08-12T13:42:17.482Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"github"}
+{"timestamp":"2026-08-12T13:42:17.492Z","level":"info","message":"Connected","serverName":"github"}
+{"timestamp":"2026-08-12T13:42:17.576Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"sequential-thinking"}
+{"timestamp":"2026-08-12T13:42:17.589Z","level":"info","message":"Connected","serverName":"sequential-thinking"}
+{"timestamp":"2026-08-12T13:42:17.739Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"remote.aws-knowledge"}
+{"timestamp":"2026-08-12T13:42:19.088Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"agentcore-memory"}
+{"timestamp":"2026-08-12T13:42:19.107Z","level":"info","message":"Connected","serverName":"agentcore-memory"}
+{"timestamp":"2026-08-12T13:42:19.571Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"mcp-image-recognition"}
+{"timestamp":"2026-08-12T13:42:19.581Z","level":"info","message":"Connected","serverName":"mcp-image-recognition"}
+{"timestamp":"2026-08-12T13:42:19.797Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"firecrawl"}
+{"timestamp":"2026-08-12T13:42:19.815Z","level":"info","message":"Connected","serverName":"firecrawl"}
+{"timestamp":"2026-08-12T13:42:20.602Z","level":"info","message":"Connected","serverName":"remote.aws-knowledge"}

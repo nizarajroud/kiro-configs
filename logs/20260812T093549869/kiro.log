@@ -1,0 +1,656 @@
+{"timestamp":"2026-08-12T09:35:49.885Z","level":"info","message":"File logging initialized at /home/nizar/.kiro/logs/20260812T093549869"}
+{"timestamp":"2026-08-12T09:35:49.885Z","level":"info","message":"Initializing persistence at /home/nizar/.kiro/sessions"}
+{"timestamp":"2026-08-12T09:35:49.893Z","level":"info","message":"[SessionPersistence] Initialized persistence at /home/nizar/.kiro/sessions"}
+{"timestamp":"2026-08-12T09:35:49.893Z","level":"info","message":"Persistence initialized"}
+{"timestamp":"2026-08-12T09:35:49.933Z","level":"info","message":"[AgentTelemetry] Initialized {\"endpoint\":\"https://prod.us-east-1.telemetry.desktop.kiro.dev\",\"serviceName\":\"kiroAgent\"}"}
+{"timestamp":"2026-08-12T09:35:49.935Z","level":"info","message":"[KiroAgent] Remote MCP client initialized"}
+{"timestamp":"2026-08-12T09:35:49.935Z","level":"info","message":"[KiroAgent] remote-tools-discovery.create {\"client\":\"kiro-ide\"}"}
+{"timestamp":"2026-08-12T09:35:49.937Z","level":"info","message":"[KiroAgent] Cleared stale task execution statuses"}
+{"timestamp":"2026-08-12T09:35:49.937Z","level":"info","message":"[KiroAgent] Platform initialized"}
+{"timestamp":"2026-08-12T09:35:49.938Z","level":"info","message":"[KiroAgent] Resolved capabilities: {\"fsReadTextFile\":false,\"fsWriteTextFile\":false,\"kiroFsReadFile\":false,\"kiroFsWriteFile\":false,\"kiroFsStat\":false,\"kiroFsReadDirectory\":false,\"kiroFsDelete\":false,\"terminal\":false,\"secretStorage\":true,\"openExternalUrl\":true,\"knowledge\":true,\"infrastructureSafety\":false,\"c2sViews\":false,\"textSearch\":false,\"findFiles\":false}"}
+{"timestamp":"2026-08-12T09:35:49.938Z","level":"info","message":"[KiroAgent] Wired ACP callback auth provider to active connection"}
+{"timestamp":"2026-08-12T09:35:49.938Z","level":"info","message":"[RemoteToolsDiscovery] Fetching available Remote tools"}
+{"timestamp":"2026-08-12T09:35:49.938Z","level":"info","message":"[KiroAgent] Client supports ACP secret storage"}
+{"timestamp":"2026-08-12T09:35:49.938Z","level":"info","message":"[KiroAgent] Client supports ACP openExternalUrl"}
+{"timestamp":"2026-08-12T09:35:49.939Z","level":"info","message":"[KiroAgent] Stored clientInfo.name {\"reportedClientName\":\"kiro-cli\",\"clientAttribution\":\"kiro-cli\",\"client\":\"kiro-cli\"}"}
+{"timestamp":"2026-08-12T09:35:49.940Z","level":"info","message":"[KiroAgent] v2 hooks cache initialized (hooks load at session start)"}
+{"timestamp":"2026-08-12T09:35:49.940Z","level":"info","message":"Handshake: returning logging config with 3 channels at /home/nizar/.kiro/logs/20260812T093549869"}
+{"timestamp":"2026-08-12T09:35:49.995Z","level":"info","message":"[KiroAgent] ACP session/load sessionId=cli_870dd21c-72b9-4a5c-b630-7323d0f0872e_ZbMMEZxd"}
+{"timestamp":"2026-08-12T09:35:50.048Z","level":"info","message":"fs.loadSession.ok {\"system\":\"fs\",\"sessionId\":\"cli_870dd21c-72b9-4a5c-b630-7323d0f0872e_ZbMMEZxd\",\"durationMs\":47}"}
+{"timestamp":"2026-08-12T09:35:50.050Z","level":"info","message":"[AcpCallbackAuthProvider] Profile ARN rotated: <none> -> arn:aws:codewhisperer:us-east-1:957201034306:profile/MEWCYDRVXUUD"}
+{"timestamp":"2026-08-12T09:35:50.275Z","level":"info","message":"[RemoteToolsDiscovery] Discovered 5 Remote tools"}
+{"timestamp":"2026-08-12T09:35:50.296Z","level":"info","message":"network.listAvailableModels.ok {\"system\":\"network\",\"durationMs\":301}"}
+{"timestamp":"2026-08-12T09:35:50.296Z","level":"info","message":"[ACPModelConfigProvider] Loaded 19 models"}
+{"timestamp":"2026-08-12T09:35:50.323Z","level":"info","message":"network.getFeatureConfiguration.ok {\"system\":\"network\",\"durationMs\":261}"}
+{"timestamp":"2026-08-12T09:35:50.323Z","level":"info","message":"[ExperimentConfigService] Resolved {\"origin\":\"KIRO_CLI\",\"version\":\"2.17.0\",\"keyCount\":3}"}
+{"timestamp":"2026-08-12T09:35:50.324Z","level":"info","message":"cloudConfig.entitlement.decided {\"verdict\":\"granted\"}"}
+{"timestamp":"2026-08-12T09:35:50.329Z","level":"info","message":"[KiroAgent] v2 hooks loaded 0 standalone hooks from .kiro/hooks/"}
+{"timestamp":"2026-08-12T09:35:50.330Z","level":"info","message":"fs.hooksReload.ok {\"system\":\"fs\",\"durationMs\":4}"}
+{"timestamp":"2026-08-12T09:35:50.360Z","level":"info","message":"[ProfileLoader] profile.loaded {\"agentId\":\"light\"}"}
+{"timestamp":"2026-08-12T09:35:50.363Z","level":"info","message":"[ProfileLoader] profile.loaded {\"agentId\":\"sandbox\"}"}
+{"timestamp":"2026-08-12T09:35:50.363Z","level":"info","message":"fs.loadAgentProfiles.ok {\"system\":\"fs\",\"scope\":\"user\",\"durationMs\":32}"}
+{"timestamp":"2026-08-12T09:35:50.370Z","level":"info","message":"fs.loadAgentProfiles.ok {\"system\":\"fs\",\"scope\":\"workspace\",\"durationMs\":1}"}
+{"timestamp":"2026-08-12T09:35:50.370Z","level":"info","message":"[KiroAgent] Registered user profile: light"}
+{"timestamp":"2026-08-12T09:35:50.370Z","level":"info","message":"[KiroAgent] Registered user profile: sandbox"}
+{"timestamp":"2026-08-12T09:35:50.653Z","level":"info","message":"[AdapterFactory] read=Node, write=Node, stat=Node, readDir=Node, delete=Node, terminal=Node"}
+{"timestamp":"2026-08-12T09:35:50.653Z","level":"info","message":"[WorkspaceConnection] clientTools=0, hasClientIOTools=false, injectedFs=false, injectedTerminal=false"}
+{"timestamp":"2026-08-12T09:35:50.666Z","level":"info","message":"[ActivityLogPublisher] Publishing to https://runtime.us-east-1.kiro.dev"}
+{"timestamp":"2026-08-12T09:35:50.913Z","level":"info","message":"network.getProfile.ok {\"system\":\"network\",\"durationMs\":246}"}
+{"timestamp":"2026-08-12T09:35:50.913Z","level":"info","message":"[GovernanceService] Resolved {\"enterprise\":true,\"provider\":\"Enterprise\",\"profileArn\":\"arn:aws:codewhisperer:us-east-1:957201034306:profile/MEWCYDRVXUUD\",\"controlPlaneEndpoint\":\"https://management.us-east-1.kiro.dev\",\"mcpDisabled\":false,\"mcpReason\":\"admin_disabled\",\"webToolsDisabled\":false,\"autonomousAgentsDisabled\":false,\"disabledReason\":\"admin_disabled\",\"registryUrl\":\"\",\"catalogSize\":0}"}
+{"timestamp":"2026-08-12T09:35:50.913Z","level":"info","message":"[AgentTelemetry] Telemetry disabled by user preference"}
+{"timestamp":"2026-08-12T09:35:51.011Z","level":"info","message":"fs.loadSession.ok {\"system\":\"fs\",\"sessionId\":\"cli_870dd21c-72b9-4a5c-b630-7323d0f0872e_ZbMMEZxd\",\"durationMs\":51}"}
+{"timestamp":"2026-08-12T09:35:51.132Z","level":"info","message":"[KiroAgent] ACP session/load complete sessionId=cli_870dd21c-72b9-4a5c-b630-7323d0f0872e_ZbMMEZxd messages=1329 at=2026-08-12T09:35:51.132Z"}
+{"timestamp":"2026-08-12T09:35:51.251Z","level":"info","message":"fs.powers.scan.ok {\"system\":\"fs\",\"baseCount\":2,\"trigger\":\"warm\",\"durationMs\":132}"}
+{"timestamp":"2026-08-12T09:35:51.367Z","level":"info","message":"fs.appendMessages.ok {\"system\":\"fs\",\"sessionId\":\"cli_870dd21c-72b9-4a5c-b630-7323d0f0872e_ZbMMEZxd\",\"messageCount\":452,\"durationMs\":353}"}
+{"timestamp":"2026-08-12T09:35:51.394Z","level":"warn","message":"[NodeProgressiveContextSource] skill.validation.failed {\"event\":\"skill.description.invalid\",\"filePath\":\"/home/nizar/HomeWspce/LIVOQ/.kiro/skills/amazon-bedrock/SKILL.md\",\"length\":1113}"}
+{"timestamp":"2026-08-12T09:35:51.489Z","level":"warn","message":"[NodeProgressiveContextSource] skill.validation.failed {\"event\":\"skill.description.invalid\",\"filePath\":\"/home/nizar/HomeWspce/LIVOQ/.kiro/skills/amazon-bedrock/SKILL.md\",\"length\":1113}"}
+{"timestamp":"2026-08-12T09:35:54.306Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:35:54.308Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:35:57.230Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:35:57.232Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:00.398Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:00.400Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:03.179Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:03.180Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:06.097Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:06.098Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:12.078Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:12.079Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:15.089Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:15.090Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:18.103Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:18.104Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:21.100Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:21.101Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:24.075Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:24.076Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:27.084Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:27.084Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:30.229Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:30.230Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:34.471Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:34.472Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:36.091Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:36.092Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:39.044Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:39.045Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:42.085Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:42.086Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:47.784Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:47.785Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:50.836Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:50.837Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:53.873Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:53.874Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:56.817Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:56.818Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:36:59.891Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:36:59.892Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:03.837Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:03.838Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:05.847Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:05.847Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:09.376Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:09.377Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:11.853Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:11.854Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:14.916Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:14.917Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:20.665Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:20.665Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:23.617Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:23.619Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:26.610Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:26.610Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:29.683Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:29.684Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:32.681Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:32.682Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:35.654Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:35.655Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:38.684Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:38.685Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:41.654Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:41.655Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:44.656Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:44.657Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:47.483Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:47.484Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:51.548Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:51.549Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:56.492Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:56.493Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:37:59.491Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:37:59.493Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:02.478Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:02.479Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:05.504Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:05.505Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:08.489Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:08.490Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:11.463Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:11.464Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:14.509Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:14.509Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:17.934Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:17.935Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:20.500Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:20.501Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:23.508Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:23.508Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:26.491Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:26.492Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:32.285Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:32.286Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:35.260Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:35.262Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:38.773Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:38.774Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:41.310Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:41.311Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:44.651Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:44.652Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:47.309Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:47.310Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:50.297Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:50.297Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:53.248Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:53.249Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:56.320Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:56.320Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:38:59.307Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:38:59.308Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:02.172Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:02.173Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:08.288Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:08.289Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:11.300Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:11.301Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:14.257Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:14.257Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:17.008Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:17.008Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:20.222Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:20.223Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:23.296Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:23.297Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:26.306Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:26.307Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:29.768Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:29.769Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:32.307Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:32.308Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:35.296Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:35.296Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:41.376Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:41.377Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:44.388Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:44.389Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:47.611Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:47.612Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:50.316Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:50.316Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:54.080Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:54.081Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:56.393Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:56.394Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:39:59.401Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:39:59.402Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:02.422Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:02.423Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:05.121Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:05.122Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:08.564Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:08.565Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:11.678Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:11.679Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:17.272Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:17.273Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:20.249Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:20.249Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:23.334Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:23.334Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:26.802Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:26.803Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:29.271Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:29.272Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:32.279Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:32.280Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:35.323Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:35.324Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:38.393Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:38.395Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:41.284Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:41.285Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:44.297Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:44.298Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:47.234Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:47.235Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:52.986Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:52.987Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:56.195Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:56.196Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:40:59.190Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:40:59.191Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:02.191Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:02.192Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:05.201Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:05.202Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:08.157Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:08.157Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:11.257Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:11.258Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:14.214Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:14.215Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:15.881Z","level":"info","message":"network.listAvailableModels.ok {\"system\":\"network\",\"durationMs\":224}"}
+{"timestamp":"2026-08-12T09:41:15.881Z","level":"info","message":"[ACPModelConfigProvider] Loaded 19 models"}
+{"timestamp":"2026-08-12T09:41:17.226Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:17.227Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:20.207Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:20.209Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:23.203Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:23.203Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:29.309Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:29.309Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:32.564Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:32.564Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:35.033Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:35.034Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:38.072Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:38.073Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:41.270Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:41.271Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:44.150Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:44.153Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:47.154Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:47.155Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:50.187Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:50.188Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:53.217Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:53.219Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:41:56.145Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:41:56.147Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:02.379Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:02.380Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:05.091Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:05.092Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:08.136Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:08.137Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:11.071Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:11.074Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:14.037Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:14.038Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:17.076Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:17.076Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:20.084Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:20.085Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:23.923Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:23.923Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:26.093Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:26.094Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:29.091Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:29.092Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:32.611Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:32.612Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:38.649Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:38.650Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:41.038Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:41.039Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:43.989Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:43.990Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:47.026Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:47.027Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:50.044Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:50.045Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:53.070Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:53.071Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:56.045Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:56.046Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:42:58.890Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:42:58.891Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:02.048Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:02.048Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:05.011Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:05.012Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:07.938Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:07.939Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:13.963Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:13.963Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:17.861Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:17.862Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:20.002Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:20.003Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:22.990Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:22.991Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:25.994Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:25.995Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:29.002Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:29.004Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:32.040Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:32.041Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:34.999Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:35.000Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:37.977Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:37.978Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:41.012Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:41.013Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:44.029Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:44.030Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:50.246Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:50.247Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:53.230Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:53.230Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:56.257Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:56.257Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:43:59.652Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:43:59.652Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:02.249Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:02.249Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:05.199Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:05.200Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:08.234Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:08.235Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:11.247Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:11.247Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:14.247Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:14.247Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:16.978Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:16.978Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:23.631Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:23.631Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:26.195Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:26.195Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:29.275Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:29.276Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:32.260Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:32.261Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:35.283Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:35.283Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:38.292Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:38.292Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:41.267Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:41.268Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:44.280Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:44.281Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:47.216Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:47.216Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:50.279Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:50.280Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:53.283Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:53.284Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:44:59.337Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:44:59.338Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:02.307Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:02.307Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:05.349Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:05.349Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:08.356Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:08.356Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:11.356Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:11.357Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:14.815Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:14.816Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:17.339Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:17.340Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:20.342Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:20.343Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:23.375Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:23.376Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:26.825Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:26.826Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:29.362Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:29.363Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:35.525Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:35.527Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:38.543Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:38.543Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:41.534Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:41.535Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:44.525Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:44.526Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:47.481Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:47.482Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:50.500Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:50.501Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:53.502Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:53.503Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:56.478Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:56.479Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:45:59.543Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:45:59.544Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:02.541Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:02.542Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:05.551Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:05.551Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:11.762Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:11.762Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:14.801Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:14.802Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:17.620Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:17.621Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:20.753Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:20.753Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:23.774Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:23.775Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:26.750Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:26.751Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:30.223Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:30.224Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:32.781Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:32.782Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:35.784Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:35.785Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:38.782Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:38.783Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:46.777Z","level":"info","message":"network.listAvailableModels.ok {\"system\":\"network\",\"durationMs\":206}"}
+{"timestamp":"2026-08-12T09:46:46.777Z","level":"info","message":"[ACPModelConfigProvider] Loaded 19 models"}
+{"timestamp":"2026-08-12T09:46:46.843Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:46.844Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:48.076Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:48.077Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:51.086Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:51.087Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:54.007Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:54.008Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:46:57.142Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:46:57.143Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:00.034Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:00.034Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:03.026Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:03.026Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:05.961Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:05.962Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:09.033Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:09.033Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:12.013Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:12.013Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:14.847Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:14.847Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:20.829Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:20.830Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:23.820Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:23.821Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:26.746Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:26.747Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:29.805Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:29.806Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:32.930Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:32.931Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:35.802Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:35.803Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:38.784Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:38.785Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:41.772Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:41.772Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:44.798Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:44.799Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:47.825Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:47.826Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:50.789Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:50.790Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:47:57.378Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:47:57.379Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:00.227Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:00.228Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:04.271Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:04.272Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:06.263Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:06.264Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:09.682Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:09.684Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:12.676Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:12.677Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:15.196Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:15.197Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:18.238Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:18.239Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:21.136Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:21.137Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:24.224Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:24.225Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:27.204Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:27.205Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:32.267Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:32.268Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:35.250Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:35.250Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:38.274Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:38.275Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:41.270Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:41.271Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:44.281Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:44.282Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:47.250Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:47.251Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:50.282Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:50.282Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:53.717Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:53.719Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:56.673Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:56.674Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:48:59.773Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:48:59.776Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:05.742Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:05.743Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:08.715Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:08.716Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:12.628Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:12.629Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:14.747Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:14.749Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:17.782Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:17.783Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:20.711Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:20.712Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:23.983Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:23.984Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:26.697Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:26.697Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:29.711Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:29.712Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:32.719Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:32.720Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:35.699Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:35.700Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:40.366Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:40.366Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:44.722Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:44.724Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:46.374Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:46.375Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:49.355Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:49.356Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:52.385Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:52.386Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:49:55.375Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:49:55.375Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:01.968Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:01.969Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:04.393Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:04.393Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:07.403Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:07.404Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:10.416Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:10.417Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:17.560Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:17.560Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:19.815Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:19.816Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:22.814Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:22.815Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:25.494Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:25.495Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:28.743Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:28.744Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:31.701Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:31.702Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:34.731Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:34.733Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:37.754Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:37.755Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:40.748Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:40.749Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:43.734Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:43.735Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:46.764Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:46.765Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:52.203Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:52.204Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:55.214Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:55.215Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:50:58.200Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:50:58.202Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:01.203Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:01.204Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:04.220Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:04.221Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:07.212Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:07.213Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:10.156Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:10.157Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:13.254Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:13.255Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:16.578Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:16.579Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:20.442Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:20.443Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:26.095Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:26.096Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:28.652Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:28.652Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:31.555Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:31.556Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:34.503Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:34.504Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:37.548Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:37.549Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:40.564Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:40.565Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:43.504Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:43.505Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:46.448Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:46.448Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:50.658Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:50.659Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:52.551Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:52.552Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:51:55.582Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:51:55.583Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:52:01.675Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:52:01.676Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:52:04.695Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:52:04.695Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:52:07.604Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:52:07.605Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:52:10.650Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:52:10.650Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:52:12.489Z","level":"info","message":"network.listAvailableModels.ok {\"system\":\"network\",\"durationMs\":199}"}
+{"timestamp":"2026-08-12T09:52:12.489Z","level":"info","message":"[ACPModelConfigProvider] Loaded 19 models"}
+{"timestamp":"2026-08-12T09:52:13.643Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:52:13.644Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:52:17.047Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:52:17.047Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:52:19.652Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:52:19.653Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}
+{"timestamp":"2026-08-12T09:52:22.600Z","level":"warn","message":"[ActivityLogPublisher] Failed to publish to https://runtime.us-east-1.kiro.dev/agents/activity: 400 — {\"message\":\"Field validation failed\"}"}
+{"timestamp":"2026-08-12T09:52:22.600Z","level":"warn","message":"[ActivityLogPublisher] flush failed {\"error\":\"socket hang up\"}"}

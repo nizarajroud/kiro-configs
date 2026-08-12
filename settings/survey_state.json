@@ -2,8 +2,8 @@
   "session-feedback": {
     "eligible": true,
     "sampledAtRate": 1,
-    "lastShownAt": null,
+    "lastShownAt": 1786481455720,
     "lastCompletedAt": null,
-    "dismissCount": 0
+    "dismissCount": 1
   }
 }

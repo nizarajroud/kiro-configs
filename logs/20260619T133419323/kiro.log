@@ -1,9 +1,0 @@
-{"timestamp":"2026-06-19T13:34:19.340Z","level":"info","message":"File logging initialized at /home/nizar/.kiro/logs/20260619T133419323"}
-{"timestamp":"2026-06-19T13:34:19.340Z","level":"info","message":"Initializing persistence at /home/nizar/.kiro/sessions"}
-{"timestamp":"2026-06-19T13:34:19.343Z","level":"info","message":"[SessionPersistence] Initialized persistence at /home/nizar/.kiro/sessions"}
-{"timestamp":"2026-06-19T13:34:19.343Z","level":"info","message":"Persistence initialized"}
-{"timestamp":"2026-06-19T13:34:19.372Z","level":"info","message":"[AgentTelemetry] Initialized {\"endpoint\":\"https://prod.us-east-1.telemetry.desktop.kiro.dev\",\"serviceName\":\"kiroAgent\"}"}
-{"timestamp":"2026-06-19T13:34:19.373Z","level":"info","message":"[KiroAgent] Remote MCP client initialized"}
-{"timestamp":"2026-06-19T13:34:19.373Z","level":"info","message":"[KiroAgent] Creating remote tools discovery (executionEnvironment=local, includeHidden=false)"}
-{"timestamp":"2026-06-19T13:34:19.376Z","level":"info","message":"[KiroAgent] Cleared stale task execution statuses"}
-{"timestamp":"2026-06-19T13:34:19.376Z","level":"info","message":"[KiroAgent] Platform initialized"}

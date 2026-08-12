@@ -1,0 +1,20 @@
+{"timestamp":"2026-08-12T09:35:51.631Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"notion-workspace"}
+{"timestamp":"2026-08-12T09:35:51.661Z","level":"info","message":"Connected","serverName":"notion-workspace"}
+{"timestamp":"2026-08-12T09:35:52.413Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"time"}
+{"timestamp":"2026-08-12T09:35:52.417Z","level":"info","message":"Connected","serverName":"time"}
+{"timestamp":"2026-08-12T09:35:52.854Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"bookmarks"}
+{"timestamp":"2026-08-12T09:35:52.891Z","level":"info","message":"Connected","serverName":"bookmarks"}
+{"timestamp":"2026-08-12T09:35:53.747Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"fetch"}
+{"timestamp":"2026-08-12T09:35:53.756Z","level":"info","message":"Connected","serverName":"fetch"}
+{"timestamp":"2026-08-12T09:35:56.830Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"sequential-thinking"}
+{"timestamp":"2026-08-12T09:35:56.846Z","level":"info","message":"Connected","serverName":"sequential-thinking"}
+{"timestamp":"2026-08-12T09:35:57.326Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"remote.aws-knowledge"}
+{"timestamp":"2026-08-12T09:35:59.456Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"mcp-image-recognition"}
+{"timestamp":"2026-08-12T09:35:59.489Z","level":"info","message":"Connected","serverName":"mcp-image-recognition"}
+{"timestamp":"2026-08-12T09:36:00.103Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"firecrawl"}
+{"timestamp":"2026-08-12T09:36:00.136Z","level":"info","message":"Connected","serverName":"firecrawl"}
+{"timestamp":"2026-08-12T09:36:01.162Z","level":"info","message":"Connected","serverName":"remote.aws-knowledge"}
+{"timestamp":"2026-08-12T09:36:01.567Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"agentcore-memory"}
+{"timestamp":"2026-08-12T09:36:01.591Z","level":"info","message":"Connected","serverName":"agentcore-memory"}
+{"timestamp":"2026-08-12T09:36:02.221Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"github"}
+{"timestamp":"2026-08-12T09:36:02.228Z","level":"info","message":"Connected","serverName":"github"}

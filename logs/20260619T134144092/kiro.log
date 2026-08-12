@@ -1,5 +1,0 @@
-{"timestamp":"2026-06-19T13:41:44.107Z","level":"info","message":"File logging initialized at /home/nizar/.kiro/logs/20260619T134144092"}
-{"timestamp":"2026-06-19T13:41:44.107Z","level":"info","message":"Initializing persistence at /home/nizar/.kiro/sessions"}
-{"timestamp":"2026-06-19T13:41:44.110Z","level":"info","message":"[SessionPersistence] Initialized persistence at /home/nizar/.kiro/sessions"}
-{"timestamp":"2026-06-19T13:41:44.110Z","level":"info","message":"Persistence initialized"}
-{"timestamp":"2026-06-19T13:41:44.137Z","level":"info","message":"[AgentTelemetry] Initialized {\"endpoint\":\"https://prod.us-east-1.telemetry.desktop.kiro.dev\",\"serviceName\":\"kiroAgent\"}"}

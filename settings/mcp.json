@@ -1,7 +1,7 @@
 {
   "mcpServers": {
     "figma": {
-      "description": "Figma MCP \u2014 generate diagrams (FigJam), write to canvas, extract design context, generate code from designs. Skill: figma-generate-diagram.",
+      "description": "Figma MCP — generate diagrams (FigJam), write to canvas, extract design context, generate code from designs. Skill: figma-generate-diagram.",
       "command": "npx",
       "args": [
         "-y",
@@ -15,6 +15,8 @@
     "time": {
       "command": "uvx",
       "args": [
+        "--with",
+        "mcp<1.27",
         "mcp-server-time"
       ],
       "locked": false,
@@ -65,6 +67,8 @@
     "fetch": {
       "command": "uvx",
       "args": [
+        "--with",
+        "mcp<1.27",
         "mcp-server-fetch"
       ],
       "locked": false,
@@ -168,7 +172,7 @@
         "PROJECT_ID": "",
         "FASTMCP_LOG_LEVEL": "WARNING"
       },
-      "description": "Bedrock AgentCore Memory \u2014 persistent cross-session semantic memory. Allows agents to store and retrieve conversation history across all sessions. Tools: search_conversation_history, store_conversation, list_sessions, get_direct_conversation_history, search_memories, get_memory_stats.",
+      "description": "Bedrock AgentCore Memory — persistent cross-session semantic memory. Allows agents to store and retrieve conversation history across all sessions. Tools: search_conversation_history, store_conversation, list_sessions, get_direct_conversation_history, search_memories, get_memory_stats.",
       "disabled": false
     }
   }

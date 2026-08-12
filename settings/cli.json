@@ -6,5 +6,6 @@
   "toolSearch.enabled": true,
   "chat.disableTrustAllConfirmation": true,
   "chat.disableWrap": true,
-  "chat.enableKnowledge": true
+  "chat.enableKnowledge": true,
+  "chat.allowAnimations": false
 }
