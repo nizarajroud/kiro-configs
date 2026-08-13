@@ -1,3 +1,0 @@
-2026-05-28 15:12:47 [KILLED] PID=1242 age=214071s cmd=node /home/nizar/.mcp-server-manager-prod/backend/server.js
-2026-05-28 15:20:50 [KILLED] PID=1306 age=214505s cmd=/bin/bash /home/nizar/.mcp-server-manager-prod/restart-app.sh --prod
-2026-05-28 15:20:51 [KILLED] PID=1325 age=214504s cmd=/home/nizar/.mcp-server-manager-prod/frontend/node_modules/@esbuild/linux-x64/bin/esbuild --service=
