@@ -1,0 +1,20 @@
+{"timestamp":"2026-08-13T17:30:57.305Z","level":"info","message":"File logging initialized at /home/nizar/.kiro/logs/20260813T173057289"}
+{"timestamp":"2026-08-13T17:30:57.305Z","level":"info","message":"Initializing persistence at /home/nizar/.kiro/sessions"}
+{"timestamp":"2026-08-13T17:30:57.313Z","level":"info","message":"[SessionPersistence] Initialized persistence at /home/nizar/.kiro/sessions"}
+{"timestamp":"2026-08-13T17:30:57.313Z","level":"info","message":"Persistence initialized"}
+{"timestamp":"2026-08-13T17:30:57.352Z","level":"info","message":"[AgentTelemetry] Initialized {\"endpoint\":\"https://prod.us-east-1.telemetry.desktop.kiro.dev\",\"serviceName\":\"kiroAgent\"}"}
+{"timestamp":"2026-08-13T17:30:57.355Z","level":"info","message":"[KiroAgent] Remote MCP client initialized"}
+{"timestamp":"2026-08-13T17:30:57.355Z","level":"info","message":"[KiroAgent] remote-tools-discovery.create {\"client\":\"kiro-ide\"}"}
+{"timestamp":"2026-08-13T17:30:57.357Z","level":"info","message":"[KiroAgent] Cleared stale task execution statuses"}
+{"timestamp":"2026-08-13T17:30:57.357Z","level":"info","message":"[KiroAgent] Platform initialized"}
+{"timestamp":"2026-08-13T17:30:57.358Z","level":"info","message":"[KiroAgent] Resolved capabilities: {\"fsReadTextFile\":false,\"fsWriteTextFile\":false,\"kiroFsReadFile\":false,\"kiroFsWriteFile\":false,\"kiroFsStat\":false,\"kiroFsReadDirectory\":false,\"kiroFsDelete\":false,\"terminal\":false,\"secretStorage\":false,\"openExternalUrl\":false,\"knowledge\":false,\"infrastructureSafety\":false,\"c2sViews\":false,\"textSearch\":false,\"findFiles\":false}"}
+{"timestamp":"2026-08-13T17:30:57.358Z","level":"info","message":"[KiroAgent] Wired ACP callback auth provider to active connection"}
+{"timestamp":"2026-08-13T17:30:57.358Z","level":"info","message":"[RemoteToolsDiscovery] Fetching available Remote tools"}
+{"timestamp":"2026-08-13T17:30:57.359Z","level":"info","message":"[KiroAgent] Stored clientInfo.name {\"reportedClientName\":\"kiro-cli\",\"clientAttribution\":\"kiro-cli\",\"client\":\"kiro-cli\"}"}
+{"timestamp":"2026-08-13T17:30:57.359Z","level":"info","message":"Handshake: returning logging config with 3 channels at /home/nizar/.kiro/logs/20260813T173057289"}
+{"timestamp":"2026-08-13T17:30:57.375Z","level":"info","message":"[AcpCallbackAuthProvider] Profile ARN rotated: <none> -> arn:aws:codewhisperer:us-east-1:957201034306:profile/MEWCYDRVXUUD"}
+{"timestamp":"2026-08-13T17:30:57.446Z","level":"info","message":"[SessionPersistence] Listed 1 session(s) for workspace 1ddb7edd55a965c1"}
+{"timestamp":"2026-08-13T17:30:57.635Z","level":"info","message":"[RemoteToolsDiscovery] Discovered 5 Remote tools"}
+{"timestamp":"2026-08-13T17:30:57.642Z","level":"info","message":"network.getFeatureConfiguration.ok {\"system\":\"network\",\"durationMs\":261}"}
+{"timestamp":"2026-08-13T17:30:57.643Z","level":"info","message":"[ExperimentConfigService] Resolved {\"origin\":\"KIRO_CLI\",\"version\":\"2.17.0\",\"keyCount\":3}"}
+{"timestamp":"2026-08-13T17:30:57.777Z","level":"info","message":"network.remoteSession.listSessions.ok {\"system\":\"network\",\"durationMs\":383}"}
