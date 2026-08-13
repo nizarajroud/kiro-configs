@@ -1,0 +1,7 @@
+{"timestamp":"2026-08-13T15:26:04.956Z","level":"info","message":"File logging initialized at /home/nizar/.kiro/logs/20260813T152604935"}
+{"timestamp":"2026-08-13T15:26:04.956Z","level":"info","message":"Initializing persistence at /home/nizar/.kiro/sessions"}
+{"timestamp":"2026-08-13T15:26:04.964Z","level":"info","message":"[SessionPersistence] Initialized persistence at /home/nizar/.kiro/sessions"}
+{"timestamp":"2026-08-13T15:26:04.964Z","level":"info","message":"Persistence initialized"}
+{"timestamp":"2026-08-13T15:26:05.007Z","level":"info","message":"[AgentTelemetry] Initialized {\"endpoint\":\"https://prod.us-east-1.telemetry.desktop.kiro.dev\",\"serviceName\":\"kiroAgent\"}"}
+{"timestamp":"2026-08-13T15:26:05.010Z","level":"info","message":"[KiroAgent] Remote MCP client initialized"}
+{"timestamp":"2026-08-13T15:26:05.010Z","level":"info","message":"[KiroAgent] remote-tools-discovery.create {\"client\":\"kiro-ide\"}"}

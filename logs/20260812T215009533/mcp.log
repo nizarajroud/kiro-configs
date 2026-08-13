@@ -1,0 +1,28 @@
+{"timestamp":"2026-08-12T21:50:11.070Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"notion-workspace"}
+{"timestamp":"2026-08-12T21:50:11.084Z","level":"info","message":"Connected","serverName":"notion-workspace"}
+{"timestamp":"2026-08-12T21:50:12.182Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"time"}
+{"timestamp":"2026-08-12T21:50:12.187Z","level":"info","message":"Connected","serverName":"time"}
+{"timestamp":"2026-08-12T21:50:12.366Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"bookmarks"}
+{"timestamp":"2026-08-12T21:50:12.435Z","level":"info","message":"Connected","serverName":"bookmarks"}
+{"timestamp":"2026-08-12T21:50:13.923Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"fetch"}
+{"timestamp":"2026-08-12T21:50:13.937Z","level":"info","message":"Connected","serverName":"fetch"}
+{"timestamp":"2026-08-12T21:50:20.194Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"github"}
+{"timestamp":"2026-08-12T21:50:20.207Z","level":"info","message":"Connected","serverName":"github"}
+{"timestamp":"2026-08-12T21:50:20.228Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"mcp-image-recognition"}
+{"timestamp":"2026-08-12T21:50:20.254Z","level":"info","message":"Connected","serverName":"mcp-image-recognition"}
+{"timestamp":"2026-08-12T21:50:20.323Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"sequential-thinking"}
+{"timestamp":"2026-08-12T21:50:20.346Z","level":"info","message":"Connected","serverName":"sequential-thinking"}
+{"timestamp":"2026-08-12T21:50:20.504Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"remote.aws-knowledge"}
+{"timestamp":"2026-08-12T21:50:20.888Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"secondhand-mcp"}
+{"timestamp":"2026-08-12T21:50:20.899Z","level":"info","message":"Connected","serverName":"secondhand-mcp"}
+{"timestamp":"2026-08-12T21:50:20.968Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"d2-mcp"}
+{"timestamp":"2026-08-12T21:50:20.970Z","level":"info","message":"Connected","serverName":"d2-mcp"}
+{"timestamp":"2026-08-12T21:50:22.637Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"agentcore-memory"}
+{"timestamp":"2026-08-12T21:50:22.660Z","level":"info","message":"Connected","serverName":"agentcore-memory"}
+{"timestamp":"2026-08-12T21:50:23.892Z","level":"info","message":"Connected","serverName":"remote.aws-knowledge"}
+{"timestamp":"2026-08-12T21:50:25.848Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"firecrawl"}
+{"timestamp":"2026-08-12T21:50:25.868Z","level":"info","message":"Connected","serverName":"firecrawl"}
+{"timestamp":"2026-08-12T21:50:34.750Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"aws-pricing"}
+{"timestamp":"2026-08-12T21:50:34.769Z","level":"info","message":"Connected","serverName":"aws-pricing"}
+{"timestamp":"2026-08-12T21:51:23.891Z","level":"info","message":"Connected with transport","transportType":"stdio","serverName":"context7"}
+{"timestamp":"2026-08-12T21:51:23.897Z","level":"info","message":"Connected","serverName":"context7"}
