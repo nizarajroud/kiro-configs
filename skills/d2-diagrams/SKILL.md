@@ -628,15 +628,37 @@ steps="
 
 ### PNG Export (Pixel-Perfect)
 
-D2 CLI's native PNG export depends on Playwright which may fail (version 404). The **only reliable method** for 100% faithful PNG (including markdown legends in `foreignObject` and remote icons) is **Puppeteer + Chrome headless**.
+D2 CLI's native PNG export depends on Playwright which may fail (version 404). The **only reliable method** for 100% faithful PNG (including markdown legends in `foreignObject` and remote icons) is **Puppeteer + Chromium headless**.
 
 **Why other tools fail:**
-- `rsvg-convert` — does NOT render `<foreignObject>` (legend will be empty)
+- `rsvg-convert` — does NOT render `<foreignObject>` (legend will be empty), does NOT fetch remote icons
 - `ImageMagick convert` — grayscale output, poor SVG support
-- `d2 --output .png` — depends on Playwright (often broken)
-- **Puppeteer + Chrome** — renders EXACTLY like a browser (100% faithful)
+- `d2 --output .png` — depends on Playwright (often broken, 404 on CDN)
+- **Puppeteer + Chromium** — renders EXACTLY like a browser (100% faithful, fetches remote icons)
 
-**Script OBLIGATOIRE (copier-coller):**
+#### Étape 1 — Rendre le SVG source avec `page_size: "none"` (OBLIGATOIRE)
+
+TOUJOURS utiliser `page_size: "none"` pour le SVG qui sera converti en PNG.
+- `"none"` = D2 génère les dimensions naturelles du layout (ex: 1552×1289)
+- Le SVG aura `width="XXXX" height="YYYY"` en valeurs absolues (px)
+
+**❌ JAMAIS utiliser un autre page_size pour le SVG source du PNG :**
+- `fit` (défaut si omis) → produit `width="100%" height="99999"` → Puppeteer crash/infinite
+- `a4-landscape` sur un diagramme dense (>8 nœuds) → compresse le texte, illisible
+- `"1920x1080"` ou autre valeur arbitraire → non documenté, résultat imprévisible
+
+#### Étape 2 — Déterminer le deviceScaleFactor selon la largeur naturelle
+
+| Largeur naturelle du SVG | deviceScaleFactor | PNG résultant | Cas d'usage |
+|---|---|---|---|
+| ≤ 1200 px | 2 | ~2400 px wide | Petit diagramme, besoin de netteté |
+| 1200–2000 px | 1 | taille native | Diagramme moyen, déjà assez grand |
+| > 2000 px | 1 | taille native | Grand diagramme, pas besoin de grossir |
+
+**Règle :** si le SVG fait déjà > 1200px de large, `deviceScaleFactor: 1` suffit.
+Ne JAMAIS utiliser `deviceScaleFactor: 2` sur un SVG > 1500px (produit un PNG de 3000-4000px inutilement lourd).
+
+#### Étape 3 — Script Puppeteer (CANONICAL — remplace toute version précédente)
 
 ```javascript
 const puppeteer = require('/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/node_modules/puppeteer');
@@ -647,43 +669,60 @@ const fs = require('fs');
   const pngPath = '<ABSOLUTE_PNG_PATH>';
 
   const svgContent = fs.readFileSync(svgPath, 'utf8');
-  const widthMatch = svgContent.match(/width="(\d+)"/);
-  const heightMatch = svgContent.match(/height="(\d+)"/);
-  const width = widthMatch ? parseInt(widthMatch[1]) : 1600;
-  const height = heightMatch ? parseInt(heightMatch[1]) : 800;
+  const width = parseInt(svgContent.match(/width="(\d+)"/)?.[1] || 1600);
+  const height = parseInt(svgContent.match(/height="(\d+)"/)?.[1] || 800);
+
+  // Scale factor: 2 for small SVGs, 1 for large ones (already big enough)
+  const scale = width <= 1200 ? 2 : 1;
 
   const browser = await puppeteer.launch({
     headless: true,
-    executablePath: '/usr/bin/google-chrome',
-    args: ['--no-sandbox', '--disable-setuid-sandbox']
+    executablePath: '/usr/bin/chromium-browser',
+    args: ['--no-sandbox', '--disable-setuid-sandbox', '--disable-gpu']
   });
 
   const page = await browser.newPage();
-  await page.setViewport({ width: width * 2, height: height * 2, deviceScaleFactor: 2 });
+  await page.setViewport({ width, height, deviceScaleFactor: scale });
   await page.goto('file://' + svgPath, { waitUntil: 'networkidle0', timeout: 30000 });
-  await page.screenshot({ path: pngPath, fullPage: true, omitBackground: false });
+  await page.screenshot({ path: pngPath, fullPage: false, omitBackground: false });
 
   await browser.close();
 })();
 ```
 
-**Exécution:**
-```bash
-node -e "<script above with paths replaced>"
-```
+**Paramètres CRITIQUES :**
+- `executablePath: '/usr/bin/chromium-browser'` — Chromium installé via snap (pas google-chrome)
+- `deviceScaleFactor` — calculé dynamiquement selon la largeur du SVG
+- `fullPage: false` — OBLIGATOIRE. Avec `true`, Puppeteer capture du vide infini si le viewBox dépasse le content
+- `waitUntil: 'networkidle0'` — attend que toutes les icônes distantes soient téléchargées
 
-**Paramètres:**
-- `deviceScaleFactor: 2` — haute résolution (2x). Utiliser `3` pour impression.
-- `waitUntil: 'networkidle0'` — attend que toutes les icônes distantes soient chargées.
-- `fullPage: true` — capture le SVG complet, pas juste le viewport.
+#### Anti-patterns PNG (JAMAIS faire)
 
-**Output attendu:** PNG sRGB, ~2x les dimensions du SVG, toutes couleurs/légendes/icônes rendues fidèlement.
+| ❌ Anti-pattern | Pourquoi ça casse |
+|---|---|
+| `page_size: "1920x1080"` | Arbitraire, pas dans le spec, force un SVG énorme |
+| `page_size: "a4-landscape"` + >8 nœuds | Texte compressé illisible |
+| `deviceScaleFactor: 2` + SVG > 1500px | PNG de 4000+ px, inutilement lourd |
+| `fullPage: true` + SVG responsive | Screenshot infini (height=99999) |
+| `page_size` omis (= `fit`) pour PNG | width="100%", Puppeteer ne sait pas dimensionner |
+| `viewport: { width: width * 2, height: height * 2 }` | Doubler le viewport ET le scale = quadrupler la taille |
 
-**Workflow complet D2 → SVG + PNG:**
+#### Rappel : page_size selon le livrable
+
+| Livrable | page_size | Pourquoi |
+|---|---|---|
+| SVG pour browser/README | Omis (= `fit`) | Responsive, remplit le viewer |
+| SVG source pour PNG export | `"none"` | Dimensions fixes, Puppeteer-compatible |
+| SVG pour impression/PDF | `"a4-landscape"` | Uniquement si ≤8 nœuds simples |
+
+#### Workflow complet D2 → SVG + PNG
+
 1. Écrire le .d2
-2. Compiler : `d2 [options] input.d2 output.svg`
-3. Convertir : Puppeteer script ci-dessus
-4. Sauvegarder les deux dans AI-GENERATED (sous-dossiers `svg/` et `png/`)
+2. Compiler (`compiled2`) pour vérifier la syntaxe
+3. Rendre SVG avec `page_size: "none"` (`renderd2`)
+4. Lire width/height du SVG généré
+5. Puppeteer screenshot avec scale adapté
+6. Sauvegarder les deux dans AI-GENERATED (sous-dossiers `svg/` et `png/`) + dans le projet
 
 ---
 

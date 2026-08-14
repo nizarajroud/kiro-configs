@@ -52,6 +52,17 @@
         "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
       "disabled": true
+    },
+    "secondhand-mcp": {
+      "description": "Search secondhand marketplaces (Facebook Marketplace, eBay, Depop, Poshmark) for used items. Use when user asks to find articles, meubles, electronics on Facebook Marketplace or other used-goods platforms.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/secondhand_wrapper.py"
+      ],
+      "env": {
+        "MARKETPLACES": "facebook"
+      },
+      "disabled": false
     }
   },
   "tools": [
