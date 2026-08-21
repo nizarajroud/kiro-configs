@@ -27,7 +27,8 @@
       "args": [],
       "env": {
         "GOOGLE_AI_API_KEY": "${GOOGLE_AI_API_KEY}",
-        "MCP_TTS_SUPPRESS_SPEAKING_OUTPUT": "true"
+        "MCP_TTS_SUPPRESS_SPEAKING_OUTPUT": "true",
+        "MCP_TTS_OUTPUT_FORMAT": "${MCP_TTS_OUTPUT_FORMAT}"
       },
       "disabled": false
     },
@@ -63,6 +64,78 @@
         "MARKETPLACES": "facebook"
       },
       "disabled": false
+    },
+    "image-annotator": {
+      "description": "Annotate screenshots/images with markers, arrows, callouts, text labels, blur, spotlight.",
+      "command": "node",
+      "args": [
+        "/home/nizar/HomeWspce/image-annotator-mcp/server.js"
+      ],
+      "disabled": true
+    },
+    "bedrock-kb-retrieval": {
+      "description": "Bedrock Knowledge Base retrieval \u2014 RAG search across tagged KBs on account 026991214828 (ca-central-1).",
+      "command": "uvx",
+      "args": [
+        "awslabs.bedrock-kb-retrieval-mcp-server@latest"
+      ],
+      "env": {
+        "AWS_PROFILE": "csna-operations-sso-828",
+        "AWS_REGION": "ca-central-1",
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "BEDROCK_KB_RERANKING_ENABLED": "false"
+      },
+      "disabled": true
+    },
+    "bedrock-project-agent": {
+      "description": "Queries an Amazon Bedrock agent connected to project knowledge bases. Use this for project-specific questions: RFP details, client requirements, estimated hours, timelines, budgets, and any domain-specific or organizational data ingested into the knowledge base.",
+      "command": "python",
+      "args": [
+        "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
+      ],
+      "env": {
+        "AGENT_ID": "SPU6NRMEEF",
+        "AGENT_ALIAS_ID": "TSTALIASID",
+        "AWS_REGION": "ca-central-1"
+      },
+      "disabled": false,
+      "priority": "standard"
+    },
+    "aws-pricing": {
+      "description": "AWS Pricing MCP Server (official awslabs) \u2014 retrieve real-time AWS service pricing, generate cost reports (PDF/Markdown), analyze CDK/Terraform projects for cost estimation. Use when asked to estimate AWS infrastructure costs.",
+      "command": "uvx",
+      "args": [
+        "awslabs.aws-pricing-mcp-server@latest"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "disabled": false
+    },
+    "awslabs.aws-api-mcp-server": {
+      "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations \u2014 no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/aws_api_mcp_wrapper.py"
+      ],
+      "env": {
+        "AWS_REGION": "ca-central-1",
+        "AWS_API_MCP_PROFILE_NAME": "csna-operations-sso-828",
+        "READ_OPERATIONS_ONLY": "true",
+        "AWS_API_MCP_ALLOW_UNRESTRICTED_LOCAL_FILE_ACCESS": "no-access"
+      },
+      "disabled": false
+    },
+    "excalidraw-mcp": {
+      "description": "Generate hand-drawn style diagrams (flowcharts, mindmaps, architecture, sequence, ER, class, state, timeline, kanban, wireframes, org charts) as .excalidraw files with Sugiyama auto-layout. Use when user asks for technical diagrams or visual representations of systems and processes.",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "maaker-excalidraw-mcp",
+        "excalidraw-mcp"
+      ],
+      "disabled": false,
+      "locked": false
     }
   },
   "tools": [

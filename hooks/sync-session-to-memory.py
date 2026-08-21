@@ -85,6 +85,72 @@ def main():
 
     session_id = sys.argv[1]
 
+    # V3 session support
+    v3_reader_path = '/home/nizar/workspace/PROC/xxxxuseful-scripts'
+    if v3_reader_path not in sys.path:
+        sys.path.insert(0, v3_reader_path)
+
+    try:
+        from v3_session_reader import is_v3_session, read_session_messages, read_session_metadata
+    except ImportError:
+        is_v3_session = lambda x: x.startswith("cli_")
+        read_session_messages = None
+
+    if is_v3_session(session_id) and read_session_messages:
+        # V3: read from filesystem
+        meta = read_session_metadata(session_id)
+        if not meta:
+            sys.exit(0)
+        v3_messages = read_session_messages(session_id)
+        if len(v3_messages) < 8:
+            sys.exit(0)
+
+        cwd = meta.get("workspacePaths", ["unknown"])[0]
+        folder = os.path.basename(cwd)
+        agent = "v3-local"
+
+        # Convert to ConversationalMessage format
+        messages = []
+        for m in v3_messages:
+            role = MessageRole.HUMAN if m["role"] == "user" else MessageRole.ASSISTANT
+            messages.append(ConversationalMessage(role=role, content=m["content"]))
+
+        # Load sync state
+        state = load_state()
+        session_state = state.get(session_id, {})
+        already_sent = session_state.get('messages_sent', 0)
+
+        new_messages = messages[already_sent:]
+        if not new_messages:
+            sys.exit(0)
+
+        # Connect to AgentCore Memory
+        session_manager = MemorySessionManager(
+            memory_id=MEMORY_ID,
+            region_name=REGION
+        )
+
+        memory_session_id = f"kiro_{session_id[4:12]}_{folder}_{agent}"
+        memory_session_id = ''.join(c if c.isalnum() or c in '-_' else '_' for c in memory_session_id)
+
+        session = session_manager.create_memory_session(
+            actor_id=ACTOR_ID,
+            session_id=memory_session_id
+        )
+
+        for msg in new_messages:
+            session.add_conversation_event(msg)
+
+        # Update state
+        state[session_id] = {
+            'messages_sent': len(messages),
+            'last_sync_ts': int(time.time() * 1000)
+        }
+        save_state(state)
+        sys.exit(0)
+
+    # V2: read from SQLite (existing logic)
+
     # Read session from SQLite
     db = sqlite3.connect(DB_PATH)
     row = db.execute(

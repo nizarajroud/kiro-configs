@@ -1,0 +1,42 @@
+{
+  "name": "{{AGENT_NAME}}",
+  "description": "{{AGENT_DESCRIPTION}}",
+  "tools": [
+    "*"
+  ],
+  "includeMcpJson": true,
+  "mcpServers": {
+    "d2-mcp": {
+      "description": "D2 diagram language — compile, validate, and render diagrams (SVG, PNG, ASCII). Sketch mode, themes. Always saves output files.",
+      "command": "/home/nizar/go/bin/d2-mcp",
+      "args": [
+        "--image-type",
+        "svg",
+        "--write-files"
+      ],
+      "disabled": false
+    },
+    "mural": {
+      "description": "MURAL collaboration tool. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54).",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
+      ],
+      "disabled": true
+    },
+    "bedrock-project-agent": {
+      "description": "Queries an Amazon Bedrock agent connected to project knowledge bases. Use this for project-specific questions: RFP details, client requirements, estimated hours, timelines, budgets, and any domain-specific or organizational data ingested into the knowledge base.",
+      "command": "python",
+      "args": [
+        "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
+      ],
+      "env": {
+        "AGENT_ID": "{{BEDROCK_AGENT_ID}}",
+        "AGENT_ALIAS_ID": "TSTALIASID",
+        "AWS_REGION": "ca-central-1"
+      },
+      "disabled": true
+    }
+  },
+  "prompt": "Tu es un agent spécialisé pour le projet {{PROJECT_NAME}}.\n\n## Contexte\n\n{{AGENT_DESCRIPTION}}\n\n## Ton rôle\n\n- Assister dans l'analyse et la production de livrables\n- Rechercher des informations dans la KB Bedrock si configurée\n- Documenter les décisions (ADR)\n- Maintenir notes.md à jour pendant chaque session\n\n## Règles\n\n- Suivre toutes les règles steering partagées (output-rules, data-principles)\n- Mettre à jour notes.md pendant la session (Principle 10)\n- Être concis et orienté action\n- Toujours citer les sources quand tu extrais une information"
+}

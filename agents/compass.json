@@ -81,7 +81,27 @@
         "PIPER_MODEL": "${PIPER_MODEL}",
         "MCP_TTS_DEFAULT_PROVIDER": "${MCP_TTS_DEFAULT_PROVIDER}",
         "MCP_TTS_OUTPUT_DIR": "${MCP_TTS_OUTPUT_DIR}",
-        "MCP_TTS_NO_PLAY": "${MCP_TTS_NO_PLAY}"
+        "MCP_TTS_OUTPUT_FORMAT": "${MCP_TTS_OUTPUT_FORMAT}"
+      },
+      "disabled": false
+    },
+    "image-annotator": {
+      "description": "Annotate screenshots/images with markers, arrows, callouts, text labels, blur, spotlight.",
+      "command": "node",
+      "args": [
+        "/home/nizar/HomeWspce/image-annotator-mcp/server.js"
+      ],
+      "disabled": false
+    },
+    "airtable": {
+      "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "airtable-mcp-server"
+      ],
+      "env": {
+        "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
       "disabled": false
     }

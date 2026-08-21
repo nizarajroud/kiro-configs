@@ -129,7 +129,7 @@
         "PIPER_MODEL": "${PIPER_MODEL}",
         "MCP_TTS_DEFAULT_PROVIDER": "${MCP_TTS_DEFAULT_PROVIDER}",
         "MCP_TTS_OUTPUT_DIR": "${MCP_TTS_OUTPUT_DIR}",
-        "MCP_TTS_NO_PLAY": "${MCP_TTS_NO_PLAY}"
+        "MCP_TTS_OUTPUT_FORMAT": "${MCP_TTS_OUTPUT_FORMAT}"
       },
       "disabled": false
     }
