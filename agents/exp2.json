@@ -94,11 +94,11 @@
         "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
       ],
       "env": {
-        "AGENT_ID": "SPU6NRMEEF",
+        "AGENT_ID": "4EBXLZQW3Q",
         "AGENT_ALIAS_ID": "TSTALIASID",
         "AWS_REGION": "ca-central-1"
       },
-      "disabled": false,
+      "disabled": true,
       "priority": "standard"
     },
     "aws-pricing": {
@@ -136,6 +136,402 @@
       ],
       "disabled": false,
       "locked": false
+    },
+    "gitlab": {
+      "description": "GitLab MCP (Alithya CSNA) \u2014 projects, issues, merge requests, pipelines. Use when user asks about GitLab repositories, MRs, CI/CD pipelines, or Alithya project code.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://gitlab.com/api/v4/mcp"
+      ],
+      "disabled": false
+    },
+    "git-mcp": {
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/gitmcp_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "context7": {
+      "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source \u2014 never relies on training data.",
+      "command": "npx",
+      "timeout": 200000,
+      "args": [
+        "-y",
+        "@upstash/context7-mcp"
+      ],
+      "disabled": false,
+      "priority": "standard"
+    },
+    "terraform-mcp": {
+      "description": "HashiCorp official Terraform MCP Server. Searches Terraform Registry for providers, modules, and policies. Use when writing Terraform code to find correct module inputs/outputs, provider capabilities, and best-practice modules.",
+      "command": "/home/nizar/go/bin/terraform-mcp-server",
+      "args": [
+        "stdio",
+        "--toolsets=registry"
+      ],
+      "disabled": false
+    },
+    "tfmcp": {
+      "description": "Terraform MCP operator \u2014 execute terraform init/plan/apply/destroy, generate dependency graphs (DOT format), analyze state/drift, manage workspaces. Chain with quickchart-mcp for visual rendering of graphs. Use when asked to operate Terraform or visualize resource dependencies.",
+      "command": "/home/nizar/.cargo/bin/tfmcp",
+      "args": [
+        "mcp"
+      ],
+      "env": {
+        "TERRAFORM_DIR": "/home/nizar/HomeWspce/poc-bnc-terraform-modules",
+        "TFMCP_ALLOW_DANGEROUS_OPS": "false",
+        "TFMCP_ALLOW_AUTO_APPROVE": "false",
+        "TFMCP_MAX_RESOURCES": "50",
+        "TFMCP_AUDIT_ENABLED": "true"
+      },
+      "disabled": false
+    },
+    "graphistry-mcp": {
+      "description": "GPU-accelerated interactive graph visualization via Graphistry. Takes edge/node data and produces an interactive web visualization (zoom, pan, filter, search). Use for LARGE dependency graphs (70+ nodes) where static PNG is unreadable. Chain: tfmcp (graph data) \u2192 graphistry-mcp (interactive web view).",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/graphistry_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "awslabs.eks-mcp-server": {
+      "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "remote.bridge.aws-mcp": {
+      "command": "uvx",
+      "args": [
+        "mcp-proxy-for-aws@latest",
+        "https://aws-mcp.us-east-1.api.aws/mcp",
+        "--metadata",
+        "AWS_REGION=us-east-1"
+      ],
+      "alias": "remote_aws",
+      "env": {},
+      "disabled": false,
+      "priority": "critical"
+    },
+    "local.aws-diagram-generator": {
+      "description": "Generates AWS architecture diagrams as PNG images using the Python diagrams package. Use this to create, render, and export visual architecture diagrams. Provides tools to list available icons, get code examples, and generate diagrams from Python code.",
+      "command": "/home/nizar/HomeWspce/mcp/src/aws-diagram-mcp-server/.venv/bin/python",
+      "args": [
+        "-m",
+        "awslabs.aws_diagram_mcp_server.server"
+      ],
+      "env": {
+        "FASTMCP_LOG_LEVEL": "ERROR"
+      },
+      "autoApprove": [],
+      "disabled": false
+    },
+    "mcp-mermaid": {
+      "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-mermaid"
+      ],
+      "disabled": false
+    },
+    "rtl-visual-mcp": {
+      "description": "Generate PNG visuals with proper RTL Arabic/English bidirectional text rendering. Use when user asks for a visual Tunisian explanation or any diagram containing Arabic text mixed with English technical terms.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/rtl-visual-mcp/server.py"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "quickchart-mcp": {
+      "description": "Visual chart and graph renderer \u2014 takes DOT (Graphviz), Chart.js configs, or QR data and produces PNG/SVG/PDF images. Use as the SECOND step after tfmcp: get DOT from terraform_graph, then render it here into a visual image.",
+      "command": "node",
+      "args": [
+        "/home/nizar/HomeWspce/quickchart-mcp-server/dist/index.js"
+      ],
+      "disabled": false
+    },
+    "linkedin-mcp": {
+      "description": "Access LinkedIn data: profiles, job search, company info, messages, feed, saved posts, people search. Use when user asks about LinkedIn profiles, jobs, companies, or networking.",
+      "command": "python3",
+      "args": [
+        "-m",
+        "linkedin_mcp_server"
+      ],
+      "env": {
+        "PYTHONPATH": "/home/nizar/HomeWspce/linkedin-mcp-fork"
+      },
+      "disabled": false,
+      "locked": false
+    },
+    "whatsapp": {
+      "description": "WhatsApp messaging integration. Search messages, read conversations, send messages via WhatsApp. Use for family communications and retrieving WhatsApp conversation history.",
+      "command": "uv",
+      "args": [
+        "--directory",
+        "/home/nizar/HomeWspce/whatsapp-mcp/whatsapp-mcp-server",
+        "run",
+        "main.py"
+      ],
+      "disabled": false
+    },
+    "video-transcriber-mcp": {
+      "description": "Transcribe videos from 1000+ platforms (TikTok, YouTube, Instagram, Twitter/X, Twitch, Vimeo, etc.) using local Whisper. Input = URL, Output = full transcript. Replaces youtube-transcript.",
+      "command": "video-transcriber-mcp",
+      "args": [],
+      "env": {
+        "RUST_LOG": "info"
+      },
+      "disabled": false
+    },
+    "ssh-mcp-server": {
+      "description": "SSH remote server management via ~/.ssh/config host aliases. Use this to execute commands on remote hosts, upload/download files, and list configured SSH servers. Supports bastion hosts, SOCKS proxy, 2FA, and multi-connection configs.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/ssh_mcp_wrapper.py"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "local.diagram-prompt-templates": {
+      "description": "Provides standardized prompt templates for AWS architecture diagrams with pre-configured Graphviz settings (font sizes, DPI, layout, spacing). Use this to get the correct prompt format BEFORE calling aws-diagram-generator to ensure consistent, professional diagram output.",
+      "command": "python3",
+      "args": [
+        "-u",
+        "/home/nizar/HomeWspce/diagram-prompts-mcp/server.py"
+      ],
+      "disabled": true,
+      "env": {}
+    },
+    "knowledge-rag": {
+      "description": "Local RAG knowledge base. Use this to search, retrieve, and manage documents stored locally in ~/My-KB-Documents. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries against the local knowledge base.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://192.168.2.56:3222/mcp",
+        "--allow-http"
+      ],
+      "disabled": true,
+      "autoApprove": [],
+      "_original": {
+        "command": "/home/nizar/.knowledge-rag/venv/bin/python",
+        "args": [
+          "-m",
+          "mcp_server.server"
+        ]
+      }
+    },
+    "playwright": {
+      "description": "Browser automation and web screenshot capture using Playwright. Navigates to websites, interacts with page elements (click, type, scroll), takes screenshots of full pages or specific elements, and executes JavaScript to highlight or modify DOM elements before capture. Supports CSS injection for visual annotations like colored borders and overlays. Use for web page screenshots, UI validation, visual documentation, and element-specific captures with highlights.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://192.168.2.56:3210/mcp",
+        "--allow-http"
+      ],
+      "env": {},
+      "disabled": true,
+      "_original": {
+        "command": "npx",
+        "args": [
+          "@playwright/mcp@latest",
+          "--headless"
+        ]
+      }
+    },
+    "n8n": {
+      "description": "n8n workflow automation server running locally. Use this to list, create, update, activate, deactivate, and execute n8n workflows. Also supports managing workflow tags and credentials. Use for automating tasks, orchestrating multi-step processes, and triggering workflow executions from the CLI.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://192.168.2.56:3225/mcp",
+        "--allow-http"
+      ],
+      "disabled": true,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/HomeWspce/kiro-configs/wrappers/n8n_wrapper.py"
+        ]
+      }
+    },
+    "idea": {
+      "description": "Product Owner prompt: @idea/idea (auto-detect repo ou fallback IDEAS) et @idea/backlog (toujours IDEAS).",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://192.168.2.56:3208/mcp",
+        "--allow-http"
+      ],
+      "disabled": true,
+      "_original": {
+        "command": "python3",
+        "args": [
+          "/home/nizar/.kiro/wrappers/idea_prompt_wrapper.py"
+        ]
+      }
+    },
+    "lza": {
+      "description": "Landing Zone Accelerator on AWS MCP Server (READ-ONLY). Use this to search LZA configuration schemas, check pipeline status, retrieve LZA configurations from S3, diagnose pipeline errors, and discover LZA capabilities. NO write operations: do NOT release pipeline or upload configurations without explicit user approval.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://192.168.2.56:3214/mcp",
+        "--allow-http"
+      ],
+      "disabled": true,
+      "autoApprove": [
+        "checkAwsConnectivity",
+        "listLzaSupportedVersions",
+        "searchJsonSchema",
+        "getFullSchema",
+        "getPipelineStatus",
+        "getConfigurationFromS3",
+        "getDeployedLzaVersion",
+        "diagnosePipelineErrors",
+        "getMinimumConfiguration"
+      ],
+      "_original": {
+        "command": "/home/nizar/.kiro/wrappers/lza_wrapper.sh",
+        "args": []
+      }
+    },
+    "codebase-memory": {
+      "description": "High-performance code intelligence that indexes codebases into a persistent knowledge graph. 155 languages, sub-ms queries, 99% fewer tokens. Use for navigating large codebases and understanding code relationships.",
+      "command": "/home/nizar/.local/bin/codebase-memory-mcp",
+      "args": [],
+      "disabled": true
+    },
+    "chrome-tools": {
+      "description": "Chrome DevTools Protocol integration. Connects to a running Chrome/Edge instance to capture network traffic (headers, requests, responses), execute JavaScript in tabs, query DOM elements, take screenshots, and monitor network events. Use this when the user wants to inspect HTTP headers, network requests, DOM content, or interact with a live browser session.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://192.168.2.56:3212/mcp",
+        "--allow-http"
+      ],
+      "env": {
+        "CHROME_DEBUG_URL": "http://localhost:9222",
+        "CHROME_CONNECTION_TYPE": "ssh-tunnel",
+        "CHROME_ERROR_HELP": "Make sure Chrome/Edge is running with --remote-debugging-port=9222 on Windows and the SSH tunnel is active: ssh -N -L 9222:localhost:9222 nizar@localhost"
+      },
+      "disabled": true,
+      "_original": {
+        "command": "node",
+        "args": [
+          "/home/nizar/.npm-global/lib/node_modules/@nicholmikey/chrome-tools/dist/index.js"
+        ]
+      }
+    },
+    "ssh-csben-github": {
+      "description": "GitHub operations on beneva-int organization via SSH to csben WSL (.12). Executes the MCP GitHub server remotely on the Beneva laptop which has VPN access to corporate GitHub.",
+      "command": "ssh",
+      "args": [
+        "-p",
+        "2222",
+        "-i",
+        "/home/nizar/.ssh/id_rsa_wsl",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "nizar@192.168.2.12",
+        "export PATH=/home/nizar/.local/bin:/home/nizar/.nvm/versions/node/v22.16.0/bin:$PATH && GITHUB_PERSONAL_ACCESS_TOKEN=$SSH-CSBEN-GITHUB_PERSONAL_ACCESS_TOKEN_CSBEN GITHUB_READ_ONLY=1 GITHUB_TOOLSETS=all npx -y @modelcontextprotocol/server-github"
+      ],
+      "env": {},
+      "disabled": true
+    },
+    "ssh-csben-atlassian": {
+      "description": "READ-ONLY access to Jira and Confluence (Beneva) via SSH to csben WSL. Use to search/retrieve Jira issues, sprints, boards, worklogs; and Confluence pages, spaces. Jira: jira.int.beneva.ca | Confluence: confluence.int.beneva.ca",
+      "command": "ssh",
+      "args": [
+        "-p",
+        "2222",
+        "-i",
+        "/home/nizar/.ssh/id_rsa_wsl",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "nizar@192.168.2.12",
+        "export PATH=/home/nizar/.local/bin:$PATH && JIRA_URL=https://jira.int.beneva.ca JIRA_SSL_VERIFY=false JIRA_PERSONAL_TOKEN=$SSH-CSBEN-JIRA_PERSONAL_TOKEN_CSBEN CONFLUENCE_URL=https://confluence.int.beneva.ca CONFLUENCE_SSL_VERIFY=false CONFLUENCE_PERSONAL_TOKEN=$SSH-CSBEN-CONFLUENCE_PERSONAL_TOKEN_CSBEN READ_ONLY_MODE=false TOOLSETS=all uvx mcp-atlassian"
+      ],
+      "env": {},
+      "disabled": true
+    },
+    "ssh-csben-jenkins": {
+      "description": "CSBEN Jenkins CI/CD server (READ-ONLY) via SSH to csben WSL. Use to list jobs/pipelines, check build status, get build logs, view build history on jenkins.ssqti.ca. NO write operations.",
+      "command": "ssh",
+      "args": [
+        "-p",
+        "2222",
+        "-i",
+        "/home/nizar/.ssh/id_rsa_wsl",
+        "-o",
+        "StrictHostKeyChecking=no",
+        "nizar@192.168.2.12",
+        "export PATH=/home/nizar/.local/bin:$PATH && mcp-jenkins --jenkins-url https://jenkins.ssqti.ca/ --jenkins-username $SSH_CSBEN_JENKINS_USERNAME --jenkins-password $SSH_CSBEN_JENKINS_PASSWORD --read-only"
+      ],
+      "env": {},
+      "disabled": true
+    },
+    "claude-cli": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://192.168.2.56:3108/mcp",
+        "--allow-http"
+      ],
+      "disabled": true,
+      "_original": {
+        "command": "python",
+        "args": [
+          "/home/nizar/.kiro/wrappers/claude_cli_wrapper.py"
+        ]
+      }
+    },
+    "remote.awslabs.bedrock-kb-retrieval-mcp-server": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "http://192.168.2.56:3213/mcp",
+        "--allow-http"
+      ],
+      "env": {
+        "AWS_PROFILE": "csna-operations-sso-828",
+        "AWS_REGION": "ca-central-1",
+        "FASTMCP_LOG_LEVEL": "ERROR",
+        "KB_INCLUSION_TAG_KEY": "optional-tag-key-to-filter-kbs",
+        "BEDROCK_KB_RERANKING_ENABLED": "false"
+      },
+      "disabled": true,
+      "autoApprove": [],
+      "_original": {
+        "command": "uvx",
+        "args": [
+          "awslabs.bedrock-kb-retrieval-mcp-server@latest"
+        ]
+      }
+    },
+    "youtube-transcript": {
+      "description": "DEPRECATED \u2014 replaced by video-transcriber-mcp (multi-platform + Whisper). YouTube transcript extraction only.",
+      "command": "uvx",
+      "args": [
+        "--from",
+        "git+https://github.com/jkawamoto/mcp-youtube-transcript",
+        "mcp-youtube-transcript"
+      ],
+      "disabled": true
     }
   },
   "tools": [

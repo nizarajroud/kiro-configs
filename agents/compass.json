@@ -104,6 +104,94 @@
         "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
       },
       "disabled": false
+    },
+    "ticktick": {
+      "description": "TickTick task management (read+write). Use this to manage personal tasks, projects, habits, tags, focus stats, and kanban boards. Supports: create/update/complete/delete tasks, list projects, query tasks by date/priority/tag, manage habits and check-ins, get focus stats, batch operations, and saved query presets.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "notebooklm": {
+      "description": "Google NotebookLM MCP server. Use this to manage NotebookLM notebooks: list, create, delete notebooks; add sources (URLs, text, Google Drive, YouTube); query notebooks with AI for analysis and summaries; generate content (audio podcasts, videos, slides, infographics, mind maps, flashcards); download artifacts; share notebooks; sync Drive sources; batch operations; cross-notebook queries; and web/Drive research with automatic source import.",
+      "command": "notebooklm-mcp",
+      "args": [],
+      "disabled": false
+    },
+    "markitdown": {
+      "description": "Convert any document to Markdown for reading. Supports Word (.docx), Excel (.xlsx/.xls), PDF, PowerPoint (.pptx), HTML, images, and more. Use convert_to_markdown with a file:// URI to extract document contents as Markdown.",
+      "command": "/home/nizar/.markitdown-mcp/bin/markitdown-mcp",
+      "args": [],
+      "disabled": false,
+      "locked": false
+    },
+    "pdf-reader": {
+      "command": "npx",
+      "args": [
+        "@sylphx/pdf-reader-mcp"
+      ],
+      "disabled": false,
+      "autoApprove": []
+    },
+    "secondhand-mcp": {
+      "description": "Search secondhand marketplaces (Facebook Marketplace, eBay, Depop, Poshmark) for used items. Use when user asks to find articles, meubles, electronics on Facebook Marketplace or other used-goods platforms.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/secondhand_wrapper.py"
+      ],
+      "env": {
+        "MARKETPLACES": "facebook"
+      },
+      "disabled": false
+    },
+    "google-maps": {
+      "description": "Google Maps Grounding Lite \u2014 search places (restaurants, clinics, schools), compute routes (driving/walking), and lookup weather for any location. Use when user asks about nearby places, directions, or location-based queries.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/google_maps_wrapper.py"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "perplexity": {
+      "description": "Real-time web search, reasoning, and deep research via Perplexity Sonar models. Tools: perplexity_search, perplexity_ask, perplexity_research, perplexity_reason.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/perplexity_wrapper.py"
+      ],
+      "disabled": true,
+      "locked": false
+    },
+    "xpoz-mcp": {
+      "description": "Search Twitter, Instagram, Reddit & TikTok \u2014 1.5B+ posts indexed. Social intelligence, lead gen, brand monitoring.",
+      "type": "streamable-http",
+      "url": "https://mcp.xpoz.ai/mcp",
+      "headers": {
+        "Authorization": "Bearer K3GLwnXKFHMmyHI4IY36XVDGlKuBcfUjmA2PqCdRcHFdvvEdxe72WlMewXX4xCCdgNHWZck"
+      },
+      "disabled": true
+    },
+    "apify-mcp": {
+      "description": "Apify platform \u2014 extract data from social media, search engines, maps, e-commerce sites using 1000+ ready-made Actors. Use for web scraping, data extraction, and automation at scale.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://mcp.apify.com?token=${APIFY_TOKEN}"
+      ],
+      "disabled": true
+    },
+    "markdown2pdf": {
+      "description": "Converts Markdown content to PDF files. Supports headers, bold/italic, lists, tables, code blocks with syntax highlighting, images (local and remote), task lists, blockquotes, links, and Mermaid diagrams. Does not support LaTeX math. PDFs are saved to the configured M2P_OUTPUT_DIR. Use the create_pdf_from_markdown tool with a markdown string and an output filename.",
+      "command": "node",
+      "args": [
+        "/home/nizar/.npm-global/lib/node_modules/markdown2pdf-mcp/build/index.js"
+      ],
+      "env": {
+        "M2P_OUTPUT_DIR": "/home/nizar/workspace/assets/markdown2pdf-output"
+      },
+      "disabled": true
     }
   },
   "tools": [
