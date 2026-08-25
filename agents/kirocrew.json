@@ -1,8 +1,112 @@
 {
+  "name": "kirocrew",
+  "description": "Autonomous personal AI agent \u2014 schedules recurring tasks, spawns parallel workers, learns from corrections, and operates independently via the dashboard, CLI, and messaging channels",
+  "model": "auto",
+  "tools": [
+    "execute_bash",
+    "fs_read",
+    "fs_write",
+    "code",
+    "grep",
+    "glob",
+    "web_fetch",
+    "web_search",
+    "introspect",
+    "session",
+    "report",
+    "tool_search",
+    "@kirocrew-cron",
+    "@kirocrew-core",
+    "@kirocrew-computer",
+    "@time",
+    "@notion-workspace",
+    "@github",
+    "@sequential-thinking",
+    "@bookmarks",
+    "@fetch",
+    "@remote.aws-knowledge",
+    "@firecrawl",
+    "@mcp-image-recognition",
+    "@agentcore-memory",
+    "@docmost"
+  ],
+  "allowedTools": [
+    "web_fetch",
+    "web_search",
+    "introspect",
+    "session",
+    "report",
+    "@kirocrew-cron/cron_list",
+    "@kirocrew-cron/cron_pause",
+    "@kirocrew-cron/cron_resume",
+    "@kirocrew-cron/cron_trigger",
+    "@kirocrew-cron/cron_remove",
+    "@kirocrew-cron/cron_remove_all",
+    "@kirocrew-core",
+    "@time",
+    "@notion-workspace",
+    "@github",
+    "@sequential-thinking",
+    "@bookmarks",
+    "@fetch",
+    "@remote.aws-knowledge",
+    "@firecrawl",
+    "@mcp-image-recognition",
+    "@agentcore-memory",
+    "@kirocrew-cron",
+    "@docmost"
+  ],
+  "resources": [
+    "file://.kiro/steering/**/*.md"
+  ],
+  "includeMcpJson": false,
+  "hooks": {
+    "postToolUse": [
+      {
+        "matcher": "execute_bash",
+        "command": "{ echo \"$(date -u +%Y-%m-%dT%H:%M:%SZ) BASH:\"; cat; echo; } >> \"${KIROCREW_HOME:-$HOME/.kiro/crew}/audit.log\""
+      }
+    ],
+    "userPromptSubmit": [
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/cache-prompt.sh"
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/check-secrets.sh"
+      },
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/flywheel-log.sh"
+      },
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/guard-destructive-commands.sh"
+      },
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/load-preferences.sh"
+      },
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/store-conversation.sh"
+      }
+    ]
+  },
+  "prompt": "file:///home/nizar/KiroCrew/src/kiro_crew/config/prompt.md",
   "mcpServers": {
+    "kirocrew-cron": {
+      "command": "/home/nizar/KiroCrew/.venv/bin/kirocrew",
+      "args": [
+        "mcp-cron"
+      ]
+    },
+    "kirocrew-core": {
+      "command": "/home/nizar/KiroCrew/.venv/bin/kirocrew",
+      "args": [
+        "mcp-core"
+      ]
+    },
     "figma": {
-      "description": "Figma MCP — generate diagrams (FigJam), write to canvas, extract design context, generate code from designs. Skill: figma-generate-diagram.",
-      "command": "npx",
+      "description": "Figma MCP \u2014 generate diagrams (FigJam), write to canvas, extract design context, generate code from designs. Skill: figma-generate-diagram.",
+      "command": "/usr/bin/npx",
       "args": [
         "-y",
         "mcp-remote",
@@ -13,30 +117,28 @@
       "locked": false
     },
     "time": {
-      "command": "uvx",
+      "command": "/home/nizar/.local/bin/uvx",
       "args": [
         "--with",
         "mcp<1.27",
         "mcp-server-time"
       ],
-      "locked": false,
-      "disabled": false
+      "locked": false
     },
     "notion-workspace": {
       "description": "Notion workspace MCP (local fork with extended block types: headings, annotations, image support).",
-      "command": "python3",
+      "command": "/home/nizar/KiroCrew/.venv/bin/python3",
       "args": [
         "/home/nizar/.kiro/wrappers/notion_wrapper.py"
       ],
       "env": {
         "GITHUB_REPO": "nizarajroud/notion-images"
       },
-      "disabled": false,
       "locked": false
     },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
-      "command": "python3",
+      "command": "/home/nizar/KiroCrew/.venv/bin/python3",
       "args": [
         "/home/nizar/.kiro/wrappers/github_wrapper.py"
       ],
@@ -44,51 +146,46 @@
         "GITHUB_READ_ONLY": "0",
         "GITHUB_TOOLSETS": "all"
       },
-      "disabled": false,
       "locked": false
     },
     "sequential-thinking": {
-      "command": "npx",
+      "command": "/usr/bin/npx",
       "args": [
         "-y",
         "@modelcontextprotocol/server-sequential-thinking"
       ],
-      "locked": false,
-      "disabled": false
+      "locked": false
     },
     "bookmarks": {
-      "command": "python3",
+      "command": "/home/nizar/KiroCrew/.venv/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
       ],
-      "locked": false,
-      "disabled": false
+      "locked": false
     },
     "fetch": {
-      "command": "uvx",
+      "command": "/home/nizar/.local/bin/uvx",
       "args": [
         "--with",
         "mcp<1.27",
         "mcp-server-fetch"
       ],
-      "locked": false,
-      "disabled": false
+      "locked": false
     },
     "remote.aws-knowledge": {
       "description": "AWS Agent Toolkit MCP Server (official). Full AWS API coverage (300+ services), sandboxed script execution, real-time documentation search, skills discovery. Pin version for stability.",
-      "command": "uvx",
+      "command": "/home/nizar/.local/bin/uvx",
       "args": [
         "mcp-proxy-for-aws@1.6.3",
         "https://aws-mcp.us-east-1.api.aws/mcp",
         "--metadata",
         "AWS_REGION=ca-central-1"
       ],
-      "disabled": false,
       "locked": false
     },
     "alithya-knowledge-rag": {
       "description": "Personal knowledge base (remote RAG server on PC Alithya). Use this for ALL personal/private information: personal documents, notes, private files, financial records, procedures, and any data stored in Dropbox/AAA_PRIVATE_LIFE. Supports PDF, Markdown, Word, Excel, PowerPoint, and code files. Use search_knowledge for queries.",
-      "command": "npx",
+      "command": "/usr/bin/npx",
       "args": [
         "mcp-remote",
         "http://192.168.2.56:8080/mcp",
@@ -98,20 +195,19 @@
     },
     "cao-mcp-server": {
       "type": "stdio",
-      "command": "cao-mcp-server",
+      "command": "/home/nizar/.local/bin/cao-mcp-server",
       "disabled": true
     },
     "firecrawl": {
       "description": "Web scraping, crawling, and search MCP server. Use this to scrape single pages, crawl entire sites, search the web, map site URLs, extract structured data from web pages, and perform autonomous web research. Supports JSON extraction with schemas, batch scraping, and interactive page navigation. Ideal for parsing municipal sites, extracting registration info, dates, locations from complex web pages.",
-      "command": "python3",
+      "command": "/home/nizar/KiroCrew/.venv/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
-      ],
-      "disabled": false
+      ]
     },
     "mural": {
       "description": "MURAL collaboration tool. Use this whenever the user mentions 'mural', 'MURAL', a mural board, or visual collaboration content. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54). Supports: listing workspaces/rooms/murals, reading all content from a mural (sticky notes, shapes, text, images), searching text inside murals, creating/updating/deleting sticky notes, and creating new murals.",
-      "command": "python3",
+      "command": "/home/nizar/KiroCrew/.venv/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
       ],
@@ -120,16 +216,15 @@
     },
     "mcp-image-recognition": {
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8766. Do NOT use for modifying or generating images.",
-      "command": "python3",
+      "command": "/home/nizar/KiroCrew/.venv/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
       ],
-      "disabled": false,
       "locked": false
     },
     "napkin-ai": {
       "description": "Generate professional infographics and visuals (mindmaps, flowcharts, timelines, comparisons) from text using Napkin AI. Use when user asks for visual diagrams, infographics, or visual representations of concepts.",
-      "command": "python3",
+      "command": "/home/nizar/KiroCrew/.venv/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/napkin_ai_wrapper.py"
       ],
@@ -138,7 +233,7 @@
     },
     "bitbucket-mcp": {
       "description": "Atlassian Bitbucket MCP. Manage repos, pull requests, pipelines, branches, and files on Bitbucket Cloud. Use when user asks about Bitbucket repositories or CI/CD pipelines.",
-      "command": "python3",
+      "command": "/home/nizar/KiroCrew/.venv/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bitbucket_wrapper.py"
       ],
@@ -147,7 +242,7 @@
     },
     "elevenlabs": {
       "description": "ElevenLabs Text-to-Speech MCP (official). Converts text to natural speech audio (MP3). Use when user asks to read a page aloud, generate audio from text, or create voice content. Supports French, English, Arabic, and 29+ languages. Voice cloning available on paid tiers.",
-      "command": "uvx",
+      "command": "/home/nizar/.local/bin/uvx",
       "args": [
         "elevenlabs-mcp"
       ],
@@ -172,8 +267,7 @@
         "PROJECT_ID": "",
         "FASTMCP_LOG_LEVEL": "WARNING"
       },
-      "description": "Bedrock AgentCore Memory — persistent cross-session semantic memory. Allows agents to store and retrieve conversation history across all sessions. Tools: search_conversation_history, store_conversation, list_sessions, get_direct_conversation_history, search_memories, get_memory_stats.",
-      "disabled": false
+      "description": "Bedrock AgentCore Memory \u2014 persistent cross-session semantic memory. Allows agents to store and retrieve conversation history across all sessions. Tools: search_conversation_history, store_conversation, list_sessions, get_direct_conversation_history, search_memories, get_memory_stats."
     },
     "docmost": {
       "command": "/home/nizar/HomeWspce/docmost-mcp/venv/bin/python",
@@ -182,8 +276,42 @@
       ],
       "env": {
         "DOCMOST_MCP_CONFIG": "/home/nizar/HomeWspce/docmost-mcp/config.json"
-      },
-      "disabled": false
+      }
     }
+  },
+  "permissions": {
+    "rules": [
+      {
+        "capability": "mcp",
+        "match": [
+          "agentcore-memory/*",
+          "bookmarks/*",
+          "fetch/*",
+          "firecrawl/*",
+          "github/*",
+          "kirocrew-core/*",
+          "kirocrew-cron/cron_list",
+          "kirocrew-cron/cron_pause",
+          "kirocrew-cron/cron_remove",
+          "kirocrew-cron/cron_remove_all",
+          "kirocrew-cron/cron_resume",
+          "kirocrew-cron/cron_trigger",
+          "mcp-image-recognition/*",
+          "notion-workspace/*",
+          "remote.aws-knowledge/*",
+          "sequential-thinking/*",
+          "time/*"
+        ],
+        "effect": "allow"
+      },
+      {
+        "capability": "web_fetch",
+        "effect": "allow"
+      },
+      {
+        "capability": "web_search",
+        "effect": "allow"
+      }
+    ]
   }
 }

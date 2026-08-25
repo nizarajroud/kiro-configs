@@ -45,26 +45,22 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | **exp2** | Travail technique/professionnel | AWS, infrastructure, code, CI/CD, diagrammes, Terraform, EKS, projets clients |
 | **compass** | Vie personnelle | Famille, finances, déménagement, santé, admin, abonnements, identité |
 | **forge** | Outillage et découverte | Installer un serveur MCP, découvrir un outil, expérimenter, documenter |
-| **connect1** | Communication externe et social | LinkedIn, WhatsApp, Google Maps, Video transcription (TikTok, YouTube, Instagram, etc.), SSH remote |
-| **connect2** | Communication directe et marketplace | Telegram, Gmail, Perplexity (web search), Secondhand marketplaces, Apify (web data extraction) |
-| **connect3** | Social intelligence | Twitter/X, Instagram, Reddit, TikTok (recherche + monitoring) |
+| **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
+| **sandbox** | Test isolé de serveurs MCP | Banc d'essai — 1 MCP temporaire à la fois, toujours vide par défaut |
 | **media1** | Génération/traitement media | TTS recording (audio to file), future: video processing, image generation |
 
 ## MCPs cross-cutting (disponibles sur tous les agents domaine)
 
 | MCP                    | Description                                         | Agents                                          |
 |------------------------|-----------------------------------------------------|-------------------------------------------------|
-| `mcp-everything-search` | Recherche rapide de fichiers (plocate, /mnt/c/ + /home/) | it-supervisor, compass, exp2, forge, light |
-| `mcp-tts`              | Text-to-Speech (Google Gemini TTS, lecture audio)   | it-supervisor, compass, exp2, forge, light      |
-| **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
-| **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart, D2 |
-| **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
-| **data1** | Données et recherche | Airtable, NotebookLM, MarkItDown, PDF reader, TickTick |
-| **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
-| **dev2** | Dev tools (inactifs) | RAG local, Playwright, n8n, LZA, codebase-memory, Chrome DevTools — MCPs désactivés |
-| **customer1** | Client CSBEN/Beneva (GitHub, Jira, Jenkins) | Demande EXPLICITE uniquement — pas de spawn automatique |
-| **parking1** | MCPs garés (Bedrock, Claude CLI) | Activables quand PC Alithya + VPN disponibles |
-| **sandbox** | Test isolé de serveurs MCP | Banc d'essai — 1 MCP temporaire à la fois, toujours vide par défaut |
+| notion-workspace       | Pages & databases Notion                            | it-supervisor, compass, exp2, forge, light      |
+| github                 | Repos, PRs, issues                                  | it-supervisor, compass, exp2, forge, light      |
+| firecrawl              | Web scraping & search                               | it-supervisor, compass, exp2, forge, light      |
+| bookmarks              | Chrome & Edge bookmarks                             | it-supervisor, compass, exp2, forge, light      |
+| agentcore-memory       | Mémoire cross-session                               | it-supervisor, forge, light                     |
+| remote.aws-knowledge   | Documentation AWS                                   | it-supervisor, exp2, forge, light               |
+| mcp-image-recognition  | Analyse d'images (Bedrock)                          | it-supervisor, exp2, forge, light               |
+| sequential-thinking    | Raisonnement structuré                              | it-supervisor, forge, light                     |
 
 ## Matrice de redirection
 
@@ -72,60 +68,12 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 
 | Tu es... | La requête concerne... | Délègue à... |
 |----------|----------------------|-----------------|
-| exp2 | LinkedIn, WhatsApp, Maps, Video transcription, SSH | **connect1** |
-| exp2 | Telegram, Gmail, Marketplace, recherche web | **connect2** |
 | exp2 | Famille, finances, santé, déménagement | **compass** |
-| **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
-| **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart, D2 |
-| **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
-| exp2 | Airtable, NotebookLM, documents, tâches | **data1** |
 | exp2 | Installation MCP, recherche d'outil | **forge** |
 | compass | Code, AWS, infrastructure, projet pro | **exp2** |
-| compass | LinkedIn, WhatsApp, Maps, Video transcription, SSH | **connect1** |
-| compass | Telegram, Gmail, Marketplace, recherche web | **connect2** |
-| **dev1** | Développement et IaC | GitLab, GitHub docs, Context7, Terraform, Graphistry |
-| **diagram1** | Visualisation et diagrammes | AWS diagrams, Mermaid, Excalidraw, RTL visuals, QuickChart, D2 |
-| **aws1** | Infrastructure cloud AWS | AWS pricing, EKS/K8s, AWS API (read-only), AWS bridge |
-| compass | Airtable, NotebookLM, documents, tâches | **data1** |
 | compass | Installation MCP | **forge** |
 | forge | Code, AWS, projet client | **exp2** |
 | forge | Vie personnelle | **compass** |
-| forge | LinkedIn, WhatsApp, Maps, SSH | **connect1** |
-| forge | Telegram, Gmail, Marketplace | **connect2** |
-| connect1 | Code, AWS, technique | **exp2** |
-| connect1 | Vie personnelle | **compass** |
-| connect1 | Telegram, Gmail, Marketplace | **connect2** |
-| connect1 | Installation MCP | **forge** |
-| connect2 | Code, AWS, technique | **exp2** |
-| connect2 | Vie personnelle | **compass** |
-| connect2 | LinkedIn, WhatsApp, Maps, Video transcription, SSH | **connect1** |
-| connect2 | Installation MCP | **forge** |
-| data1 | Code, AWS, technique | **exp2** |
-| data1 | Vie personnelle | **compass** |
-| data1 | LinkedIn, WhatsApp, Maps, Video transcription, SSH | **connect1** |
-| data1 | Telegram, Gmail, Marketplace | **connect2** |
-| data1 | Installation MCP | **forge** |
-| aws1 | Code, développement, IaC | **dev1** |
-| aws1 | Vie personnelle | **compass** |
-| aws1 | LinkedIn, WhatsApp, Maps, Video transcription, SSH | **connect1** |
-| aws1 | Telegram, Gmail, Marketplace | **connect2** |
-| aws1 | Airtable, NotebookLM, documents, tâches | **data1** |
-| aws1 | Installation MCP | **forge** |
-| diagram1 | Code, AWS, technique | **exp2** |
-| diagram1 | Vie personnelle | **compass** |
-| diagram1 | LinkedIn, WhatsApp, Maps, Video transcription, SSH | **connect1** |
-| diagram1 | Telegram, Gmail, Marketplace | **connect2** |
-| diagram1 | Airtable, NotebookLM, documents, tâches | **data1** |
-| diagram1 | Installation MCP | **forge** |
-| dev1 | AWS, pricing, EKS | **aws1** |
-| dev1 | Vie personnelle | **compass** |
-| dev1 | LinkedIn, WhatsApp, Maps, Video transcription, SSH | **connect1** |
-| dev1 | Telegram, Gmail, Marketplace | **connect2** |
-| dev1 | Airtable, NotebookLM, documents, tâches | **data1** |
-| dev1 | Installation MCP | **forge** |
-| exp2 | Enregistrer audio, TTS to file, générer MP3 | **media1** |
-| compass | Enregistrer audio, TTS to file, générer MP3 | **media1** |
-| forge | Enregistrer audio, TTS to file, générer MP3 | **media1** |
 
 ## Exemple de délégation
 
