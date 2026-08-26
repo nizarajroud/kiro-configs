@@ -39,32 +39,32 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 
 ## Agents actifs
 
-| Agent | Domaine | Quand l'utiliser |
-|-------|---------|-----------------|
-| **it-supervisor** | Tout (orchestration) | Agent par défaut — route vers les autres, gère la config |
-| **exp2** | Travail technique/professionnel | AWS, infrastructure, code, CI/CD, diagrammes, Terraform, EKS, projets clients |
-| **compass** | Vie personnelle | Famille, finances, déménagement, santé, admin, abonnements, identité |
-| **forge** | Outillage et découverte | Installer un serveur MCP, découvrir un outil, expérimenter, documenter |
-| **light** | Usage léger et rapide | Recherches rapides, mémoire, docs, GitHub — démarrage ultra-rapide |
-| **sandbox** | Test isolé de serveurs MCP | Banc d'essai — 1 MCP temporaire à la fois, toujours vide par défaut |
-| **media1** | Génération/traitement media | TTS recording (audio to file), future: video processing, image generation |
+| Agent | Domaine | MCPs | Quand l'utiliser |
+|-------|---------|------|-----------------|
+| **it-supervisor** | Orchestration globale | 13 actifs | Agent par défaut — route, gère la config, vue d'ensemble |
+| **exp2** | Travail technique | 24 actifs + 18 désactivés | AWS, code, CI/CD, Terraform, diagrammes, LinkedIn, WhatsApp, SSH |
+| **compass** | Vie personnelle | 14 actifs + 6 désactivés | Famille, finances, santé, admin, Gmail, Telegram, Marketplace |
+| **forge** | Outillage | 13 actifs | Installer un MCP, découvrir un outil, expérimenter, documenter |
+| **light** | Usage rapide | 13 actifs | Recherches rapides, mémoire, docs — démarrage léger |
+| **media1** | Génération media | 1 actif | TTS, audio, future: video/image |
+| **sandbox** | Test isolé | 8+9 | Banc d'essai MCP — préparé par Forge avant test |
 
-## MCPs cross-cutting (disponibles sur tous les agents domaine)
+## MCPs cross-cutting (disponibles sur tous les agents domaine via global)
 
-| MCP                    | Description                                         | Agents                                          |
-|------------------------|-----------------------------------------------------|-------------------------------------------------|
-| notion-workspace       | Pages & databases Notion                            | it-supervisor, compass, exp2, forge, light      |
-| github                 | Repos, PRs, issues                                  | it-supervisor, compass, exp2, forge, light      |
-| firecrawl              | Web scraping & search                               | it-supervisor, compass, exp2, forge, light      |
-| bookmarks              | Chrome & Edge bookmarks                             | it-supervisor, compass, exp2, forge, light      |
-| agentcore-memory       | Mémoire cross-session                               | it-supervisor, forge, light                     |
-| remote.aws-knowledge   | Documentation AWS                                   | it-supervisor, exp2, forge, light               |
-| mcp-image-recognition  | Analyse d'images (Bedrock)                          | it-supervisor, exp2, forge, light               |
-| sequential-thinking    | Raisonnement structuré                              | it-supervisor, forge, light                     |
+| MCP | Description |
+|-----|-------------|
+| notion-workspace | Pages & databases Notion |
+| github | Repos, PRs, issues |
+| firecrawl | Web scraping & search |
+| bookmarks | Chrome & Edge bookmarks |
+| agentcore-memory | Mémoire cross-session |
+| remote.aws-knowledge | Documentation AWS |
+| mcp-image-recognition | Analyse d'images |
+| sequential-thinking | Raisonnement structuré |
+| time | Heure & timezone |
+| fetch | Téléchargement URLs |
 
 ## Matrice de redirection
-
-Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 
 | Tu es... | La requête concerne... | Délègue à... |
 |----------|----------------------|-----------------|
@@ -75,23 +75,11 @@ Si tu reçois une requête hors de ton domaine, délègue via `use_subagent` :
 | forge | Code, AWS, projet client | **exp2** |
 | forge | Vie personnelle | **compass** |
 
-## Exemple de délégation
+## MCPs désactivés (toggle via `qq --mcp`)
 
-Agent exp2 reçoit "montre-moi mes posts LinkedIn récents" :
-
-```json
-{
-  "command": "InvokeSubagents",
-  "content": {
-    "subagents": [{
-      "query": "Liste les 3 derniers posts LinkedIn de l'utilisateur",
-      "agent_name": "connect1"
-    }]
-  }
-}
-```
-
-→ connect1 démarre avec ses MCPs (linkedin-mcp), exécute la requête, retourne le résultat à exp2, puis est détruit.
+Les agents domaine contiennent aussi des MCPs désactivés — activables à la demande sans modifier les fichiers manuellement :
+- **Compass** : perplexity, xpoz-mcp, apify-mcp, mcp-canada, architecture-mcp, markdown2pdf
+- **Exp2** : ssh-csben-*, bedrock-*, chrome-tools, codebase-memory, playwright, n8n, idea, lza, airtable, image-annotator, youtube-transcript
 
 ## Mise à jour
 
