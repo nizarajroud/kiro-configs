@@ -1063,3 +1063,39 @@ Avant d'envoyer une réponse, l'agent DOIT scanner sa propre sortie et vérifier
 - [ ] **Visuel tunisien demandé ?** → Utiliser `rtl-visual-mcp` (JAMAIS Excalidraw/Mermaid pour du RTL arabe)
 
 **Cette checklist est NON-NÉGOCIABLE.** Si une condition est remplie et l'action correspondante n'est pas faite, la réponse est INCOMPLÈTE.
+
+
+---
+
+## Règle d'or : Inventaires → Airtable est la source de vérité
+
+**Déclencheur** : Toute question, confirmation ou action concernant :
+- L'inventaire des équipements de la maison (thermopompe, climatiseur, électroménagers, domotique, sécurité, etc.)
+- L'inventaire des outils de maintenance (tondeuse, perceuse, pelles, etc.)
+- Un accessoire, une pièce ou un consommable lié à un équipement de l'inventaire (ex: filtre de climatiseur, ampoule, batterie de perceuse, télécommande, serrure)
+- La confirmation d'un achat d'un item en relation avec l'inventaire
+
+**Action OBLIGATOIRE** : Consulter DIRECTEMENT la table Airtable comme source de vérité, AVANT toute autre source (Notion, mémoire, etc.).
+
+**Table de référence** :
+- **Base** : Personal Life (`appt4WObx12eJVPvK`)
+- **Table** : Inventaire équipements (`tblX7FALSiSXiMv2S`)
+- **URL** : https://airtable.com/appt4WObx12eJVPvK/tblX7FALSiSXiMv2S
+- **Champs** : Équipement, Catégorie, Marque / Modèle, Emplacement, Consigne / Configuration, Fonctionnement / Notes, Année / Date d'acquisition, Provenance / Achat, Prix payé, Statut, Entretien requis, Fréquence entretien, Manuel / Lien, Tâche maintenance liée
+
+**Catégories** : CVC / Climatisation · Électroménagers · Sécurité · Serrures & Quincaillerie · Électronique / Domotique · Éclairage · Portes & Ouvertures · Outils de maintenance · Extérieur / Terrain · Mobilier / Rangement · Plomberie
+
+**Comportement** :
+1. **Question sur un équipement/outil** → lire l'enregistrement correspondant dans Airtable (`search_records` ou `list_records`) et répondre avec les infos (marque, modèle, emplacement, consigne, entretien).
+2. **Achat confirmé d'un nouvel équipement/outil** → créer l'enregistrement dans Airtable avec la bonne catégorie + toutes les infos connues.
+3. **Accessoire/pièce lié** (ex: filtre du Danby, ampoule E26) → retrouver l'équipement parent dans Airtable pour donner les specs compatibles (modèle, dimensions, type).
+4. **Notion** : ne contient plus qu'un lien vers Airtable. Ne PAS chercher dans Notion pour l'inventaire — aller directement à Airtable.
+
+**Règles strictes** :
+- ✅ TOUJOURS Airtable en premier pour toute question d'inventaire équipements/outils
+- ✅ TOUJOURS créer/mettre à jour l'enregistrement Airtable lors d'un achat confirmé lié à l'inventaire
+- ❌ JAMAIS répondre de mémoire seule pour une info d'inventaire sans vérifier Airtable
+- ❌ JAMAIS chercher l'inventaire dans Notion (obsolète — juste un lien)
+
+**Ajout à la checklist de sortie** :
+- [ ] **Question/achat lié à l'inventaire équipements ou outils ?** → Consulter/mettre à jour la table Airtable `tblX7FALSiSXiMv2S` (source de vérité)
