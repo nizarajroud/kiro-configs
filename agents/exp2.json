@@ -19,7 +19,7 @@
       "args": [
         "mcp-server-everything-search"
       ],
-      "disabled": false
+      "disabled": true
     },
     "tts-live": {
       "description": "Text-to-Speech LIVE \u2014 reads text aloud immediately via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
@@ -30,7 +30,7 @@
         "MCP_TTS_SUPPRESS_SPEAKING_OUTPUT": "true",
         "MCP_TTS_OUTPUT_FORMAT": "${MCP_TTS_OUTPUT_FORMAT}"
       },
-      "disabled": false
+      "disabled": true
     },
     "d2-mcp": {
       "description": "D2 diagram language \u2014 compile, validate, and render diagrams (SVG, PNG, ASCII). Sketch mode, themes. Always saves output files.",
@@ -63,7 +63,7 @@
       "env": {
         "MARKETPLACES": "facebook"
       },
-      "disabled": false
+      "disabled": true
     },
     "image-annotator": {
       "description": "Annotate screenshots/images with markers, arrows, callouts, text labels, blur, spotlight.",
@@ -71,7 +71,7 @@
       "args": [
         "/home/nizar/HomeWspce/image-annotator-mcp/server.js"
       ],
-      "disabled": true
+      "disabled": false
     },
     "bedrock-kb-retrieval": {
       "description": "Bedrock Knowledge Base retrieval \u2014 RAG search across tagged KBs on account 026991214828 (ca-central-1).",
@@ -94,11 +94,10 @@
         "/home/nizar/.kiro/wrappers/bedrock_multi_project_wrapper.py"
       ],
       "env": {
-        "AGENT_ID": "4EBXLZQW3Q",
-        "AGENT_ALIAS_ID": "TSTALIASID",
+        "AWS_PROFILE": "csna-operations-sso-828",
         "AWS_REGION": "ca-central-1"
       },
-      "disabled": true,
+      "disabled": false,
       "priority": "standard"
     },
     "aws-pricing": {
@@ -110,7 +109,7 @@
       "env": {
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
-      "disabled": false
+      "disabled": true
     },
     "awslabs.aws-api-mcp-server": {
       "description": "AWS API MCP Server (READ-ONLY). Executes AWS CLI commands for inspecting and querying AWS resources across all services (EC2, S3, Bedrock Data Automation, Lambda, etc.). Restricted to read-only operations \u2014 no create, update, or delete allowed. Use this for any AWS API call not covered by other specialized MCP servers.",
@@ -145,14 +144,14 @@
         "mcp-remote",
         "https://gitlab.com/api/v4/mcp"
       ],
-      "disabled": false
+      "disabled": true
     },
     "git-mcp": {
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/gitmcp_wrapper.py"
       ],
-      "disabled": false
+      "disabled": true
     },
     "context7": {
       "description": "Live documentation lookup for any library, SDK, or framework. Use this to verify up-to-date API signatures, import paths, constructor conventions, and code examples before writing code. Fetches real-time docs from the source \u2014 never relies on training data.",
@@ -172,7 +171,7 @@
         "stdio",
         "--toolsets=registry"
       ],
-      "disabled": false
+      "disabled": true
     },
     "tfmcp": {
       "description": "Terraform MCP operator \u2014 execute terraform init/plan/apply/destroy, generate dependency graphs (DOT format), analyze state/drift, manage workspaces. Chain with quickchart-mcp for visual rendering of graphs. Use when asked to operate Terraform or visualize resource dependencies.",
@@ -187,7 +186,7 @@
         "TFMCP_MAX_RESOURCES": "50",
         "TFMCP_AUDIT_ENABLED": "true"
       },
-      "disabled": false
+      "disabled": true
     },
     "graphistry-mcp": {
       "description": "GPU-accelerated interactive graph visualization via Graphistry. Takes edge/node data and produces an interactive web visualization (zoom, pan, filter, search). Use for LARGE dependency graphs (70+ nodes) where static PNG is unreadable. Chain: tfmcp (graph data) \u2192 graphistry-mcp (interactive web view).",
@@ -195,7 +194,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/graphistry_wrapper.py"
       ],
-      "disabled": false
+      "disabled": true
     },
     "awslabs.eks-mcp-server": {
       "description": "Amazon EKS MCP Server (READ-ONLY). Use this to inspect EKS clusters and Kubernetes resources (pods, deployments, services), retrieve pod logs, Kubernetes events, CloudWatch logs/metrics, troubleshoot issues, and list resources. Do NOT use for creating, updating, or deleting resources.",
@@ -203,7 +202,7 @@
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/eks_mcp_wrapper.py"
       ],
-      "disabled": false
+      "disabled": true
     },
     "remote.bridge.aws-mcp": {
       "command": "uvx",
@@ -229,7 +228,7 @@
         "FASTMCP_LOG_LEVEL": "ERROR"
       },
       "autoApprove": [],
-      "disabled": false
+      "disabled": true
     },
     "mcp-mermaid": {
       "description": "Mermaid diagram generator. Converts Mermaid markdown syntax to PNG/SVG images. Use this to generate flowcharts, sequence diagrams, Gantt charts, ER diagrams, state diagrams, class diagrams, pie charts, and more from text descriptions.",
@@ -238,7 +237,7 @@
         "-y",
         "mcp-mermaid"
       ],
-      "disabled": false
+      "disabled": true
     },
     "rtl-visual-mcp": {
       "description": "Generate PNG visuals with proper RTL Arabic/English bidirectional text rendering. Use when user asks for a visual Tunisian explanation or any diagram containing Arabic text mixed with English technical terms.",
@@ -246,7 +245,7 @@
       "args": [
         "/home/nizar/HomeWspce/rtl-visual-mcp/server.py"
       ],
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "quickchart-mcp": {
@@ -255,7 +254,7 @@
       "args": [
         "/home/nizar/HomeWspce/quickchart-mcp-server/dist/index.js"
       ],
-      "disabled": false
+      "disabled": true
     },
     "linkedin-mcp": {
       "description": "Access LinkedIn data: profiles, job search, company info, messages, feed, saved posts, people search. Use when user asks about LinkedIn profiles, jobs, companies, or networking.",
@@ -267,7 +266,7 @@
       "env": {
         "PYTHONPATH": "/home/nizar/HomeWspce/linkedin-mcp-fork"
       },
-      "disabled": false,
+      "disabled": true,
       "locked": false
     },
     "whatsapp": {
@@ -279,7 +278,7 @@
         "run",
         "main.py"
       ],
-      "disabled": false
+      "disabled": true
     },
     "video-transcriber-mcp": {
       "description": "Transcribe videos from 1000+ platforms (TikTok, YouTube, Instagram, Twitter/X, Twitch, Vimeo, etc.) using local Whisper. Input = URL, Output = full transcript. Replaces youtube-transcript.",
@@ -288,7 +287,7 @@
       "env": {
         "RUST_LOG": "info"
       },
-      "disabled": false
+      "disabled": true
     },
     "ssh-mcp-server": {
       "description": "SSH remote server management via ~/.ssh/config host aliases. Use this to execute commands on remote hosts, upload/download files, and list configured SSH servers. Supports bastion hosts, SOCKS proxy, 2FA, and multi-connection configs.",
@@ -445,14 +444,14 @@
         "/home/nizar/.ssh/id_rsa_wsl",
         "-o",
         "StrictHostKeyChecking=no",
-        "nizar@192.168.2.12",
+        "nizar@192.168.5.15",
         "export PATH=/home/nizar/.local/bin:/home/nizar/.nvm/versions/node/v22.16.0/bin:$PATH && GITHUB_PERSONAL_ACCESS_TOKEN=$SSH-CSBEN-GITHUB_PERSONAL_ACCESS_TOKEN_CSBEN GITHUB_READ_ONLY=1 GITHUB_TOOLSETS=all npx -y @modelcontextprotocol/server-github"
       ],
       "env": {},
-      "disabled": true
+      "disabled": false
     },
     "ssh-csben-atlassian": {
-      "description": "READ-ONLY access to Jira and Confluence (Beneva) via SSH to csben WSL. Use to search/retrieve Jira issues, sprints, boards, worklogs; and Confluence pages, spaces. Jira: jira.int.beneva.ca | Confluence: confluence.int.beneva.ca",
+      "description": "Jira/Confluence (Beneva) via SSH vers WSL Beneva puis python.exe Windows (contexte VPN). Confluence: confluence.int.beneva.ca | Jira: jira.int.beneva.ca. IMPORTANT: etablir la connexion VPN OFF puis activer le VPN (la session SSH survit).",
       "command": "ssh",
       "args": [
         "-p",
@@ -461,11 +460,15 @@
         "/home/nizar/.ssh/id_rsa_wsl",
         "-o",
         "StrictHostKeyChecking=no",
-        "nizar@192.168.2.12",
-        "export PATH=/home/nizar/.local/bin:$PATH && JIRA_URL=https://jira.int.beneva.ca JIRA_SSL_VERIFY=false JIRA_PERSONAL_TOKEN=$SSH-CSBEN-JIRA_PERSONAL_TOKEN_CSBEN CONFLUENCE_URL=https://confluence.int.beneva.ca CONFLUENCE_SSL_VERIFY=false CONFLUENCE_PERSONAL_TOKEN=$SSH-CSBEN-CONFLUENCE_PERSONAL_TOKEN_CSBEN READ_ONLY_MODE=false TOOLSETS=all uvx mcp-atlassian"
+        "-o",
+        "ServerAliveInterval=30",
+        "-o",
+        "ServerAliveCountMax=6",
+        "nizar@192.168.5.15",
+        "set -a; . /home/nizar/.kiro/.env 2>/dev/null; set +a; /mnt/c/Users/ben0711b/CSBENEVA/python312/python.exe -c \"from mcp_atlassian import main; main()\" --confluence-url https://confluence.int.beneva.ca --confluence-personal-token \"$CONFLUENCE_CSBEN_PAT\" --no-confluence-ssl-verify --jira-url https://jira.int.beneva.ca --jira-personal-token \"$JIRA_CSBEN_PAT\" --no-jira-ssl-verify --toolsets all"
       ],
       "env": {},
-      "disabled": true
+      "disabled": false
     },
     "ssh-csben-jenkins": {
       "description": "CSBEN Jenkins CI/CD server (READ-ONLY) via SSH to csben WSL. Use to list jobs/pipelines, check build status, get build logs, view build history on jenkins.ssqti.ca. NO write operations.",
@@ -477,7 +480,7 @@
         "/home/nizar/.ssh/id_rsa_wsl",
         "-o",
         "StrictHostKeyChecking=no",
-        "nizar@192.168.2.12",
+        "nizar@192.168.5.15",
         "export PATH=/home/nizar/.local/bin:$PATH && mcp-jenkins --jenkins-url https://jenkins.ssqti.ca/ --jenkins-username $SSH_CSBEN_JENKINS_USERNAME --jenkins-password $SSH_CSBEN_JENKINS_PASSWORD --read-only"
       ],
       "env": {},
@@ -531,6 +534,24 @@
         "git+https://github.com/jkawamoto/mcp-youtube-transcript",
         "mcp-youtube-transcript"
       ],
+      "disabled": true
+    },
+    "bookmarks": {
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
+      ],
+      "locked": false,
+      "disabled": true
+    },
+    "docmost": {
+      "command": "/home/nizar/HomeWspce/docmost-mcp/venv/bin/python",
+      "args": [
+        "/home/nizar/HomeWspce/docmost-mcp/server.py"
+      ],
+      "env": {
+        "DOCMOST_MCP_CONFIG": "/home/nizar/HomeWspce/docmost-mcp/config.json"
+      },
       "disabled": true
     }
   },

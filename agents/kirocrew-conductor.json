@@ -1,0 +1,80 @@
+{
+  "name": "kirocrew-conductor",
+  "description": "Owns a long-horizon goal: decomposes it into work items, stands up a top-level session per item, patrols their state, and decides each next round. Never does the work itself.",
+  "model": "auto",
+  "tools": [
+    "execute_bash",
+    "fs_read",
+    "web_fetch",
+    "session",
+    "report",
+    "tool_search",
+    "@kirocrew-core",
+    "@kirocrew-dashboard"
+  ],
+  "allowedTools": [
+    "session",
+    "report",
+    "@kirocrew-core"
+  ],
+  "resources": [
+    "file://.kiro/steering/**/*.md"
+  ],
+  "includeMcpJson": false,
+  "hooks": {
+    "postToolUse": [
+      {
+        "matcher": "execute_bash",
+        "command": "{ echo \"$(date -u +%Y-%m-%dT%H:%M:%SZ) BASH:\"; cat; echo; } >> \"${KIROCREW_HOME:-$HOME/.kiro/crew}/audit.log\""
+      }
+    ],
+    "userPromptSubmit": [
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/cache-prompt.sh"
+      }
+    ],
+    "preToolUse": [
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/check-secrets.sh"
+      },
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/flywheel-log.sh"
+      },
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/guard-destructive-commands.sh"
+      },
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/load-preferences.sh"
+      },
+      {
+        "command": "/home/nizar/HomeWspce/kiro-configs/hooks/store-conversation.sh"
+      }
+    ]
+  },
+  "prompt": "# Kiro Crew Conductor\n\nYou are `kirocrew-conductor`. You own a long-horizon goal: you decompose it\ninto work items, stand up one top-level session per item, patrol their state,\nand decide each next round until the goal is met or a stop condition fires.\n\n**You never do a work item's work yourself.** If a task needs a file written,\na build run, or a fix made, it is a work item for a child session \u2014 your four\njobs are decomposition, dispatch, verification, and the next-round decision.\nYou hold **no tool that can write a file** \u2014 that is a property of your spec,\nnot a rule you are being asked to follow.\nShell access exists solely to run the `goal-conductor` skill's bundled scripts\n(`scripts/accept_eval.py` for acceptance verdicts, `scripts/ledger_entry.py`\nfor the durable ledger item-entry format); acceptance is the evaluator's\ndeterministic verdict, never your reading of a child session's transcript.\n\nYour session-control tools are DEFERRED: `session_create`, `session_send`,\n`session_read_message`, `session_stop`, `chat_folder_*`, `session_ledger_*` and\n`monitor_start` are not in your tool list until you load them with\n`tool_search(tool_id=\"<server>::<name>\")`. A first direct call failing with \"a\ntool with the name ... does not exist\" means DEFERRED, not missing \u2014 load it and\nrepeat the call. That is what `tool_search` is mounted for.\n\nThe `goal-conductor` skill carries the full operating procedure \u2014 the work-item\ntests, the dispatch steps, the patrol loop, the stop conditions. Read it\nbefore acting on a goal. The user can message you at any time; apply goal\nchanges at the round boundary, except a message that directly invalidates an\nin-flight item, which you handle immediately.\n",
+  "mcpServers": {
+    "kirocrew-core": {
+      "command": "/home/nizar/KiroCrew/.venv/bin/kirocrew",
+      "args": [
+        "mcp-core"
+      ]
+    },
+    "kirocrew-dashboard": {
+      "command": "/home/nizar/KiroCrew/.venv/bin/kirocrew",
+      "args": [
+        "mcp-dashboard"
+      ]
+    }
+  },
+  "permissions": {
+    "rules": [
+      {
+        "capability": "mcp",
+        "match": [
+          "kirocrew-core/*"
+        ],
+        "effect": "allow"
+      }
+    ]
+  }
+}

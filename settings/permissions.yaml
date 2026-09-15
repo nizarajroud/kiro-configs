@@ -1,3 +1,9 @@
 rules:
   - capability: all
     effect: allow
+  - capability: shell
+    match:
+      - mv index.html
+        SKILL-BUILDER/BL-Event-Driven-Architecture-with-Amazon-API-Gateway/website/
+      - aws *
+    effect: allow
