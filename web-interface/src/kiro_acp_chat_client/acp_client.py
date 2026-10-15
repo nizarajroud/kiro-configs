@@ -1,5 +1,6 @@
 """ACP protocol client for communicating with kiro-cli acp."""
 
+import asyncio
 import logging
 
 from kiro_acp_chat_client.process_manager import ProcessManager
@@ -235,3 +236,22 @@ class ACPClient:
             "result": result,
         }
         await self._pm.write_message(response)
+
+    async def ping(self, timeout: float = 5.0) -> bool:
+        """Lightweight health probe — send a no-op JSON-RPC 'ping' request.
+
+        Returns True if the agent is alive and responsive. If the agent replies
+        with an error (e.g. 'method not found'), it's still considered alive
+        because it responded. Only a dead process or timeout returns False.
+        """
+        if not self._pm.is_running:
+            return False
+        req_id = self._next_id()
+        request = {"jsonrpc": "2.0", "id": req_id, "method": "ping", "params": {}}
+        try:
+            await self._pm.write_message(request)
+            await asyncio.wait_for(self._read_response(req_id), timeout=timeout)
+            return True
+        except Exception:
+            # Distinguish: process dead → False; anything else while alive → assume alive
+            return self._pm.is_running

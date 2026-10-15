@@ -3,6 +3,7 @@
 import asyncio
 import json
 import logging
+import os
 import signal
 
 logger = logging.getLogger(__name__)
@@ -51,6 +52,9 @@ class ProcessManager:
                     stdin=asyncio.subprocess.PIPE,
                     stdout=asyncio.subprocess.PIPE,
                     stderr=asyncio.subprocess.PIPE,
+                    # Create a new process group so we can kill the WHOLE tree
+                    # (kiro-cli acp + any MCP servers it spawns) and avoid orphans.
+                    start_new_session=True,
                 ),
                 timeout=timeout,
             )
@@ -197,10 +201,12 @@ class ProcessManager:
         return parsed
 
     async def shutdown(self, timeout: float = 5.0) -> None:
-        """Gracefully terminate the subprocess.
+        """Gracefully terminate the subprocess AND its whole process group.
 
-        Sends SIGTERM, waits up to timeout seconds for the process to exit,
-        then sends SIGKILL if it's still running.
+        Because the process was started with start_new_session=True, it is a
+        process-group leader. We signal the entire group (killpg) so that
+        kiro-cli acp AND any MCP servers it spawned are terminated — no orphans.
+        Sends SIGTERM to the group, waits, then SIGKILL if still alive.
 
         Args:
             timeout: Maximum seconds to wait after SIGTERM before sending SIGKILL.
@@ -208,18 +214,26 @@ class ProcessManager:
         if self._process is None or self._process.returncode is not None:
             return
 
-        try:
-            self._process.send_signal(signal.SIGTERM)
-        except ProcessLookupError:
-            # Process already exited
-            return
+        pid = self._process.pid
 
+        def _signal_group(sig: int) -> None:
+            """Signal the whole process group; fall back to the single process."""
+            try:
+                os.killpg(os.getpgid(pid), sig)
+            except (ProcessLookupError, PermissionError):
+                try:
+                    self._process.send_signal(sig)
+                except ProcessLookupError:
+                    pass
+
+        # Graceful: SIGTERM to the group
+        _signal_group(signal.SIGTERM)
         try:
             await asyncio.wait_for(self._process.wait(), timeout=timeout)
         except TimeoutError:
-            # Process didn't exit gracefully, force kill
+            # Force: SIGKILL to the group
+            _signal_group(signal.SIGKILL)
             try:
-                self._process.kill()
                 await self._process.wait()
             except ProcessLookupError:
                 pass

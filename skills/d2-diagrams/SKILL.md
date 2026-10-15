@@ -67,7 +67,7 @@ The `d2-mcp` server provides 3 tools:
 |-----------------|-------------------------------------|----------|----------------------------------|
 | `--sketch`      | (flag)                              | off      | Hand-drawn look                  |
 | `--theme`       | 0-300+ (see themes below)           | 0        | Color theme                      |
-| `--layout`      | dagre, elk, tala                    | dagre    | Layout engine                    |
+| `--layout`      | dagre, elk, tala                    | **elk**  | Layout engine (elk = orthogonal) |
 | `--pad`         | integer                             | 10       | Padding in px around diagram     |
 | `--animate-interval` | ms                             | 0        | Animation speed for layers       |
 | `--font-regular`| path                                | -        | Custom font                      |
@@ -95,14 +95,35 @@ The `d2-mcp` server provides 3 tools:
 
 ### Output Format Decision
 
-| User request         | Format | Command                                      |
-|----------------------|--------|----------------------------------------------|
-| "diagram" (default)  | SVG    | `d2 --sketch input.d2 output.svg`            |
-| "PNG image"          | PNG    | `d2 --sketch input.d2 output.png`            |
-| "ASCII / text"       | ASCII  | Use `renderd2` MCP with format=ascii         |
-| "dark mode"          | SVG    | `d2 --sketch --theme 300 input.d2 output.svg`|
+| User request         | Format | Command                                       |
+|----------------------|--------|-----------------------------------------------|
+| "diagram" (default)  | SVG    | `d2 --layout elk --theme 0 input.d2 out.svg`  |
+| "PNG image"          | PNG    | render SVG (elk) then Puppeteer → PNG         |
+| "ASCII / text"       | ASCII  | Use `render-d2` MCP with format=ascii         |
+| "dark mode"          | SVG    | `d2 --layout elk --theme 300 input.d2 out.svg`|
+| "croquis / sketch"   | SVG    | `d2 --sketch --layout dagre input.d2 out.svg` |
 
 ### D2 Language Patterns
+
+#### Base template « draw.io-like » (défaut — coins nets)
+
+Commencer TOUTE architecture par ce préambule pour un rendu carré : coins nets partout
+via une classe appliquée aux shapes et containers.
+
+```d2
+direction: right
+
+# Coins nets partout (shapes + containers) — look draw.io
+classes: {
+  sq: { style.border-radius: 0 }
+}
+
+# Puis appliquer .class: sq aux shapes/containers, ou poser
+# style.border-radius: 0 directement sur chaque bloc.
+```
+
+Rendu : `d2 --layout elk --theme 0 --pad 20 input.d2 output.svg` (pas de `--sketch`).
+
 
 #### Simple Architecture (left-to-right)
 ```d2
@@ -172,13 +193,26 @@ internet -> aws.vpc.public.alb -> aws.vpc.private.ecs -> aws.vpc.private.rds
 
 ### Rendering Defaults
 
+**Le défaut est un rendu NET « draw.io-like » : carré, aligné, flèches à angle droit.**
+Le mode croquis (`--sketch`) n'est PLUS le défaut — il est réservé aux demandes explicites.
+
 Unless the user specifies otherwise:
-- **Always use `--sketch`** (hand-drawn look is the primary value of D2 over draw.io)
-- **Theme**: 0 (Neutral) unless user requests a specific style
-- **Layout**: dagre (good for most diagrams, more compact than elk)
-- **Format**: SVG (vector, browser-openable)
+- **Sketch OFF** — JAMAIS `--sketch` par défaut. Activer uniquement si l'utilisateur demande « croquis / hand-drawn / brouillon / sketch ».
+- **Layout = `elk`** — moteur qui route les flèches en **orthogonal (coudées à 90°)** et aligne les boîtes en grille → rendu carré proche de draw.io. (dagre uniquement si l'utilisateur le demande ou si elk produit un layout cassé.)
+- **`border-radius: 0`** partout (shapes ET containers) — coins nets.
+- **Icônes AWS systématiques** sur les nœuds AWS — via `unpkg.com/aws-icons@3.3.0` (voir table d'icônes).
+- **Theme**: 0 (Neutral) + palette AWS (voir preset ci-dessous), sauf style demandé.
+- **Format**: SVG (vector, browser-openable).
 - **Labels on arrows**: MAX 3-4 words. Details go in the legend, not on the edge.
-- **Page size**: `a4-landscape` when using `renderd2` MCP (pass `page_size` parameter)
+
+**Commande par défaut (architecture) :**
+```
+d2 --layout elk --theme 0 --pad 20 input.d2 output.svg
+```
+(pas de `--sketch`)
+
+**Quand utiliser `--sketch` (exception) :**
+Uniquement si l'utilisateur demande explicitement un style croquis / hand-drawn / brouillon / brainstorm. Dans ce cas : `d2 --sketch --layout dagre ...`.
 
 ### Compact Layout Rules (MANDATORY)
 
@@ -186,7 +220,7 @@ These rules produce readable diagrams that fit on screen without excessive white
 
 1. **Edge labels = short** — Max 3-4 words on an arrow. Use numbered steps `【1】 Invoke` not `【1】 Invoke Lambda function with JSON payload`
 2. **Details in legend** — Technical specs (protocols, ports, encodings) go in a `legend` container at the bottom, referenced by step number
-3. **Layout engine = dagre** — Default. More compact than elk. Only use elk if dagre produces overlaps.
+3. **Layout engine = elk (défaut)** — flèches orthogonales, boîtes alignées en grille (rendu draw.io-like). Utiliser dagre UNIQUEMENT si l'utilisateur demande un rendu compact/croquis ou si elk casse le layout.
 4. **Padding = 5** — D2 default. Don't increase it.
 5. **Avoid deeply nested labels** — `LiveKit` not `LiveKit Server (SFU — Selective Forwarding Unit)` on the node. Full name goes in the legend.
 
@@ -224,14 +258,14 @@ legend: Legend {
 
 **Trigger**: User asks for "professional", "enterprise", "corporate", "standard AWS" style, or any diagram intended for official documentation, client deliverables, or presentations.
 
-**CLI command**: `d2 --theme 0 --layout dagre input.d2 output.svg` (NO `--sketch`)
+**CLI command**: `d2 --theme 0 --layout elk input.d2 output.svg` (NO `--sketch`)
 
 **Style rules:**
 
 | Aspect                | Value                                                    |
 |-----------------------|----------------------------------------------------------|
 | Sketch mode           | **OFF** — never use `--sketch`                           |
-| Layout                | `dagre` (compact layout — fits A4 better than elk)       |
+| Layout                | `elk` (orthogonal edges, grid alignment — draw.io-like) |
 | Theme                 | `0` (Neutral)                                            |
 | Diagram background    | `#ffffff` (pure white)                                   |
 | Border-radius         | `0` (sharp corners everywhere)                           |
@@ -329,7 +363,7 @@ legend: Legend {
 - ❌ `style.animated` → removed (static output)
 - ❌ Colorful fills (green, pink, yellow) → neutral grey/blue AWS palette
 - ❌ `border-radius: 8` → sharp corners (0)
-- ✅ `dagre` layout → kept (compact = fits A4 pages)
+- ✅ `elk` layout → flèches orthogonales, alignement en grille (rendu draw.io-like)
 - ✅ AWS icons → kept
 - ✅ 【1】【2】 numbered steps → kept with font-size 20
 

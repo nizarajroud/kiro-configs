@@ -37,23 +37,15 @@
   .sb-label { font-size: 0.7rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.6px; padding: 14px 14px 4px; }
   #session-list { flex: 1; overflow-y: auto; padding: 0 8px 12px; }
   .date-group { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; padding: 12px 8px 4px; font-weight: 600; }
-  .session-item {
-    padding: 9px 10px; border-radius: 8px; cursor: pointer; margin-bottom: 2px;
-    display: flex; align-items: center; gap: 8px; position: relative;
-  }
+  .session-item { padding: 9px 10px; border-radius: 8px; cursor: pointer; margin-bottom: 2px; display: flex; align-items: center; gap: 8px; }
   .session-item:hover { background: var(--hover); }
-  .session-item.active { background: var(--active); }
-  .agent-badge {
-    width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
-  }
+  .session-item.open { background: var(--active); }
+  .agent-badge { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
   .session-item .s-body { flex: 1; min-width: 0; }
-  .session-item .s-title { font-size: 0.85rem; color: var(--text); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .session-item .s-title { font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .session-item .s-meta { font-size: 0.72rem; color: var(--muted); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .sb-empty { padding: 14px; color: var(--muted); font-size: 0.82rem; font-style: italic; }
-  #collapse-btn {
-    background: transparent; border: 1px solid var(--border); border-radius: 6px;
-    color: var(--muted); cursor: pointer; padding: 4px 9px; font-size: 0.9rem;
-  }
+  #collapse-btn { background: transparent; border: 1px solid var(--border); border-radius: 6px; color: var(--muted); cursor: pointer; padding: 4px 9px; font-size: 0.9rem; }
   #collapse-btn:hover { background: var(--hover); }
 
   /* ===== Main ===== */
@@ -62,16 +54,32 @@
     padding: 10px 20px; border-bottom: 1px solid var(--border); background: var(--bg);
     display: flex; align-items: center; gap: 12px; font-size: 0.9rem;
   }
-  header .dot { width: 9px; height: 9px; border-radius: 50%; background: #d1242f; }
-  header .dot.ready { background: #1a7f37; }
-  header select {
-    background: var(--bg); color: var(--text); border: 1px solid var(--border);
-    border-radius: 6px; padding: 5px 10px; font-size: 0.88rem; font-weight: 500;
-  }
+  header select { background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 6px; padding: 5px 10px; font-size: 0.88rem; font-weight: 500; }
   header .spacer { flex: 1; }
   #status { color: var(--muted); font-size: 0.8rem; }
 
-  #chat { flex: 1; overflow-y: auto; padding: 24px 40px; }
+  /* ===== Tab bar ===== */
+  #tabbar {
+    display: flex; align-items: center; gap: 2px; padding: 6px 12px 0; background: var(--panel);
+    border-bottom: 1px solid var(--border); overflow-x: auto; min-height: 40px;
+  }
+  .tab {
+    display: flex; align-items: center; gap: 6px; padding: 7px 10px; cursor: pointer;
+    background: var(--sidebar); border: 1px solid var(--border); border-bottom: none;
+    border-radius: 8px 8px 0 0; font-size: 0.82rem; max-width: 220px; white-space: nowrap;
+    color: var(--muted);
+  }
+  .tab.active { background: var(--bg); color: var(--text); font-weight: 500; }
+  .tab .tab-title { overflow: hidden; text-overflow: ellipsis; }
+  .tab .tab-state { font-size: 0.7rem; flex-shrink: 0; }
+  .tab .tab-close { border: none; background: transparent; color: var(--muted); cursor: pointer; font-size: 0.95rem; padding: 0 2px; border-radius: 4px; flex-shrink: 0; }
+  .tab .tab-close:hover { background: var(--hover); color: var(--text); }
+  #tabbar-empty { color: var(--muted); font-size: 0.82rem; font-style: italic; padding: 8px; }
+
+  /* ===== Chat panes (one per tab) ===== */
+  #panes { flex: 1; position: relative; overflow: hidden; }
+  .pane { position: absolute; inset: 0; overflow-y: auto; padding: 24px 40px; display: none; }
+  .pane.active { display: block; }
   .empty-hint { color: var(--muted); text-align: center; margin-top: 15vh; font-size: 0.95rem; }
   .msg { margin-bottom: 18px; display: flex; flex-direction: column; }
   .msg .role { font-size: 0.72rem; color: var(--muted); margin-bottom: 4px; text-transform: uppercase; letter-spacing: 0.5px; }
@@ -79,8 +87,7 @@
   .msg.user .bubble { background: var(--user); color: #fff; align-self: flex-start; }
   .msg.assistant .bubble { background: var(--assistant); border: 1px solid var(--border); }
   .msg.error .bubble { background: #ffebe9; border: 1px solid #cf222e; color: #cf222e; }
-  .msg .bubble p:first-child { margin-top: 0; }
-  .msg .bubble p:last-child { margin-bottom: 0; }
+  .msg .bubble p:first-child { margin-top: 0; } .msg .bubble p:last-child { margin-bottom: 0; }
   .bubble table { border-collapse: collapse; width: 100%; margin: 10px 0; font-size: 0.88rem; }
   .bubble th { background: var(--accent); color: #fff; padding: 8px 12px; text-align: left; }
   .bubble td { padding: 7px 12px; border-bottom: 1px solid var(--border); }
@@ -90,47 +97,33 @@
   .bubble :not(pre) > code { background: rgba(175,184,193,0.3); padding: 2px 6px; border-radius: 4px; }
   .bubble a { color: var(--accent); }
   .tool-note { font-size: 0.78rem; color: var(--muted); font-style: italic; margin: 4px 0; }
-  /* Typing / thinking indicator */
   .thinking { display: flex; align-items: center; gap: 8px; padding: 10px 16px; color: var(--muted); font-size: 0.85rem; }
   .thinking .dots { display: inline-flex; gap: 4px; }
-  .thinking .dots span {
-    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
-    animation: think 1.2s infinite ease-in-out;
-  }
+  .thinking .dots span { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); animation: think 1.2s infinite ease-in-out; }
   .thinking .dots span:nth-child(2) { animation-delay: 0.2s; }
   .thinking .dots span:nth-child(3) { animation-delay: 0.4s; }
-  @keyframes think { 0%, 80%, 100% { opacity: 0.25; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
+  @keyframes think { 0%,80%,100% { opacity: 0.25; transform: scale(0.8); } 40% { opacity: 1; transform: scale(1); } }
 
   footer { padding: 14px 40px 20px; background: var(--bg); border-top: 1px solid var(--border); display: flex; gap: 10px; }
-  #input {
-    flex: 1; background: var(--bg); color: var(--text); border: 1px solid var(--border);
-    border-radius: 10px; padding: 12px 14px; font-size: 0.95rem; resize: none; font-family: inherit;
-  }
+  #input { flex: 1; background: var(--bg); color: var(--text); border: 1px solid var(--border); border-radius: 10px; padding: 12px 14px; font-size: 0.95rem; resize: none; font-family: inherit; }
   #input:focus { outline: none; border-color: var(--accent); }
-  #send {
-    background: var(--accent); color: #fff; border: none; border-radius: 10px;
-    padding: 0 20px; font-size: 0.95rem; cursor: pointer; font-weight: 500;
-  }
+  #send { background: var(--accent); color: #fff; border: none; border-radius: 10px; padding: 0 20px; font-size: 0.95rem; cursor: pointer; font-weight: 500; }
   #send:disabled { opacity: 0.4; cursor: not-allowed; }
+  #send.stop { background: #cf222e; }
 </style>
 </head>
 <body>
-  <!-- SIDEBAR -->
   <aside id="sidebar">
-    <div class="top">
-      <button id="new-chat">✏️ Nouveau chat</button>
-    </div>
+    <div class="top"><button id="new-chat">✏️ Nouveau chat</button></div>
     <div class="sb-label">Sessions (24h)</div>
     <div id="session-list"></div>
   </aside>
 
-  <!-- MAIN -->
   <div id="main">
     <header>
       <button id="collapse-btn" title="Replier/déplier la sidebar">☰</button>
-      <span class="dot" id="conn-dot"></span>
       <strong>Kiro</strong>
-      <select id="agent-select" title="Agent">
+      <select id="agent-select" title="Agent du prochain nouveau chat">
         <option value="exp2">exp2</option>
         <option value="compass">compass</option>
         <option value="forge">forge</option>
@@ -138,12 +131,11 @@
         <option value="it-supervisor">it-supervisor</option>
       </select>
       <span class="spacer"></span>
-      <span id="status">Choisis un agent, puis une session à gauche (ou ✏️ Nouveau chat)</span>
+      <span id="status">Ouvre une session à gauche (nouvel onglet) ou ✏️ Nouveau chat</span>
     </header>
 
-    <div id="chat">
-      <div class="empty-hint" id="empty-hint">Sélectionne une session à gauche ou démarre un nouveau chat.</div>
-    </div>
+    <div id="tabbar"><span id="tabbar-empty">Aucun onglet ouvert</span></div>
+    <div id="panes"></div>
 
     <footer>
       <textarea id="input" rows="1" placeholder="Pose ta question… (Entrée = envoyer, Shift+Entrée = nouvelle ligne)" disabled></textarea>
@@ -156,377 +148,416 @@
     highlight: (code, lang) => {
       if (lang && hljs.getLanguage(lang)) return hljs.highlight(code, { language: lang }).value;
       return hljs.highlightAuto(code).value;
-    },
-    breaks: true, gfm: true,
+    }, breaks: true, gfm: true,
   });
 
-  const chat = document.getElementById('chat');
+  const MAX_HOT = 4;   // number of "hot" tabs (live kiro-cli acp subprocess)
+
+  const sidebar = document.getElementById('sidebar');
   const input = document.getElementById('input');
   const sendBtn = document.getElementById('send');
   const statusEl = document.getElementById('status');
-  const dot = document.getElementById('conn-dot');
   const agentSelect = document.getElementById('agent-select');
   const sessionList = document.getElementById('session-list');
   const newChatBtn = document.getElementById('new-chat');
+  const tabbar = document.getElementById('tabbar');
+  const panes = document.getElementById('panes');
 
-  let ws = null, currentAssistantEl = null, currentAssistantRaw = '', ready = false;
-  let intentionalClose = false;   // true when WE close the WS (session switch), to skip auto-reconnect
-  let reconnectTimer = null;      // pending auto-reconnect timeout
-  let streaming = false;          // true while a response is being streamed
-  let resumeSessionId = '';       // '' = new session
-  let activeSessionId = '';       // currently displayed session (for sidebar highlight)
-  let allSessions = [];           // full list from /api/sessions
+  let allSessions = [];
+  let tabs = [];            // array of Tab objects (order = tab bar order)
+  let activeTabId = null;   // uid of the active tab
+  let lru = [];             // uids ordered by recent use (front = most recent)
+  let tabSeq = 0;
 
-  // Input stays enabled whenever the session is ready (so you can type your next
-  // question during streaming). Only the SEND action is gated while streaming.
-  function updateSendState() {
-    input.disabled = !ready;
-    sendBtn.disabled = !ready || streaming;
-    if (ready) input.focus();
-  }
+  // Tab = { uid, sessionId|null, agent, title, state:'hot'|'warm', ws, ready, streaming,
+  //         pane(DOM), curEl, curRaw, thinkEl, wantSid(for resume), intentionalClose, reconnectTimer }
 
-  // Auto-scroll only if the user is already near the bottom — so you can scroll up
-  // to read previous messages while a response is still streaming.
-  function isNearBottom() {
-    return (chat.scrollHeight - chat.scrollTop - chat.clientHeight) < 120;
-  }
-  function maybeScroll(force) {
-    if (force || isNearBottom()) chat.scrollTop = chat.scrollHeight;
-  }
-
-  // Thinking indicator (animated dots) shown between sending and first response chunk.
-  let thinkingEl = null;
-  function showThinking() {
-    hideThinking();
-    thinkingEl = document.createElement('div');
-    thinkingEl.className = 'thinking';
-    thinkingEl.innerHTML = `${agentSelect.value} réfléchit <span class="dots"><span></span><span></span><span></span></span>`;
-    chat.appendChild(thinkingEl);
-    chat.scrollTop = chat.scrollHeight;
-  }
-  function hideThinking() {
-    if (thinkingEl) { thinkingEl.remove(); thinkingEl = null; }
-  }
+  const AGENT_COLORS = { exp2:'#0969da', compass:'#1a7f37', forge:'#bc4c00', light:'#8250df', 'it-supervisor':'#cf222e', media1:'#bf3989' };
+  const agentColor = a => AGENT_COLORS[a] || '#6b7280';
 
   // ---------- Sidebar ----------
   async function loadSessions() {
-    try {
-      const res = await fetch('/api/sessions');
-      const data = await res.json();
-      allSessions = data.sessions || [];
-    } catch (e) { allSessions = []; }
+    try { allSessions = (await (await fetch('/api/sessions')).json()).sessions || []; }
+    catch (e) { allSessions = []; }
     renderSessions();
   }
-
-  // Agent → couleur (badge dans la sidebar)
-  const AGENT_COLORS = {
-    exp2: '#0969da', compass: '#1a7f37', forge: '#bc4c00',
-    light: '#8250df', 'it-supervisor': '#cf222e', media1: '#bf3989',
-  };
-  function agentColor(a) { return AGENT_COLORS[a] || '#6b7280'; }
-
-  // Regroupement par date à partir du timestamp
   function dateGroup(ms) {
-    const now = new Date();
-    const d = new Date(ms);
-    const sameDay = d.toDateString() === now.toDateString();
-    const y = new Date(now); y.setDate(now.getDate() - 1);
-    const isYesterday = d.toDateString() === y.toDateString();
-    if (sameDay) return "Aujourd'hui";
-    if (isYesterday) return 'Hier';
+    const now = new Date(), d = new Date(ms);
+    if (d.toDateString() === now.toDateString()) return "Aujourd'hui";
+    const y = new Date(now); y.setDate(now.getDate()-1);
+    if (d.toDateString() === y.toDateString()) return 'Hier';
     return 'Plus ancien';
   }
-
   function renderSessions() {
-    // Show ALL recent sessions (all agents). The colored badge distinguishes the agent.
-    const filtered = allSessions.slice();
     sessionList.innerHTML = '';
-    if (filtered.length === 0) {
-      const d = document.createElement('div');
-      d.className = 'sb-empty';
-      d.textContent = 'Aucune session dans les dernières 24h.';
-      sessionList.appendChild(d);
-      return;
+    if (allSessions.length === 0) {
+      sessionList.innerHTML = '<div class="sb-empty">Aucune session dans les dernières 24h.</div>'; return;
     }
-    // Grouper par date (l'ordre est déjà date desc depuis le backend)
+    const openSids = new Set(tabs.map(t => t.sessionId).filter(Boolean));
     let lastGroup = null;
-    filtered.forEach(s => {
+    allSessions.forEach(s => {
       const g = dateGroup(s.updated_ms);
-      if (g !== lastGroup) {
-        lastGroup = g;
-        const gh = document.createElement('div');
-        gh.className = 'date-group';
-        gh.textContent = g;
-        sessionList.appendChild(gh);
-      }
+      if (g !== lastGroup) { lastGroup = g; const gh = document.createElement('div'); gh.className='date-group'; gh.textContent=g; sessionList.appendChild(gh); }
       const item = document.createElement('div');
-      item.className = 'session-item' + (s.session_id === activeSessionId ? ' active' : '');
-
-      const badge = document.createElement('span');
-      badge.className = 'agent-badge';
-      badge.style.background = agentColor(s.agent);
-      badge.title = s.agent;
-
-      const body = document.createElement('div');
-      body.className = 's-body';
-      const title = document.createElement('div');
-      title.className = 's-title';
-      title.textContent = s.name;
-      const meta = document.createElement('div');
-      meta.className = 's-meta';
+      item.className = 'session-item' + (openSids.has(s.session_id) ? ' open' : '');
+      const badge = document.createElement('span'); badge.className='agent-badge'; badge.style.background=agentColor(s.agent); badge.title=s.agent;
+      const body = document.createElement('div'); body.className='s-body';
+      const title = document.createElement('div'); title.className='s-title'; title.textContent=s.name;
+      const meta = document.createElement('div'); meta.className='s-meta';
       const topicPart = (s.topic && s.topic !== '-') ? ` · ${s.topic}` : '';
       meta.textContent = `${s.date} · ${s.msgs} msgs${topicPart}`;
       body.appendChild(title); body.appendChild(meta);
-
       item.appendChild(badge); item.appendChild(body);
-      item.addEventListener('click', () => openSession(s.session_id));
+      item.addEventListener('click', () => openSessionInTab(s.session_id, s.agent));
       sessionList.appendChild(item);
     });
   }
 
-  // ---------- Session navigation ----------
-  function openSession(sessionId) {
-    resumeSessionId = sessionId;
-    activeSessionId = sessionId;
-    startConnection();
-  }
+  // ---------- Tabs ----------
+  function findTabBySid(sid) { return tabs.find(t => t.sessionId === sid); }
+  function getTab(uid) { return tabs.find(t => t.uid === uid); }
 
+  function touchLru(uid) { lru = [uid, ...lru.filter(x => x !== uid)]; }
+
+  function openSessionInTab(sid, agent) {
+    const existing = findTabBySid(sid);
+    if (existing) { activateTab(existing.uid); return; }
+    createTab({ sessionId: sid, agent: agent || agentSelect.value, wantSid: sid });
+  }
   function newChat() {
-    resumeSessionId = '';
-    activeSessionId = '';
-    startConnection();
+    createTab({ sessionId: null, agent: agentSelect.value, wantSid: null });
   }
 
-  function startConnection() {
-    // Closing the current WS triggers the backend `finally` → post-session hooks
-    // of the session we are leaving (parity with qq, hooks-on-switch).
-    chat.innerHTML = '';
-    ready = false; dot.classList.remove('ready');
-    input.disabled = true; sendBtn.disabled = true;
-    renderSessions();  // update highlight
-    statusEl.textContent = resumeSessionId ? 'Reprise de session…' : 'Nouvelle session…';
-    if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
-    if (ws) { intentionalClose = true; try { ws.close(); } catch (e) {} }
-    connect();
+  function createTab({ sessionId, agent, wantSid }) {
+    const uid = 'tab' + (++tabSeq);
+    const pane = document.createElement('div');
+    pane.className = 'pane';
+    pane.innerHTML = '<div class="empty-hint">Connexion…</div>';
+    panes.appendChild(pane);
+    const tab = {
+      uid, sessionId, agent, title: sessionId ? shortTitle(sessionId, agent) : `Nouveau (${agent})`,
+      state: 'warm', ws: null, ready: false, streaming: false,
+      pane, curEl: null, curRaw: '', thinkEl: null, wantSid,
+      intentionalClose: false, reconnectTimer: null,
+    };
+    tabs.push(tab);
+    renderTabs();
+    activateTab(uid);        // activate first (shows pane)
+    makeHot(tab);            // then connect (respects LRU eviction)
   }
 
-  // ---------- Chat rendering ----------
-
-  // Detect AI-GENERATED file paths in rendered HTML and turn them into
-  // inline images (png/svg/jpg…) or clickable links (.drawio/.d2 sources).
-  // Handles both Windows (C:\...\AI-GENERATED\...) and WSL (/mnt/c/.../AI-GENERATED/...) paths.
-  const _IMG_EXT = ['png', 'svg', 'jpg', 'jpeg', 'gif', 'webp'];
-  const _SRC_EXT = ['drawio', 'd2', 'excalidraw', 'pdf', 'html'];
-
-  function _aigenRelUrl(rawPath) {
-    // Normalize backslashes, extract the part after AI-GENERATED/
-    const p = rawPath.replace(/\\/g, '/');
-    const idx = p.indexOf('AI-GENERATED/');
-    if (idx === -1) return null;
-    const rel = p.slice(idx + 'AI-GENERATED/'.length);
-    return '/ai-generated/' + rel.split('/').map(encodeURIComponent).join('/');
+  function shortTitle(sid, agent) {
+    const s = allSessions.find(x => x.session_id === sid);
+    if (s) return s.name;
+    return (agent || 'session') + ' · ' + sid.slice(0, 6);
   }
 
-  function enrichAIGenerated(bubble) {
-    // Match any AI-GENERATED path with a known extension inside the text.
-    // e.g. C:\Users\nizar\Documents\AI-GENERATED\...\x.png  or /mnt/c/.../AI-GENERATED/.../x.svg
-    const re = /([A-Za-z]:\\[^\s"'<>)\]]*AI-GENERATED\\[^\s"'<>)\]]+|\/[^\s"'<>)\]]*AI-GENERATED\/[^\s"'<>)\]]+)/g;
-    const html = bubble.innerHTML;
-    const seen = new Set();
-    let m;
-    const found = [];
-    while ((m = re.exec(bubble.textContent)) !== null) {
-      const path = m[1];
-      if (seen.has(path)) continue;
-      seen.add(path);
-      found.push(path);
+  function activateTab(uid) {
+    activeTabId = uid;
+    touchLru(uid);
+    tabs.forEach(t => t.pane.classList.toggle('active', t.uid === uid));
+    renderTabs();
+    const tab = getTab(uid);
+    if (tab) {
+      // A warm tab becomes hot again when activated (so you can type immediately)
+      if (tab.state === 'warm' && !tab.ws) makeHot(tab);
+      syncInputForActive();
+      renderSessions();  // update sidebar "open" highlight
     }
-    if (found.length === 0) return;
+  }
 
+  function closeTab(uid) {
+    const tab = getTab(uid);
+    if (!tab) return;
+    // Closing = post-session hooks (via WS close) + drop the tab
+    if (tab.ws) { tab.intentionalClose = false; try { tab.ws.close(); } catch (e) {} }
+    if (tab.reconnectTimer) clearTimeout(tab.reconnectTimer);
+    tab.pane.remove();
+    tabs = tabs.filter(t => t.uid !== uid);
+    lru = lru.filter(x => x !== uid);
+    if (activeTabId === uid) {
+      activeTabId = null;
+      const next = lru.find(x => getTab(x));
+      if (next) activateTab(next);
+      else { renderTabs(); syncInputForActive(); }
+    } else {
+      renderTabs();
+    }
+    renderSessions();
+  }
+
+  function renderTabs() {
+    const emptyEl = document.getElementById('tabbar-empty');
+    tabbar.innerHTML = '';
+    if (tabs.length === 0) { tabbar.appendChild(emptyEl); return; }
+    tabs.forEach(t => {
+      const el = document.createElement('div');
+      el.className = 'tab' + (t.uid === activeTabId ? ' active' : '');
+      const state = document.createElement('span'); state.className='tab-state';
+      state.textContent = t.state === 'hot' ? '🟢' : '🟡';
+      state.title = t.state === 'hot' ? 'Chaud (prêt)' : 'Tiède (reconnexion au 1er message)';
+      const title = document.createElement('span'); title.className='tab-title'; title.textContent = t.title;
+      const close = document.createElement('button'); close.className='tab-close'; close.textContent='×'; close.title='Fermer';
+      close.addEventListener('click', (e) => { e.stopPropagation(); closeTab(t.uid); });
+      el.appendChild(state); el.appendChild(title); el.appendChild(close);
+      el.addEventListener('click', () => activateTab(t.uid));
+      tabbar.appendChild(el);
+    });
+  }
+
+  // ---------- Hot/Warm pool (LRU) ----------
+  function hotTabs() { return tabs.filter(t => t.state === 'hot'); }
+
+  function makeHot(tab) {
+    if (tab.state === 'hot' && tab.ws) return;
+    // Evict least-recently-used hot tab if pool is full
+    const hots = hotTabs();
+    if (hots.length >= MAX_HOT) {
+      // find the LRU among hot tabs that is NOT this tab
+      const evictUid = [...lru].reverse().find(uid => {
+        const t = getTab(uid); return t && t.state === 'hot' && t.uid !== tab.uid;
+      });
+      if (evictUid) makeWarm(getTab(evictUid));
+    }
+    tab.state = 'hot';
+    connectTab(tab);
+    renderTabs();
+  }
+
+  function makeWarm(tab) {
+    tab.state = 'warm';
+    tab.ready = false; tab.streaming = false;
+    if (tab.ws) { tab.intentionalClose = true; try { tab.ws.close(); } catch (e) {} tab.ws = null; }
+    if (tab.reconnectTimer) { clearTimeout(tab.reconnectTimer); tab.reconnectTimer = null; }
+    renderTabs();
+    if (tab.uid === activeTabId) syncInputForActive();
+  }
+
+  // ---------- WebSocket per tab ----------
+  function connectTab(tab) {
+    const proto = location.protocol === 'https:' ? 'wss' : 'ws';
+    const ws = new WebSocket(`${proto}://${location.host}/ws`);
+    tab.ws = ws;
+    ws.onopen = () => {
+      tab.intentionalClose = false;
+      if (tab.reconnectTimer) { clearTimeout(tab.reconnectTimer); tab.reconnectTimer = null; }
+      const payload = { agent: tab.agent };
+      const sid = tab.wantSid || tab.sessionId;
+      if (sid) payload.session_id = sid;
+      ws.send(JSON.stringify(payload));
+    };
+    ws.onmessage = (ev) => handleTabMessage(tab, JSON.parse(ev.data));
+    ws.onclose = () => {
+      tab.ready = false; tab.streaming = false;
+      if (tab.uid === activeTabId) syncInputForActive();
+      // auto-reconnect only if still hot and not an intentional close
+      if (!tab.intentionalClose && tab.state === 'hot') {
+        if (tab.reconnectTimer) clearTimeout(tab.reconnectTimer);
+        tab.reconnectTimer = setTimeout(() => { if (tab.state === 'hot') connectTab(tab); }, 1500);
+      }
+    };
+    ws.onerror = () => {};
+  }
+
+  function handleTabMessage(tab, m) {
+    if (m.type === 'status') { if (tab.uid === activeTabId) statusEl.textContent = m.text; }
+    else if (m.type === 'history') { addMsgTab(tab, m.role === 'user' ? 'user' : 'assistant', m.text, m.role !== 'user', true); }
+    else if (m.type === 'history_tool') { addToolTab(tab, m.title, true); }
+    else if (m.type === 'ready') {
+      tab.ready = true; tab.streaming = false; tab.sessionId = m.session_id;
+      if (m.agent) tab.agent = m.agent;
+      tab.wantSid = null;
+      tab.title = shortTitle(m.session_id, tab.agent);
+      // clear the "Connexion…" hint on first ready if pane only had the hint
+      const hint = tab.pane.querySelector('.empty-hint'); if (hint && tab.pane.children.length === 1) hint.remove();
+      renderTabs();
+      if (tab.uid === activeTabId) { statusEl.textContent = `Prêt · ${tab.agent} · ${m.session_id.slice(0,8)}`; syncInputForActive(); }
+      loadSessions();
+    }
+    else if (m.type === 'chunk') {
+      hideThinkingTab(tab);
+      if (!tab.curEl) { tab.curRaw=''; tab.curEl = addMsgTab(tab, 'assistant', '', true, false); }
+      tab.curRaw += m.text;
+      tab.curEl.innerHTML = marked.parse(tab.curRaw);
+      tab.curEl.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
+      tab.curEl.querySelectorAll('a').forEach(a => { a.target='_blank'; a.rel='noopener noreferrer'; });
+      maybeScrollTab(tab);
+    }
+    else if (m.type === 'tool') { hideThinkingTab(tab); tab.curEl=null; tab.curRaw=''; addToolTab(tab, m.title, false); }
+    else if (m.type === 'done') {
+      hideThinkingTab(tab);
+      if (tab.curEl) enrichAIGenerated(tab.curEl);
+      tab.curEl=null; tab.curRaw='';
+      tab.streaming=false; if (tab.uid === activeTabId) syncInputForActive();
+    }
+    else if (m.type === 'error') {
+      hideThinkingTab(tab);
+      addMsgTab(tab, 'error', m.text, false, false); tab.curEl=null;
+      tab.streaming=false; if (tab.uid === activeTabId) syncInputForActive();
+    }
+    else if (m.type === 'cancelled') {
+      hideThinkingTab(tab);
+      if (tab.curEl) enrichAIGenerated(tab.curEl);
+      tab.curEl=null; tab.curRaw='';
+      const note = document.createElement('div'); note.className='tool-note'; note.textContent='⏹ Interrompu';
+      tab.pane.appendChild(note);
+      tab.streaming=false; if (tab.uid === activeTabId) syncInputForActive();
+    }
+  }
+
+  // ---------- Rendering helpers (per tab pane) ----------
+  function addMsgTab(tab, role, textOrHtml, isMarkdown, isHistory) {
+    const hint = tab.pane.querySelector('.empty-hint'); if (hint) hint.remove();
+    const msg = document.createElement('div'); msg.className = 'msg ' + role;
+    const roleEl = document.createElement('div'); roleEl.className='role';
+    roleEl.textContent = role === 'user' ? 'Vous' : (role === 'error' ? 'Erreur' : tab.agent);
+    const bubble = document.createElement('div'); bubble.className='bubble';
+    if (isMarkdown) {
+      bubble.innerHTML = marked.parse(textOrHtml);
+      bubble.querySelectorAll('a').forEach(a => { a.target='_blank'; a.rel='noopener noreferrer'; });
+      bubble.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
+      enrichAIGenerated(bubble);
+    } else bubble.textContent = textOrHtml;
+    msg.appendChild(roleEl); msg.appendChild(bubble);
+    tab.pane.appendChild(msg);
+    maybeScrollTab(tab, role === 'user' || isHistory);
+    return bubble;
+  }
+  function addToolTab(tab, title, isHistory) {
+    const note = document.createElement('div'); note.className='tool-note'; note.textContent='🔧 '+title;
+    tab.pane.appendChild(note); maybeScrollTab(tab, isHistory);
+  }
+  function showThinkingTab(tab) {
+    hideThinkingTab(tab);
+    const el = document.createElement('div'); el.className='thinking';
+    el.innerHTML = `${tab.agent} réfléchit <span class="dots"><span></span><span></span><span></span></span>`;
+    tab.pane.appendChild(el); tab.thinkEl = el; tab.pane.scrollTop = tab.pane.scrollHeight;
+  }
+  function hideThinkingTab(tab) { if (tab.thinkEl) { tab.thinkEl.remove(); tab.thinkEl = null; } }
+  function maybeScrollTab(tab, force) {
+    const p = tab.pane;
+    if (force || (p.scrollHeight - p.scrollTop - p.clientHeight) < 120) p.scrollTop = p.scrollHeight;
+  }
+
+  // ---------- AI-GENERATED inline ----------
+  const _IMG_EXT = ['png','svg','jpg','jpeg','gif','webp'];
+  const _SRC_EXT = ['drawio','d2','excalidraw','pdf','html'];
+  function _aigenRelUrl(rawPath) {
+    const p = rawPath.replace(/\\/g,'/'); const idx = p.indexOf('AI-GENERATED/');
+    if (idx === -1) return null;
+    return '/ai-generated/' + p.slice(idx+'AI-GENERATED/'.length).split('/').map(encodeURIComponent).join('/');
+  }
+  function enrichAIGenerated(bubble) {
+    const re = /([A-Za-z]:\\[^\s"'<>)\]]*AI-GENERATED\\[^\s"'<>)\]]+|\/[^\s"'<>)\]]*AI-GENERATED\/[^\s"'<>)\]]+)/g;
+    const seen = new Set(); const found = []; let m;
+    while ((m = re.exec(bubble.textContent)) !== null) { if (!seen.has(m[1])) { seen.add(m[1]); found.push(m[1]); } }
     found.forEach(path => {
-      const url = _aigenRelUrl(path);
-      if (!url) return;
-      const ext = path.split('.').pop().toLowerCase().replace(/[^a-z0-9]/g, '');
-      const container = document.createElement('div');
-      container.style.marginTop = '10px';
+      const url = _aigenRelUrl(path); if (!url) return;
+      const ext = path.split('.').pop().toLowerCase().replace(/[^a-z0-9]/g,'');
+      const c = document.createElement('div'); c.style.marginTop='10px';
       if (_IMG_EXT.includes(ext)) {
-        const img = document.createElement('img');
-        img.src = url; img.alt = 'diagramme généré';
-        img.style.maxWidth = '100%'; img.style.borderRadius = '8px';
-        img.style.border = '1px solid var(--border)'; img.style.cursor = 'zoom-in';
-        img.addEventListener('click', () => window.open(url, '_blank'));
-        const link = document.createElement('a');
-        link.href = url; link.target = '_blank'; link.textContent = '🔍 Ouvrir en plein écran';
-        link.style.display = 'inline-block'; link.style.marginTop = '4px'; link.style.fontSize = '0.8rem';
-        container.appendChild(img); container.appendChild(document.createElement('br')); container.appendChild(link);
-        bubble.appendChild(container);
+        const img = document.createElement('img'); img.src=url; img.alt='diagramme';
+        img.style.maxWidth='100%'; img.style.borderRadius='8px'; img.style.border='1px solid var(--border)'; img.style.cursor='zoom-in';
+        img.addEventListener('click', () => window.open(url,'_blank'));
+        const link = document.createElement('a'); link.href=url; link.target='_blank'; link.textContent='🔍 Ouvrir en plein écran';
+        link.style.display='inline-block'; link.style.marginTop='4px'; link.style.fontSize='0.8rem';
+        c.appendChild(img); c.appendChild(document.createElement('br')); c.appendChild(link); bubble.appendChild(c);
       } else if (_SRC_EXT.includes(ext)) {
-        const link = document.createElement('a');
-        link.href = url; link.target = '_blank';
-        link.textContent = '📎 ' + path.split(/[\\/]/).pop() + ' (ouvrir)';
-        link.style.fontSize = '0.85rem';
-        container.appendChild(link);
-        bubble.appendChild(container);
+        const link = document.createElement('a'); link.href=url; link.target='_blank';
+        link.textContent='📎 '+path.split(/[\\/]/).pop()+' (ouvrir)'; link.style.fontSize='0.85rem';
+        c.appendChild(link); bubble.appendChild(c);
       }
     });
   }
 
-  function addMsg(role, textOrHtml, isMarkdown = false) {
-    const hint = document.getElementById('empty-hint');
-    if (hint) hint.remove();
-    const msg = document.createElement('div');
-    msg.className = 'msg ' + role;
-    const roleEl = document.createElement('div');
-    roleEl.className = 'role';
-    roleEl.textContent = role === 'user' ? 'Vous' : (role === 'error' ? 'Erreur' : agentSelect.value);
-    const bubble = document.createElement('div');
-    bubble.className = 'bubble';
-    if (isMarkdown) {
-      bubble.innerHTML = marked.parse(textOrHtml);
-      // Open all links in a new tab (don't lose the web session)
-      bubble.querySelectorAll('a').forEach(a => { a.target = '_blank'; a.rel = 'noopener noreferrer'; });
-      enrichAIGenerated(bubble);
-    }
-    else bubble.textContent = textOrHtml;
-    msg.appendChild(roleEl); msg.appendChild(bubble);
-    chat.appendChild(msg);
-    chat.scrollTop = chat.scrollHeight;
-    return bubble;
-  }
-
-  // ---------- WebSocket ----------
-  function connect() {
-    const proto = location.protocol === 'https:' ? 'wss' : 'ws';
-    ws = new WebSocket(`${proto}://${location.host}/ws`);
-
-    ws.onopen = () => {
-      intentionalClose = false;
-      if (reconnectTimer) { clearTimeout(reconnectTimer); reconnectTimer = null; }
-      const payload = { agent: agentSelect.value };
-      // On reconnect, resume the active session (activeSessionId) if any.
-      const sid = resumeSessionId || activeSessionId;
-      if (sid) payload.session_id = sid;
-      ws.send(JSON.stringify(payload));
-    };
-
-    ws.onmessage = (ev) => {
-      const m = JSON.parse(ev.data);
-      if (m.type === 'status') { statusEl.textContent = m.text; }
-      else if (m.type === 'history') {
-        addMsg(m.role === 'user' ? 'user' : 'assistant', m.text, m.role !== 'user');
-      }
-      else if (m.type === 'history_tool') {
-        const note = document.createElement('div');
-        note.className = 'tool-note'; note.textContent = '🔧 ' + m.title;
-        chat.appendChild(note); chat.scrollTop = chat.scrollHeight;
-      }
-      else if (m.type === 'ready') {
-        ready = true; streaming = false; dot.classList.add('ready');
-        activeSessionId = m.session_id;
-        const tag = m.resumed ? 'repris' : 'nouveau';
-        statusEl.textContent = `Prêt · ${m.agent} · session ${m.session_id.slice(0,8)} (${tag})`;
-        if (m.agent) agentSelect.value = m.agent;
-        updateSendState();
-        loadSessions();  // refresh sidebar (new session may appear)
-      }
-      else if (m.type === 'chunk') {
-        hideThinking();
-        if (!currentAssistantEl) { currentAssistantRaw = ''; currentAssistantEl = addMsg('assistant', '', true); }
-        currentAssistantRaw += m.text;
-        currentAssistantEl.innerHTML = marked.parse(currentAssistantRaw);
-        currentAssistantEl.querySelectorAll('pre code').forEach(b => hljs.highlightElement(b));
-        currentAssistantEl.querySelectorAll('a').forEach(a => { a.target = '_blank'; a.rel = 'noopener noreferrer'; });
-        maybeScroll();  // only scroll if user is already at the bottom
-      }
-      else if (m.type === 'tool') {
-        hideThinking();
-        currentAssistantEl = null; currentAssistantRaw = '';
-        const note = document.createElement('div');
-        note.className = 'tool-note'; note.textContent = '🔧 ' + m.title;
-        chat.appendChild(note); maybeScroll();
-      }
-      else if (m.type === 'done') {
-        hideThinking();
-        // Response complete → enrich the last assistant bubble with inline images/links
-        if (currentAssistantEl) enrichAIGenerated(currentAssistantEl);
-        currentAssistantEl = null; currentAssistantRaw = '';
-        streaming = false; updateSendState();
-      }
-      else if (m.type === 'error') {
-        hideThinking();
-        addMsg('error', m.text); currentAssistantEl = null;
-        streaming = false; updateSendState();
-      }
-    };
-
-    ws.onclose = () => {
-      dot.classList.remove('ready'); ready = false; streaming = false;
+  // ---------- Input ----------
+  function syncInputForActive() {
+    const tab = getTab(activeTabId);
+    if (!tab) {
       input.disabled = true; sendBtn.disabled = true;
-      // Auto-reconnect on unexpected close (F5, sleep, network, server restart),
-      // but NOT when we closed it on purpose (session switch).
-      if (!intentionalClose && (activeSessionId || resumeSessionId)) {
-        statusEl.textContent = 'Connexion perdue — reconnexion…';
-        if (reconnectTimer) clearTimeout(reconnectTimer);
-        reconnectTimer = setTimeout(() => { connect(); }, 1500);
-      }
-    };
-    ws.onerror = () => { statusEl.textContent = 'Erreur de connexion — reconnexion…'; };
+      sendBtn.textContent = 'Envoyer'; sendBtn.classList.remove('stop');
+      statusEl.textContent = 'Aucun onglet actif'; return;
+    }
+    input.disabled = false;
+    if (tab.streaming) {
+      // During streaming: the button becomes a STOP button (always enabled)
+      sendBtn.textContent = '⏹ Stop';
+      sendBtn.classList.add('stop');
+      sendBtn.disabled = false;
+    } else {
+      sendBtn.textContent = 'Envoyer';
+      sendBtn.classList.remove('stop');
+      sendBtn.disabled = (tab.state === 'hot' && !tab.ready);
+    }
+    input.focus();
   }
 
   function send() {
+    const tab = getTab(activeTabId);
+    if (!tab) return;
     const text = input.value.trim();
-    if (!text || !ready || streaming) return;  // block send while streaming, but input stays usable
-    addMsg('user', text);
-    ws.send(JSON.stringify({ type: 'prompt', text }));
-    input.value = ''; input.style.height = 'auto';
-    streaming = true;
-    showThinking();      // show "… réfléchit" until first chunk/tool arrives
-    updateSendState();   // keeps input enabled + focused, disables only the Send button
+    if (!text || tab.streaming) return;
+    // Warm tab (or lost connection): make it hot first, then queue the send on ready
+    if (tab.state !== 'hot' || !tab.ws || tab.ws.readyState !== WebSocket.OPEN || !tab.ready) {
+      makeHot(tab);
+      tab._pending = text; input.value=''; input.style.height='auto';
+      addMsgTab(tab, 'user', text, false, false);
+      showThinkingTab(tab);
+      tab.streaming = true; syncInputForActive();
+      waitReadyThenSend(tab);
+      return;
+    }
+    addMsgTab(tab, 'user', text, false, false);
+    tab.ws.send(JSON.stringify({ type:'prompt', text }));
+    input.value=''; input.style.height='auto';
+    tab.streaming = true; showThinkingTab(tab); syncInputForActive();
+  }
+  function waitReadyThenSend(tab, tries=0) {
+    if (!tab._pending) return;
+    if (tab.ready && tab.ws && tab.ws.readyState === WebSocket.OPEN) {
+      const text = tab._pending; tab._pending = null;
+      tab.ws.send(JSON.stringify({ type:'prompt', text }));
+      return;
+    }
+    if (tries > 40) { tab._pending = null; hideThinkingTab(tab); addMsgTab(tab,'error','Reconnexion impossible.',false,false); tab.streaming=false; syncInputForActive(); return; }
+    setTimeout(() => waitReadyThenSend(tab, tries+1), 300);
   }
 
   // ---------- Events ----------
-  sendBtn.onclick = send;
-  input.addEventListener('keydown', (e) => {
-    if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); }
-  });
-  input.addEventListener('input', () => {
-    input.style.height = 'auto'; input.style.height = Math.min(input.scrollHeight, 200) + 'px';
-  });
-  // Agent dropdown = agent for the NEXT "Nouveau chat". Does not filter the list.
-  agentSelect.addEventListener('change', () => { /* no-op: sidebar shows all sessions */ });
-  newChatBtn.addEventListener('click', newChat);
-  document.getElementById('collapse-btn').addEventListener('click', () => {
-    document.body.classList.toggle('sb-collapsed');
-  });
-
-  // Reconnect when the page becomes visible again (back navigation, wake from sleep)
-  document.addEventListener('visibilitychange', () => {
-    if (document.visibilityState === 'visible'
-        && (activeSessionId || resumeSessionId)
-        && (!ws || ws.readyState === WebSocket.CLOSED || ws.readyState === WebSocket.CLOSING)) {
-      connect();
+  function cancelStream() {
+    const tab = getTab(activeTabId);
+    if (!tab || !tab.streaming) return;
+    if (tab.ws && tab.ws.readyState === WebSocket.OPEN) {
+      tab.ws.send(JSON.stringify({ type: 'cancel' }));
     }
-  });
-
-  // ---------- Auto-focus: keep the cursor in the input, always ----------
-  function refocus() {
-    if (!input.disabled) input.focus();
+    // The backend replies with {type:'cancelled'} which finalizes the UI state.
   }
-  // Refocus when clicking anywhere that is NOT an interactive control
-  // (so clicking a session/agent/button still works, but clicking empty space refocuses).
+  // Send button doubles as Stop while streaming
+  sendBtn.onclick = () => {
+    const tab = getTab(activeTabId);
+    if (tab && tab.streaming) cancelStream();
+    else send();
+  };
+  input.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } });
+  input.addEventListener('input', () => { input.style.height='auto'; input.style.height=Math.min(input.scrollHeight,200)+'px'; });
+  agentSelect.addEventListener('change', () => {});
+  newChatBtn.addEventListener('click', newChat);
+  document.getElementById('collapse-btn').addEventListener('click', () => document.body.classList.toggle('sb-collapsed'));
+
+  // keep cursor in input
   document.addEventListener('click', (e) => {
-    const t = e.target;
-    if (t.closest('button, select, a, .session-item, textarea, input')) return;
-    setTimeout(refocus, 0);
+    if (e.target.closest('button, select, a, .session-item, .tab, textarea, input')) return;
+    setTimeout(() => { if (!input.disabled) input.focus(); }, 0);
   });
-  // Refocus when the tab/window regains focus
-  window.addEventListener('focus', refocus);
-  // Refocus after any key press outside the input (e.g. you start typing)
   document.addEventListener('keydown', (e) => {
-    if (document.activeElement !== input && !input.disabled &&
-        !e.ctrlKey && !e.metaKey && !e.altKey && e.key.length === 1) {
-      input.focus();
-    }
+    if (document.activeElement !== input && !input.disabled && !e.ctrlKey && !e.metaKey && !e.altKey && e.key.length === 1) input.focus();
+  });
+  // reconnect hot tabs when returning to the page
+  document.addEventListener('visibilitychange', () => {
+    if (document.visibilityState !== 'visible') return;
+    tabs.forEach(t => {
+      if (t.state === 'hot' && (!t.ws || t.ws.readyState === WebSocket.CLOSED || t.ws.readyState === WebSocket.CLOSING)) connectTab(t);
+    });
   });
 
   // ---------- Init ----------

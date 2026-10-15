@@ -1,6 +1,6 @@
 ---
 name: aws-architecture-diagram
-description: Generate AWS architecture diagrams in draw.io format. Activates when the user asks to create, generate, or build an architecture diagram, system diagram, or draw.io diagram for AWS services.
+description: Generate diagrams in draw.io (.drawio) format — AWS architectures AND any other diagram (flowchart, conceptual schema, matrix, visual table, multi-level synthesis). Activates when the user asks to create, generate, or build any draw.io diagram, architecture diagram, system diagram, flowchart, concept map, matrix, or visual table. When the subject is AWS, the AWS-specific rules (official mxgraph.aws4 icons, category colors, console links) apply; otherwise use the same layout, font-size, and edge conventions with generic shapes.
 ---
 
 ## Instructions
@@ -12,28 +12,50 @@ Generate a draw.io (.drawio) XML file representing an AWS architecture diagram.
 - **UI/Frontend on the LEFT** (users access from left side)
 - **Data sources / external systems on the RIGHT**
 - Use horizontal lanes for parallel paths (top lane, bottom lane)
-- **Minimum 220px horizontal spacing** between icons (to leave room for edge labels)
-- **Minimum 250px vertical spacing** between lanes (so vertical edges don't crowd)
-- Secondary/auxiliary services (monitoring, DLQ, error paths) go BELOW the main flow with 280px+ vertical gap
+- **Horizontal spacing between connected components: 120–150px** (compact — never more than ~160px)
+- **Vertical spacing between lanes: 110–140px**
+- Secondary/auxiliary services (monitoring, DLQ, error paths) go BELOW the main flow with ~140px vertical gap
+- **COMPACT FIRST**: with few components, resserrer et centrer — ne JAMAIS étaler pour remplir l'espace. Pas de grands vides entre composants.
+- See **RÈGLE 0 (A4 Landscape sizing)** below — it is the master constraint and overrides any spacing value here.
 
 ### Canvas
-- Large canvas: `pageWidth="2400" pageHeight="1400"` minimum
-- Set `dx="2800" dy="1600"` for proper viewport
+- **A4 Landscape, fits on one Word page, readable at 100% zoom.** This is the master rule.
+- Canvas: `pageWidth="1123" pageHeight="794"` (A4 landscape @96dpi). NEVER larger.
+- Usable content area: **~1050 × 720px** (40px outer margin all sides).
+- Set `dx` / `dy` to match the actual content bounding box (see RÈGLE 0 / Part C).
+- Everything (nodes + labels + legend) MUST fit inside the usable area at scale 1:1.
+
+**OPENING AT 100% ZOOM (MANDATORY — fixes the "opens at 20%" problem):**
+draw.io opens at the zoom that "fits" the content bounding box. It opens at ~100% ONLY if
+the bounding box = the real diagram. It opens at 20% when a stray label or waypoint sits
+far away (phantom), inflating the bounding box. Therefore:
+- `pageWidth`/`pageHeight`/`dx`/`dy` MUST equal the real content bounds (+ ~40px margin), never a fixed oversize value.
+- NO node, label, waypoint, or `<mxPoint as="offset">` may fall outside `[0..pageWidth] × [0..pageHeight]`.
+- The #1 cause of a far-away phantom is a **labelled or hand-routed cross-container edge** — see the Cross-container rule in Edge Style.
+- Final check before saving: the min/max x,y of EVERY element (nodes, edge waypoints, label offsets) must be within the page. If anything is outside → remove the offset/waypoint or move the element in.
 - Always include a title block as the first element after the background:
 ```xml
-<mxCell value="&lt;b&gt;Diagram Title&lt;/b&gt;&lt;br&gt;Author | Date | Version" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=14;spacing=8;" vertex="1" parent="1">
-  <mxGeometry x="40" y="30" width="420" height="60" as="geometry" />
+<mxCell value="&lt;b&gt;Diagram Title&lt;/b&gt;&lt;br&gt;Author | Date | Version" style="text;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=18;spacing=6;" vertex="1" parent="1">
+  <mxGeometry x="40" y="20" width="420" height="44" as="geometry" />
 </mxCell>
 ```
+(Title block → `fontSize=18`; the "Author | Date | Version" subline → `fontSize=11` if on its own cell — see Font Sizes below.)
 
 ### Icon Style
 - Icons are from draw.io's built-in `mxgraph.aws4` stencil library — the **official AWS Architecture Icons** (https://aws.amazon.com/architecture/icons/, updated quarterly)
-- Icon size: **78x78px** for main services, **65x65px** for secondary
+- Icon size: **48x48px** for main services, **40x40px** for secondary (sized for A4 landscape at 100% zoom)
 - Use `sketch=0;outlineConnect=0;` on all icons
 - Use `strokeColor=#ffffff` on all AWS service icons
 - **MUST include `fillColor`** — without it, icons render as invisible/white in PNG export
-- Font size: **12px** for labels
-- Always include: `fontColor=#232F3E;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;aspect=fixed;`
+- Font size: **12px** for icon labels (service names) — see Font Sizes table
+- Always include: `fontColor=#232F3E;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;aspect=fixed;fontSize=12;`
+
+**Concrete icon example (copy this pattern — note `fontSize=12` and 48×48 size):**
+```xml
+<mxCell id="lambda1" value="AgentCore Runtime" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#01A88D;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.bedrock_agentcore;" vertex="1" parent="1">
+  <mxGeometry x="200" y="200" width="48" height="48" as="geometry" />
+</mxCell>
+```
 
 **fillColor by AWS service category:**
 | Category | fillColor | Services |
@@ -47,6 +69,30 @@ Generate a draw.io (.drawio) XML file representing an AWS architecture diagram.
 | Analytics | `#8C4FFF` | Kinesis, Athena, Redshift |
 | Management | `#E7157B` | CloudWatch, CloudTrail |
 | AI/ML | `#01A88D` | Bedrock, SageMaker |
+
+### Font Sizes (STANDARD — calibrées pour A4 paysage, lisibles à 100%)
+
+Set `fontSize=` on each mxCell according to the element's role. Ces valeurs sont
+calibrées pour un canvas A4 paysage (1123px) : lisibles à l'échelle 1:1 sans être
+surdimensionnées (des polices plus grosses casseraient le cadrage A4).
+
+| Élément | `fontSize` |
+|---------|-----------|
+| Titre de page / diagramme | **18** |
+| Titre de bloc / section / en-tête de conteneur | **14** |
+| Label d'icône (nom du service) / corps de bloc / cellule de tableau | **12** |
+| Label de flèche / légende / note / sous-titre secondaire | **11** |
+
+Rules:
+- **Une seule table fait foi** — ces valeurs priment sur toute autre taille mentionnée
+  ailleurs dans ce fichier.
+- Titre du diagramme → `fontSize=18`.
+- Titres de blocs, en-têtes de conteneurs → `fontSize=14`.
+- Noms de services (labels d'icônes), texte de cellule → `fontSize=12`.
+- Labels de flèches, légendes, notes, annotations → `fontSize=11`.
+- Applies to both AWS and non-AWS diagrams (flowcharts, matrices, visual tables, concept maps).
+- Ces tailles supposent le cadrage A4 (RÈGLE 0). Ne JAMAIS les augmenter pour « remplir » —
+  la lisibilité vient du cadrage A4 + icônes 48px + spacing compact, pas de polices géantes.
 
 ### Edge Style — CRITICAL FOR CLEAN DIAGRAMS
 
@@ -88,7 +134,16 @@ edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;s
 - Always include `exitX/exitY` and `entryX/entryY` to define exact connection points on the shape perimeter
 - In draw.io, properly attached edges show a "blue dot" anchor; unattached edges show a "green cross"
 - If an edge connects to a child inside a container, reference the child's ID directly (not the container)
-- **Cross-container edges:** When source and target are in different containers, set the edge's `parent="1"` (root layer) so draw.io can route it across boundaries
+- **Cross-container edges (CRITICAL — cause #1 of the "20% zoom / phantom labels" bug):** When source and target are in **different** containers:
+  - Set the edge's `parent="1"` (root layer).
+  - **NO text label on the edge** — a label on a cross-container edge is placed by draw.io at the geometric midpoint of the (possibly bent) path, which lands far outside the canvas → phantom label → draw.io opens at 20%. Put the info in the **legend** instead (reference it with the enumerate number, e.g. "⑦ = REST bloqué").
+  - **NO manual `<Array as="points">` waypoints and NO `<mxPoint as="offset">`** on cross-container edges unless every point is in ABSOLUTE canvas coordinates verified to be inside `[0..pageWidth] × [0..pageHeight]`. Mixing a relative-positioned child endpoint with root-coordinate waypoints produces phantoms. Easiest safe form:
+    ```xml
+    <mxCell id="e7" value="" style="edgeStyle=none;html=1;strokeWidth=2;dashed=1;endArrow=block;endFill=0;exitX=1;exitY=0.5;entryX=0;entryY=0.5;enumerate=1;enumerateValue=7;" edge="1" source="childInContainerA" target="childInContainerB" parent="1">
+      <mxGeometry relative="1" as="geometry" />
+    </mxCell>
+    ```
+  - Let draw.io auto-route (no waypoints) OR, if routing is messy, nudge only the containers' positions — never add far-away label offsets.
 
 **When NOT to label edges:**
 - If the flow is obvious from context (e.g., Lambda → DynamoDB doesn't need "Write")
@@ -101,13 +156,13 @@ edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;s
 - Style: `sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=<CATEGORY_COLOR>;strokeColor=#ffffff;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.<name>`
 - **MUST use `strokeColor=#ffffff`** — without it, the white glyph disappears
 - **MUST use `fillColor=<color>`** — without it, icon renders as white/invisible square in PNG export
-- Size: 78x78
+- Size: **48x48** (A4-calibrated)
 
 **Pattern 2: Resource-level (standalone shape)**
 - Style: `sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=<CATEGORY_COLOR>;strokeColor=none;dashed=0;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=12;fontStyle=0;aspect=fixed;shape=mxgraph.aws4.<name>`
 - **MUST use `strokeColor=none`** — using #ffffff breaks these
 - **MUST use `fillColor=<color>`** — same reason as above
-- Size: 78x78 or 48x48
+- Size: **48x48** (40x40 for secondary)
 
 **Confusing these patterns guarantees broken icons.**
 
@@ -145,23 +200,25 @@ Never render an unknown service as a plain colored rectangle with no label.
 - This ensures moving a boundary moves all its children together
 - Example:
 ```xml
-<mxCell id="vpc1" value="VPC" style="shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_vpc2;strokeColor=#8C4FFF;fillColor=none;container=1;dropTarget=1;" vertex="1" parent="1">
-  <mxGeometry x="100" y="100" width="800" height="500" as="geometry" />
+<mxCell id="vpc1" value="VPC" style="shape=mxgraph.aws4.group;grIcon=mxgraph.aws4.group_vpc2;strokeColor=#8C4FFF;fillColor=none;container=1;dropTarget=1;fontSize=14;" vertex="1" parent="1">
+  <mxGeometry x="100" y="100" width="420" height="260" as="geometry" />
 </mxCell>
-<mxCell id="lambda1" value="Lambda" style="shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;strokeColor=#ffffff;" vertex="1" parent="vpc1">
-  <mxGeometry x="50" y="50" width="78" height="78" as="geometry" />
+<mxCell id="lambda1" value="Lambda" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;html=1;fontSize=12;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.lambda;" vertex="1" parent="vpc1">
+  <mxGeometry x="40" y="50" width="48" height="48" as="geometry" />
 </mxCell>
 ```
 Note: child geometry coordinates are **relative to the parent container**, not the canvas.
 
 ### PNG Export Background Fix
-Place a full-canvas rectangle as the FIRST element (lowest z-order):
+Place a full-canvas rectangle as the FIRST element (lowest z-order). Its width/height
+MUST match the actual A4 canvas (see RÈGLE 0 / Part C — size = content bounds):
 ```xml
 <mxCell value="" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#F5F5F5;strokeColor=none;" vertex="1" parent="1">
-  <mxGeometry x="0" y="0" width="2400" height="1400" as="geometry" />
+  <mxGeometry x="0" y="0" width="1123" height="794" as="geometry" />
 </mxCell>
 ```
 This prevents black background on PNG export. Use `strokeColor=none` (not E0E0E0).
+Adjust width/height to the real content bounds (never leave a fixed oversize value).
 
 ### Multi-page Diagrams
 For complex architectures, use multiple pages (tabs) in one .drawio file:
@@ -273,24 +330,25 @@ The total diagram bounding box (all nodes + labels + margins) MUST fit within:
 - MINIMUM: Half A4 Portrait = 794px wide x 561px tall (at 96dpi)
 
 Target the middle ground by default:
-- Diagram canvas: 1050px wide x 680px tall
+- Diagram canvas: 1123px wide x 794px tall (A4 landscape)
 - Outer margin (no content): 40px on all sides
-- Usable area: 970px wide x 600px tall
+- Usable area: 1050px wide x 720px tall
 
 After placing all nodes, verify:
-  max(x + width) ≤ 1010px
-  max(y + height) ≤ 640px
-If any node exceeds these bounds → recompute the grid with smaller cell sizes or tighter gaps.
+  max(x + width) ≤ 1083px
+  max(y + height) ≤ 754px
+If any node exceeds these bounds → recompute the grid with smaller gaps (never shrink fonts below the Font Sizes table).
 
 #### RÈGLE 1 — Layout en grille stricte avant tout
 
 BEFORE generating any XML, define a strict grid layout:
 - Assign every node a CELL position (col, row) on a virtual grid
-- Minimum cell size: 220px wide x 160px tall
-- Minimum gap between cells: 80px horizontal, 100px vertical
-- Calculate absolute (x,y) from grid position: x = col * (cellW + gapX), y = row * (cellH + gapY)
+- Cell size (icon + label): ~**120px wide x 90px tall** (icon 48px + label below)
+- Gap between cells: **70px horizontal, 70px vertical** (compact; never exceed 90px)
+- Calculate absolute (x,y) from grid position: x = 40 + col * (cellW + gapX), y = 70 + row * (cellH + gapY)
 - NO two nodes may share overlapping bounding boxes (x, y, width, height)
-- Document the grid plan as a comment BEFORE writing XML
+- Verify the full grid fits in the A4 usable area (≤1050 wide, ≤720 tall — RÈGLE 0). If not, tighten gaps further or reduce node count per row.
+- Document the grid plan BEFORE writing XML (no XML comments in the output).
 
 #### RÈGLE 2 — Edge routing explicite, jamais automatique
 
@@ -528,6 +586,8 @@ Before outputting ANY draw.io XML, run this audit line by line:
 - □ Every edge routing path stays within (20, 20, pageWidth-20, pageHeight-20)
 - □ No mxPoint waypoint exceeds canvas bounds
 - □ pageWidth and pageHeight = actual content bounds + 80px
+- □ Every element (node, waypoint, label offset) is inside [0..pageWidth] × [0..pageHeight] — NO far-away phantom (else draw.io opens at 20%)
+- □ No cross-container edge carries a text label or hand-coded waypoints/offset (info goes to the legend; let draw.io auto-route)
 - □ No node label contains edge-concept words used as a routing proxy (e.g. "Data Guard Lane", "Backup Path") → those words belong only in edge value="" attributes
 
 If ANY check fails → fix before output. Do not output partial XML.
@@ -551,13 +611,12 @@ AUDIT: Scan all mxCell elements — any one with connectable="0" AND parent poin
 #### GENERATION PROCESS (MANDATORY SEQUENCE)
 
 **STEP 0**: Define the canvas (MANDATORY FIRST STEP) — Before planning the grid, set the canvas constraints:
-- Total usable area: 970px wide x 600px tall
-- This represents an A4 landscape page with margins (max format)
-- It also comfortably fills the top half of an A4 portrait page (min format)
-- ALL nodes, edges, labels, and external elements MUST fit inside this area
-- Adjust grid cell size and spacing to fit — never exceed the canvas boundary
-- Typical node size within this canvas: 140px wide x 80px tall max
-- If the diagram has more than 8 nodes, reduce cell spacing to 60px and node size to 120x70px
+- Canvas = **A4 landscape 1123 × 794px**; usable content area = **1050 × 720px** (40px margin)
+- ALL nodes, edges, labels, and external elements MUST fit inside this area at 100% zoom
+- AWS icon size: **48 × 48px** (main), 40 × 40 (secondary); cell (icon + label) ≈ 120 × 90px
+- Spacing between components: 70px (never exceed 90px) — compact, no empty space
+- If the diagram has more than ~12 components, do NOT shrink fonts — instead group related
+  components into containers, or split into multiple pages (tabs). Readability on A4 wins.
 
 **STEP 0b**: Anchor verification — After computing all coordinates, verify:
 - Minimum x across all elements: must be 20–200px
@@ -604,7 +663,7 @@ AUDIT: Scan all mxCell elements — any one with connectable="0" AND parent poin
 - NEVER output an edge label with geometry x=0,y=0
 - NEVER leave strokeColor unset on any edge
 - NEVER generate XML without completing Steps 0–5 first
-- NEVER place any node, label, or edge waypoint beyond x=1010 or y=640
+- NEVER place any node, label, or edge waypoint beyond x=1083 or y=754
 - NEVER generate a diagram without completing STEP 0 first
 - NEVER use a fixed node size without verifying it fits the A4 canvas budget
 - NEVER route a vertical edge through the horizontal center of the diagram if any node or label exists along that vertical path

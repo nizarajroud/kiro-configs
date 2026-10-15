@@ -4,7 +4,7 @@
   "prompt": "file://../prompts/forge-prompt.md",
   "mcpServers": {
     "memory-forge": {
-      "description": "Persistent memory for Forge \u2014 stores discovered tools, experiment verdicts, installation notes, and patterns across sessions.",
+      "description": "Persistent memory for Forge — stores discovered tools, experiment verdicts, installation notes, and patterns across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
@@ -58,7 +58,7 @@
       "disabled": false
     },
     "notion-workspace": {
-      "description": "Notion workspace \u2014 create, read, update, search pages.",
+      "description": "Notion workspace — create, read, update, search pages.",
       "command": "python3",
       "args": [
         "/home/nizar/.kiro/wrappers/notion_wrapper.py"
@@ -120,7 +120,7 @@
       "disabled": false
     },
     "mcp-tts": {
-      "description": "Text-to-Speech \u2014 reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
+      "description": "Text-to-Speech — reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
       "command": "/home/nizar/go/bin/mcp-tts",
       "args": [],
       "env": {
@@ -132,6 +132,26 @@
         "MCP_TTS_OUTPUT_FORMAT": "${MCP_TTS_OUTPUT_FORMAT}"
       },
       "disabled": false
+    },
+    "youtube-search": {
+      "description": "YouTube Data API v3 — search videos/channels/playlists and discover the most relevant videos on any topic (reviews, tutorials). Filters, details, transcripts.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/youtube_mcp_wrapper.py"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "wispr-flow": {
+      "description": "Wispr Flow Notetaker MCP (remote, OAuth) — access your meeting notes and transcripts (not dictations). Query/summarize recorded meetings.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://api.wisprflow.ai/connect/mcp"
+      ],
+      "disabled": false,
+      "locked": false
     }
   },
   "tools": [
@@ -140,7 +160,9 @@
   "allowedTools": [
     "*",
     "@mcp-everything-search",
-    "@mcp-tts"
+    "@mcp-tts",
+    "@youtube-search",
+    "@wispr-flow"
   ],
   "resources": [
     "file:///home/nizar/HomeWspce/kiro-configs/knowledges/shared/*.md",
@@ -160,6 +182,6 @@
   "hooks": {},
   "toolsSettings": {},
   "useLegacyMcpJson": false,
-  "welcomeMessage": "\ud83d\udd28 Forge ready. Tell me which MCP server to install.",
+  "welcomeMessage": "🔨 Forge ready. Tell me which MCP server to install.",
   "toolAliases": {}
 }

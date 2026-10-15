@@ -1,10 +1,10 @@
 {
   "name": "compass",
-  "description": "Personal life orchestrator \u2014 routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
+  "description": "Personal life orchestrator — routes questions about personal affairs to the right data sources (NotebookLM, Notion, Gmail, TickTick, Excel, Telegram, Bookmarks) and synthesizes answers with citations.",
   "prompt": "file://../prompts/compass-prompt.md",
   "mcpServers": {
     "memory-compass": {
-      "description": "Persistent memory \u2014 stores user preferences, routing corrections, and patterns across sessions.",
+      "description": "Persistent memory — stores user preferences, routing corrections, and patterns across sessions.",
       "command": "mcp-server-memory",
       "args": [],
       "env": {
@@ -25,7 +25,7 @@
       "locked": false
     },
     "mcp-canada": {
-      "description": "Canadian government data \u2014 217 tools across 17 APIs. Bank of Canada rates, weather, immigration stats, product recalls, Quebec data, parliamentary data. Use for any question about Canadian services, government info, or public data.",
+      "description": "Canadian government data — 217 tools across 17 APIs. Bank of Canada rates, weather, immigration stats, product recalls, Quebec data, parliamentary data. Use for any question about Canadian services, government info, or public data.",
       "command": "uvx",
       "args": [
         "mcp-canada"
@@ -34,7 +34,7 @@
       "locked": false
     },
     "architecture-mcp": {
-      "description": "Architecture MCP \u2014 Generate floor plans (SVG), 3D concepts, lighting analysis, material palettes, cost estimates. Use when user asks about room layout, floor plan, or lighting design.",
+      "description": "Architecture MCP — Generate floor plans (SVG), 3D concepts, lighting analysis, material palettes, cost estimates. Use when user asks about room layout, floor plan, or lighting design.",
       "command": "npx",
       "args": [
         "architecture-mcp"
@@ -72,7 +72,7 @@
       "disabled": false
     },
     "mcp-tts": {
-      "description": "Text-to-Speech \u2014 reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
+      "description": "Text-to-Speech — reads text aloud via Google Gemini TTS. Use when user asks to read, speak, or listen to content.",
       "command": "/home/nizar/go/bin/mcp-tts",
       "args": [],
       "env": {
@@ -95,14 +95,10 @@
     },
     "airtable": {
       "description": "Airtable database MCP server. Use this to create, read, update, and delete records in Airtable bases. Provides a visual web interface (kanban, grid, calendar) for data that the agent pushes. Bidirectional: agent writes data, user interacts visually, agent reads back changes.",
-      "command": "npx",
+      "command": "python3",
       "args": [
-        "-y",
-        "airtable-mcp-server"
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/airtable_wrapper.py"
       ],
-      "env": {
-        "AIRTABLE_API_KEY": "${AIRTABLE_API_KEY}"
-      },
       "disabled": false
     },
     "ticktick": {
@@ -146,7 +142,7 @@
       "disabled": false
     },
     "google-maps": {
-      "description": "Google Maps Grounding Lite \u2014 search places (restaurants, clinics, schools), compute routes (driving/walking), and lookup weather for any location. Use when user asks about nearby places, directions, or location-based queries.",
+      "description": "Google Maps Grounding Lite — search places (restaurants, clinics, schools), compute routes (driving/walking), and lookup weather for any location. Use when user asks about nearby places, directions, or location-based queries.",
       "command": "python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/google_maps_wrapper.py"
@@ -164,7 +160,7 @@
       "locked": false
     },
     "xpoz-mcp": {
-      "description": "Search Twitter, Instagram, Reddit & TikTok \u2014 1.5B+ posts indexed. Social intelligence, lead gen, brand monitoring.",
+      "description": "Search Twitter, Instagram, Reddit & TikTok — 1.5B+ posts indexed. Social intelligence, lead gen, brand monitoring.",
       "type": "streamable-http",
       "url": "https://mcp.xpoz.ai/mcp",
       "headers": {
@@ -173,7 +169,7 @@
       "disabled": true
     },
     "apify-mcp": {
-      "description": "Apify platform \u2014 extract data from social media, search engines, maps, e-commerce sites using 1000+ ready-made Actors. Use for web scraping, data extraction, and automation at scale.",
+      "description": "Apify platform — extract data from social media, search engines, maps, e-commerce sites using 1000+ ready-made Actors. Use for web scraping, data extraction, and automation at scale.",
       "command": "npx",
       "args": [
         "-y",
@@ -217,6 +213,6 @@
     "@airtable/create_table": "airtable_create_table"
   },
   "toolsSettings": {},
-  "welcomeMessage": "\ud83e\udded Compass ready. Ask me anything about your personal life \u2014 I'll find the answer.",
+  "welcomeMessage": "🧭 Compass ready. Ask me anything about your personal life — I'll find the answer.",
   "useLegacyMcpJson": true
 }

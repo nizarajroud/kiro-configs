@@ -5,7 +5,7 @@
   "mcp.loadedBefore": true,
   "toolSearch.enabled": true,
   "chat.disableTrustAllConfirmation": true,
-  "chat.disableWrap": true,
+  "chat.disableWrap": false,
   "chat.enableKnowledge": true,
   "chat.allowAnimations": false
 }

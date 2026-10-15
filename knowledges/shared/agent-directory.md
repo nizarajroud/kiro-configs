@@ -63,6 +63,8 @@ Le subagent exécute la tâche avec ses propres MCPs, retourne le résultat, pui
 | sequential-thinking | Raisonnement structuré |
 | time | Heure & timezone |
 | fetch | Téléchargement URLs |
+| youtube-search | Recherche/découverte de vidéos YouTube (reviews, tutos) + détails + transcripts (YouTube Data API v3) |
+| wispr-flow | Notes & transcripts de réunions capturées par Wispr Flow Notetaker (remote, OAuth ; pas les dictations) |
 
 ## Matrice de redirection
 

@@ -13,3 +13,24 @@ knowledges/personal/domains/demenagement/les Diagrams/*.pdf
 agents/sandbox.json
 logs/
 crew/
+
+# --- Secrets, backups, locks, temp (ajout 2026-10-15) ---
+# Secrets / env
+*.env
+scripts/machine-*.env
+# Backups
+*.bak
+*.bak[0-9]
+*.bak.*
+*.backup
+# Locks
+*.lock
+# Artefacts temporaires kiro-web
+.kiro-web-artifacts/
+# Workspace roots temporaires
+workspace-roots/
+# IDE/local kiro state
+.kiro/
+# Mémoire / données sensibles (knowledge graphs perso)
+memories/
+*.jsonl

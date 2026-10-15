@@ -193,13 +193,27 @@ work/domains/novatech/notes.md                         ← memory for Novatech p
 
 **Déclencheur** : L'utilisateur demande le numéro de session, l'ID de session, "quelle session", "session actuelle", "c'est quelle conversation".
 
-**Action OBLIGATOIRE** : Exécuter cette commande et retourner le résultat :
+**Action OBLIGATOIRE** : Retourner la session du **dossier courant** (jamais la dernière session globale). La session est clé par la colonne `key` = le cwd. Procédure :
 
 ```bash
-sqlite3 ~/.local/share/kiro-cli/data.sqlite3 "SELECT conversation_id FROM conversations_v2 ORDER BY updated_at DESC LIMIT 1"
+# 1. cwd courant (le dossier où l'utilisateur a posé la question)
+CWD="$(pwd)"
+# 2. dernière session DE CE DOSSIER (filtrée par key=cwd)
+sqlite3 ~/.local/share/kiro-cli/data.sqlite3 \
+  "SELECT conversation_id FROM conversations_v2 WHERE key='$CWD' ORDER BY updated_at DESC LIMIT 1"
 ```
 
-**JAMAIS** : dire "je n'ai pas accès" ou demander à l'utilisateur de le faire lui-même.
+**Pourquoi filtrer par `key='$CWD'`** : `ORDER BY updated_at DESC LIMIT 1` seul retourne la
+session la plus récente de **toute** la DB (souvent une autre, ex: kiro-web), pas celle du
+dossier où l'utilisateur travaille. Le filtre par cwd garantit qu'on renvoie **la session
+dans laquelle la question est posée**.
+
+**Fallback** : si la requête filtrée ne retourne RIEN (aucune session pour ce cwd exact),
+le dire clairement — p. ex. « aucune session enregistrée pour ce dossier (`$CWD`) » — et
+NE PAS retomber silencieusement sur la dernière session globale (ce serait le bug d'origine).
+
+**JAMAIS** : dire "je n'ai pas accès" ; demander à l'utilisateur de le faire lui-même ;
+retourner la dernière session globale sans filtrer par le cwd.
 
 
 ---

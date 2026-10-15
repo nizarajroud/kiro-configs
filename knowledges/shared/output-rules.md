@@ -7,6 +7,25 @@ inclusion: always
 
 **Déclencheur** : L'utilisateur demande une explication ou traduction "en tunisien" (ou formulation similaire : "explique en derja", "dis-le en tunisien", "traduis en tunisien", etc.)
 
+### ⚡ EXCEPTION — "inline / dans le chat" (PRIORITAIRE)
+
+**Déclencheur de l'exception** : L'utilisateur demande une explication tunisienne AVEC un marqueur d'emplacement indiquant qu'il la veut directement dans la conversation. Marqueurs (liste non exhaustive, **insensible à la casse**) :
+- « explique-moi ici en tunisien », « en tunisien ici », « ici en tunisien »
+- « tunisien inline », « dans le chat en tunisien », « sans Notion en tunisien »
+
+**Comportement dans ce cas** :
+- ❌ NE PAS créer de page Notion. Ne PAS utiliser l'outil Notion du tout.
+- ✅ Répondre DIRECTEMENT dans le chat, en appliquant EXACTEMENT le même format tunisien que la règle standard :
+  - Arabe dialectal tunisien, termes techniques en anglais tels quels (ne PAS les traduire).
+  - **RTL — chaque bloc de texte (paragraphe, puce, heading) commence par le caractère Unicode RTL mark U+202B (`‫`) et finit par U+202C (`‬`).**
+  - Prose conversationnelle naturelle ; les termes anglais s'insèrent dans la phrase arabe.
+  - Markdown (titres, gras, listes) et emojis autorisés pour structurer.
+  - Interdits habituels : pas de glossaire terme-par-terme, pas de pattern « terme EN — tiret — traduction AR ».
+
+**Règle de priorité (STRICTE)** : Le marqueur « ici / inline / dans le chat / sans Notion » l'emporte TOUJOURS → réponse inline dans le chat, AUCUNE page Notion.
+
+**Comportement par défaut (INCHANGÉ)** : Sans ce marqueur → créer la page Notion (voir ci-dessous) + afficher le lien direct.
+
 ### Action — Création de page Notion
 
 1. **Si on est déjà dans le contexte d'une page Notion** → créer une **sous-page** de cette page, titrée "Explication en tunisien — [sujet]"
@@ -196,6 +215,261 @@ Cette voix est la plus proche du dialecte tunisien parmi toutes les voix disponi
 - ❌ JAMAIS de fichier directement sous `<mois-année>/` sans sous-dossier domaine
 - ✅ La copie locale dans `AI-GENERATED/` est TOUJOURS conservée, même si l'image est ensuite uploadée sur GitHub ou intégrée dans Notion
 
+### Ouverture automatique après génération (OBLIGATOIRE)
+
+**Déclencheur** : Tout fichier **ouvrable** généré et sauvegardé sous `AI-GENERATED/`.
+
+**Action OBLIGATOIRE** : Juste après la sauvegarde, ouvrir le fichier dans un nouvel
+onglet du navigateur Windows déjà ouvert. Un onglet par fichier ouvrable généré.
+
+**Extensions à ouvrir automatiquement** :
+`html`, `png`, `svg`, `jpg`, `jpeg`, `gif`, `webp`, `pdf`
+
+**Extensions EXCLUES de l'ouverture auto** (formats d'édition, pas de rendu navigateur) :
+`drawio`, `excalidraw`, `d2` (fichiers source) — ne PAS tenter de les ouvrir.
+
+**Commande OBLIGATOIRE (WSL → navigateur Windows par défaut)** :
+
+```bash
+cmd.exe /c start "" "$(wslpath -w '/mnt/c/Users/nizar/Documents/AI-GENERATED/<...>/<fichier>.<ext>')"
+```
+
+- `wslpath -w` convertit le chemin WSL en chemin Windows.
+- `cmd.exe /c start "" "..."` ouvre le fichier avec le programme Windows par défaut
+  (le navigateur pour html/images/pdf) → nouvel onglet dans le navigateur existant.
+- Non-interactif, aucune confirmation requise.
+
+**Règles strictes** :
+- ✅ Ouvrir CHAQUE fichier ouvrable généré (un onglet par fichier).
+- ✅ Ouvrir APRÈS la sauvegarde dans `AI-GENERATED/` (jamais depuis `/tmp/`).
+- ❌ NE PAS ouvrir les formats d'édition (`drawio`, `excalidraw`, `.d2` source).
+- ❌ NE PAS bloquer ni attendre — la commande rend la main immédiatement.
+
+### ⚡ EXCEPTION — Contexte kiro-web (affichage inline dans le fil web)
+
+**Principe** : Quand l'agent tourne dans l'environnement **kiro-web** (interface web), il
+ne faut PAS lancer `cmd.exe` pour ouvrir le fichier dans le navigateur Windows. À la
+place, kiro-web sait afficher/épingler l'artefact directement dans le fil de discussion.
+La génération dans `AI-GENERATED/` reste **inchangée et obligatoire**.
+
+**Détection du contexte kiro-web (dans cet ordre)** :
+
+1. **Variable d'env (méthode idéale, si disponible)** : si `$KIRO_WEB` est défini
+   (=`1`) → contexte kiro-web. *(À faire ajouter côté kiro-web par l'agent du code ;
+   tant que non fait, utiliser la détection par process ci-dessous.)*
+2. **Ancêtre de process (méthode courante, sans toucher au code)** :
+
+```bash
+pid=$$; KWEB=0
+for i in $(seq 1 10); do
+  ppid=$(ps -o ppid= -p "$pid" 2>/dev/null | tr -d ' '); [ -z "$ppid" ] && break
+  ps -o args= -p "$ppid" 2>/dev/null | grep -q "kiro_web" && { KWEB=1; break; }
+  pid=$ppid; [ "$pid" -le 1 ] && break
+done
+echo "$KWEB"   # 1 = kiro-web, 0 = CLI natif
+```
+
+**Comportement selon le contexte** :
+
+| Contexte | Génération `AI-GENERATED/` | Ouverture |
+|----------|---------------------------|-----------|
+| **kiro-web** (`KWEB=1`) | ✅ Toujours | ❌ PAS de `cmd.exe`. À la place, **écrire le chemin absolu du fichier généré dans la réponse** (`/mnt/c/Users/nizar/Documents/AI-GENERATED/...`) → kiro-web le détecte et l'affiche/épingle inline dans le fil web. |
+| **CLI natif** (`KWEB=0`) | ✅ Toujours | ✅ `cmd.exe /c start` → navigateur Windows (comportement standard ci-dessus) |
+
+**Règles strictes (exception kiro-web)** :
+- ✅ TOUJOURS générer dans `AI-GENERATED/` quel que soit le contexte.
+- ✅ En kiro-web → référencer le **chemin absolu** de CHAQUE artefact ouvrable dans la réponse (pour l'affichage inline dans le fil).
+- ❌ En kiro-web → NE JAMAIS lancer `cmd.exe /c start` (ouvrirait un onglet parasite hors du fil web).
+- ✅ Formats concernés par l'affichage inline : `html`, `png`, `svg`, `jpg`, `jpeg`, `gif`, `webp`, `pdf` (mêmes extensions que l'ouverture auto ; `drawio`/`excalidraw`/`d2` source exclus).
+
+
+---
+
+## Règle : Artefacts générés en contexte kiro-web
+
+**Déclencheur** : Toute génération d'image/diagramme (D2, Excalidraw, draw.io, Mermaid,
+screenshot, export SVG/PNG, etc.) quand **`KIRO_WEB=1`** (contexte kiro-web).
+
+**Contexte technique (déjà en place — ne PAS recoder)** :
+- kiro-web pose `KIRO_WEB=1` dans chaque subprocess ACP qu'il lance.
+- kiro-web sert inline dans le fil tout fichier image situé dans
+  `<cwd de la session>/.kiro-web-artifacts/`, via `GET /api/artifact/{session_id}/{path}`.
+  Le frontend détecte automatiquement tout chemin contenant `.kiro-web-artifacts/` dans
+  la réponse de l'agent et l'affiche inline (images : png, svg, jpg, jpeg, gif, webp).
+- L'agent ACP tourne déjà dans le cwd de la session → écrire dans `./.kiro-web-artifacts/`
+  atterrit automatiquement au bon endroit.
+
+### Comportement OBLIGATOIRE en contexte kiro-web (`KIRO_WEB=1`)
+
+1. **Générer une IMAGE (SVG ou PNG)** — jamais laisser uniquement le fichier source
+   (`.d2`, `.drawio`, `.excalidraw`), car seul un PNG/SVG s'affiche inline.
+2. **Écrire l'image dans `./.kiro-web-artifacts/<nom-descriptif>.<svg|png>`** relatif au
+   répertoire de travail courant de la session. Créer le dossier `.kiro-web-artifacts/`
+   s'il n'existe pas. **Ne PAS faire de recherche disque (`find`)** — le chemin est
+   déterministe.
+3. **Écrire aussi la copie d'archivage** dans
+   `AI-GENERATED/<mois-année>/<domaine>/<sujet>/<ext>/...` (règle d'emplacement existante,
+   inchangée, toujours obligatoire).
+4. **Référencer, dans la réponse, le chemin ABSOLU** du fichier sous
+   `.kiro-web-artifacts/` (ex : `/home/nizar/.../mon-projet/.kiro-web-artifacts/diagramme.svg`)
+   → kiro-web le détecte et l'affiche inline dans le fil.
+5. **NE PAS lancer `cmd.exe /c start`** en contexte kiro-web (déjà couvert par l'exception
+   kiro-web existante).
+
+### PRINCIPE GÉNÉRAL — l'agent contrôle le chemin de sortie (pas de traitement cas-par-cas)
+
+**Principe directeur (en contexte kiro-web, `KIRO_WEB=1`)** :
+
+> L'agent doit TOUJOURS écrire l'artefact final à un chemin déterministe qu'il contrôle
+> (`./.kiro-web-artifacts/<nom>.<svg|png>`, relatif au cwd de la session). Il ne doit
+> JAMAIS dépendre d'un outil qui écrit dans un emplacement inconnu, ni chercher le fichier
+> après coup.
+
+**⚡ MÉTHODE PAR DÉFAUT (chemin le plus court, latence minimale) — SVG écrit par l'agent** :
+
+En contexte kiro-web, pour afficher un visuel inline avec le minimum de latence :
+
+1. **Format = SVG** (le plus léger, s'affiche inline aussi bien que PNG, et l'agent peut
+   l'écrire lui-même sans aucun process externe).
+2. **L'agent écrit le SVG DIRECTEMENT** dans `./.kiro-web-artifacts/<nom>.svg` :
+   - soit via `fs_write` (contenu SVG texte) — **méthode n°1, aucune dépendance** ;
+   - soit via le **binaire local** `d2 --layout elk -o ./.kiro-web-artifacts/<nom>.svg source.d2`
+     (le binaire écrit exactement au chemin fourni).
+3. **Référencer le chemin absolu** dans la réponse → kiro-web l'affiche inline. Fin.
+
+**❌ INTERDIT en contexte kiro-web** : appeler le MCP `render-d2` (ou tout MCP de rendu)
+qui écrit dans un emplacement qu'il ne retourne pas de façon exploitable — c'est ce qui a
+causé un `find` sur `$HOME` → déconnexion WebSocket. En kiro-web, on n'utilise PAS
+`render-d2` : l'agent produit le SVG lui-même (fs_write) ou via le binaire `d2` local avec
+`-o` explicite. Le MCP `render-d2` reste autorisé HORS kiro-web (CLI natif).
+
+**Règles générales (s'appliquent à TOUT outil de génération : D2, Excalidraw, draw.io, Mermaid, screenshot, etc.)** :
+
+1. **Interdiction absolue du `find` / scan disque** pour retrouver un fichier généré. Le
+   chemin de sortie est décidé par l'agent, à l'avance — jamais découvert après coup.
+
+2. **Choisir un outil dont l'agent contrôle le chemin de sortie.** Ordre de préférence :
+   - **(a)** Un outil qui écrit directement au chemin fourni par l'agent (binaire CLI
+     local avec argument de sortie, ou écriture directe du fichier par l'agent).
+   - **(b)** Si le seul outil disponible retourne un chemin de sortie explicite → l'agent
+     le lit dans la réponse de l'outil et copie immédiatement vers `./.kiro-web-artifacts/`
+     (une seule commande `cp`, pas de recherche).
+   - **(c)** Un outil qui écrit dans un emplacement inconnu/sandboxé (non retourné, ou
+     inaccessible depuis le filesystem de l'agent) est **à proscrire** en contexte
+     kiro-web — l'agent choisit une autre méthode.
+
+3. **Règle des « 2 secondes / 1 essai »** : si l'artefact attendu n'est pas au chemin
+   prévu immédiatement après la commande de génération, l'agent **ne cherche pas et ne
+   réessaie pas la même approche** — il bascule tout de suite sur une méthode où il
+   contrôle le chemin (écrire le fichier lui-même, ou un binaire local avec sortie
+   explicite). Jamais deux tentatives infructueuses du même type (ça déconnecte le
+   WebSocket).
+
+4. **Écriture directe en dernier recours (toujours fiable)** : si aucun outil ne garantit
+   le chemin, l'agent écrit lui-même le contenu du fichier (SVG texte, ou via un binaire
+   local `outil source -o ./.kiro-web-artifacts/nom.ext`). C'est la voie de repli qui
+   marche toujours.
+
+5. **Référencer le chemin absolu** de `./.kiro-web-artifacts/<nom>` dans la réponse →
+   kiro-web l'affiche inline. Copie d'archivage dans `AI-GENERATED/` conservée. Aucun
+   `cmd.exe /c start`.
+
+**Pourquoi** : un test réel a montré qu'un MCP de rendu écrivait dans un sandbox
+inaccessible → l'agent a fait des `find` → 2 déconnexions WebSocket → ~11 min pour un
+simple diagramme. Ce principe élimine la cause racine : on ne cherche jamais, on contrôle
+le chemin dès le départ.
+
+### Comportement hors kiro-web (`KIRO_WEB` non défini — CLI natif) : INCHANGÉ
+
+- Génération dans `AI-GENERATED/` + ouverture via `cmd.exe /c start` (navigateur Windows),
+  comme la règle actuelle. Pas de `.kiro-web-artifacts/`.
+
+### Détection du contexte (rappel, dans l'ordre)
+
+1. **`$KIRO_WEB=1`** → contexte kiro-web (méthode fiable, déjà active).
+2. Fallback : recherche de `kiro_web` dans la chaîne des process parents (méthode existante).
+
+### Règles strictes
+
+- ✅ En kiro-web : toujours produire un SVG/PNG dans `./.kiro-web-artifacts/` + référencer
+  son chemin absolu dans la réponse + garder la copie `AI-GENERATED/`.
+- ❌ En kiro-web : ne jamais faire de `find` disque pour retrouver un fichier généré ;
+  ne jamais lancer `cmd.exe /c start`.
+- ✅ Le nom du fichier reste descriptif en kebab-case.
+
+
+---
+
+## Règle : Analyse de la file d'attente kiro-web
+
+**Déclencheur** : L'utilisateur demande à un agent de « regarder / analyser / traiter /
+comprendre la file d'attente » (queue) — quelle que soit la formulation : « regarde la
+file », « analyse les items de la file », « qu'est-ce qu'il y a dans la file d'attente »,
+« transforme la file en user stories », « check the queue », etc. (**insensible à la
+casse**).
+
+**Distinct du skill `queue-topics`** (qui ne fait QUE générer des topics 1-2 mots) : ici
+l'agent **analyse le contenu** en profondeur.
+
+**Contexte technique (source de vérité — deux bases distinctes)** :
+
+| Base | Chemin | Rôle | Accès |
+|------|--------|------|-------|
+| kiro-cli | `~/.local/share/kiro-cli/data.sqlite3` | Résoudre le cwd (scope) de la session courante | Lecture seule |
+| kiro-web | `$KIRO_WEB_DB` sinon `~/.local/share/kiro-web/kiro-web.sqlite3` | La file d'attente | Lecture (+ écriture `summary`/`status` si demandé) |
+
+**IMPORTANT — la file est par DOSSIER, pas par session** : la table `queue_items` est
+clé par la colonne **`scope`** (= le cwd du dossier). Toutes les sessions d'un même
+dossier partagent la même file. Il faut donc lire **par scope, jamais par session_id**.
+
+Schéma : `queue_items(session_id, position, text, summary, status, processed_at, topic_processed, created_at, scope)`.
+
+### Procédure OBLIGATOIRE (dans cet ordre)
+
+**1. Résoudre le scope (dossier) de la session courante**
+- SID explicite dans le message → l'utiliser. Sinon fallback :
+
+```bash
+SID=$(sqlite3 ~/.local/share/kiro-cli/data.sqlite3 "SELECT conversation_id FROM conversations_v2 ORDER BY updated_at DESC LIMIT 1")
+SCOPE=$(sqlite3 ~/.local/share/kiro-cli/data.sqlite3 "SELECT key FROM conversations_v2 WHERE conversation_id='$SID'")
+```
+
+- `SCOPE` = le cwd du dossier (ex : `/home/nizar/HomeWspce/kiro-web`).
+
+**2. Récupérer les items de ce scope**
+
+```bash
+DB="${KIRO_WEB_DB:-$HOME/.local/share/kiro-web/kiro-web.sqlite3}"
+sqlite3 "$DB" "SELECT position, status, summary, text FROM queue_items WHERE scope='$SCOPE' AND status='pending' ORDER BY position;"
+```
+
+Si aucun item n'est retourné → le dire simplement (file vide pour ce dossier). Ne rien inventer.
+
+**3. Comprendre et analyser chaque item** — pour chaque item, produire :
+- Un **titre court** (le sujet).
+- Une **user story** : « En tant que [rôle], je veux [besoin], afin de [bénéfice]. »
+- Le **contexte / catégorie** (bug, feature, refactor, doc, question…).
+- Une **estimation de complexité** indicative (S/M/L) si pertinent.
+
+**4. Détecter les duplications / recoupements** — signaler les items qui parlent de la
+même chose ou se chevauchent, avec leurs positions, et proposer une fusion.
+
+**5. Restituer** — présenter l'analyse structurée (une section par item + une section
+« Doublons/recoupements » + une section « Regroupements suggérés » si pertinent). Utiliser
+le **contexte de domaine de l'agent** (exp2 = technique, compass = perso…) pour enrichir.
+
+**6. Ne rien modifier par défaut** (analyse en lecture seule). Modifier la file (marquer
+traité, réécrire un texte, fusionner) UNIQUEMENT si l'utilisateur le demande explicitement.
+
+### Règles strictes
+
+- ✅ Toujours résoudre le scope (cwd) et lire `WHERE scope=...` (jamais `session_id`).
+- ✅ Respecter `$KIRO_WEB_DB` s'il est défini.
+- ✅ Une user story par item + détection des doublons.
+- ✅ Analyse en lecture seule par défaut.
+- ❌ Ne jamais inventer d'items absents de la DB.
+- ❌ Ne pas confondre avec `queue-topics` (topics courts) — ici c'est une analyse approfondie.
+
 
 ---
 
@@ -276,7 +550,10 @@ Avant d'envoyer une réponse, l'agent DOIT scanner sa propre sortie et vérifier
 - [ ] **TOUT tableau (≥2 colonnes) dans le CLI ?** → Vérifier OBLIGATOIREMENT que TOUTES les colonnes sont alignées (même nombre de caractères par cellule, séparateurs = même largeur que header). **SI NON ALIGNÉ → NE PAS ENVOYER.**
 - [ ] **Page Notion créée ?** → Afficher le lien URL direct : `📄 Page créée : [Titre](URL)`
 - [ ] **Image/diagramme généré ?** → Sauvegarder dans `AI-GENERATED/<mois-année>/` (JAMAIS /tmp/)
+- [ ] **Artefact généré en contexte kiro-web (`KIRO_WEB=1`) ?** → Écrit à un chemin déterministe `./.kiro-web-artifacts/<nom>.<svg|png>` que l'agent contrôle (jamais découvert par `find`) + chemin absolu référencé dans la réponse + copie `AI-GENERATED/` conservée. Si l'outil n'écrit pas au chemin prévu du premier coup → basculer immédiatement sur une méthode à chemin contrôlé (max 1 essai, jamais de scan disque, jamais 2 tentatives du même type).
+- [ ] **Analyse de la file d'attente demandée ?** → Résoudre le scope (cwd), lire `queue_items WHERE scope=...`, produire une user story par item + détecter les doublons (lecture seule sauf demande explicite de modification).
 - [ ] **Explication en tunisien demandée ?** → Créer la page Notion avec caractères RTL (U+202B)
+- [ ] **Explication tunisienne demandée avec « ici / inline / dans le chat / sans Notion » ?** → Répondre DIRECTEMENT dans le chat (format RTL U+202B), NE PAS créer de page Notion
 - [ ] **Visuel tunisien demandé ?** → Utiliser `rtl-visual-mcp` (JAMAIS Excalidraw/Mermaid pour du RTL arabe)
 
 **Cette checklist est NON-NÉGOCIABLE.** Si une condition est remplie et l'action correspondante n'est pas faite, la réponse est INCOMPLÈTE.
@@ -1058,8 +1335,11 @@ Avant d'envoyer une réponse, l'agent DOIT scanner sa propre sortie et vérifier
   - **Le parent de la page DOIT être l'ID du toggle, PAS l'ID de "Mes Speechs"**. JAMAIS un toggle. JAMAIS ailleurs. Si contexte existant → ajouter un lien croisé.
 - [ ] **Page Notion créée ?** → Afficher le lien URL direct : `📄 Page créée : [Titre](URL)`
 - [ ] **Explication en tunisien demandée ?** → Créer la page Notion avec caractères RTL (U+202B)
+- [ ] **Explication tunisienne demandée avec « ici / inline / dans le chat / sans Notion » ?** → Répondre DIRECTEMENT dans le chat (format RTL U+202B), NE PAS créer de page Notion
 - [ ] **Tableau ≥3 colonnes ET ≥3 lignes ?** → Générer le fichier HTML dans `AI-GENERATED/<mois-année>/`
 - [ ] **Image/diagramme généré ?** → Sauvegarder dans `AI-GENERATED/<mois-année>/` (JAMAIS /tmp/)
+- [ ] **Artefact généré en contexte kiro-web (`KIRO_WEB=1`) ?** → Écrit à un chemin déterministe `./.kiro-web-artifacts/<nom>.<svg|png>` que l'agent contrôle (jamais découvert par `find`) + chemin absolu référencé dans la réponse + copie `AI-GENERATED/` conservée. Si l'outil n'écrit pas au chemin prévu du premier coup → basculer immédiatement sur une méthode à chemin contrôlé (max 1 essai, jamais de scan disque, jamais 2 tentatives du même type).
+- [ ] **Analyse de la file d'attente demandée ?** → Résoudre le scope (cwd), lire `queue_items WHERE scope=...`, produire une user story par item + détecter les doublons (lecture seule sauf demande explicite de modification).
 - [ ] **Visuel tunisien demandé ?** → Utiliser `rtl-visual-mcp` (JAMAIS Excalidraw/Mermaid pour du RTL arabe)
 
 **Cette checklist est NON-NÉGOCIABLE.** Si une condition est remplie et l'action correspondante n'est pas faite, la réponse est INCOMPLÈTE.
@@ -1099,3 +1379,84 @@ Avant d'envoyer une réponse, l'agent DOIT scanner sa propre sortie et vérifier
 
 **Ajout à la checklist de sortie** :
 - [ ] **Question/achat lié à l'inventaire équipements ou outils ?** → Consulter/mettre à jour la table Airtable `tblX7FALSiSXiMv2S` (source de vérité)
+
+
+---
+
+## Règle d'or : Fermeture des stories GitHub après déploiement prod (TOLÉRANCE ZÉRO)
+
+**Déclencheur** : Tout déploiement en production d'une fonctionnalité tracée par une issue/story GitHub (ex: `git checkout <tag>` dans le dossier prod + restart du service).
+
+**Action OBLIGATOIRE (AUCUNE EXCEPTION)** : Dès que le déploiement prod est confirmé (service actif + vérification), FERMER immédiatement l'issue/story GitHub correspondante (`update_issue` avec `state: closed`). Fermer aussi l'épic parent quand toutes ses sous-issues sont fermées.
+
+**Règles strictes** :
+- ✅ Déploiement prod confirmé → fermeture GitHub dans la foulée, sans que l'utilisateur le demande
+- ✅ Épic → fermé quand toutes les sous-issues sont fermées
+- ✅ Fermer avec `state_reason: completed`
+- ❌ JAMAIS laisser une story "done" ouverte après une mise en prod
+- ❌ JAMAIS attendre que l'utilisateur demande de fermer
+
+**Ajout à la checklist de sortie** :
+- [ ] **Mise en prod d'une story tracée GitHub ?** → Fermer l'issue (+ l'épic si toutes les sous-issues sont fermées) immédiatement
+
+
+---
+
+## Règle d'or : Fichier Excel `suivi-des-affaires.xlsx` = source de vérité (disponibilités, vacances, sorties, finances)
+
+**Chemin** : `/mnt/c/Users/nizar/Dropbox/AAA_PRIVATE_LIFE/Procedures-en-cours/Suivi-des-affaires-perso/suivi-des-affaires.xlsx`
+
+**Déclencheur** : Toute question, planification ou action concernant :
+- La **disponibilité des membres de la famille** (Nizar, Abir, Yasmine, Radhouane)
+- La **planification de vacances**
+- La **planification de sorties / événements**
+- Un **nouveau club / activité / inscription**
+- Les **finances** (revenus, dépenses, cotisations, allocations)
+
+**Action OBLIGATOIRE** :
+
+1. **Consulter ce fichier EN PREMIER** comme source de vérité pour connaître la disponibilité de chaque membre de la famille avant de planifier quoi que ce soit (sortie, vacances, rendez-vous, événement).
+   - Onglet **`Absence-Calendrier-2026`** : congés/fériés/pédago + sessions (début/fin) des clubs → indique QUAND chaque membre est occupé/libre.
+   - Onglet **`Routine-Club-2026`** : routine hebdomadaire des clubs.
+   - Onglet **`Main-finance-2026`** : finances (déjà couvert par la règle finances/Excel existante).
+
+2. **Écrire noir sur blanc dans ce fichier** dès qu'il y a :
+   - Un **nouvel événement** ou une **sortie** planifiée
+   - De **nouvelles vacances**
+   - Un **nouveau club / activité / session** (ajouter une ligne dans la section Sessions de `Absence-Calendrier-2026`)
+   - Une info financière (onglet finances)
+
+3. **Se référer à la disponibilité** des membres (via `Absence-Calendrier-2026`) pour répondre à toute question du type « est-ce que X est libre tel jour ? », « quand peut-on planifier Y ? », « y a-t-il un conflit ? ».
+
+**Structure de `Absence-Calendrier-2026`** :
+- Section « Sessions — Début et Fin » (colonne Session : « Session Automne », « Session 2026-2027 », etc. — extensible pour futures sessions hiver/printemps)
+- Calendrier vertical mois par mois (sept 2026 → juin 2027), sections repliables, avec 🟡 jaune = absence, 🟢 D = début session, 🟠 F = fin session.
+
+**Règles strictes** :
+- ✅ TOUJOURS consulter ce fichier avant de planifier une sortie, des vacances, un événement ou de répondre à une question de disponibilité familiale.
+- ✅ TOUJOURS y inscrire tout nouvel événement/sortie/club/vacances.
+- ✅ Respecter la règle Excel (demander la fermeture avant écriture) et relire l'état actuel avant de modifier (l'utilisateur fait des modifications manuelles).
+- ⚠️ Le dossier a été renommé : `Suivi-des-affaires-perso` (anciennement `Suivi-tresorie-perso`).
+- ❌ JAMAIS planifier une sortie/vacances sans vérifier les disponibilités dans ce fichier.
+
+**Ajout à la checklist de sortie** :
+- [ ] **Planification (sortie/vacances/événement) ou question de disponibilité famille ?** → Consulter/mettre à jour `suivi-des-affaires.xlsx` (onglet Absence-Calendrier-2026) — source de vérité.
+
+
+---
+
+## Règle d'or : Liens YouTube toujours cliquables (TOLÉRANCE ZÉRO)
+
+**Déclencheur** : Toute demande impliquant la fourniture d'un ou plusieurs liens YouTube (vidéo, tutoriel, review, transcript, chaîne, playlist) — quelle que soit la formulation.
+
+**Action OBLIGATOIRE** : Donner le lien YouTube **cliquable directement**, sous forme d'URL complète commençant par `https://www.youtube.com/watch?v=<id>` (ou `https://youtu.be/<id>`), affichée telle quelle dans la réponse pour qu'elle soit cliquable immédiatement.
+
+**Règles strictes** :
+- ✅ TOUJOURS afficher l'URL complète `https://www.youtube.com/watch?v=<videoId>` — jamais juste l'ID de la vidéo
+- ✅ Le lien principal recommandé doit être mis en évidence et cliquable
+- ✅ Si plusieurs vidéos sont listées dans un tableau, mettre l'URL complète cliquable (pas `youtube.com/watch?v=...` tronqué sans `https://`)
+- ❌ JAMAIS donner uniquement un `videoId` seul (ex: `TO6JnXgP-rg`) sans l'URL complète
+- ❌ JAMAIS tronquer le lien d'une façon qui le rend non-cliquable
+
+**Ajout à la checklist de sortie** :
+- [ ] **Lien(s) YouTube fourni(s) ?** → Vérifier que chaque lien est une URL complète `https://www.youtube.com/watch?v=<id>` cliquable directement

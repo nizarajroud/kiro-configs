@@ -44,6 +44,12 @@ STATIC_DIR = APP_DIR / "static"
 DEFAULT_CWD = os.environ.get("KIRO_WEB_CWD", str(Path.home() / "HomeWspce" / "kiro-configs"))
 DEFAULT_AGENT = os.environ.get("KIRO_WEB_AGENT", "exp2")
 
+# Idle session cleanup: sessions with no activity for > TTL are shut down
+# (subprocess killed + post-session hooks run). Configurable via env.
+IDLE_TTL_SECONDS = float(os.environ.get("KIRO_WEB_IDLE_TTL", str(2 * 3600)))  # default 2h
+IDLE_CHECK_INTERVAL = 300.0  # scan every 5 min
+_active_sessions: set = set()  # live ACPSession objects
+
 # Hook scripts — mirror qq's pre/post-session behavior exactly
 _HOOKS = {
     "catchup": str(Path.home() / ".kiro/hooks/sync-catchup.py"),
@@ -89,6 +95,31 @@ async def _startup_catchup() -> None:
     """Pre-flight catchup sync for missed sessions — mirrors qq's startup hook."""
     _run_bg(_HOOKS["catchup"])
     logger.info("startup: sync-catchup launched")
+    # Launch the idle-session janitor
+    asyncio.create_task(_idle_janitor())
+    logger.info("startup: idle janitor launched (TTL=%.0fs)", IDLE_TTL_SECONDS)
+
+
+async def _idle_janitor() -> None:
+    """Periodically shut down sessions idle for > IDLE_TTL_SECONDS.
+
+    Closing a session kills its process group (no orphans) and runs the
+    post-session hooks (Memory/KB/topics), preserving parity with qq.
+    """
+    import time as _t
+
+    while True:
+        await asyncio.sleep(IDLE_CHECK_INTERVAL)
+        now = _t.time()
+        stale = [s for s in list(_active_sessions) if (now - s.last_active) > IDLE_TTL_SECONDS]
+        for s in stale:
+            logger.info("idle cleanup: session %s (idle %.0fs)", s.session_id[:8], now - s.last_active)
+            _active_sessions.discard(s)
+            try:
+                post_session_sync(s.session_id)   # hooks like qq
+                await s.shutdown()                # killpg the group
+            except Exception as e:  # noqa: BLE001
+                logger.warning("idle cleanup error: %s", e)
 
 
 # Path to the CLI session DB (used by the DELETE endpoint). Listing logic itself
@@ -142,6 +173,12 @@ class ACPSession:
         self.session_id: str = ""
         self.modes: list[dict] = []
         self.models: list[dict] = []
+        self.last_active: float = __import__("time").time()
+
+    def touch(self) -> None:
+        """Mark the session as recently active (resets the idle TTL clock)."""
+        import time as _t
+        self.last_active = _t.time()
 
     async def start(self) -> dict:
         """Spawn kiro-cli acp, handshake, create session, set the agent."""
@@ -236,6 +273,13 @@ class ACPSession:
 
     async def stream_prompt(self, text: str, ws: WebSocket) -> None:
         """Send a prompt and forward streaming chunks to the websocket."""
+        self.touch()  # reset idle TTL
+        # Health check: if the subprocess died, surface a clean error so the
+        # frontend can reconnect, instead of crashing on a dead pipe.
+        if not self.pm.is_running:
+            raise ProcessTerminatedError(
+                "La session Kiro s'est arrêtée. Reconnexion nécessaire."
+            )
         await self.acp.send_prompt(self.session_id, text)
         while True:
             msg = await self.acp.read_update()
@@ -351,6 +395,7 @@ async def ws_endpoint(ws: WebSocket) -> None:
             )
             session = ACPSession(cwd=cwd, agent=agent)
             await session.load(resume_id, ws)
+            _active_sessions.add(session)
             await ws.send_json(
                 {
                     "type": "ready",
@@ -367,6 +412,7 @@ async def ws_endpoint(ws: WebSocket) -> None:
             )
             session = ACPSession(cwd=cwd, agent=agent)
             await session.start()
+            _active_sessions.add(session)
             await ws.send_json(
                 {
                     "type": "ready",
@@ -378,20 +424,49 @@ async def ws_endpoint(ws: WebSocket) -> None:
                 }
             )
 
-        # Main loop: receive prompts, stream responses
+        # Main loop: receive prompts, stream responses (cancellable)
+        prompt_task: asyncio.Task | None = None
+
+        async def _run_prompt(text: str) -> None:
+            try:
+                await session.stream_prompt(text, ws)
+            except asyncio.CancelledError:
+                # Interrupted by the user → tell the agent to cancel + notify UI
+                try:
+                    await session.acp.cancel(session.session_id)
+                except Exception:  # noqa: BLE001, S110
+                    pass
+                try:
+                    await ws.send_json({"type": "cancelled"})
+                except Exception:  # noqa: BLE001, S110
+                    pass
+                raise
+            except ProcessTerminatedError as e:
+                await ws.send_json({"type": "error", "text": str(e)})
+
         while True:
             data = await ws.receive_json()
-            if data.get("type") == "prompt":
+            dtype = data.get("type")
+            if dtype == "prompt":
                 text = (data.get("text") or "").strip()
                 if not text:
                     continue
-                try:
-                    await session.stream_prompt(text, ws)
-                except ProcessTerminatedError as e:
-                    await ws.send_json({"type": "error", "text": str(e)})
-                    break
-            elif data.get("type") == "stop":
+                # If a previous prompt is still running, ignore (frontend gates this)
+                if prompt_task and not prompt_task.done():
+                    continue
+                prompt_task = asyncio.create_task(_run_prompt(text))
+            elif dtype == "cancel":
+                # Interrupt the in-flight generation
+                if prompt_task and not prompt_task.done():
+                    prompt_task.cancel()
+                    try:
+                        await prompt_task
+                    except (asyncio.CancelledError, Exception):  # noqa: BLE001
+                        pass
+            elif dtype == "stop":
                 # Explicit "Arrêter session": run post-session hooks now, confirm, then stop.
+                if prompt_task and not prompt_task.done():
+                    prompt_task.cancel()
                 post_session_sync(session.session_id)
                 synced = True
                 await ws.send_json(
@@ -410,6 +485,7 @@ async def ws_endpoint(ws: WebSocket) -> None:
             pass
     finally:
         if session is not None:
+            _active_sessions.discard(session)
             # Post-session sync (Memory + KB + topic catalog) — like qq.
             # Skip if already done via an explicit "stop" to avoid double-sync.
             if not synced:

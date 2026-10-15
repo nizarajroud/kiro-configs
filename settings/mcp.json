@@ -24,7 +24,7 @@
     },
     "notion-workspace": {
       "description": "Notion workspace MCP (local fork with extended block types: headings, annotations, image support).",
-      "command": "python3",
+      "command": "/usr/bin/python3",
       "args": [
         "/home/nizar/.kiro/wrappers/notion_wrapper.py"
       ],
@@ -36,7 +36,7 @@
     },
     "github": {
       "description": "Use this server for GitHub operations: read repositories, browse code, search files, manage issues and pull requests, monitor GitHub Actions workflows, and access user/org information.",
-      "command": "python3",
+      "command": "/usr/bin/python3",
       "args": [
         "/home/nizar/.kiro/wrappers/github_wrapper.py"
       ],
@@ -57,7 +57,7 @@
       "disabled": false
     },
     "bookmarks": {
-      "command": "python3",
+      "command": "/usr/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bookmarks_wrapper.py"
       ],
@@ -103,7 +103,7 @@
     },
     "firecrawl": {
       "description": "Web scraping, crawling, and search MCP server. Use this to scrape single pages, crawl entire sites, search the web, map site URLs, extract structured data from web pages, and perform autonomous web research. Supports JSON extraction with schemas, batch scraping, and interactive page navigation. Ideal for parsing municipal sites, extracting registration info, dates, locations from complex web pages.",
-      "command": "python3",
+      "command": "/usr/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/firecrawl_wrapper.py"
       ],
@@ -111,7 +111,7 @@
     },
     "mural": {
       "description": "MURAL collaboration tool. Use this whenever the user mentions 'mural', 'MURAL', a mural board, or visual collaboration content. Default mural: PERSONAL (ID: f6a392091666d7eb480abe141fe326f5e6b96c54). Supports: listing workspaces/rooms/murals, reading all content from a mural (sticky notes, shapes, text, images), searching text inside murals, creating/updating/deleting sticky notes, and creating new murals.",
-      "command": "python3",
+      "command": "/usr/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mural_wrapper.py"
       ],
@@ -120,7 +120,7 @@
     },
     "mcp-image-recognition": {
       "description": "Image analysis MCP Server (READ-ONLY). Analyzes images (diagrams, screenshots, documents) using Amazon Bedrock vision models (Nova Pro, Claude) via the local Bedrock Access Gateway. Requires the gateway running on localhost:8766. Do NOT use for modifying or generating images.",
-      "command": "python3",
+      "command": "/usr/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/mcp_image_recognition_wrapper.py"
       ],
@@ -129,7 +129,7 @@
     },
     "napkin-ai": {
       "description": "Generate professional infographics and visuals (mindmaps, flowcharts, timelines, comparisons) from text using Napkin AI. Use when user asks for visual diagrams, infographics, or visual representations of concepts.",
-      "command": "python3",
+      "command": "/usr/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/napkin_ai_wrapper.py"
       ],
@@ -138,7 +138,7 @@
     },
     "bitbucket-mcp": {
       "description": "Atlassian Bitbucket MCP. Manage repos, pull requests, pipelines, branches, and files on Bitbucket Cloud. Use when user asks about Bitbucket repositories or CI/CD pipelines.",
-      "command": "python3",
+      "command": "/usr/bin/python3",
       "args": [
         "/home/nizar/HomeWspce/kiro-configs/wrappers/bitbucket_wrapper.py"
       ],
@@ -184,6 +184,40 @@
         "DOCMOST_MCP_CONFIG": "/home/nizar/HomeWspce/docmost-mcp/config.json"
       },
       "disabled": false
+    },
+    "ticktick": {
+      "command": "/usr/bin/python3",
+      "args": [
+        "/home/nizar/.kiro/wrappers/ticktick_wrapper.py"
+      ],
+      "disabled": false
+    },
+    "image-annotator": {
+      "command": "node",
+      "args": [
+        "/home/nizar/HomeWspce/image-annotator-mcp/server.js"
+      ],
+      "disabled": false
+    },
+    "youtube-search": {
+      "description": "YouTube Data API v3 — search videos/channels/playlists and discover the most relevant videos on any topic (reviews, tutorials, etc.). Filters: order, date range, subscriber band, creator-only, sortBy (relevance/indie_priority/recent_activity). Also fetches video details and transcripts. Use when the user wants to FIND/DISCOVER YouTube videos on a subject.",
+      "command": "python3",
+      "args": [
+        "/home/nizar/HomeWspce/kiro-configs/wrappers/youtube_mcp_wrapper.py"
+      ],
+      "disabled": false,
+      "locked": false
+    },
+    "wispr-flow": {
+      "description": "Wispr Flow Notetaker MCP (remote, OAuth) — access your meeting notes and transcripts captured by Wispr Flow Notetaker (NOT your dictations). Use to query, summarize, or search what was said/decided in your recorded meetings.",
+      "command": "npx",
+      "args": [
+        "-y",
+        "mcp-remote",
+        "https://api.wisprflow.ai/connect/mcp"
+      ],
+      "disabled": false,
+      "locked": false
     }
   }
 }

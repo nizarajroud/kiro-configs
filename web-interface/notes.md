@@ -167,3 +167,44 @@ Puis ouvrir http://127.0.0.1:8770 dans le navigateur.
 - **Lecture pendant génération** : maybeScroll() / isNearBottom() — auto-scroll SEULEMENT si l'utilisateur
   est déjà en bas (<120px). Permet de remonter lire pendant que ça streame sans être ramené en bas.
   Le message user envoyé force toujours le scroll (addMsg). Le replay history_tool force aussi.
+
+### Système d'onglets hybride (4 chauds LRU + reste tiède) : ✅ TERMINÉE
+- Refonte complète de static/index.html autour d'un modèle multi-onglets (Tab objects).
+- **Barre d'onglets horizontale** (#tabbar) au-dessus de la zone de chat (#panes). Un .pane DOM par onglet
+  (affiché/caché via .active) → chaque onglet garde son historique en mémoire (DOM).
+- **Clic session sidebar** → openSessionInTab : ouvre un NOUVEL onglet (ou active si déjà ouvert).
+  ✏️ Nouveau chat → nouvel onglet avec l'agent du dropdown.
+- **Pool chaud/tiède (LRU), MAX_HOT=4** :
+  - 🟢 chaud = WS + subprocess kiro-cli acp vivant → frappe instantanée.
+  - 🟡 tiède = historique en mémoire (DOM), pas de subprocess. Réactivation ou envoi → redevient chaud.
+  - makeHot évince le LRU des hot tabs (makeWarm ferme son WS → hooks backend) si pool plein.
+  - Chaque onglet a son WS indépendant (connectTab) + auto-reconnect si hot.
+- **Hooks** : à l'éviction hot→warm ET à la fermeture d'onglet, le WS se ferme → post_session_sync backend.
+- **send() sur onglet tiède** : makeHot + bufferise le prompt (_pending) + waitReadyThenSend après reconnexion.
+- Backend INCHANGÉ (gère déjà N WS = N subprocess). Config MAX_HOT ajustable côté JS.
+- Testé: 2 WS/subprocess parallèles (réponses distinctes) + logique LRU (5 onglets → 4 chauds/1 tiède,
+  réactivation évince correctement le nouveau LRU).
+
+### Blindages inspirés de aws-samples/sample-acp-bridge : ✅ TERMINÉS
+Parsing du code réel de sample-acp-bridge (src/acp_client.py) → 3 techniques de robustesse reprises :
+- **#1 Kill du groupe de process** (process_manager.py) : spawn avec start_new_session=True (groupe),
+  shutdown() = os.killpg(getpgid(pid), SIGTERM) puis SIGKILL sur le groupe (fallback send_signal).
+  → tue kiro-cli acp ET ses MCP servers enfants. Fix fuite d'orphelins. Testé: 0 orphelin après fermeture.
+- **#2 Health check ping()** (acp_client.py) : JSON-RPC 'ping' → True si répond (même erreur=vivant),
+  False si process mort/timeout. stream_prompt() vérifie pm.is_running avant d'envoyer → ProcessTerminatedError
+  si mort (frontend reconnecte). Testé: ping vivant=True, après shutdown=False.
+- **#3 TTL cleanup idle** (app.py) : ACPSession.last_active + touch() (dans stream_prompt). Registre global
+  _active_sessions. Tâche _idle_janitor (startup) scanne toutes les 5min, ferme sessions idle > IDLE_TTL_SECONDS
+  (défaut 2h, env KIRO_WEB_IDLE_TTL) avec post_session_sync (hooks qq) + shutdown (killpg). Testé.
+- Idées NON retenues (bonus futurs) : pidfile ghost-cleanup au restart, limites dures max_processes.
+- Décision: rester en WebSocket (pas SSE) — cas local WSL, reconnexion déjà codée, bidirectionnel+multi-onglets.
+- Test E2E final: startup logue janitor+catchup, session complète sans régression, endpoints 200, 0 orphelin.
+
+### Bouton Envoyer ↔ Stop (interruption) : ✅ TERMINÉE
+- Pendant le streaming, le bouton "Envoyer" devient "⏹ Stop" (rouge, classe #send.stop), toujours cliquable.
+- Clic sur Stop → envoie {type:'cancel'} au backend.
+- Backend: stream_prompt tourne comme asyncio.Task annulable (prompt_task). Message 'cancel' → prompt_task.cancel()
+  → dans _run_prompt, CancelledError → acp.cancel(session_id) (session/cancel ACP) + envoie {type:'cancelled'}.
+- Frontend: message 'cancelled' → hideThinking, finalise la bulle courante, ajoute note "⏹ Interrompu", streaming=false.
+- 'stop' (fermeture session) annule aussi le prompt_task en cours avant les hooks.
+- Testé en réel: prompt long → cancel → 'cancelled' reçu ✅.
