@@ -767,127 +767,56 @@ Stocker dans `memory-compass` avec :
 
 ---
 
-## Règle : Format des tableaux en session Kiro (ASCII aligné)
+## Règle : Format des tableaux en session Kiro (Markdown GFM affiché directement)
 
-### ⛔⛔⛔ AVERTISSEMENT CRITIQUE — VIOLATION = RÉPONSE INCOMPLÈTE ⛔⛔⛔
-
-**CETTE RÈGLE EST NON-NÉGOCIABLE. AUCUNE EXCEPTION. JAMAIS.**
-
-Avant d'écrire UN SEUL caractère `|` dans une réponse :
-1. STOP — Ai-je calculé les largeurs de TOUTES les colonnes ?
-2. STOP — Le séparateur `|---|` a-t-il la MÊME largeur que le header ?
-3. STOP — TOUTES les cellules d'une même colonne ont-elles le MÊME nombre de caractères (padding inclus) ?
-
-**Si la réponse à l'une de ces 3 questions est NON → NE PAS AFFICHER LE TABLEAU.**
-
-**Conséquence d'une violation** : La réponse entière est considérée INCOMPLÈTE et DÉFECTUEUSE, au même titre qu'une réponse sans source citation.
-
----
+### ⛔ RÈGLE — AFFICHER LES TABLEAUX EN MARKDOWN GFM, DIRECTEMENT DANS LE CHAT ⛔
 
 **Déclencheur** : Toute sortie contenant un tableau (2+ colonnes) dans une session Kiro CLI.
 
-**RÈGLE ABSOLUE** : Ne JAMAIS utiliser de tableaux GFM Markdown non-paddés. Toujours utiliser des tableaux ASCII avec colonnes alignées par padding d'espaces.
+**RÈGLE ABSOLUE** : Afficher les tableaux en **Markdown GFM standard**, directement dans le
+chat. Le client rend le Markdown — il ne faut PAS pré-aligner les colonnes à la main avec du
+padding d'espaces (ASCII art). On écrit du Markdown GFM propre et lisible, un point c'est tout.
 
 **Format OBLIGATOIRE** :
-- Chaque cellule est paddée avec des espaces pour matcher la valeur la plus large de la colonne
-- La ligne de séparation (`---`) est alignée à la même largeur que le header
-- Les URLs sont affichées en raw (pas de `[text](url)`), tronquées avec `…` si > 50 caractères
-- Les colonnes numériques sont alignées à droite
-- Appliquer automatiquement dès qu'un tableau de 2+ colonnes est produit, sans demande explicite
+- Markdown GFM standard : `| Col1 | Col2 | Col3 |` avec la ligne de séparation `|---|---|---|`
+- **PAS de padding manuel** pour aligner les pipes verticalement — c'est inutile (le rendu
+  Markdown s'en charge) et ça a causé des drifts par le passé.
+- Liens cliquables autorisés : `[texte](url)` est OK (le Markdown est rendu).
+- Afficher le tableau **directement ici, dans le chat** — ne PAS systématiquement partir vers
+  un fichier HTML avec lien cliquable (voir la nuance HTML ci-dessous).
 
-**❌ INTERDIT** :
+**✅ OBLIGATOIRE (Markdown GFM propre)** :
 ```
 | Prix | Annonce | Lieu |
-|---|---|---|
+|------|---------|------|
 | Gratuit | Table and art form | Longueuil |
 ```
 
-**✅ OBLIGATOIRE** :
+**❌ INTERDIT (ASCII paddé à la main — ancien comportement, source de drift)** :
 ```
 | Prix    | Annonce            | Lieu      |
-|---------|--------------------|-----------| 
+|---------|--------------------|-----------|
 | Gratuit | Table and art form | Longueuil |
 ```
+(Le padding manuel n'apporte RIEN en rendu Markdown et complique la génération → ne plus le faire.)
 
-**Règles de padding** :
-- Largeur colonne = max(largeur header, largeur valeur la plus longue) + 1 espace de chaque côté
-- Séparateur = tirets (`-`) de la même largeur que la colonne
-- Texte : aligné à gauche
-- Nombres : alignés à droite
+**Règles simples** :
+- Cellule vide → mettre un tiret `-` (jamais une cellule totalement vide).
+- Emojis autorisés dans les cellules (✅ ❌ ⚠️) — pas de compensation de largeur à calculer
+  puisqu'on ne fait plus d'alignement manuel.
+- Garder les tableaux lisibles : si une cellule est très longue, préférer une formulation
+  courte, mais ne jamais casser la structure Markdown.
 
-**Règle 1 — Cellules vides** :
-Les cellules vides ne sont JAMAIS laissées vierges. Remplir avec un tiret `-` aligné à la largeur de la colonne.
-- ❌ `| Gratuit |          | Longueuil |`
-- ✅ `| Gratuit | -        | Longueuil |`
+**Relation avec la règle « Tableaux Markdown → HTML cliquable »** :
+- Le tableau Markdown est **TOUJOURS affiché directement dans le chat** (comportement par défaut
+  et attendu).
+- La génération d'un fichier HTML stylisé (`AI-GENERATED/`) + lien `📊 Voir formaté` est un
+  **complément OPTIONNEL** réservé aux grands tableaux de référence que l'utilisateur voudra
+  consulter/partager hors chat — **jamais un substitut** à l'affichage Markdown dans le chat,
+  et pas systématique pour chaque petit tableau de la conversation.
 
-**Règle 2 — Compensation largeur emoji** :
-Les emojis (✅ ❌ ⚠️ 🟩) font 2 caractères de large en monospace mais comptent pour 1 en longueur. Compenser en retirant 1 espace de padding après tout emoji dans une cellule.
-- ❌ `| ✅ Acheté  |` (trop large)
-- ✅ `| ✅ Acheté |` (1 espace en moins après emoji)
-
-**Règle 3 — Largeur colonne** :
-Calculer la largeur de colonne AVANT le rendu. = max(header, toutes les valeurs incluant cellules vides/tirets). Chaque ligne doit matcher cette largeur exactement.
-
-**Règle 4 — Séparateur = même largeur que header** :
-`| Statut   |` → `|----------|`
-
-**Règle 5 — Contexte monospace** :
-Toutes les tables sont rendues en monospace (terminal, Kiro chat). PAS de tricks proportionnels. Padding par espaces uniquement.
-
-**Règle 6 — Troncature** :
-Si une colonne Description dépasse ~45 chars, tronquer avec `…` plutôt que wrapper, pour préserver l'alignement single-line.
-
-**Règle 7 — Word-wrap intra-cellule (lignes multiples)** :
-Quand le contenu d'une cellule dépasse la largeur allouée, wrapper sur la ligne physique suivante DANS la même ligne logique. Toutes les colonnes doivent continuer sur chaque ligne wrappée avec du padding vide.
-
-Budget de colonnes (console ~120 chars) :
-```
-| Statut | Article          | Fournisseur  | Prix | Description              |
-| 8      | 30               | 18           | 6    | 45                       |
-```
-
-Exemple wrap :
-```
-| Statut    | Article                        | Fournisseur     | Prix | Description                    |
-|-----------|--------------------------------|-----------------|------|--------------------------------|
-| ✅ Acheté | Peinture                       | Bétonel du Luxe | -    | Expert du Luxe 140 10A, Blanc, |
-|           |                                |                 |      | coquille d'œuf, 925 ml         |
-|-----------|--------------------------------|-----------------|------|--------------------------------|
-| À ach.    | Patins vissables feutre        | Canadian Tire   | 8$   | Protection plancher bois —     |
-|           | (paq. 20)                      |                 |      | vissés dans pieds de chaise    |
-```
-
-Règles du wrap :
-- Les lignes wrappées répètent la structure `|` avec des cellules vides paddées
-- Un séparateur `|---|` est ajouté ENTRE chaque ligne logique (pas juste au header)
-- Jamais de troncature `…` quand le wrap est actif — afficher le contenu complet
-- Wrapper aux limites de mots (pas de coupure mid-word)
-- Le séparateur inter-lignes utilise les mêmes largeurs que le header
-
-**Règle 8 — Golden Rule : Pre-compute, then render (strict two-pass)** :
-
-JAMAIS écrire le contenu et ajuster les largeurs en même temps. Toujours suivre ce processus en deux passes :
-
-**PASS 1 — Mesure** (avant d'écrire un seul caractère) :
-1. Collecter TOUT le contenu de chaque cellule, incluant les fragments wrappés
-2. Pour chaque colonne : largeur minimale = max(longueur header, plus long fragment de cellule)
-3. Calculer la largeur totale minimale = somme(toutes largeurs colonnes) + pipes + padding
-4. **EXPANSION OBLIGATOIRE** : Si total < 120 chars → distribuer l'espace restant (120 - total) entre les colonnes proportionnellement à leur contenu. Le tableau DOIT occuper ~120 chars de large. JAMAIS un tableau étroit avec de l'espace vide à droite.
-5. Si total > 120 chars → réduire la colonne la plus large d'abord, puis re-fragmenter son contenu avec word-wrap
-6. Verrouiller toutes les largeurs. Elles NE CHANGENT PAS pendant le rendu
-
-**PASS 2 — Rendu** (avec les largeurs verrouillées) :
-- Chaque fragment de cellule est paddé avec des espaces pour remplir exactement sa largeur
-- Les cellules de continuation vides sont remplies UNIQUEMENT d'espaces (pas de `-`, pas de `|` à l'intérieur)
-- Le `|` de fermeture de chaque ligne est placé à la MÊME position caractère sur chaque ligne physique, incluant les lignes wrappées
-- Les fragments de wrap sont coupés au dernier mot AVANT d'atteindre la largeur de colonne. Jamais couper À la frontière (collision avec la bordure). Laisser au moins 1 espace de marge avant le `|` de fermeture
-
-**Vérification mentale avant output** :
-- Le `|` de fermeture de la colonne N est au même index caractère sur TOUTES les lignes de la row
-- Aucune cellule ne contient un `|` parasite qui appartient à la structure
-- Les lignes de continuation wrappées ont UNIQUEMENT des espaces dans les colonnes sans overflow
-
-**Scope** : Sessions Kiro CLI uniquement. Les tableaux générés pour Notion ou HTML ne sont pas concernés.
+**Scope** : Sessions Kiro CLI uniquement. Les tableaux pour Notion (blocs natifs `table`) ou
+les fichiers HTML ne sont pas concernés par cette règle d'affichage chat.
 
 
 ---
